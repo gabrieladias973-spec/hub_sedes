@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurante Comunitário — Decreto nº 33.329/2011</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f9f5f5;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#C0152A; --accent-dim:#8B0000; --accent-glow:rgba(192,21,42,0.12); --accent-surface:#fce8ea;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f9f5f5; --box-intro-border:#8B0000;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#C0152A;
+  --box-highlight-bg:#fce8ea; --box-highlight-border:#C0152A;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C0152A;
+  --box-analogy-bg:#f9f5f5; --box-analogy-border:#8B0000;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C0152A;
+  --summary-bg:#f9f5f5; --summary-border:#C0152A;
+  --table-header-bg:#8B0000; --table-header-text:#ffffff;
+  --table-row-alt:#f9f5f5; --table-border:#cccccc; --table-hover:#fce8ea;
+  --btn-correct:#C0152A; --btn-correct-bg:#fce8ea; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#8B0000; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0d0000; --bg-surface:#120000; --bg-surface-raised:#1a0000;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0cccc; --text-tertiary:#aa8888;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#FF6B7A; --accent-dim:#E83347; --accent-glow:rgba(255,107,122,0.15); --accent-surface:#3a0008;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1515; --border-soft:#221010;
+  --box-intro-bg:#0d0000; --box-intro-border:#FF6B7A;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120000; --box-example-border:#FF6B7A;
+  --box-highlight-bg:#3a0008; --box-highlight-border:#FF6B7A;
+  --box-glossary-bg:#120000; --box-glossary-border:#ffffff; --box-glossary-term:#FF6B7A;
+  --box-analogy-bg:#0d0000; --box-analogy-border:#FF6B7A;
+  --checkpoint-bg:#120000; --checkpoint-border:#FF6B7A;
+  --summary-bg:#0d0000; --summary-border:#FF6B7A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120000; --table-border:#3a1515; --table-hover:#3a0008;
+  --btn-correct:#FF6B7A; --btn-correct-bg:#3a0008; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#FF6B7A; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #FF3347}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#FF3347;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">Restaurante Comunitário</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Segurança Alimentar e Nutricional</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+<main class="container">
+<article class="document-surface">
+<div class="doc-eyebrow">Resumo · Programas Socioassistenciais do DF</div>
+<h1>RESTAURANTE COMUNITÁRIO — DECRETO Nº 33.329/2011</h1>
+<p class="doc-subtitle">Rede de equipamentos públicos de Segurança Alimentar e Nutricional — SAN: restaurantes comunitários, cozinhas comunitárias e demais instrumentos de acesso físico e financeiro à alimentação adequada e saudável no Distrito Federal.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Decreto nº 33.329/2011 · Cap. II</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~35 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Segurança Alimentar e Nutricional</span>
+</div>
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Direito Humano à Alimentação Adequada</a></li>
+    <li><a href="#s2">Rede de Equipamentos Públicos de SAN</a></li>
+    <li><a href="#s3">Restaurantes e Cozinhas Comunitárias</a></li>
+    <li><a href="#s4">Valores das Refeições e Gratuidade</a></li>
+    <li><a href="#s5">Gestão, Focalização e Uso do Espaço</a></li>
+    <li><a href="#s6">Integração com SUAS, Saúde, Educação e SISAN</a></li>
+    <li><a href="#s7">Demais Equipamentos: Padarias, Banco de Alimentos, Feiras e Hortas</a></li>
+    <li><a href="#s8">Programas de SAN sob Gestão da SEDEST</a></li>
+    <li><a href="#s9">Provimento Alimentar Institucional</a></li>
+    <li><a href="#s10">Educação Alimentar e Nutricional e Agricultura Familiar</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O Decreto nº 33.329/2011 estrutura, no âmbito do Distrito Federal, ações de <strong>Segurança Alimentar e Nutricional</strong>. Para o concurso da SEDES/DF, o ponto central é entender o restaurante comunitário como equipamento público de SAN, articulado ao SUAS, ao SISAN, à educação alimentar e nutricional e ao direito humano à alimentação adequada.</p>
+</div>
+
+<h2 id="s1">Direito Humano à Alimentação Adequada</h2>
+<div class="art-line"><span class="art-badge">Art. 10</span><span>O Direito Humano à Alimentação Adequada das famílias em insegurança alimentar e nutricional será garantido por ações e programas intersetoriais.</span></div>
+<p>A norma prevê três grandes caminhos para garantir esse direito: ampliação do acesso à rede de equipamentos públicos de SAN, acesso a programas de transferência de renda e provimento alimentar direto. O restaurante comunitário entra justamente como equipamento público voltado a ampliar o acesso físico e financeiro à alimentação adequada.</p>
+
+<h2 id="s2">Rede de Equipamentos Públicos de SAN</h2>
+<div class="art-line"><span class="art-badge">Art. 11</span><span>A rede de equipamentos públicos de SAN é o conjunto de estruturas operacionais destinadas a reduzir a insegurança alimentar e ampliar o acesso físico e financeiro à alimentação adequada e saudável, respeitando diversidades culturais.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Equipamento</th><th>Finalidade geral</th></tr></thead><tbody>
+<tr><td>Restaurantes comunitários</td><td>Produção e fornecimento de refeições a preço acessível.</td></tr>
+<tr><td>Cozinhas comunitárias</td><td>Produção e fornecimento de refeições, prioritariamente para pessoas em insegurança alimentar.</td></tr>
+<tr><td>Padarias comunitárias</td><td>Capacitação profissional, inclusão produtiva e geração de renda.</td></tr>
+<tr><td>Bancos de alimentos</td><td>Recepção, manipulação e distribuição de alimentos, com objetivo de desperdício zero.</td></tr>
+<tr><td>Feiras e mercados comunitários</td><td>Comercialização, consumo de alimentos, geração de renda e acesso a alimentos de qualidade e baixo preço.</td></tr>
+<tr><td>Hortas comunitárias, escolares, urbanas, periurbanas e rurais</td><td>Educação alimentar, inclusão cidadã, educação ambiental e produção local.</td></tr>
+</tbody></table></div>
+<div class="box alert-box"><div class="box-label">Atenção — Prioridade territorial</div><p>A implementação dos equipamentos públicos de SAN deve ser orientada prioritariamente para <strong>áreas de alta vulnerabilidade social</strong> e com altos índices de insegurança alimentar e nutricional.</p></div>
+
+<h2 id="s3">Restaurantes e Cozinhas Comunitárias</h2>
+<div class="art-line"><span class="art-badge">Art. 12</span><span>Restaurantes comunitários e cozinhas comunitárias são unidades de produção e fornecimento de refeições a preço acessível à população, prioritariamente às pessoas e famílias em situação de insegurança alimentar e nutricional.</span></div>
+<p>O público é amplo, mas a diretriz da política é focalizar quem está em situação de vulnerabilidade, pobreza, extrema pobreza ou insegurança alimentar. A cobrança de valor reduzido não transforma o serviço em atividade comercial: trata-se de política pública de SAN, complementada pelo Tesouro do DF.</p>
+
+<h2 id="s4">Valores das Refeições e Gratuidade</h2>
+<div class="art-line"><span class="art-badge">Art. 12, §1º</span><span>Além do almoço, outras refeições podem ser servidas, desde que respeitadas as condições de funcionamento e a disponibilidade orçamentária e financeira.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Refeição</th><th>Valor</th><th>Público/observação</th></tr></thead><tbody>
+<tr><td>Almoço</td><td>R$ 1,00</td><td>População em geral.</td></tr>
+<tr><td>Café da manhã</td><td>R$ 0,50</td><td>Preço único.</td></tr>
+<tr><td>Jantar</td><td>R$ 0,50</td><td>Preço único.</td></tr>
+<tr><td>Café da manhã, almoço e jantar</td><td>Sem custo</td><td>Pessoas em situação de rua.</td></tr>
+</tbody></table></div>
+<div class="box highlight-box"><div class="box-label">Ponto de prova</div><p>O almoço é previsto a R$ 1,00 para a população em geral; café da manhã e jantar custam R$ 0,50; e as três refeições são gratuitas para pessoas em situação de rua.</p></div>
+
+<h2 id="s5">Gestão, Focalização e Uso do Espaço</h2>
+<div class="art-line"><span class="art-badge">Art. 12, §§2º e 3º</span><span>O GDF deve implementar esforços para reconversão do modelo de gestão para gestão semidireta; o valor pago pela população será complementado pelo Tesouro do DF.</span></div>
+<p>A norma permite que o Poder Executivo estabeleça valores diferenciados conforme o perfil socioeconômico dos usuários, buscando adequada focalização da política para pessoas em situação de pobreza e extrema pobreza.</p>
+<div class="art-line"><span class="art-badge">Art. 12, §4º</span><span>O café da manhã será implementado inicialmente no Restaurante Comunitário do Sol Nascente por 12 meses e, depois, haverá implementação do jantar; a expansão aos demais restaurantes ocorrerá gradualmente.</span></div>
+<div class="art-line"><span class="art-badge">Art. 12, §5º</span><span>O espaço do restaurante comunitário pode ser utilizado para manifestações culturais locais, em parceria com a Secretaria de Cultura, entre outras.</span></div>
+
+<h2 id="s6">Integração com SUAS, Saúde, Educação e SISAN</h2>
+<div class="art-line"><span class="art-badge">Art. 13</span><span>A rede de serviços socioassistenciais do SUAS, a rede pública de saúde, o sistema de medidas socioeducativas, o sistema prisional e a rede educacional integram o SISAN, a política e o plano de SAN quanto à oferta de alimentação e às ações de EAN.</span></div>
+<p>Esse artigo é importante porque mostra que a segurança alimentar não atua isoladamente. Ela se conecta a políticas sociais estruturadas, especialmente ao SUAS, por meio de equipamentos, serviços, benefícios e ações educativas.</p>
+
+<h2 id="s7">Demais Equipamentos de SAN</h2>
+<div class="glossary-box"><div class="box-label">Equipamentos Complementares</div>
+<p class="glossary-term"><span class="art-badge">Art. 14</span> Padarias comunitárias</p><p class="glossary-def">Estruturas de produtos de panificação voltadas à capacitação profissional, inclusão produtiva e geração de renda.</p>
+<p class="glossary-term"><span class="art-badge">Art. 15</span> Banco de alimentos</p><p class="glossary-def">Recebe, manipula e distribui alimentos oriundos da Ceasa, supermercados e PAA, visando ao desperdício zero. Destina alimentos a entidades sociais privadas sem fins lucrativos e à rede socioassistencial do SUAS.</p>
+<p class="glossary-term"><span class="art-badge">Art. 16</span> Feiras e mercados populares</p><p class="glossary-def">Estimulam a comercialização e o consumo de alimentos, gerando renda aos agricultores e ampliando o acesso da população a alimentos de qualidade e baixo preço.</p>
+<p class="glossary-term"><span class="art-badge">Art. 17</span> Hortas comunitárias</p><p class="glossary-def">Projetos coordenados pela Emater-DF, em parceria com entidades responsáveis pelos locais. Podem ser implantadas junto à rede socioassistencial — CRAS, COSES, CREAS e unidades de acolhimento.</p>
+</div>
+
+<h2 id="s8">Programas de SAN sob Gestão da SEDEST</h2>
+<div class="art-line"><span class="art-badge">Art. 18</span><span>São ações e programas de SAN sob gestão direta da SEDEST: provimento alimentar direto em caráter emergencial, provimento alimentar institucional e Educação Alimentar e Nutricional — EAN.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Ação/Programa</th><th>Essência</th></tr></thead><tbody>
+<tr><td>Provimento alimentar direto emergencial</td><td>Resposta direta a situações de insegurança alimentar e nutricional.</td></tr>
+<tr><td>Provimento alimentar institucional</td><td>Atendimento alimentar a públicos vulneráveis por meio da rede socioassistencial e entidades habilitadas.</td></tr>
+<tr><td>Educação Alimentar e Nutricional — EAN</td><td>Ações educativas para hábitos alimentares, modos de vida saudáveis e consumo adequado.</td></tr>
+</tbody></table></div>
+
+<h2 id="s9">Provimento Alimentar Institucional</h2>
+<div class="art-line"><span class="art-badge">Art. 20</span><span>Destina-se à população em vulnerabilidade social ou insegurança alimentar e nutricional atendida pela rede socioassistencial do SUAS, em unidades públicas estatais ou privadas.</span></div>
+<p>A rede privada socioassistencial deve ser composta por entidades e organizações de assistência social ou entidades sem fins lucrativos com serviços socioassistenciais de atendimento tipificados e devidamente inscritos no Conselho de Assistência Social do DF.</p>
+<div class="art-line"><span class="art-badge">Art. 21</span><span>As entidades devem firmar Termo de Compromisso para implementação do SISAN no DF, observados critérios de habilitação da SEDEST e pactuação na CAISAN.</span></div>
+<div class="art-line"><span class="art-badge">Arts. 22 e 23</span><span>Organizações de catadores, serviços à população em situação de rua, programas governamentais, creches e comunidades terapêuticas podem ser atendidos pelo Programa de Provimento Alimentar Institucional.</span></div>
+
+<h2 id="s10">Educação Alimentar e Nutricional e Agricultura Familiar</h2>
+<div class="art-line"><span class="art-badge">Art. 24</span><span>A EAN será desenvolvida por intervenções na rede de equipamentos públicos de SAN e junto a outros integrantes do SISAN.</span></div>
+<p>As ações de EAN são planejadas e pactuadas na CAISAN e desenvolvidas intersetorialmente, com finalidade de fomentar hábitos alimentares, modos de vida saudáveis e consumo seguro e adequado, preferencialmente de produção agroecológica e respeitando cultura e regionalização das práticas alimentares.</p>
+<div class="art-line"><span class="art-badge">Arts. 25 e 26</span><span>Os alimentos utilizados na rede de equipamentos públicos de SAN e nos programas da política e do plano de SAN devem ser adquiridos preferencialmente de agricultores familiares do DF e da RIDE; o DF impulsionará programa de aquisição de alimentos operacionalizado pela SEAGRI.</span></div>
+
+<div class="summary-card"><div class="summary-card-header"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg><span class="summary-card-title">Resumo da Aula</span></div>
+<div class="summary-concepts"><ul>
+<li>O restaurante comunitário é equipamento público de Segurança Alimentar e Nutricional.</li>
+<li>A rede de SAN busca reduzir insegurança alimentar e ampliar acesso físico e financeiro à alimentação adequada e saudável.</li>
+<li>Restaurantes e cozinhas comunitárias fornecem refeições a preço acessível, prioritariamente a pessoas e famílias em insegurança alimentar.</li>
+<li>Almoço: R$ 1,00; café da manhã e jantar: R$ 0,50; pessoas em situação de rua: sem custo.</li>
+<li>O serviço é integrado ao SUAS, SISAN, saúde, educação, sistema socioeducativo e sistema prisional.</li>
+<li>SEDEST gere ações como provimento alimentar direto emergencial, provimento alimentar institucional e EAN.</li>
+<li>A agricultura familiar do DF e da RIDE tem preferência na aquisição de alimentos para a rede.</li>
+</ul></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+<div class="checkpoint-block"><div class="checkpoint-header"><div class="checkpoint-title">Certo ou Errado</div><div class="checkpoint-dots"><span></span><span></span><span></span></div></div>
+<div class="questao-block" id="q1" data-answer="C"><div class="questao-header"><span class="questao-number">Q01</span><span class="questao-tag">Art. 11</span></div><p class="questao-enunciado">A rede de equipamentos públicos de SAN tem como finalidade reduzir os índices de insegurança alimentar e ampliar o acesso físico e financeiro à alimentação adequada e saudável.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q1','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q1','E')">Errado</button></div><details><summary>Comentário</summary><p>Correto. É exatamente a definição do art. 11.</p></details></div>
+<div class="questao-block" id="q2" data-answer="E"><div class="questao-header"><span class="questao-number">Q02</span><span class="questao-tag">Art. 12</span></div><p class="questao-enunciado">Os restaurantes comunitários destinam-se exclusivamente às pessoas em situação de rua.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q2','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q2','E')">Errado</button></div><details><summary>Comentário</summary><p>Errado. Destinam-se à população, prioritariamente às pessoas e famílias em insegurança alimentar. Pessoas em situação de rua têm gratuidade nas três refeições.</p></details></div>
+<div class="questao-block" id="q3" data-answer="C"><div class="questao-header"><span class="questao-number">Q03</span><span class="questao-tag">Valores</span></div><p class="questao-enunciado">O almoço nos restaurantes comunitários é previsto ao preço de R$ 1,00 para a população em geral.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q3','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q3','E')">Errado</button></div><details><summary>Comentário</summary><p>Correto. O art. 12, §1º, alínea “a”, prevê almoço a R$ 1,00.</p></details></div>
+<div class="questao-block" id="q4" data-answer="E"><div class="questao-header"><span class="questao-number">Q04</span><span class="questao-tag">EAN</span></div><p class="questao-enunciado">As ações de Educação Alimentar e Nutricional são planejadas exclusivamente pela SEDEST, sem necessidade de pactuação intersetorial.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q4','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q4','E')">Errado</button></div><details><summary>Comentário</summary><p>Errado. O art. 24 prevê planejamento e pactuação na CAISAN e desenvolvimento intersetorial.</p></details></div>
+<div class="questao-block" id="q5" data-answer="C"><div class="questao-header"><span class="questao-number">Q05</span><span class="questao-tag">Agricultura Familiar</span></div><p class="questao-enunciado">Os alimentos utilizados na rede de SAN devem ser adquiridos preferencialmente de agricultores familiares do DF e da RIDE.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q5','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q5','E')">Errado</button></div><details><summary>Comentário</summary><p>Correto. É a regra de preferência prevista no art. 25.</p></details></div>
+</div>
+<footer class="doc-footer"><span class="footer-brand">Restaurante Comunitário</span><span class="footer-sub">Decreto nº 33.329/2011 · Segurança Alimentar e Nutricional · SEDES DF</span></footer>
+</article></main>
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<script>
+function handlePrint(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));a.download='Restaurante-Comunitario-Decreto-33329-Resumo.html';a.click();}
+function toggleTheme(){var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';h.setAttribute('data-theme',n);document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';document.querySelectorAll('.toggle-label')[1].textContent=n==='dark'?'Claro':'Escuro';}
+window.addEventListener('scroll',function(){var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;document.getElementById('readingProgress').style.width=pct+'%';document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);});
+function answerCE(btn,qId,userVal){var block=document.getElementById(qId);if(!block)return;var correct=block.getAttribute('data-answer');var btns=block.querySelectorAll('.answer-btn');btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});if(userVal===correct){btn.classList.add('selected-correct')}else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}var d=block.querySelector('details');if(d)d.open=true;}
+</script>
+</body></html>

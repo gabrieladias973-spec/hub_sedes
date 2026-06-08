@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LODF — Título VI · Ordem Social e Meio Ambiente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f9f5f5;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#C0152A; --accent-dim:#8B0000; --accent-glow:rgba(192,21,42,0.12); --accent-surface:#fce8ea;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f9f5f5; --box-intro-border:#8B0000;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#C0152A;
+  --box-highlight-bg:#fce8ea; --box-highlight-border:#C0152A;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C0152A;
+  --box-analogy-bg:#f9f5f5; --box-analogy-border:#8B0000;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C0152A;
+  --summary-bg:#f9f5f5; --summary-border:#C0152A;
+  --table-header-bg:#8B0000; --table-header-text:#ffffff;
+  --table-row-alt:#f9f5f5; --table-border:#cccccc; --table-hover:#fce8ea;
+  --btn-correct:#C0152A; --btn-correct-bg:#fce8ea; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#8B0000; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0d0000; --bg-surface:#120000; --bg-surface-raised:#1a0000;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0cccc; --text-tertiary:#aa8888;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#FF6B7A; --accent-dim:#E83347; --accent-glow:rgba(255,107,122,0.15); --accent-surface:#3a0008;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1515; --border-soft:#221010;
+  --box-intro-bg:#0d0000; --box-intro-border:#FF6B7A;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120000; --box-example-border:#FF6B7A;
+  --box-highlight-bg:#3a0008; --box-highlight-border:#FF6B7A;
+  --box-glossary-bg:#120000; --box-glossary-border:#ffffff; --box-glossary-term:#FF6B7A;
+  --box-analogy-bg:#0d0000; --box-analogy-border:#FF6B7A;
+  --checkpoint-bg:#120000; --checkpoint-border:#FF6B7A;
+  --summary-bg:#0d0000; --summary-border:#FF6B7A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120000; --table-border:#3a1515; --table-hover:#3a0008;
+  --btn-correct:#FF6B7A; --btn-correct-bg:#3a0008; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#FF6B7A; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #FF3347}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#FF3347;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+.cap-badge{display:inline-flex;align-items:center;background:var(--accent);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:.65em;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+
+.container{max-width:860px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:600px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.55em;color:var(--text-primary);margin-top:52px;margin-bottom:18px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.1em;color:var(--text-primary);margin-top:32px;margin-bottom:12px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:14px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:24px 28px;margin:32px 0 40px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:16px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:3px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.93em;display:inline-flex;align-items:baseline;gap:10px;padding:4px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.78em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:22px 26px;margin:24px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:20px 26px;margin:24px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.95em;color:var(--text-secondary);line-height:1.8;margin-bottom:10px}
+.absurd-anchor{font-size:.92em;color:var(--accent);font-weight:600;margin:0;padding-top:10px;border-top:1px dashed var(--border-medium)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:16px 22px;margin:18px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:5px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.92em;color:var(--text-secondary);margin:0 0 12px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:30px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;padding-bottom:14px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:18px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:22px 26px;margin:18px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.96em;line-height:1.82}
+
+.answer-buttons{display:flex;gap:12px;margin:14px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:9px 26px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:14px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:13px 18px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.84em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:18px;border-top:1px solid var(--border-medium);margin:0;font-size:.92em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:24px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.91em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:12px 18px;text-align:left;font-weight:700;font-size:.77em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:12px 18px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:22px;margin-bottom:14px}
+li{margin-bottom:6px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:50px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:26px 30px;margin:36px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:12px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:5px 0 5px 22px;position:relative;font-size:.92em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:14px 18px;border:1px solid var(--border-soft);margin-top:14px}
+.summary-glossary dt{font-weight:700;font-size:.87em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.84em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:18px 26px;margin:36px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.94em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:9px 12px;margin:5px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.92em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:36px 0 14px;margin-top:60px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:22px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.25em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">LODF · Título VI</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Legislação do DF</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Legislação do Distrito Federal</div>
+<h1>LODF — TÍTULO VI<br>ORDEM SOCIAL E MEIO AMBIENTE</h1>
+<p class="doc-subtitle">Lei Orgânica do Distrito Federal · Arts. 200 a 311 · Organização da ordem social, direitos fundamentais e proteção ambiental no âmbito do DF.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> LODF · Arts. 200–311 · 11 Capítulos</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~55 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula — Capítulos do Título VI</div>
+  <ol>
+    <li><a href="#s1">Cap. I — Disposições Gerais (Arts. 200–203)</a></li>
+    <li><a href="#s2">Cap. II — Da Saúde (Arts. 204–216)</a></li>
+    <li><a href="#s3">Cap. III — Da Promoção e da Assistência Social (Arts. 217–220)</a></li>
+    <li><a href="#s4">Cap. IV — Da Educação, da Cultura e do Desporto (Arts. 221–256)</a></li>
+    <li><a href="#s5">Cap. V — Da Comunicação Social (Arts. 258–262)</a></li>
+    <li><a href="#s6">Cap. VI — Da Defesa do Consumidor (Arts. 263–266)</a></li>
+    <li><a href="#s7">Cap. VII — Da Criança e do Adolescente (Arts. 267–269)</a></li>
+    <li><a href="#s8">Cap. VIII — Do Idoso (Arts. 270–272)</a></li>
+    <li><a href="#s9">Cap. IX — Dos Portadores de Deficiência (Arts. 273–275)</a></li>
+    <li><a href="#s10">Cap. X — Da Mulher e das Minorias (Arts. 276–277)</a></li>
+    <li><a href="#s11">Cap. XI — Do Meio Ambiente (Arts. 278–311)</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O Título VI da LODF organiza a <strong>ordem social do Distrito Federal</strong> em 11 capítulos, abrangendo saúde, assistência social, educação, cultura, desporto, comunicação, defesa do consumidor, proteção a grupos vulneráveis (criança, idoso, PcD, mulher) e meio ambiente. É o espelho local das disposições da Constituição Federal adaptadas à realidade do DF, com particularidades próprias como as Regiões Administrativas e o bioma Cerrado.</p>
+</div>
+
+<!-- ===== CAP I ===== -->
+<h2 id="s1"><span class="cap-badge">Capítulo I</span><br>Disposições Gerais</h2>
+
+<div class="art-line"><span class="art-badge">Art. 200</span><span>A ordem social tem como <strong>base o primado do trabalho</strong> e como objetivo o <strong>bem-estar e a justiça sociais</strong>.</span></div>
+<div class="art-line"><span class="art-badge">Art. 201</span><span>O DF, em ação integrada com a União, assegurará direitos relativos a educação, saúde, segurança pública, alimentação, cultura, assistência social, meio ambiente equilibrado, lazer e desporto.</span></div>
+<div class="art-line"><span class="art-badge">Art. 202</span><span>Em caso de iminente perigo ou calamidade pública, o Poder Público provê atendimento às necessidades coletivas urgentes, podendo requisitar propriedade particular.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Seguridade Social no DF — Art. 203</div>
+  <p>A seguridade social compreende ações de saúde, previdência e assistência social. Regra crítica do <strong>§ 3º</strong>: <strong>nenhum benefício ou serviço da seguridade social poderá ser criado, majorado ou estendido sem a correspondente fonte de custeio total.</strong> Regra de equilíbrio fiscal aplicada ao DF.</p>
+</div>
+
+<!-- ===== CAP II SAÚDE ===== -->
+<h2 id="s2"><span class="cap-badge">Capítulo II</span><br>Da Saúde</h2>
+
+<div class="art-line"><span class="art-badge">Art. 204</span><span>Saúde é <strong>direito de todos e dever do Estado</strong>, assegurada mediante políticas sociais, econômicas e ambientais, visando ao bem-estar e ao acesso universal e igualitário.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 205</span><span>As ações e serviços de saúde integram o <strong>SUS no âmbito do DF</strong>, com seis diretrizes: atendimento integral com prioridade preventiva; descentralização para as Regiões Administrativas; participação comunitária; direito à informação; gratuidade; integração preventiva e curativa.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 206</span><span>Assistência à saúde é livre à iniciativa privada, podendo participar de forma complementar do SUS. Vedada participação de capital estrangeiro, destinação de recursos públicos a entidades privadas com fins lucrativos e contratação de prestadores de empresas privadas nos serviços públicos de saúde.</span></div>
+
+<h3>Competências do SUS-DF <span class="art-ref">(Art. 207 — 25 incisos)</span></h3>
+<p>O Art. 207 lista as competências do SUS local. Os incisos mais relevantes para provas:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Inciso</th><th>Competência</th></tr></thead>
+  <tbody>
+    <tr><td>XIV</td><td>Garantir assistência integral ao portador de doença infecto-contagiosa, inclusive HIV/AIDS, vedada qualquer discriminação</td></tr>
+    <tr><td>XV</td><td>Prestar assistência integral à saúde da mulher em todas as fases biológicas, inclusive nos casos de aborto previsto em lei e violência sexual</td></tr>
+    <tr><td>XVII</td><td>Orientar o planejamento familiar — de livre decisão do casal — vedada ação coercitiva de instituições públicas ou privadas</td></tr>
+    <tr><td>XIX</td><td>Executar vigilância sanitária: eliminar, diminuir ou prevenir riscos à saúde</td></tr>
+    <tr><td>XX</td><td>Executar vigilância epidemiológica: conhecer, detectar e prevenir fatores de saúde coletiva</td></tr>
+    <tr><td>XXI</td><td>Executar vigilância alimentar e nutricional</td></tr>
+    <tr><td>XXIV</td><td>Prestar assistência farmacêutica e garantir acesso a medicamentos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Saúde Mental — Art. 211</div>
+  <p>Vedado o uso de <strong>celas-fortes</strong> e procedimentos violentos ao doente mental. Internação psiquiátrica compulsória deve ser comunicada a familiares e à Defensoria Pública. Os leitos manicomiais serão gradativamente substituídos por recursos alternativos: unidade psiquiátrica em hospital geral, hospitais-dia, lares abrigados, cooperativas e atendimentos ambulatoriais.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Instâncias Colegiadas do SUS-DF — Art. 215</div>
+  <p>O SUS-DF contará com três instâncias colegiadas: <strong>(I) Conferência de Saúde</strong> — reúne-se a cada 2 anos, avalia e propõe diretrizes; <strong>(II) Conselho de Saúde</strong> — permanente e deliberativo, controla execução da política, decisões homologadas pelo Secretário de Saúde; <strong>(III) Conselhos Regionais de Saúde</strong> — permanentes e deliberativos em cada Região Administrativa. A representação dos usuários é <strong>paritária</strong> com o conjunto dos demais segmentos.</p>
+</div>
+
+<!-- ===== CAP III ASSISTÊNCIA SOCIAL ===== -->
+<h2 id="s3"><span class="cap-badge">Capítulo III</span><br>Da Promoção e da Assistência Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 217</span><span>A assistência social é <strong>dever do Estado</strong>, prestada a quem dela necessitar, <strong>independentemente de contribuição à seguridade social</strong>. O Poder Público protege a família, maternidade, infância, adolescência, velhice e integra socialmente os segmentos desfavorecidos.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 218</span><span>Compete ao Poder Público coordenar, elaborar e executar política de assistência social <strong>descentralizada e articulada</strong> com órgãos públicos e entidades sociais sem fins lucrativos, assegurando alojamento a mendigos, gestantes, egressos de prisões/manicômios, PcD, migrantes e vítimas de violência doméstica; gratuidade de sepultamento; apoio a creches comunitárias; atendimento a criança, adolescente, idoso e PcD.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 219</span><span>O Poder Público firmará convênios com entidades beneficentes ou privadas sem fins lucrativos para assistência a criança, adolescente, idoso, dependentes químicos, PcD e portadores de patologia grave.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 220</span><span>Ações de assistência social serão financiadas com recursos do orçamento da seguridade social do DF, da União e outras fontes. A distribuição dos recursos se baseará nas <strong>demandas sociais</strong> e constará do PPA, LDO e LOA.</span></div>
+
+<!-- ===== CAP IV EDUCAÇÃO ===== -->
+<h2 id="s4"><span class="cap-badge">Capítulo IV</span><br>Da Educação, da Cultura e do Desporto</h2>
+
+<h3>Seção I — Da Educação <span class="art-ref">(Arts. 221–245)</span></h3>
+
+<div class="art-line"><span class="art-badge">Art. 221</span><span>Educação é <strong>direito de todos, dever do Estado e da família</strong>, fundada em ideais democráticos e com fim na formação integral da pessoa, preparo para a cidadania e qualificação para o trabalho. Ensino público fundamental obrigatório e gratuito.</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Artigo</th><th>Disposição</th></tr></thead>
+  <tbody>
+    <tr><td><span class="art-ref">Art. 222</span></td><td>Gestão democrática do ensino público com participação de todos os segmentos do processo educacional</td></tr>
+    <tr><td><span class="art-ref">Art. 223</span></td><td>DF garante atendimento em creches e pré-escolas a crianças de 0 a 6 anos</td></tr>
+    <tr><td><span class="art-ref">Art. 224</span></td><td>Suporte ao acesso e permanência do aluno: transporte, material didático, alimentação e assistência à saúde</td></tr>
+    <tr><td><span class="art-ref">Art. 225</span></td><td>Atendimento a jovens e adultos trabalhadores em ensino noturno; programa permanente de alfabetização</td></tr>
+    <tr><td><span class="art-ref">Art. 233</span></td><td>Educação física é disciplina curricular obrigatória em todos os níveis, ministrada por professor licenciado</td></tr>
+    <tr><td><span class="art-ref">Art. 234</span></td><td>Ensino religioso de matrícula facultativa nos horários normais das escolas públicas</td></tr>
+    <tr><td><span class="art-ref">Art. 235</span></td><td>Currículo incluirá educação ambiental, sexual, para o trânsito, saúde oral, comunicação, artes e literatura brasiliense</td></tr>
+    <tr><td><span class="art-ref">Art. 240</span></td><td>DF criará seu próprio sistema de ensino superior; universidades com autonomia didático-científica, administrativa e financeira</td></tr>
+    <tr><td><span class="art-ref">Art. 241</span></td><td>Mínimo de <strong>25% da receita de impostos</strong> (incluídas transferências) aplicado em educação. Vedados desvio e retenção desses recursos.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — FunDF (Art. 240-A)</div>
+  <p class="absurd-scenario">O <strong>Fundo da Universidade do Distrito Federal (FunDF)</strong> tem dotação mínima percentual da receita corrente líquida: 0,08% em 2022, 0,15% em 2023, 0,2% em 2024 e 0,3% em 2025. A partir de 2026, 0,08% destinados a projetos, pesquisas e inovação.</p>
+  <p class="absurd-anchor">Recursos não utilizados constituem superávit financeiro para exercícios seguintes — sem dedução da parcela devida do exercício vigente.</p>
+</div>
+
+<h3>Seção II — Da Cultura <span class="art-ref">(Arts. 246–253)</span></h3>
+
+<div class="art-line"><span class="art-badge">Art. 246</span><span>O Poder Público garante o pleno exercício dos direitos culturais e acesso às fontes de cultura. O Conselho de Cultura do DF é <strong>órgão normativo e articulador</strong> da ação cultural, vinculados a ele os Conselhos Regionais de Cultura.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 247</span><span><strong>Brasília é Patrimônio Cultural da Humanidade</strong> conforme definição da UNESCO, e a lei a resguardará. São protegidos bens materiais e imateriais ligados à identidade e memória dos diferentes grupos.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 250</span><span>Vedada a <strong>extinção de qualquer espaço cultural público</strong> sem a criação de novo espaço equivalente, ouvida a comunidade local pelo Conselho Regional de Cultura.</span></div>
+
+<h3>Seção III — Do Desporto <span class="art-ref">(Arts. 254–257)</span></h3>
+
+<div class="art-line"><span class="art-badge">Art. 254</span><span>É dever do DF fomentar práticas desportivas formais e não formais, com atendimento especial a criança, adolescente, idoso e PcD nas unidades esportivas públicas.</span></div>
+<div class="art-line"><span class="art-badge">Art. 255</span><span>Prioridade ao desporto educacional, ao lazer popular como promoção social, à educação física, à manutenção de espaços esportivos e à pesquisa científica para o desenvolvimento do desporto.</span></div>
+
+<!-- ===== CAP V COMUNICAÇÃO ===== -->
+<h2 id="s5"><span class="cap-badge">Capítulo V</span><br>Da Comunicação Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 258</span><span>A comunicação é <strong>bem social</strong> a serviço da pessoa humana. Todo cidadão tem direito à liberdade de opinião e expressão e de receber e transmitir informações.</span></div>
+<div class="art-line"><span class="art-badge">Art. 259</span><span>Meios de comunicação estatais ou vinculados ao Poder Público terão <strong>independência editorial</strong>, com possibilidade de expressão e confronto de correntes de opinião.</span></div>
+<div class="art-line"><span class="art-badge">Art. 261</span><span>O Poder Público manterá o <strong>Conselho de Comunicação Social do DF</strong>, órgão de assessoramento ao Executivo na formulação da política regional de comunicação.</span></div>
+<div class="art-line"><span class="art-badge">Art. 262</span><span>Emissoras de TV públicas terão <strong>intérpretes ou legendas para deficientes auditivos</strong> em noticiários e comunicações oficiais.</span></div>
+
+<!-- ===== CAP VI CONSUMIDOR ===== -->
+<h2 id="s6"><span class="cap-badge">Capítulo VI</span><br>Da Defesa do Consumidor</h2>
+
+<div class="art-line"><span class="art-badge">Art. 263</span><span>O Poder Público promove a defesa do consumidor mediante: política governamental própria; pesquisa e informação; atendimento, orientação e conciliação; proteção contra publicidade enganosa; controle de qualidade; fiscalização de preços, pesos e medidas; proteção de direitos de usuários de serviços públicos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 265</span><span>Medidas específicas: esclarecer sobre impostos incidentes nos produtos; garantir apresentação de preços e dados nos estabelecimentos; garantir direitos contratuais sem constrangimento; garantir acesso a dados pessoais em cadastros, vedando informações que dificultem novo crédito após prescrição de débito.</span></div>
+
+<!-- ===== CAP VII CRIANÇA ===== -->
+<h2 id="s7"><span class="cap-badge">Capítulo VII</span><br>Da Criança e do Adolescente</h2>
+
+<div class="art-line"><span class="art-badge">Art. 267</span><span>É dever da família, da sociedade e do Poder Público assegurar à criança e ao adolescente, com <strong>absoluta prioridade</strong>, o direito à vida, saúde, alimentação, educação, lazer, profissionalização, cultura, dignidade, respeito, liberdade e convivência familiar e comunitária, além de protegê-los de negligência, discriminação, exploração, violência e opressão.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 268</span><span>As ações de proteção à infância e adolescência seguem as diretrizes de: descentralização do atendimento; valorização dos vínculos familiares e comunitários; atendimento prioritário em situações de risco; participação da sociedade na formulação e acompanhamento das políticas.</span></div>
+
+<!-- ===== CAP VIII IDOSO ===== -->
+<h2 id="s8"><span class="cap-badge">Capítulo VIII</span><br>Do Idoso</h2>
+
+<div class="art-line"><span class="art-badge">Art. 270</span><span>É dever da família, da sociedade e do Poder Público garantir o amparo a pessoas idosas, defender sua dignidade, bem-estar e o direito à vida, protegendo-as de negligência, discriminação, exploração, violência, crueldade e opressão.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 272</span><span>O Poder Público assegurará a integração do idoso na comunidade, especialmente quanto a: acesso a equipamentos culturais, educacionais e esportivos; <strong>gratuidade do transporte coletivo urbano para maiores de 65 anos</strong>; núcleos de convivência; orientação jurídica; centros de trabalho e educação continuada; <strong>preferência no atendimento em órgãos públicos</strong>.</span></div>
+
+<!-- ===== CAP IX PcD ===== -->
+<h2 id="s9"><span class="cap-badge">Capítulo IX</span><br>Dos Portadores de Deficiência</h2>
+
+<div class="art-line"><span class="art-badge">Art. 273</span><span>É dever da família, da sociedade e do Poder Público assegurar às pessoas com deficiência a <strong>plena inserção na vida econômica e social</strong> e o total desenvolvimento de suas potencialidades.</span></div>
+<div class="art-line"><span class="art-badge">Art. 274</span><span>Garantia de acesso adequado a logradouros e edifícios de uso público; empresas de transporte coletivo garantirão facilidade de uso para PcD; reserva de vagas em estacionamentos públicos para veículos adaptados.</span></div>
+<div class="art-line"><span class="art-badge">Art. 275</span><span>Linhas de crédito de instituições financeiras vinculadas ao DF para pessoas carentes e PcD adquirirem equipamentos de uso pessoal para superar suas limitações.</span></div>
+
+<!-- ===== CAP X MULHER ===== -->
+<h2 id="s10"><span class="cap-badge">Capítulo X</span><br>Da Mulher e das Minorias</h2>
+
+<div class="art-line"><span class="art-badge">Art. 276</span><span>Dever do Poder Público estabelecer políticas de prevenção e combate à violência contra a mulher e as minorias:</span></div>
+<ul>
+  <li>Criação de delegacias especiais de atendimento à mulher vítima de violência em <strong>todas as Regiões Administrativas</strong></li>
+  <li>Criação e manutenção de abrigos para mulheres vítimas de violência doméstica</li>
+  <li>Programas para coibir violência e discriminação sexual ou social</li>
+  <li>Vedação de livro didático que dissemine discriminação ou preconceito</li>
+  <li>Programas de assistência a gestantes carentes</li>
+</ul>
+
+<div class="art-line"><span class="art-badge">Art. 277</span><span>Empresas e órgãos públicos que discriminarem a mulher em seleção, contratação, promoção, aperfeiçoamento profissional ou remuneração, ou que exijam documento médico para controle de gravidez ou fertilidade, sofrerão <strong>sanções administrativas</strong>.</span></div>
+
+<!-- ===== CAP XI MEIO AMBIENTE ===== -->
+<h2 id="s11"><span class="cap-badge">Capítulo XI</span><br>Do Meio Ambiente</h2>
+
+<div class="art-line"><span class="art-badge">Art. 278</span><span>Todos têm direito ao <strong>meio ambiente ecologicamente equilibrado</strong>, bem de uso comum do povo e essencial à sadia qualidade de vida. É dever do Poder Público e da coletividade defendê-lo e preservá-lo para as <strong>presentes e futuras gerações</strong>.</span></div>
+
+<h3>Deveres do Poder Público — Art. 279 (23 incisos)</h3>
+<p>O Art. 279 elenca os principais deveres do DF em matéria ambiental. Destaques:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Inciso</th><th>Dever</th></tr></thead>
+  <tbody>
+    <tr><td>I</td><td>Planejar e desenvolver ações de conservação, preservação, proteção, recuperação e fiscalização ambiental</td></tr>
+    <tr><td>II</td><td>Promover diagnóstico e zoneamento ambiental do território</td></tr>
+    <tr><td>V</td><td>Estabelecer normas e padrões de qualidade ambiental: solo, subsolo, ar, águas e acústica</td></tr>
+    <tr><td>IX</td><td>Implantar sistema de informações ambientais com comunicação sistemática à população (poluição, causas de degradação, riscos de acidentes)</td></tr>
+    <tr><td>XIX</td><td>Garantir a participação comunitária no planejamento e vigilância das atividades de proteção ambiental</td></tr>
+    <tr><td>XXI</td><td>Identificar, criar e administrar unidades de conservação e áreas de interesse ambiental com planos de manejo</td></tr>
+    <tr><td>XXII</td><td>Promover educação ambiental para conscientização pública</td></tr>
+    <tr><td>XXIII</td><td>Controlar e fiscalizar obras e atividades que possam causar degradação ambiental, com sanções administrativas</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Regras Específicas do Meio Ambiente no DF</h3>
+
+<div class="glossary-box">
+  <div class="box-label">Dispositivos Críticos — Meio Ambiente</div>
+  <p class="glossary-term"><span class="art-badge">Art. 280</span> Terras Públicas de Interesse Ambiental</p>
+  <p class="glossary-def">Terras públicas consideradas de interesse para proteção ambiental <strong>não poderão ser transferidas a particulares, a qualquer título</strong>.</p>
+  <p class="glossary-term"><span class="art-badge">Art. 284</span> Recursos Hídricos — Patrimônio Público</p>
+  <p class="glossary-def">Os recursos hídricos do DF são patrimônio público. Cabe ao DF disciplinar o uso racional, a proteção das águas, o controle de eventos meteorológicos e a exploração racional de depósitos naturais e águas subterrâneas. A bacia hidrográfica é adotada como base unitária de gerenciamento.</p>
+  <p class="glossary-term"><span class="art-badge">Art. 289</span> Estudo de Impacto Ambiental (EIA/RIMA)</p>
+  <p class="glossary-def">Exigido para construção, instalação, reforma, recuperação, ampliação e operação de empreendimentos ou atividades com significativa degradação ambiental. O estudo fica à disposição do público por <strong>mínimo de 30 dias</strong> antes da audiência pública obrigatória, realizado por equipe multidisciplinar cadastrada no órgão ambiental do DF.</p>
+  <p class="glossary-term"><span class="art-badge">Art. 295</span> Espaços Territoriais Especialmente Protegidos</p>
+  <p class="glossary-def">Unidades de conservação, parques, praças, o conjunto urbanístico de Brasília (tombado — Patrimônio Cultural da Humanidade) e demais bens imóveis de valor cultural são espaços especialmente protegidos, com utilização na forma da lei.</p>
+  <p class="glossary-term"><span class="art-badge">Art. 296</span> Flora, Fauna e Vedações</p>
+  <p class="glossary-def">Vedadas <strong>práticas cruéis contra animais, pesca predatória e caça sob qualquer pretexto</strong> em todo o território do DF.</p>
+  <p class="glossary-term"><span class="art-badge">Art. 298</span> Cobertura Vegetal Nativa</p>
+  <p class="glossary-def">As coberturas vegetais nativas existentes no DF <strong>não poderão ter suas áreas reduzidas</strong>, salvo nos casos previstos em lei.</p>
+  <p class="glossary-term"><span class="art-badge">Art. 300</span> Carvoejamento</p>
+  <p class="glossary-def"><strong>Proibida</strong> a prática do carvoejamento visando à produção de carvão vegetal para fins industriais no território do DF.</p>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Vedações no DF (Art. 308, parágrafo único)</div>
+  <p class="absurd-scenario">São vedados no território do DF: instalação de indústrias químicas de agrotóxicos; fabricação, comercialização e uso de substâncias CFC (cloro-flúor-carbono); fabricação, comercialização e uso de equipamentos nucleares — exceto os destinados a pesquisa científica e uso terapêutico (dependem de licenciamento ambiental); e instalação de depósitos de resíduos tóxicos ou radioativos de outros Estados e países.</p>
+  <p class="absurd-anchor">Atenção: a exceção para uso nuclear tem dois requisitos cumulativos: ser destinado a pesquisa científica ou uso terapêutico E ter licenciamento ambiental.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Cerrado — Atenção Especial (Art. 304, parágrafo único)</div>
+  <p>O <strong>bioma cerrado</strong>, sua flora e fauna, bem como as relações ecológicas existentes e as formas de conservação, preservação, manejo, ocupação e exploração, deverão receber <strong>atenção especial do Poder Público</strong>. Dispositivo de máxima relevância para concursos do DF, dada a unicidade desse bioma no território distrital.</p>
+</div>
+
+<div class="art-line"><span class="art-badge">Art. 307</span><span>O DF deverá manter: <strong>subprocuradoria especializada em tutela ambiental</strong> integrante da PGD/DF; <strong>delegacias policiais especializadas</strong> e unidades de policiamento florestal da PMDF incumbidas de prevenir, reprimir e apurar ilícitos ambientais.</span></div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · LODF Título VI
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header"><span class="questao-number">Q1</span><span class="questao-tag">Certo ou Errado</span><div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div></div>
+    <p class="questao-enunciado">De acordo com o Art. 203 da LODF, benefícios e serviços da seguridade social podem ser criados ou majorados pelo Distrito Federal sem necessidade de previsão de fonte de custeio, desde que haja aprovação da Câmara Legislativa.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 203, § 3º</strong> é expresso: nenhum benefício ou serviço da seguridade social poderá ser criado, majorado ou estendido <em>sem a correspondente fonte de custeio total</em>. A aprovação da Câmara Legislativa não supre a exigência de custeio — as duas exigências são independentes.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="CERTO">
+    <div class="questao-header"><span class="questao-number">Q2</span><span class="questao-tag">Certo ou Errado</span><div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div></div>
+    <p class="questao-enunciado">A LODF veda a caça sob qualquer pretexto em todo o território do Distrito Federal, bem como a prática do carvoejamento visando à produção de carvão vegetal para fins industriais.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 296</strong> veda expressamente a caça, a pesca predatória e práticas cruéis contra animais em todo o DF, sem qualquer exceção. O <strong>Art. 300</strong> proíbe a prática do carvoejamento para fins industriais no território do DF. Ambas as afirmações da assertiva estão corretas.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="ERRADO">
+    <div class="questao-header"><span class="questao-number">Q3</span><span class="questao-tag">Certo ou Errado</span><div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div></div>
+    <p class="questao-enunciado">O estudo prévio de impacto ambiental exigido pela LODF para empreendimentos com significativa degradação ambiental deve ser disponibilizado ao público por no mínimo 60 dias antes da audiência pública obrigatória.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 289</strong> estabelece que o estudo prévio de impacto ambiental ficará à disposição do público por no mínimo <strong>30 dias</strong> antes da audiência pública obrigatória — e não 60 dias como afirma a questão. Detalhe numérico frequentemente cobrado em provas de legislação do DF.</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="CERTO">
+    <div class="questao-header"><span class="questao-number">Q4</span><span class="questao-tag">Certo ou Errado</span><div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div></div>
+    <p class="questao-enunciado">A LODF veda a extinção de qualquer espaço cultural público sem a criação de novo espaço equivalente, sendo obrigatória a oitiva da comunidade local por intermédio do respectivo Conselho Regional de Cultura.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 250</strong> é expresso nesse sentido: a extinção de espaço cultural público está vedada sem a criação de espaço equivalente, e a comunidade local deve ser ouvida por intermédio do respectivo Conselho Regional de Cultura — não do Conselho de Cultura central.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="C">
+    <div class="questao-header"><span class="questao-number">Q5</span><span class="questao-tag">Múltipla Escolha</span><div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div></div>
+    <p class="questao-enunciado">Sobre as instâncias colegiadas do SUS no âmbito do Distrito Federal previstas no Art. 215 da LODF, assinale a afirmação CORRETA:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) A Conferência de Saúde reúne-se anualmente e tem suas decisões homologadas pelo Secretário de Saúde do Distrito Federal.<br>
+      (B) O Conselho de Saúde é órgão temporário e consultivo, com representação paritária dos usuários em relação ao conjunto dos demais segmentos.<br>
+      (C) Os Conselhos Regionais de Saúde são permanentes e deliberativos e atuam na formulação, execução, controle e fiscalização da política de saúde em cada Região Administrativa, com decisões homologadas pelo Diretor Regional de Saúde.<br>
+      (D) A Conferência de Saúde é órgão permanente e deliberativo, convocada a qualquer momento pelo Governador ou pela maioria absoluta do Conselho de Saúde.<br>
+      (E) A representação dos usuários no Conselho de Saúde é de um terço do total de membros, sendo os demais dois terços divididos igualmente entre governo, prestadores e profissionais de saúde.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','C')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','C')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','C')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','C')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','C')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: C</strong></p>
+      <p><strong>(A) Errada.</strong> A Conferência de Saúde reúne-se a cada <em>dois anos</em> (não anualmente). Quem tem decisões homologadas pelo Secretário de Saúde é o Conselho de Saúde — não a Conferência.</p>
+      <p><strong>(B) Errada.</strong> O Conselho de Saúde é <em>permanente e deliberativo</em>, não temporário e consultivo. A representação paritária dos usuários está correta, mas os demais elementos estão errados.</p>
+      <p><strong>(C) Correta.</strong> O Art. 215, § 3º descreve exatamente isso: Conselhos Regionais de Saúde são de caráter permanente e deliberativo, atuam em cada Região Administrativa na formulação, execução, controle e fiscalização da política de saúde, e suas decisões são homologadas pelo Diretor Regional de Saúde.</p>
+      <p><strong>(D) Errada.</strong> A Conferência não é permanente — reúne-se a cada dois anos. Pode ser convocada extraordinariamente pelo Governador ou pelo Conselho de Saúde pela maioria absoluta dos seus membros.</p>
+      <p><strong>(E) Errada.</strong> O § 4º estabelece que a representação dos usuários é <em>paritária com o conjunto dos demais segmentos</em> — ou seja, 50% dos assentos — e não um terço.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais do Título VI da LODF)</p>
+</div>
+
+<h2>Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Pontos Mais Cobrados em Provas</h4>
+    <ul>
+      <li><strong>Art. 203, § 3º:</strong> benefício da seguridade social sem fonte de custeio total → vedado.</li>
+      <li><strong>Art. 206:</strong> vedado capital estrangeiro e recurso público a entidade privada com fins lucrativos na saúde.</li>
+      <li><strong>Art. 211:</strong> vedadas celas-fortes ao doente mental; substituição gradual de leitos manicomiais.</li>
+      <li><strong>Art. 215:</strong> Conferência (2 em 2 anos) + Conselho de Saúde (permanente/deliberativo, homologado pelo Secretário) + Conselhos Regionais (homologados pelo Diretor Regional). Usuários com paridade.</li>
+      <li><strong>Art. 241:</strong> mínimo de 25% da receita de impostos em educação — vedado desvio.</li>
+      <li><strong>Art. 247:</strong> Brasília é Patrimônio Cultural da Humanidade (UNESCO).</li>
+      <li><strong>Art. 250:</strong> extinção de espaço cultural público exige criação de espaço equivalente + oitiva do Conselho Regional de Cultura.</li>
+      <li><strong>Art. 272, II:</strong> gratuidade do transporte coletivo urbano para maiores de 65 anos.</li>
+      <li><strong>Art. 278:</strong> meio ambiente equilibrado — direito de todos, dever de preservar para gerações futuras.</li>
+      <li><strong>Art. 280:</strong> terras públicas de interesse ambiental não podem ser transferidas a particulares.</li>
+      <li><strong>Art. 289:</strong> EIA/RIMA disponível por mínimo 30 dias antes da audiência pública.</li>
+      <li><strong>Art. 296:</strong> vedadas caça, pesca predatória e práticas cruéis contra animais em todo o DF.</li>
+      <li><strong>Art. 298:</strong> cobertura vegetal nativa do DF não pode ter área reduzida.</li>
+      <li><strong>Art. 300:</strong> proibido carvoejamento industrial no DF.</li>
+      <li><strong>Art. 304, parágrafo único:</strong> Cerrado recebe atenção especial do Poder Público.</li>
+      <li><strong>Art. 308:</strong> vedados no DF: indústrias de agrotóxicos, CFC, equipamentos nucleares (salvo pesquisa/terapia com licença) e depósitos de resíduos tóxicos de outros estados.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave</h4>
+    <dl>
+      <dt>SUS-DF</dt><dd>Sistema Único de Saúde no âmbito do Distrito Federal — descentralizado para as Regiões Administrativas.</dd>
+      <dt>Regiões Administrativas</dt><dd>Base territorial para descentralização do SUS, educação e conselhos regionais de saúde e cultura.</dd>
+      <dt>EIA/RIMA</dt><dd>Estudo de Impacto Ambiental e Relatório — obrigatório, disponível 30 dias antes da audiência pública.</dd>
+      <dt>Cerrado</dt><dd>Bioma do DF que recebe atenção especial do Poder Público na LODF.</dd>
+      <dt>FunDF</dt><dd>Fundo da Universidade do Distrito Federal, com dotação mínima da receita corrente líquida do DF.</dd>
+      <dt>Áreas de Preservação Permanente (APP)</dt><dd>Lagos, lagoas, nascentes, matas ciliares, mananciais e áreas com fauna ameaçada de extinção (Art. 301).</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Para concursos do DF, foque em quatro blocos: <strong>(1)</strong> Saúde — Art. 215 (instâncias colegiadas e paridade); <strong>(2)</strong> Educação — Art. 241 (25% da receita) e Art. 247 (Brasília/UNESCO); <strong>(3)</strong> Meio Ambiente — Arts. 289 (30 dias), 296 (caça), 298 (cobertura vegetal), 300 (carvoejamento), 304 (Cerrado) e 308 (vedações); <strong>(4)</strong> Assistência Social e grupos vulneráveis — Arts. 217, 267, 270 e 272 (gratuidade do transporte para 65+). Esses quatro blocos concentram a maioria das questões sobre o Título VI da LODF.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">LODF · Título VI</span>
+  <span class="footer-sub">Lei Orgânica do Distrito Federal · Arts. 200–311 · Da Ordem Social e do Meio Ambiente</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='LODF-TituloVI-Resumo.html';
+  a.click();
+}
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOAS — Lei 8.742/1993</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f9f5f5;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#C0152A; --accent-dim:#8B0000; --accent-glow:rgba(192,21,42,0.12); --accent-surface:#fce8ea;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f9f5f5; --box-intro-border:#8B0000;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#C0152A;
+  --box-highlight-bg:#fce8ea; --box-highlight-border:#C0152A;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C0152A;
+  --box-analogy-bg:#f9f5f5; --box-analogy-border:#8B0000;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C0152A;
+  --summary-bg:#f9f5f5; --summary-border:#C0152A;
+  --table-header-bg:#8B0000; --table-header-text:#ffffff;
+  --table-row-alt:#f9f5f5; --table-border:#cccccc; --table-hover:#fce8ea;
+  --btn-correct:#C0152A; --btn-correct-bg:#fce8ea; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#8B0000; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0d0000; --bg-surface:#120000; --bg-surface-raised:#1a0000;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0cccc; --text-tertiary:#aa8888;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#FF6B7A; --accent-dim:#E83347; --accent-glow:rgba(255,107,122,0.15); --accent-surface:#3a0008;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1515; --border-soft:#221010;
+  --box-intro-bg:#0d0000; --box-intro-border:#FF6B7A;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120000; --box-example-border:#FF6B7A;
+  --box-highlight-bg:#3a0008; --box-highlight-border:#FF6B7A;
+  --box-glossary-bg:#120000; --box-glossary-border:#ffffff; --box-glossary-term:#FF6B7A;
+  --box-analogy-bg:#0d0000; --box-analogy-border:#FF6B7A;
+  --checkpoint-bg:#120000; --checkpoint-border:#FF6B7A;
+  --summary-bg:#0d0000; --summary-border:#FF6B7A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120000; --table-border:#3a1515; --table-hover:#3a0008;
+  --btn-correct:#FF6B7A; --btn-correct-bg:#3a0008; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#FF6B7A; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #FF3347}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#FF3347;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+/* BADGE DE ARTIGO */
+.art-badge{display:inline-flex;align-items:center;gap:6px;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.lesson-progress{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-radius:8px;padding:16px 24px;margin-bottom:36px;display:flex;align-items:center;gap:16px}
+.lesson-progress-label{font-weight:700;font-size:.75em;text-transform:uppercase;letter-spacing:2px;color:var(--text-primary);white-space:nowrap}
+.lesson-progress-bar{flex:1;height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden}
+.lesson-progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.lesson-progress-text{font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--text-tertiary);white-space:nowrap}
+
+.checklist-section{margin:40px 0}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:9px 12px;border-radius:6px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--border-soft)}
+.check-item:hover{background:var(--bg-surface-raised)}
+.check-item input[type="checkbox"]{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin-top:3px}
+.check-item label{font-size:.93em;cursor:pointer;line-height:1.5;color:var(--text-secondary)}
+.check-item.done label{text-decoration:line-through;color:var(--text-tertiary)}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+/* Linha de artigo destacada */
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">LOAS</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Legislação Social</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Legislação Social</div>
+<h1>LOAS — LEI 8.742/1993</h1>
+<p class="doc-subtitle">Lei Orgânica da Assistência Social: organização, objetivos, benefícios, serviços e financiamento da política pública não contributiva de assistência social no Brasil.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lei nº 8.742/1993 · Última atualização: Lei nº 15.157/2025</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~50 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Objetivos</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar-top" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label-top">0 / 20</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Definição e Objetivo (Arts. 1º e 2º)</a></li>
+    <li><a href="#s2">Entidades de Assistência Social (Art. 3º)</a></li>
+    <li><a href="#s3">Princípios (Art. 4º)</a></li>
+    <li><a href="#s4">Diretrizes (Art. 5º)</a></li>
+    <li><a href="#s5">SUAS — Sistema Único de Assistência Social (Art. 6º)</a></li>
+    <li><a href="#s6">Tipos de Proteção Social (Art. 6º-A)</a></li>
+    <li><a href="#s7">CRAS e CREAS (Art. 6º-C)</a></li>
+    <li><a href="#s8">CadÚnico (Art. 6º-F)</a></li>
+    <li><a href="#s9">Competências dos Entes Federativos (Arts. 12–15)</a></li>
+    <li><a href="#s10">Controle Social — Conselhos (Arts. 16–17)</a></li>
+    <li><a href="#s11">BPC — Benefício de Prestação Continuada (Art. 20)</a></li>
+    <li><a href="#s12">Benefícios Eventuais (Art. 22)</a></li>
+    <li><a href="#s13">Serviços e Programas (Arts. 23–24-C)</a></li>
+    <li><a href="#s14">Financiamento (Arts. 27–30)</a></li>
+    <li><a href="#checklist">Checklist — Objetivos de Aprendizagem</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>A LOAS estrutura a <strong>assistência social como direito e dever do Estado</strong> — sem exigir contribuição prévia do cidadão. Diferente da previdência, o acesso depende da necessidade social demonstrada. A lei define o SUAS, os tipos de proteção, os benefícios (especialmente o BPC), os equipamentos públicos (CRAS/CREAS), as competências de cada ente federativo e as regras de financiamento.</p>
+</div>
+
+<!-- ===== S1 DEFINIÇÃO ===== -->
+<h2 id="s1">Definição e Objetivo</h2>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>A assistência social é <strong>direito do cidadão e dever do Estado</strong>, política de seguridade social <strong>não contributiva</strong>, que provê os mínimos sociais por meio de ações integradas entre poder público e sociedade.</span></div>
+
+<p>Ser "não contributiva" é a marca que diferencia a assistência social da previdência: o beneficiário não precisa ter contribuído ao sistema para acessar os serviços — basta demonstrar necessidade.</p>
+
+<div class="art-line"><span class="art-badge">Art. 2º</span><span>Os objetivos da assistência social organizam-se em três eixos:</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Eixo</th><th>Objetivo</th><th>Exemplos concretos</th></tr></thead>
+  <tbody>
+    <tr><td>I — Proteção Social</td><td>Garantia da vida, redução de danos e prevenção de riscos</td><td>Proteção à família, infância, adolescência, velhice; amparo a crianças carentes; reabilitação de PcD; garantia do BPC</td></tr>
+    <tr><td>II — Vigilância Socioassistencial</td><td>Análise territorial de vulnerabilidades, ameaças e danos</td><td>Mapeamento de riscos por território; identificação de famílias vulneráveis</td></tr>
+    <tr><td>III — Defesa de Direitos</td><td>Garantir pleno acesso às provisões socioassistenciais</td><td>Assegurar que nenhum cidadão fique sem atendimento por barreira burocrática</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Premissa-mestre da LOAS</div>
+  <p>O enfrentamento da pobreza se dá de forma <strong>integrada às demais políticas setoriais</strong> (saúde, educação, habitação), visando à universalização dos direitos sociais — e não como política isolada. (<span class="art-ref">Art. 2º, parágrafo único</span>)</p>
+</div>
+
+<!-- ===== S2 ENTIDADES ===== -->
+<h2 id="s2">Entidades de Assistência Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 3º</span><span>São entidades de assistência social aquelas <strong>sem fins lucrativos</strong> que prestam atendimento, assessoramento ou defesa de direitos aos beneficiários.</span></div>
+
+<div class="glossary-box">
+  <div class="box-label">Três Tipos de Entidades (§§ 1º, 2º e 3º)</div>
+  <p class="glossary-term"><span class="art-badge">§ 1º</span> De Atendimento</p>
+  <p class="glossary-def">Prestam serviços de forma <em>continuada, permanente e planejada</em>. Executam programas/projetos e concedem benefícios básicos ou especiais a famílias em situação de vulnerabilidade. Ex.: abrigos, creches sociais, centros de convivência.</p>
+  <p class="glossary-term"><span class="art-badge">§ 2º</span> De Assessoramento</p>
+  <p class="glossary-def">Voltadas ao fortalecimento de movimentos sociais e formação de lideranças. Não prestam serviços diretos — capacitam quem presta. Ex.: institutos de formação comunitária.</p>
+  <p class="glossary-term"><span class="art-badge">§ 3º</span> De Defesa e Garantia de Direitos</p>
+  <p class="glossary-def">Promoção da cidadania, enfrentamento de desigualdades sociais e articulação com órgãos públicos. Ex.: organizações de direitos humanos, defensores públicos comunitários.</p>
+</div>
+
+<!-- ===== S3 PRINCÍPIOS ===== -->
+<h2 id="s3">Princípios</h2>
+
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>Cinco princípios fundamentais regem a assistência social:</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Princípio</th><th>Conteúdo</th></tr></thead>
+  <tbody>
+    <tr><td>I — Supremacia Social</td><td>Atendimento às necessidades sociais prevalece sobre exigências de rentabilidade econômica</td></tr>
+    <tr><td>II — Universalização</td><td>Direitos sociais devem alcançar todos os cidadãos, tornando-os acessíveis às demais políticas públicas</td></tr>
+    <tr><td>III — Dignidade</td><td>Respeito à autonomia, convivência familiar e comunitária. <strong>Vedada qualquer comprovação vexatória de necessidade</strong></td></tr>
+    <tr><td>IV — Igualdade</td><td>Acesso sem discriminação; equivalência entre populações urbanas e rurais</td></tr>
+    <tr><td>V — Divulgação Ampla</td><td>Ampla divulgação dos benefícios, serviços e critérios de concessão à população</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção — Comprovação Vexatória</div>
+  <p>O inciso III veda expressamente qualquer forma de comprovação vexatória de necessidade. Isso significa que o beneficiário não pode ser submetido a situações humilhantes para provar sua pobreza. Questão frequentemente cobrada em provas.</p>
+</div>
+
+<!-- ===== S4 DIRETRIZES ===== -->
+<h2 id="s4">Diretrizes</h2>
+
+<div class="art-line"><span class="art-badge">Art. 5º</span><span>Três diretrizes estruturam a organização da assistência social:</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Diretriz</th><th>Conteúdo</th></tr></thead>
+  <tbody>
+    <tr><td>I — Descentralização</td><td>Repartição de competências entre União, Estados, DF e Municípios, com <strong>comando único</strong> em cada esfera de governo</td></tr>
+    <tr><td>II — Participação Popular</td><td>Organizações representativas participam da formulação de políticas e do controle das ações em todos os níveis</td></tr>
+    <tr><td>III — Primazia do Estado</td><td>O Estado tem responsabilidade primária na condução da política de assistência social em cada esfera</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Descentralização com Comando Único</div>
+  <div class="analogy-text">
+    <p>Pense em uma rede de supermercados: a matriz (União) define as normas e o padrão, cada regional (Estado) adapta às demandas locais, e cada loja (Município) executa no balcão. Mas cada nível tem seu gerente — não há dois gerentes mandando na mesma loja. Isso é o <strong>comando único por esfera</strong>.</p>
+    <span class="analogy-bridge">Descentralização ≠ ausência de coordenação. A União normatiza, os Estados regionalizam, os Municípios executam — cada um com autonomia dentro de seu âmbito.</span>
+  </div>
+</div>
+
+<!-- ===== S5 SUAS ===== -->
+<h2 id="s5">SUAS — Sistema Único de Assistência Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 6º</span><span>O SUAS é o sistema <strong>descentralizado e participativo</strong> que organiza a gestão das ações de assistência social no Brasil.</span></div>
+
+<p>O SUAS tem sete objetivos principais, que vão da gestão compartilhada entre entes federativos até a vigilância socioassistencial e a garantia de direitos. É integrado pelos entes federativos, conselhos e entidades de assistência social.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Base Organizacional do SUAS</div>
+  <p><strong>Território.</strong> As ações do SUAS têm como foco a proteção da família, maternidade, infância, adolescência e velhice, adotando o <strong>território como base de organização</strong>. (<span class="art-ref">Art. 6º, § 1º</span>)</p>
+</div>
+
+<!-- ===== S6 TIPOS DE PROTEÇÃO ===== -->
+<h2 id="s6">Tipos de Proteção Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 6º-A</span><span>A assistência social organiza-se em dois tipos de proteção, com lógicas distintas:</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Proteção</th><th>Caráter</th><th>Objetivo</th><th>Público</th></tr></thead>
+  <tbody>
+    <tr><td>Básica</td><td>Preventivo</td><td>Prevenir situações de vulnerabilidade por meio do fortalecimento de vínculos familiares e comunitários</td><td>Famílias em situação de vulnerabilidade social (antes da crise)</td></tr>
+    <tr><td>Especial</td><td>Reparatório</td><td>Reconstruir vínculos, defender direitos e proteger famílias em situação de violação de direitos</td><td>Famílias/indivíduos com direitos já violados (violência, abandono, risco pessoal)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Básica vs. Especial</div>
+  <div class="analogy-text">
+    <p>Na loja, a <strong>proteção básica</strong> é como o treinamento preventivo de equipe para não cometer erros — evita o problema antes que aconteça. A <strong>proteção especial</strong> é como o protocolo de crise quando um erro já ocorreu — intervém para corrigir e reparar o dano.</p>
+    <span class="analogy-bridge">Básica = prevenir. Especial = reparar. O gatilho da especial é sempre uma violação de direitos já ocorrida.</span>
+  </div>
+</div>
+
+<!-- ===== S7 CRAS E CREAS ===== -->
+<h2 id="s7">CRAS e CREAS</h2>
+
+<div class="art-line"><span class="art-badge">Art. 6º-C</span><span>As proteções sociais são ofertadas precipuamente nos equipamentos públicos CRAS (básica) e CREAS (especial).</span></div>
+
+<div class="glossary-box">
+  <div class="box-label">Equipamentos Públicos Socioassistenciais</div>
+  <p class="glossary-term"><span class="art-badge">§ 1º</span> CRAS — Centro de Referência de Assistência Social</p>
+  <p class="glossary-def">Unidade pública municipal, de <strong>base territorial</strong>, localizada em áreas com maiores índices de vulnerabilidade. Articula os serviços socioassistenciais do território e oferta proteção social básica às famílias. É o equipamento da ponta — está no bairro.</p>
+  <p class="glossary-term"><span class="art-badge">§ 2º</span> CREAS — Centro de Referência Especializado de Assistência Social</p>
+  <p class="glossary-def">Unidade pública de abrangência municipal, estadual ou regional. Atende indivíduos e famílias em situação de <strong>risco pessoal ou social por violação de direitos</strong>. Demanda intervenção especializada — não é porta de entrada, é referência de situações já agravadas.</p>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Diferença-Chave para Prova</div>
+  <p>CRAS = <strong>básica</strong> = territorial = preventivo. CREAS = <strong>especial</strong> = pode ter abrangência regional = reparatório. O CRAS está no bairro vulnerável; o CREAS atende quem já sofreu violação de direitos. Confundir os dois é erro clássico.</p>
+</div>
+
+<!-- ===== S8 CADUNICO ===== -->
+<h2 id="s8">CadÚnico</h2>
+
+<div class="art-line"><span class="art-badge">Art. 6º-F</span><span>O CadÚnico é o <strong>registro público eletrônico</strong> para identificação e caracterização socioeconômica das famílias de baixa renda. Base de acesso aos programas sociais do Governo Federal.</span></div>
+
+<p>A inscrição pode ocorrer nos próprios CRAS e CREAS ou por meio eletrônico. A inscrição pode ser obrigatória para acesso a determinados programas. O CadÚnico é interoperável com o CNIS (Cadastro Nacional de Informações Sociais) para garantir a fidedignidade dos dados.</p>
+
+<!-- ===== S9 COMPETÊNCIAS ===== -->
+<h2 id="s9">Competências dos Entes Federativos</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Ente</th><th>Artigo</th><th>Principais competências</th></tr></thead>
+  <tbody>
+    <tr><td>União</td><td><span class="art-ref">Art. 12</span></td><td>Conceder e manter o BPC; cofinanciar serviços nacionais; monitorar e avaliar a Política Nacional de Assistência Social; atender emergências junto a Estados e Municípios</td></tr>
+    <tr><td>Estados</td><td><span class="art-ref">Art. 13</span></td><td>Prestar apoio técnico e financeiro aos Municípios; cofinanciar ações regionais; prestar serviços cuja demanda justifique rede regional; monitorar e avaliar no âmbito estadual</td></tr>
+    <tr><td>Distrito Federal</td><td><span class="art-ref">Art. 14</span></td><td>Pagar auxílios natalidade e funeral; executar projetos de enfrentamento da pobreza; prestar serviços socioassistenciais; cofinanciar ações locais; monitorar e avaliar no âmbito do DF</td></tr>
+    <tr><td>Municípios</td><td><span class="art-ref">Art. 15</span></td><td>Pagar auxílios natalidade e funeral; executar projetos de enfrentamento da pobreza; prestar serviços assistenciais; atender emergências; cofinanciar ações locais</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Quem paga o BPC?</div>
+  <p class="absurd-scenario">O BPC é de responsabilidade <strong>exclusiva da União</strong> (<span class="art-ref">Art. 12, I</span>). Municípios e Estados <strong>não pagam o BPC</strong> — eles pagam os benefícios eventuais (auxílio natalidade e funeral). É confusão frequente em prova misturar quem paga o quê.</p>
+  <p class="absurd-anchor">Resumo: BPC → União. Auxílio natalidade e funeral → Municípios, DF e States conforme regulamentação local.</p>
+</div>
+
+<!-- ===== S10 CONTROLE SOCIAL ===== -->
+<h2 id="s10">Controle Social — Conselhos de Assistência Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 16</span><span>As instâncias deliberativas do SUAS são os Conselhos de Assistência Social — permanentes, deliberativos e de <strong>composição paritária</strong> entre governo e sociedade civil.</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Conselho</th><th>Esfera</th></tr></thead>
+  <tbody>
+    <tr><td>CNAS — Conselho Nacional de Assistência Social</td><td>Federal</td></tr>
+    <tr><td>Conselhos Estaduais de Assistência Social</td><td>Estadual</td></tr>
+    <tr><td>Conselho de Assistência Social do Distrito Federal</td><td>Distrital</td></tr>
+    <tr><td>Conselhos Municipais de Assistência Social</td><td>Municipal</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="art-line"><span class="art-badge">Art. 17</span><span>O <strong>CNAS</strong> é o órgão superior de deliberação colegiada. Composto por 18 membros (9 governamentais + 9 sociedade civil), com mandato de 2 anos, permitida uma recondução.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Composição Paritária</div>
+  <p>Paritária significa metade a metade: 9 representantes governamentais (incluindo 1 de Estados e 1 de Municípios) e 9 da sociedade civil (usuários, entidades e trabalhadores do setor). O presidente é eleito entre os próprios membros, com mandato de 1 ano.</p>
+</div>
+
+<!-- ===== S11 BPC ===== -->
+<h2 id="s11">BPC — Benefício de Prestação Continuada</h2>
+
+<div class="art-line"><span class="art-badge">Art. 20</span><span>Garante <strong>1 salário mínimo mensal</strong> à pessoa com deficiência e ao idoso com 65 anos ou mais que comprovem não possuir meios de prover a própria manutenção.</span></div>
+
+<h3>Requisitos para Concessão</h3>
+<ul>
+  <li><strong>Idoso:</strong> 65 anos ou mais</li>
+  <li><strong>PcD:</strong> impedimento de longo prazo (mínimo 2 anos) de natureza física, mental, intelectual ou sensorial — avaliação médica + social pelo INSS (<span class="art-ref">§§ 2º e 6º</span>)</li>
+  <li><strong>Miserabilidade:</strong> renda familiar per capita igual ou inferior a <strong>1/4 do salário mínimo</strong> (<span class="art-ref">§ 3º</span>)</li>
+  <li>Inscrição no <strong>CPF</strong> e no <strong>CadÚnico</strong> (<span class="art-ref">§ 12</span>)</li>
+</ul>
+
+<h3>Regras Importantes</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Regra</th><th>Artigo</th><th>Detalhe</th></tr></thead>
+  <tbody>
+    <tr><td>Não gera 13º salário</td><td><span class="art-ref">Art. 20</span></td><td>Diferentemente de benefícios previdenciários</td></tr>
+    <tr><td>Não acumula com outros benefícios da seguridade</td><td><span class="art-ref">§ 4º</span></td><td>Exceção: assistência médica, pensão indenizatória especial e transferências de renda previstas na CF</td></tr>
+    <tr><td>BPC de outro familiar não conta na renda</td><td><span class="art-ref">§ 14</span></td><td>BPC ou benefício previdenciário até 1 SM concedido a idoso 65+ ou PcD não computa para outro membro da família</td></tr>
+    <tr><td>Mais de um membro pode receber</td><td><span class="art-ref">§ 15</span></td><td>Enquanto cada um atender individualmente os requisitos</td></tr>
+    <tr><td>Revisão bienal</td><td><span class="art-ref">Art. 21</span></td><td>A cada 2 anos, para verificar continuidade das condições. Dispensada em deficiências permanentes/irreversíveis</td></tr>
+    <tr><td>Suspensão por emprego</td><td><span class="art-ref">Art. 21-A</span></td><td>Suspenso quando a PcD exerce atividade remunerada. Pode ser restabelecido sem nova perícia ao sair do emprego</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Exemplo Prático — Cálculo de Renda Familiar</div>
+  <p>A família é composta pelo requerente, cônjuge, dois filhos solteiros e a mãe idosa que já recebe BPC de R$ 1.412. A renda da mãe <strong>não entra no cálculo</strong> (<span class="art-ref">§ 14</span>). Se as demais rendas somarem R$ 2.000 para 4 pessoas, a renda per capita é R$ 500 — acima de 1/4 do SM atual. O requerente não teria direito ao BPC com esse critério, salvo uso dos elementos probatórios adicionais do <span class="art-ref">Art. 20-B</span>.</p>
+</div>
+
+<!-- ===== S12 BENEFÍCIOS EVENTUAIS ===== -->
+<h2 id="s12">Benefícios Eventuais</h2>
+
+<div class="art-line"><span class="art-badge">Art. 22</span><span>Provisões <strong>suplementares e provisórias</strong> concedidas em razão de nascimento, morte, vulnerabilidade temporária ou calamidade pública.</span></div>
+
+<p>São exemplos: <strong>auxílio-natalidade</strong> e <strong>auxílio-funeral</strong>. Diferente do BPC (federal e permanente), os benefícios eventuais são definidos e pagos por Estados, DF e Municípios, com valores regulamentados pelos respectivos Conselhos de Assistência Social.</p>
+
+<!-- ===== S13 SERVIÇOS E PROGRAMAS ===== -->
+<h2 id="s13">Serviços e Programas de Assistência Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 23</span><span>Serviços socioassistenciais são <strong>atividades continuadas</strong> voltadas à melhoria das condições de vida da população.</span></div>
+
+<h3>Programas Específicos Instituídos pela Lei</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Programa/Serviço</th><th>Artigo</th><th>Proteção</th><th>Equipamento</th><th>Foco</th></tr></thead>
+  <tbody>
+    <tr><td>PAIF — Proteção e Atendimento Integral à Família</td><td><span class="art-ref">Art. 24-A</span></td><td>Básica</td><td>CRAS</td><td>Prevenir rompimento de vínculos familiares; trabalho social com famílias vulneráveis</td></tr>
+    <tr><td>PAEFI — Proteção e Atendimento Especializado a Famílias e Indivíduos</td><td><span class="art-ref">Art. 24-B</span></td><td>Especial</td><td>CREAS</td><td>Apoio e acompanhamento a famílias em situação de ameaça ou violação de direitos</td></tr>
+    <tr><td>PETI — Programa de Erradicação do Trabalho Infantil</td><td><span class="art-ref">Art. 24-C</span></td><td>Ambas</td><td>CRAS/CREAS</td><td>Retirar crianças e adolescentes menores de 16 anos do trabalho; transferência de renda + serviços socioeducativos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Macete PAIF × PAEFI</div>
+  <p><strong>PAIF</strong> = CRAS = Básica = Prevenir. <strong>PAEFI</strong> = CREAS = Especial = Reparar. A primeira letra de cada par (A/E) corresponde à proteção (Atenção básica / Especializada). O PETI integra tanto a proteção básica quanto a especial, por seu caráter intersetorial.</p>
+</div>
+
+<!-- ===== S14 FINANCIAMENTO ===== -->
+<h2 id="s14">Financiamento da Assistência Social</h2>
+
+<div class="art-line"><span class="art-badge">Art. 27</span><span>O Fundo Nacional de Ação Comunitária (FUNAC) foi transformado no <strong>Fundo Nacional de Assistência Social (FNAS)</strong>.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 28</span><span>O financiamento é realizado por recursos da União, Estados, DF e Municípios, em regime de <strong>cofinanciamento</strong>, mais contribuições sociais do Art. 195 da CF.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 30</span><span>Para receber recursos federais, o ente deve ter em funcionamento: <strong>Conselho + Fundo + Plano</strong> de Assistência Social.</span></div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Tríplice Condição (Art. 30)</div>
+  <p class="absurd-scenario">Para receber repasses federais, o Município ou Estado precisa ter os três pilares funcionando: <strong>(1) Conselho de Assistência Social</strong> com composição paritária; <strong>(2) Fundo de Assistência Social</strong> com controle do Conselho; <strong>(3) Plano de Assistência Social</strong>. Faltou um, bloqueou o repasse.</p>
+  <p class="absurd-anchor">Analogia: é como abrir uma filial na sua rede de supermercados — sem licença de funcionamento, alvará e registro, o CNPJ não pode operar. O Conselho + Fundo + Plano são os "documentos" do SUAS municipal.</p>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checklist">Checklist — Objetivos de Aprendizagem</h2>
+
+<div class="lesson-progress" style="margin-bottom:20px">
+  <span class="lesson-progress-label">Progresso</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label">0 / 20 concluídos</span>
+</div>
+
+<div id="checklist-wrap" class="checklist-section"></div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · LOAS 8.742/1993
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A assistência social é uma política de seguridade social contributiva, ou seja, o cidadão precisa ter contribuído previamente ao sistema para ter acesso aos seus benefícios e serviços.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 1º</strong> é explícito: a assistência social é política de seguridade social <em>não contributiva</em>. O acesso independe de contribuição prévia — basta a demonstração de necessidade. Essa é justamente a diferença fundamental entre assistência social e previdência social.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">O CREAS é o equipamento público responsável pela oferta da proteção social básica, sendo localizado preferencialmente em áreas de maior vulnerabilidade social do município.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> A descrição é do CRAS, não do CREAS. O <strong>CRAS</strong> (Art. 6º-C, § 1º) é a unidade de base territorial em áreas vulneráveis, responsável pela proteção social <em>básica</em>. O <strong>CREAS</strong> (§ 2º) é o equipamento da proteção social <em>especial</em>, voltado a situações de violação de direitos — pode ter abrangência regional, não apenas local.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">O BPC recebido por um membro idoso da família não é computado no cálculo da renda familiar per capita para fins de concessão do benefício a outro membro idoso ou com deficiência da mesma família.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 20, § 14</strong> determina que o BPC — ou benefício previdenciário de até 1 salário mínimo — concedido a idoso com 65 anos ou mais ou a pessoa com deficiência não será computado no cálculo da renda familiar para fins de concessão do benefício a outro membro da família. Isso evita que a presença de um beneficiário impeça outro de acessar o direito.</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Para que um Município receba repasse de recursos federais de assistência social, é condição obrigatória ter em funcionamento o Conselho de Assistência Social, o Fundo de Assistência Social e o Plano de Assistência Social.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 30</strong> é preciso: a tríplice condição — Conselho + Fundo + Plano de Assistência Social — é requisito para os repasses. Basta um dos três estar inativo para bloquear a transferência de recursos federais ao ente.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="B">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Com relação ao BPC — Benefício de Prestação Continuada, assinale a afirmação CORRETA:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) O BPC pode ser acumulado com qualquer benefício previdenciário, desde que a renda total não ultrapasse dois salários mínimos.<br>
+      (B) A pessoa com deficiência que passar a exercer atividade remunerada terá o BPC suspenso, podendo requerer sua continuidade ao encerrar o vínculo empregatício, sem necessidade de nova perícia médica.<br>
+      (C) O BPC garante ao beneficiário o direito ao décimo terceiro salário, assim como os benefícios de aposentadoria do RGPS.<br>
+      (D) Para efeito de concessão do BPC, considera-se pessoa com deficiência apenas aquela com impedimento de natureza física ou mental, excluindo-se os impedimentos sensoriais e intelectuais.<br>
+      (E) O BPC é financiado conjuntamente por União, Estados e Municípios, que contribuem em partes iguais.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','B')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','B')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','B')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','B')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','B')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: B</strong></p>
+      <p><strong>(A) Errada.</strong> O Art. 20, § 4º veda a acumulação do BPC com outros benefícios da seguridade social, salvo exceções específicas (assistência médica, pensão indenizatória especial e transferências de renda previstas na CF). Não há exceção por faixa de renda total.</p>
+      <p><strong>(B) Correta.</strong> O Art. 21-A prevê a suspensão do BPC quando a PcD passa a exercer atividade remunerada. Ao encerrar o vínculo, pode requerer a continuidade do benefício suspenso sem necessidade de nova perícia médica ou reavaliação da deficiência.</p>
+      <p><strong>(C) Errada.</strong> O BPC não gera direito ao décimo terceiro salário. Esse é um dos pontos que o distingue dos benefícios previdenciários.</p>
+      <p><strong>(D) Errada.</strong> O Art. 20, § 2º define pessoa com deficiência como aquela com impedimento de longo prazo de natureza física, <em>mental, intelectual ou sensorial</em>. A alternativa exclui indevidamente intelectual e sensorial.</p>
+      <p><strong>(E) Errada.</strong> O BPC é de responsabilidade exclusiva da União (Art. 12, I). Estados e Municípios não financiam o BPC — financiam os benefícios eventuais e o cofinanciamento dos serviços do SUAS.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais da Lei nº 8.742/1993 — LOAS)</p>
+</div>
+
+<h2 id="resumo-final">Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>Não contributiva:</strong> acesso por necessidade, não por contribuição prévia. (<span class="art-ref">Art. 1º</span>)</li>
+      <li><strong>Três eixos:</strong> proteção social, vigilância socioassistencial e defesa de direitos. (<span class="art-ref">Art. 2º</span>)</li>
+      <li><strong>Três tipos de entidades:</strong> atendimento, assessoramento e defesa de direitos. (<span class="art-ref">Art. 3º</span>)</li>
+      <li><strong>SUAS:</strong> sistema descentralizado e participativo, com base territorial. (<span class="art-ref">Art. 6º</span>)</li>
+      <li><strong>CRAS = básica = preventivo. CREAS = especial = reparatório.</strong> (<span class="art-ref">Art. 6º-C</span>)</li>
+      <li><strong>BPC:</strong> 1 SM para idoso 65+ ou PcD com renda per capita ≤ 1/4 SM. Não acumula, não tem 13º. (<span class="art-ref">Art. 20</span>)</li>
+      <li><strong>BPC de familiar não conta na renda</strong> para novo requerente da mesma família. (<span class="art-ref">§ 14</span>)</li>
+      <li><strong>Tríplice condição para repasses:</strong> Conselho + Fundo + Plano. (<span class="art-ref">Art. 30</span>)</li>
+      <li><strong>PAIF</strong> (CRAS/básica) e <strong>PAEFI</strong> (CREAS/especial) são os serviços âncora de cada proteção.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>BPC</dt><dd>Benefício de Prestação Continuada: 1 SM mensal ao idoso 65+ ou PcD miserável. Responsabilidade da União.</dd>
+      <dt>SUAS</dt><dd>Sistema Único de Assistência Social: sistema descentralizado e participativo de gestão das ações socioassistenciais.</dd>
+      <dt>Proteção básica</dt><dd>Caráter preventivo: fortalece vínculos antes que a situação de vulnerabilidade se agrave. Equipamento: CRAS.</dd>
+      <dt>Proteção especial</dt><dd>Caráter reparatório: intervém após violação de direitos. Equipamento: CREAS.</dd>
+      <dt>CadÚnico</dt><dd>Registro público eletrônico das famílias de baixa renda — porta de entrada para programas sociais federais.</dd>
+      <dt>PAIF</dt><dd>Serviço de Proteção e Atendimento Integral à Família — proteção básica, ofertado no CRAS.</dd>
+      <dt>PAEFI</dt><dd>Serviço de Proteção e Atendimento Especializado a Famílias e Indivíduos — proteção especial, ofertado no CREAS.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Para provas, o maior volume de questões sobre a LOAS cai em quatro pontos: <strong>(1)</strong> BPC — requisitos, vedações e regra do § 14; <strong>(2)</strong> CRAS × CREAS — confusão entre básica e especial; <strong>(3)</strong> Art. 30 — tríplice condição para repasse; <strong>(4)</strong> composição e caráter paritário dos Conselhos. Dominar esses quatro blocos resolve a maioria das questões de concurso sobre a LOAS.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">LOAS</span>
+  <span class="footer-sub">Lei nº 8.742, de 7 de dezembro de 1993 · Última redação: Lei nº 15.157/2025 · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='LOAS-8742-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+// CHECKLIST
+var objectives=[
+  "Definir assistência social como política não contributiva e explicar o que isso significa na prática",
+  "Identificar os três eixos de objetivos da LOAS: proteção social, vigilância socioassistencial e defesa de direitos (Art. 2º)",
+  "Distinguir os três tipos de entidades de assistência social: atendimento, assessoramento e defesa de direitos (Art. 3º)",
+  "Enumerar os cinco princípios da assistência social, com destaque para a vedação de comprovação vexatória (Art. 4º)",
+  "Identificar as três diretrizes da organização da assistência social, incluindo descentralização e comando único (Art. 5º)",
+  "Descrever o SUAS e seus objetivos, especialmente a base territorial e o caráter descentralizado (Art. 6º)",
+  "Distinguir proteção social básica (preventiva) de proteção social especial (reparatória) (Art. 6º-A)",
+  "Definir o CRAS e o CREAS, incluindo suas abrangências e tipos de proteção ofertados (Art. 6º-C)",
+  "Explicar o CadÚnico e seu papel como instrumento de acesso aos programas sociais (Art. 6º-F)",
+  "Identificar as competências da União em assistência social, incluindo a exclusividade no BPC (Art. 12)",
+  "Distinguir as competências de Estados, DF e Municípios, especialmente quanto ao pagamento de auxílios eventuais (Arts. 13-15)",
+  "Descrever a composição e o caráter paritário dos Conselhos de Assistência Social (Arts. 16-17)",
+  "Explicar os requisitos para concessão do BPC: público, renda per capita e avaliação de deficiência (Art. 20)",
+  "Aplicar a regra do § 14 do Art. 20 sobre exclusão do BPC no cálculo da renda familiar",
+  "Identificar as hipóteses de suspensão e revisão do BPC, incluindo o retorno ao mercado de trabalho (Arts. 21 e 21-A)",
+  "Definir os benefícios eventuais e distingui-los do BPC quanto à natureza e ao ente responsável (Art. 22)",
+  "Identificar o PAIF, o PAEFI e o PETI, seus equipamentos de referência e suas lógicas de proteção (Arts. 24-A a 24-C)",
+  "Descrever a tríplice condição do Art. 30 como requisito para repasse de recursos federais",
+  "Explicar o regime de cofinanciamento do SUAS entre os três entes federativos",
+  "Identificar o FNAS e seu papel no financiamento da política de assistência social (Art. 27)"
+];
+
+var clWrap=document.getElementById('checklist-wrap');
+var clBar=document.getElementById('cl-bar');
+var clBarTop=document.getElementById('cl-bar-top');
+var clLabel=document.getElementById('cl-label');
+var clLabelTop=document.getElementById('cl-label-top');
+
+function updateCL(){
+  var total=objectives.length;
+  var done=document.querySelectorAll('#checklist-wrap input:checked').length;
+  var pct=Math.round((done/total)*100);
+  clBar.style.width=pct+'%';
+  clBarTop.style.width=pct+'%';
+  clLabel.textContent=done+' / '+total+' concluídos';
+  clLabelTop.textContent=done+' / '+total;
+}
+
+objectives.forEach(function(obj,i){
+  var id='cl'+i;
+  var item=document.createElement('div');
+  item.className='check-item';
+  item.innerHTML='<input type="checkbox" id="'+id+'"><label for="'+id+'">'+obj+'</label>';
+  item.querySelector('input').addEventListener('change',function(){
+    item.classList.toggle('done',this.checked);
+    updateCL();
+  });
+  clWrap.appendChild(item);
+});
+</script>
+</body>
+</html>

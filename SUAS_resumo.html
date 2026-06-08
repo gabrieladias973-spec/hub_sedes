@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUAS – Sistema Único de Assistência Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f8f9fa;
+  --bg-topbar:#6B1A1A; --bg-topbar-glass:rgba(107,26,26,0.97);
+  --text-primary:#000000; --text-secondary:#333333; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#8B2020; --accent-dim:#6B1A1A; --accent-glow:rgba(139,32,32,0.12); --accent-surface:#f5e5e5;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f8f9fa; --box-intro-border:#6B1A1A;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#8B2020;
+  --box-highlight-bg:#f5e5e5; --box-highlight-border:#8B2020;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#8B2020;
+  --box-analogy-bg:#f8f9fa; --box-analogy-border:#6B1A1A;
+  --summary-bg:#f8f9fa; --summary-border:#8B2020;
+  --table-header-bg:#6B1A1A; --table-header-text:#ffffff;
+  --table-row-alt:#f8f9fa; --table-border:#cccccc; --table-hover:#f5e5e5;
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --bg-page:#000000; --bg-surface:#0a0a0a; --bg-surface-raised:#141414;
+  --bg-topbar:#6B1A1A; --bg-topbar-glass:rgba(107,26,26,0.98);
+  --text-primary:#ffffff; --text-secondary:#cccccc; --text-tertiary:#999999;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#E8A0A0; --accent-dim:#C07070; --accent-glow:rgba(232,160,160,0.15); --accent-surface:#3A0A0A;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#333333; --border-soft:#1f1f1f;
+  --box-intro-bg:#050505; --box-intro-border:#E8A0A0;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#0a0a0a; --box-example-border:#E8A0A0;
+  --box-highlight-bg:#3A0A0A; --box-highlight-border:#E8A0A0;
+  --box-glossary-bg:#0a0a0a; --box-glossary-border:#ffffff; --box-glossary-term:#E8A0A0;
+  --box-analogy-bg:#050505; --box-analogy-border:#E8A0A0;
+  --summary-bg:#050505; --summary-border:#E8A0A0;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#0a0a0a; --table-border:#333333; --table-hover:#3A0A0A;
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--amber);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--amber);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.table-wrapper{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">SUAS</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Política de Assistência Social</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Imprimir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Imprimir</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Política de Assistência Social</div>
+<h1>SUAS — Sistema Único de Assistência Social</h1>
+<p class="doc-subtitle">Consolidação do sistema público que organiza a política de Assistência Social no Brasil, com base em direitos socioassistenciais e responsabilidade do Estado. MDS/SNAS — 2009.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> LOAS · PNAS/2004 · NOB/SUAS 2005</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~40 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Publicação: 2009 · MDS</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Definições Fundamentais</a></li>
+    <li><a href="#s2">Objetivos</a></li>
+    <li><a href="#s3">Diretrizes</a></li>
+    <li><a href="#s4">Organização e Gestão</a></li>
+    <li><a href="#s5">Competências por Ente Federado</a></li>
+    <li><a href="#s6">Serviços e Benefícios</a></li>
+    <li><a href="#s7">Equipamentos e Sistemas</a></li>
+    <li><a href="#s8">Princípios</a></li>
+    <li><a href="#s9">Linha do Tempo — Destaques 2007–2009</a></li>
+    <li><a href="#resumo-final">Resumo da Aula</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O SUAS representa uma <strong>nova forma de organizar e gerir a Assistência Social brasileira</strong>. Planejado e executado pelos governos federal, estaduais, do Distrito Federal e municipais, em parceria com a sociedade civil, garante a Assistência Social a milhões de brasileiros. A questão central não é caridade ou benemerência — é <strong>direito do cidadão e dever do Estado</strong>. O documento consolida as conquistas e os instrumentos de gestão do sistema entre 2007 e 2009.</p>
+</div>
+
+<!-- ===== DEFINIÇÕES ===== -->
+<h2 id="s1">Definições Fundamentais</h2>
+
+<div class="glossary-box">
+  <div class="box-label">Termos e Conceitos Centrais</div>
+
+  <p class="glossary-term">SUAS — Sistema Único de Assistência Social</p>
+  <p class="glossary-def">Sistema público que organiza a política de Assistência Social no Brasil, com base em direitos socioassistenciais e na responsabilidade do Estado. Fruto da deliberação da IV Conferência Nacional de Assistência Social (2003) e materializa os preceitos da Constituição de 1988 regulamentados na LOAS (1993).</p>
+
+  <p class="glossary-term">Proteção Social Básica (PSB)</p>
+  <p class="glossary-def">Conjunto de serviços voltados à <strong>prevenção de situações de risco</strong> por meio do desenvolvimento de potencialidades e fortalecimento de vínculos familiares e comunitários. Ofertada principalmente pelo CRAS por meio do PAIF.</p>
+
+  <p class="glossary-term">Proteção Social Especial (PSE)</p>
+  <p class="glossary-def">Serviços destinados ao atendimento de violações de direitos, com dois níveis: <strong>média complexidade</strong> (CREAS — vínculos familiares não rompidos) e <strong>alta complexidade</strong> (acolhimento institucional, proteção integral — vínculos rompidos ou em grave ameaça).</p>
+
+  <p class="glossary-term">CRAS — Centro de Referência de Assistência Social</p>
+  <p class="glossary-def">Unidade estatal local de referência para a Proteção Social Básica. Porta de entrada ao SUAS nos territórios de maior vulnerabilidade. Sua existência está vinculada ao funcionamento do PAIF.</p>
+
+  <p class="glossary-term">CREAS — Centro de Referência Especializado de Assistência Social</p>
+  <p class="glossary-def">Unidade estatal responsável pela oferta de atenções especializadas a indivíduos e famílias com direitos violados. Referência para a Proteção Social Especial de média e alta complexidade.</p>
+
+  <p class="glossary-term">PAIF — Programa de Atenção Integral às Famílias</p>
+  <p class="glossary-def">Principal programa da Proteção Social Básica, ofertado nos CRAS. Condição essencial e indispensável para o funcionamento do CRAS. Foco na prevenção, convivência familiar e comunitária e acompanhamento de famílias vulneráveis.</p>
+
+  <p class="glossary-term">Matricialidade Sociofamiliar</p>
+  <p class="glossary-def">Diretriz que coloca a <strong>família como foco principal</strong> das intervenções socioassistenciais, reconhecendo-a como espaço privilegiado de proteção, socialização e desenvolvimento dos seus membros.</p>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · PSB e PSE</div>
+  <div class="analogy-text">
+    <p>Pense no SUAS como um hospital. A PSB é a <strong>atenção básica de saúde</strong> — o posto de saúde do bairro que faz prevenção e acompanha quem ainda está bem. Já a PSE é o <strong>pronto-socorro e a UTI</strong> — para quem já sofreu a violação do direito e precisa de intervenção especializada e, em casos graves, de proteção integral (moradia, alimentação, acompanhamento).</p>
+    <span class="analogy-bridge">CRAS = posto de saúde (prevenção). CREAS = pronto-socorro (intervenção). A lógica é a mesma: quanto mais cedo a atenção, menor a complexidade e o custo humano e financeiro.</span>
+  </div>
+</div>
+
+<!-- ===== OBJETIVOS ===== -->
+<h2 id="s2">Objetivos</h2>
+
+<p>O SUAS tem como compromisso consolidar a Assistência Social como <strong>política de Estado permanente</strong> — não como caridade ou ação circunstancial, mas como garantia de direito de cidadania para todos.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Objetivo Central</div>
+  <p>Consolidar o SUAS como política do Estado Brasileiro que garanta <strong>direitos socioassistenciais</strong>, rompendo definitivamente com o modelo assistencialista e promovendo <strong>autonomia familiar e cidadania</strong>.</p>
+</div>
+
+<ul>
+  <li><strong>Territorializar a oferta de serviços</strong> para atuar nos territórios de maior vulnerabilidade, reconhecendo as desigualdades sociais intra-urbanas e regionais.</li>
+  <li><strong>Fortalecer vínculos familiares e comunitários</strong> como eixo estruturante do trabalho socioassistencial.</li>
+  <li><strong>Integrar serviços, benefícios e transferências de renda</strong> (PBF, PETI, BPC) para interromper ciclos intergeracionais de pobreza e violação de direitos.</li>
+  <li>Garantir <strong>transparência, critérios republicanos</strong> de alocação de recursos e controle social na gestão.</li>
+  <li>Padronizar os serviços socioassistenciais em todo o território nacional por meio da <strong>Tipificação Nacional</strong>.</li>
+  <li>Desenvolver sistemas de <strong>informação, monitoramento e avaliação</strong> como instrumentos de gestão e aprimoramento contínuo.</li>
+</ul>
+
+<!-- ===== DIRETRIZES ===== -->
+<h2 id="s3">Diretrizes</h2>
+
+<p>As diretrizes do SUAS estão estabelecidas na Política Nacional de Assistência Social (PNAS/2004) e na Norma Operacional Básica (NOB/SUAS 2005):</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Diretriz</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>Territorialização</td><td>Serviços planejados e executados considerando o território e suas especificidades socioeconômicas, culturais e étnicas (quilombolas, ribeirinhos, indígenas, etc.).</td></tr>
+    <tr><td>Hierarquização e Complementaridade</td><td>Organização por níveis de complexidade (básica e especial), com referências locais e regionais que se complementam.</td></tr>
+    <tr><td>Matricialidade Sociofamiliar</td><td>A família é o foco principal das intervenções. Todas as ações são orientadas para seu fortalecimento e proteção.</td></tr>
+    <tr><td>Descentralização Político-Administrativa</td><td>Responsabilidades compartilhadas entre União, estados, DF e municípios com mecanismos de pactuação (CIT e CIBs).</td></tr>
+    <tr><td>Gestão Participativa e Controle Social</td><td>Governança republicana com instâncias tripartites, participação da sociedade civil e conselhos de assistência social.</td></tr>
+    <tr><td>Intersetorialidade</td><td>Articulação com saúde, educação, segurança alimentar, habitação, inclusão produtiva e programas de renda.</td></tr>
+    <tr><td>Monitoramento e Avaliação</td><td>Uso de indicadores (IDCRAS, IDCREAS), censos anuais e sistemas integrados (Rede SUAS) para gestão e aprimoramento.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== ORGANIZAÇÃO ===== -->
+<h2 id="s4">Organização e Gestão</h2>
+
+<p>O SUAS é organizado com base no <strong>Pacto Federativo</strong>, no qual são atribuídas e detalhadas as competências e responsabilidades dos três níveis de governo na provisão das ações socioassistenciais.</p>
+
+<h3>Instrumentos de Pactuação</h3>
+<ul>
+  <li><strong>CIT — Comissão Intergestores Tripartite:</strong> representantes dos governos federal, estaduais e municipais. Define normas e pactuações nacionais.</li>
+  <li><strong>CIBs — Comissões Intergestores Bipartites:</strong> 27 comissões estaduais que pactuam entre estado e municípios.</li>
+  <li><strong>CONGEMAS:</strong> Colegiado de Gestores Municipais de Assistência Social.</li>
+  <li><strong>FONSEAS:</strong> Fórum Nacional de Secretários Estaduais de Assistência Social.</li>
+  <li><strong>Pacto de Aprimoramento de Gestão:</strong> requisito de adesão dos estados e do DF ao SUAS, com compromissos e responsabilidades celebrados com o gestor federal.</li>
+</ul>
+
+<h3>Níveis de Gestão Municipal</h3>
+<p>Até 2009, <strong>5.498 municípios</strong> aderiram ao SUAS em três níveis: inicial (1.033), básica (4.082) e plena (383).</p>
+
+<h3>Plano Decenal — SUAS Plano 10</h3>
+<p>Documento-referência que define metas e estratégias para dez anos, organizado em cinco eixos:</p>
+<ul>
+  <li>Modelo socioassistencial</li>
+  <li>Rede socioassistencial e intersetorialidade</li>
+  <li>Investimento em Assistência Social</li>
+  <li>Gestão do trabalho</li>
+  <li>Democratização do controle social</li>
+</ul>
+
+<h3>Protocolo de Gestão Integrada</h3>
+<p>Pactuação de procedimentos para a gestão integrada dos serviços, benefícios e transferências de renda (PBF, PETI, BPC e benefícios eventuais), visando <strong>interromper ciclos intergeracionais de pobreza</strong>. Estabelece ações e responsabilidades por esfera de governo para o acompanhamento das famílias.</p>
+
+<!-- ===== COMPETÊNCIAS ===== -->
+<h2 id="s5">Competências por Ente Federado</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Ente</th><th>Competências Principais</th></tr></thead>
+  <tbody>
+    <tr><td>União (MDS/SNAS)</td><td>Formular políticas nacionais; regulamentar benefícios; articular programas; financiar (cofinanciamento); coordenar sistemas de informação e monitoramento; aprovar Tipificação Nacional.</td></tr>
+    <tr><td>Estados e DF</td><td>Pactuar com União e municípios (CIT/CIBs); coordenar e apoiar a extensão regional dos serviços; fortalecer instâncias de controle social; monitorar CRAS e CREAS estaduais.</td></tr>
+    <tr><td>Municípios</td><td>Implementar serviços locais (CRAS/CREAS/PAIF); executar Benefícios Eventuais; operacionalizar o CadSUAS; prestar contas dos fundos municipais de assistência social.</td></tr>
+    <tr><td>Conselhos de Assistência Social</td><td>Fiscalizar, deliberar e mobilizar usuários nas conferências e instâncias de controle social. Atuam nos três níveis de governo.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção — Financiamento</div>
+  <p>O orçamento da Assistência Social cresceu de <strong>R$ 8,85 bilhões (2004) para R$ 23,83 bilhões (2010 — projeção)</strong>. O cofinanciamento federal é condicionado ao cumprimento de requisitos como preenchimento dos censos CRAS/CREAS e adesão ao Pacto de Aprimoramento de Gestão.</p>
+</div>
+
+<!-- ===== SERVIÇOS ===== -->
+<h2 id="s6">Serviços e Benefícios</h2>
+
+<h3>Proteção Social Básica — PSB</h3>
+<p>Ofertada pelo CRAS por meio do PAIF. Foco em prevenção, fortalecimento de vínculos e desenvolvimento de potencialidades. Integra também o <strong>Projovem Adolescente</strong> (serviço socioeducativo para jovens de 15 a 17 anos de famílias do PBF) e serviços específicos para crianças de 0 a 6 anos e idosos.</p>
+
+<h3>Proteção Social Especial — PSE</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Nível</th><th>Equipamento</th><th>Público / Situação</th></tr></thead>
+  <tbody>
+    <tr><td>Média Complexidade</td><td>CREAS</td><td>Famílias com direitos violados, mas vínculos não rompidos. Abandono, maus-tratos, abuso sexual, trabalho infantil, medidas socioeducativas.</td></tr>
+    <tr><td>Alta Complexidade</td><td>Acolhimento Institucional / Familiar</td><td>Proteção integral (moradia, alimentação, higienização, trabalho protegido) para quem está sem referência ou em situação de grave ameaça.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Benefícios Assistenciais</h3>
+<ul>
+  <li><strong>BPC — Benefício de Prestação Continuada:</strong> direito constitucional de idosos e pessoas com deficiência. Em 2009, atendeu mais de 3,1 milhões de brasileiros.</li>
+  <li><strong>Benefícios Eventuais:</strong> regulamentados por Decreto Presidencial em 2007. Primeiro levantamento nacional realizado para mapear a oferta nos municípios.</li>
+</ul>
+
+<h3>Programas Destaque</h3>
+<ul>
+  <li><strong>PETI — Programa de Erradicação do Trabalho Infantil:</strong> atende ~875 mil crianças e adolescentes em ~3.500 municípios. Integrado ao Bolsa Família desde 2006.</li>
+  <li><strong>BPC na Escola:</strong> programa intersetorial (saúde, educação, direitos humanos) para garantir acesso e permanência escolar às ~350 mil crianças e adolescentes com deficiência beneficiárias do BPC.</li>
+  <li><strong>Projovem Adolescente:</strong> 370 mil jovens no primeiro ano. Meta de 1 milhão até 2010. Condicionado à existência de CRAS no território.</li>
+  <li><strong>Carteira do Idoso:</strong> garante gratuidade e desconto em passagens interestaduais a ~500 mil pessoas com 60+ anos sem comprovante de renda.</li>
+</ul>
+
+<h3>Tipificação Nacional dos Serviços Socioassistenciais</h3>
+<p>Marco regulatório aprovado em 2009 que <strong>padroniza e descreve cada serviço</strong> da Assistência Social em todo o território nacional, a partir de matriz estruturada segundo as funções da política (PSB, PSE média e alta complexidade). Cria identidade para o usuário e isonomia no atendimento.</p>
+
+<!-- ===== EQUIPAMENTOS ===== -->
+<h2 id="s7">Equipamentos e Sistemas</h2>
+
+<h3>Equipamentos Físicos</h3>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Equipamento</th><th>Dados (2009)</th><th>Função</th></tr></thead>
+  <tbody>
+    <tr><td>CRAS</td><td>5.812 unidades em 4.327 municípios</td><td>Referência da PSB. Vínculo indissociável com o PAIF.</td></tr>
+    <tr><td>CREAS Municipal</td><td>1.054 unidades</td><td>Referência da PSE de média complexidade.</td></tr>
+    <tr><td>CREAS Regional</td><td>53 unidades (atende mais de uma cidade)</td><td>PSE em municípios sem CREAS próprio.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Rede SUAS — Sistema Nacional de Informação</h3>
+<p>Integra aplicativos para gestão, controle social e financiamento. Principais sistemas:</p>
+<ul>
+  <li><strong>CadSUAS:</strong> Cadastro Nacional do SUAS — centraliza dados da rede pública e privada, órgãos gestores, fundos, conselhos e trabalhadores. É a base cadastral de todos os demais aplicativos.</li>
+  <li><strong>SUASweb:</strong> gestão e acompanhamento do PAIF nos CRAS.</li>
+  <li><strong>SISPETI:</strong> controle de frequência e monitoramento das ações socioeducativas do PETI (participação mínima de 85%).</li>
+  <li><strong>SISJOVEM:</strong> acompanhamento e gestão do Projovem Adolescente.</li>
+  <li><strong>InfoSUAS / SigSUAS / SICNAS:</strong> sistemas complementares de informação e financiamento.</li>
+</ul>
+
+<h3>Instrumentos de Monitoramento</h3>
+<ul>
+  <li><strong>Censo CRAS / Censo CREAS:</strong> realizados anualmente. O repasse de recursos é condicionado ao preenchimento.</li>
+  <li><strong>IDCRAS / IDCREAS:</strong> indicadores de desenvolvimento que aferem condições físicas, financeiras, de recursos humanos e de serviços.</li>
+  <li><strong>RENMAS — Rede Nacional de Monitoramento da Assistência Social:</strong> canal web de interação e aprendizagem coletiva entre gestores federais, estaduais, do DF e municipais.</li>
+</ul>
+
+<div class="box highlight-box">
+  <div class="box-label">Vigilância Social</div>
+  <p>Componente estratégico do SUAS que identifica <strong>territórios de incidência de riscos e vulnerabilidades</strong> para orientar ações preventivas. Opera por meio de indicadores, estudos socioteritoriais e padronização dos registros de atendimento (prontuários) nos CRAS e CREAS.</p>
+</div>
+
+<!-- ===== PRINCÍPIOS ===== -->
+<h2 id="s8">Princípios</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Princípio</th><th>Significado Prático</th></tr></thead>
+  <tbody>
+    <tr><td>Assistência Social como Direito</td><td>Não é caridade — é direito do cidadão e dever do Estado, garantido pela Constituição de 1988 e pela LOAS.</td></tr>
+    <tr><td>Universalidade com Diferenciação</td><td>Atendimento universal com atenção às especificidades territoriais e étnico-raciais (quilombolas, ribeirinhos, indígenas, etc.).</td></tr>
+    <tr><td>Transparência e Impessoalidade</td><td>Critérios republicanos de alocação de recursos, prestação de contas e controle social.</td></tr>
+    <tr><td>Co-responsabilidade Federativa</td><td>Pactuação entre União, estados e municípios com responsabilidades claramente definidas.</td></tr>
+    <tr><td>Controle Social</td><td>Participação efetiva dos usuários, trabalhadores e entidades nos Conselhos e Conferências de Assistência Social.</td></tr>
+    <tr><td>Intersetorialidade</td><td>Articulação com saúde, educação, segurança alimentar, habitação, trabalho e programas de renda para respostas integradas.</td></tr>
+    <tr><td>Ruptura com o Assistencialismo</td><td>Superação do modelo histórico de benemerência e ações circunstanciais por uma política planejada, contínua e baseada em direitos.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Controle Social — Conferências</h3>
+<p>A VII Conferência Nacional de Assistência Social (2009), tema <em>"Participação e controle social no SUAS"</em>, contou com conferências em <strong>4.582 municípios</strong>, todos os estados e DF. Inovação: participação massiva dos usuários (meta de 1/3 do público). O <strong>CEBAS</strong> (Certificado de Entidades Beneficentes) passou a ser concedido pelos Ministérios setoriais (MDS, Saúde, Educação), fortalecendo o controle social.</p>
+
+<!-- ===== LINHA DO TEMPO ===== -->
+<h2 id="s9">Linha do Tempo — Destaques 2007–2009</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Ano</th><th>Principais Eventos</th></tr></thead>
+  <tbody>
+    <tr><td>2007</td><td>Aprovação do Plano Decenal (SUAS Plano 10); novo Decreto de regulamentação do BPC; Decreto dos Benefícios Eventuais; início do Censo CRAS 2007; lançamento do Projovem Adolescente; Carteira do Idoso; adesão do SUAS à Agenda Social do Governo Federal.</td></tr>
+    <tr><td>2008</td><td>Novo Decreto do BPC; implantação do SISPETI; criação do IDCRAS; ampliação do Projovem (112 mil → 370 mil jovens); início do Censo CREAS; qualificação de gestores sobre BPC na Escola; aprovação do PL do CEBAS no Senado; implantação do CadSUAS; Protocolo de Gestão Integrada.</td></tr>
+    <tr><td>2009</td><td>Aprovação da Tipificação Nacional dos Serviços Socioassistenciais; criação da RENMAS; BPC na NOB/SUAS; transição dos recursos de educação infantil para serviços socioassistenciais; VII Conferência Nacional; Leis nº 12.094 e 12.083 (carreira e reestruturação do MDS); pesquisa MUNIC/IBGE Suplemento Assistência Social.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="resumo-final">Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>SUAS = direito, não caridade.</strong> É política de Estado, permanente, baseada na Constituição de 1988 e na LOAS/1993.</li>
+      <li><strong>Dois níveis de proteção:</strong> PSB (prevenção, CRAS/PAIF) e PSE (intervenção, CREAS — média e alta complexidade).</li>
+      <li><strong>A família é o foco central</strong> (matricialidade sociofamiliar). Todos os serviços convergem para seu fortalecimento.</li>
+      <li><strong>Territorialização:</strong> os serviços são planejados e executados onde as pessoas vivem, com atenção às especificidades locais.</li>
+      <li><strong>Gestão federativa:</strong> União (formula/financia), estados (coordenam), municípios (implementam). Pactuação via CIT e CIBs.</li>
+      <li><strong>Integração é palavra-chave:</strong> PBF + PETI + BPC + PAIF integrados pelo Protocolo de Gestão Integrada para romper ciclos de pobreza.</li>
+      <li><strong>Rede SUAS + CadSUAS:</strong> sistema nacional de informação que conecta todos os equipamentos, programas e benefícios.</li>
+      <li><strong>Monitoramento obrigatório:</strong> Censo CRAS e CREAS anuais. O repasse de recursos é condicionado ao seu preenchimento.</li>
+      <li><strong>Tipificação Nacional (2009):</strong> padroniza todos os serviços socioassistenciais no Brasil — marco regulatório definitivo.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>SUAS</dt><dd>Sistema Único de Assistência Social — sistema público que organiza a política de assistência social no Brasil.</dd>
+      <dt>PSB / PSE</dt><dd>Proteção Social Básica (prevenção) e Proteção Social Especial (intervenção em violação de direitos).</dd>
+      <dt>CRAS / CREAS</dt><dd>Unidades estatais de referência territorial: CRAS para a PSB, CREAS para a PSE.</dd>
+      <dt>PAIF</dt><dd>Programa de Atenção Integral às Famílias — condição essencial ao funcionamento do CRAS.</dd>
+      <dt>CIT / CIBs</dt><dd>Instâncias de pactuação tripartite (federal-estadual-municipal) e bipartite (estadual-municipal).</dd>
+      <dt>CadSUAS</dt><dd>Cadastro Nacional do SUAS — base de dados que alimenta todos os sistemas da Rede SUAS.</dd>
+      <dt>Vigilância Social</dt><dd>Identificação territorial de riscos e vulnerabilidades para orientar ações preventivas do SUAS.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Para provas, foque na diferença entre PSB e PSE (nível de complexidade e equipamento responsável), nas competências de cada ente federado, e nos instrumentos de gestão (CIT, CIBs, Plano Decenal, Protocolo de Gestão Integrada). A Tipificação Nacional e o CadSUAS são os marcos regulatórios mais cobrados do período 2007–2009.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">SUAS</span>
+  <span class="footer-sub">MDS/SNAS · Consolidação do SUAS · Publicação 2009 · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='SUAS-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+</script>
+</body>
+</html>

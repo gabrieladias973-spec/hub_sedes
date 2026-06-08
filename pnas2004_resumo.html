@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PNAS 2004 – Política Nacional de Assistência Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f8f9fa;
+  --bg-topbar:#0A2D4E; --bg-topbar-glass:rgba(10,45,78,0.97);
+  --text-primary:#000000; --text-secondary:#333333; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#1D7A5F; --accent-dim:#155C46; --accent-glow:rgba(29,122,95,0.12); --accent-surface:#e1f5ee;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f8f9fa; --box-intro-border:#0A2D4E;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#1D7A5F;
+  --box-highlight-bg:#e1f5ee; --box-highlight-border:#1D7A5F;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#1D7A5F;
+  --box-analogy-bg:#f8f9fa; --box-analogy-border:#0A2D4E;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#1D7A5F;
+  --summary-bg:#f8f9fa; --summary-border:#1D7A5F;
+  --table-header-bg:#0A2D4E; --table-header-text:#ffffff;
+  --table-row-alt:#f8f9fa; --table-border:#cccccc; --table-hover:#e1f5ee;
+  --btn-correct:#1D7A5F; --btn-correct-bg:#e1f5ee; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --bg-page:#000000; --bg-surface:#0a0a0a; --bg-surface-raised:#141414;
+  --bg-topbar:#0A2D4E; --bg-topbar-glass:rgba(10,45,78,0.98);
+  --text-primary:#ffffff; --text-secondary:#cccccc; --text-tertiary:#999999;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#9FE1CB; --accent-dim:#5DCAA5; --accent-glow:rgba(159,225,203,0.15); --accent-surface:#04342C;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#333333; --border-soft:#1f1f1f;
+  --box-intro-bg:#050505; --box-intro-border:#9FE1CB;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#0a0a0a; --box-example-border:#9FE1CB;
+  --box-highlight-bg:#04342C; --box-highlight-border:#9FE1CB;
+  --box-glossary-bg:#0a0a0a; --box-glossary-border:#ffffff; --box-glossary-term:#9FE1CB;
+  --box-analogy-bg:#050505; --box-analogy-border:#9FE1CB;
+  --checkpoint-bg:#0a0a0a; --checkpoint-border:#9FE1CB;
+  --summary-bg:#050505; --summary-border:#9FE1CB;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#0a0a0a; --table-border:#333333; --table-hover:#04342C;
+  --btn-correct:#9FE1CB; --btn-correct-bg:#04342C; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--amber);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--amber);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">SUAS</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Assistência Social</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Imprimir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Imprimir</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Assistência Social</div>
+<h1>PNAS 2004 — POLÍTICA NACIONAL DE ASSISTÊNCIA SOCIAL</h1>
+<p class="doc-subtitle">Fundamentos, organização e gestão da Política Nacional de Assistência Social aprovada pela Resolução CNAS nº 145/2004, na perspectiva do Sistema Único de Assistência Social — SUAS.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Resolução CNAS nº 145 · 15/10/2004</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~50 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Institui o SUAS · NOB/SUAS 2005</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Contexto e Aprovação</a></li>
+    <li><a href="#s2">Definições e Conceitos Fundamentais</a></li>
+    <li><a href="#s3">Usuários da Política</a></li>
+    <li><a href="#s4">Princípios</a></li>
+    <li><a href="#s5">Diretrizes</a></li>
+    <li><a href="#s6">Objetivos</a></li>
+    <li><a href="#s7">Proteções Afiançadas — Básica e Especial</a></li>
+    <li><a href="#s8">Serviços e Equipamentos — CRAS e CREAS</a></li>
+    <li><a href="#s9">Organização do SUAS</a></li>
+    <li><a href="#s10">Matricialidade Sociofamiliar e Territorialização</a></li>
+    <li><a href="#s11">Competências por Esfera de Governo</a></li>
+    <li><a href="#s12">Instâncias de Controle e Pactuação</a></li>
+    <li><a href="#s13">Financiamento</a></li>
+    <li><a href="#s14">Recursos Humanos e Informação</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>A PNAS/2004 é a norma que instituiu o <strong>SUAS — Sistema Único de Assistência Social</strong>, reorganizando toda a política de assistência social no Brasil. Ela supera a lógica da PNAS/1998 ao introduzir conceitos como <strong>matricialidade sociofamiliar, territorialização, proteção social básica e especial</strong>, além de criar os equipamentos CRAS e CREAS. É o marco legal que transforma a assistência social de um conjunto disperso de ações em um <em>sistema único, hierarquizado e padronizado</em> em todo o território nacional.</p>
+</div>
+
+<!-- ===== CONTEXTO ===== -->
+<h2 id="s1">Contexto e Aprovação</h2>
+
+<p>A PNAS/2004 foi aprovada por unanimidade pelo <strong>CNAS</strong> em 22 de setembro de 2004, por meio da <strong>Resolução nº 145, de 15 de outubro de 2004</strong> (publicada no DOU de 28/10/2004). Sua base legal são os artigos 18, incisos I, II e IV da Lei nº 8.742/1993 (LOAS).</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Por que foi necessária uma nova PNAS?</div>
+  <p>A <strong>IV Conferência Nacional de Assistência Social (dezembro/2003)</strong> — chamada LOAS+10 — deliberou pela construção e implementação do SUAS como requisito essencial para dar efetividade à assistência social como política pública. A PNAS/1998 havia criado as bases conceituais, mas faltava um sistema que as operacionalizasse de forma padronizada, hierarquizada e com cobertura universal.</p>
+</div>
+
+<!-- ===== DEFINIÇÕES ===== -->
+<h2 id="s2">Definições e Conceitos Fundamentais</h2>
+
+<div class="glossary-box">
+  <div class="box-label">Termos Fundamentais da PNAS/2004</div>
+
+  <p class="glossary-term">Proteção Social</p>
+  <p class="glossary-def">Formas institucionalizadas que as sociedades constituem para proteger parte ou o conjunto de seus membros das vicissitudes da vida (velhice, doença, infortúnio, privações). A assistência social garante três seguranças: <strong>segurança de sobrevivência (rendimento e autonomia); de acolhida; e de convívio ou vivência familiar</strong>.</p>
+
+  <p class="glossary-term">Matricialidade Sociofamiliar</p>
+  <p class="glossary-def">Centralidade da família — em qualquer formato ou arranjo — como locus privilegiado e insubstituível de proteção e socialização primárias. A família é mediadora das relações entre sujeitos e coletividade, e deve ser apoiada para exercer suas funções de cuidado, sustento e educação. Supera a visão de família como unidade econômica de cálculo de renda per capita.</p>
+
+  <p class="glossary-term">Territorialização</p>
+  <p class="glossary-def">Reconhecimento de que riscos e vulnerabilidades se expressam no cotidiano de vida das pessoas em seus territórios específicos. A política deve partir de diagnósticos territoriais, localizar serviços próximos à população e reconhecer as desigualdades socioterritoriais entre e dentro dos municípios.</p>
+
+  <p class="glossary-term">Vigilância Social</p>
+  <p class="glossary-def">Função da assistência social que produz, sistematiza e divulga informações e indicadores territorializados das situações de vulnerabilidade e risco, permitindo ao Estado agir de forma preventiva. Inclui vigilância sobre padrões de serviços (abrigos, albergues, residências).</p>
+
+  <p class="glossary-term">SUAS — Sistema Único de Assistência Social</p>
+  <p class="glossary-def">Sistema público não-contributivo, descentralizado e participativo que organiza em todo o território nacional as ações socioassistenciais. Tem foco prioritário na família e no território como base de organização. Define serviços pela complexidade, pelo número de usuários e pelas funções desempenhadas.</p>
+
+  <p class="glossary-term">Vulnerabilidade Social</p>
+  <p class="glossary-def">Situação de risco decorrente de múltiplos fatores: perda ou fragilidade de vínculos afetivos; ciclos de vida; identidades estigmatizadas; desvantagem por deficiência; exclusão pela pobreza ou pelo acesso negado às políticas públicas; uso de substâncias psicoativas; violência; inserção precária no mercado de trabalho; estratégias de sobrevivência de risco pessoal e social.</p>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · PNAS/1998 vs. PNAS/2004</div>
+  <div class="analogy-text">
+    <p>Se a PNAS/1998 foi a <em>planta do edifício</em> — definindo o conceito e a lógica geral —, a PNAS/2004 é a <em>construção com o canteiro de obras organizado</em>: define quantos andares tem cada tipo de prédio (porte do município), quem fica em qual andar (proteção básica vs. especial), e como os andares se comunicam (referência e contrarreferência entre CRAS e CREAS).</p>
+    <span class="analogy-bridge">PNAS/1998 = princípios e diretrizes gerais. PNAS/2004 = sistema, equipamentos, níveis de complexidade e gestão padronizada.</span>
+  </div>
+</div>
+
+<!-- ===== USUÁRIOS ===== -->
+<h2 id="s3">Usuários da Política</h2>
+
+<p>Constitui o público usuário da PNAS/2004 cidadãos e grupos em situações de vulnerabilidade e riscos, especificamente:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Situação de Vulnerabilidade</th><th>Exemplos</th></tr></thead>
+  <tbody>
+    <tr><td>Fragilidade de vínculos</td><td>Vínculos afetivos, de pertencimento e sociabilidade rompidos ou ameaçados</td></tr>
+    <tr><td>Ciclos de vida</td><td>Crianças, adolescentes, jovens, adultos e idosos em situações críticas de seu ciclo vital</td></tr>
+    <tr><td>Identidades estigmatizadas</td><td>Discriminação étnica, cultural e sexual</td></tr>
+    <tr><td>Desvantagem pessoal</td><td>Pessoas com deficiência</td></tr>
+    <tr><td>Exclusão pela pobreza</td><td>Sem renda ou com acesso negado às demais políticas públicas</td></tr>
+    <tr><td>Uso de substâncias</td><td>Dependentes químicos e suas famílias</td></tr>
+    <tr><td>Violência</td><td>Vítimas de violência intrafamiliar, grupal ou social</td></tr>
+    <tr><td>Mercado informal/desemprego</td><td>Inserção precária ou não inserção no mercado de trabalho</td></tr>
+    <tr><td>Estratégias de risco</td><td>Situação de rua, mendicância, prostituição como estratégia de sobrevivência</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== PRINCÍPIOS ===== -->
+<h2 id="s4">Princípios</h2>
+
+<p>Conforme o art. 4º da LOAS, a PNAS/2004 rege-se pelos seguintes princípios democráticos:</p>
+
+<ul>
+  <li><strong>I — Supremacia das necessidades sociais</strong> sobre as exigências de rentabilidade econômica</li>
+  <li><strong>II — Universalização dos direitos sociais</strong> para tornar o destinatário alcançável pelas demais políticas públicas</li>
+  <li><strong>III — Respeito à dignidade do cidadão</strong>, à sua autonomia e ao direito a serviços de qualidade — vedando-se qualquer comprovação vexatória de necessidade</li>
+  <li><strong>IV — Igualdade de direitos</strong> no acesso ao atendimento, sem discriminação, garantindo equivalência às populações urbanas e rurais</li>
+  <li><strong>V — Divulgação ampla</strong> dos benefícios, serviços, programas e projetos, bem como dos recursos e critérios de concessão</li>
+</ul>
+
+<!-- ===== DIRETRIZES ===== -->
+<h2 id="s5">Diretrizes</h2>
+
+<p>A organização da assistência social tem as seguintes diretrizes, baseadas na CF/1988 e na LOAS:</p>
+
+<ul>
+  <li><strong>I — Descentralização político-administrativa</strong> — coordenação e normas gerais à esfera federal; coordenação e execução às esferas estadual e municipal; comando único em cada esfera, respeitando as diferenças socioterritoriais locais</li>
+  <li><strong>II — Participação da população</strong> por meio de organizações representativas na formulação das políticas e controle das ações em todos os níveis</li>
+  <li><strong>III — Primazia da responsabilidade do Estado</strong> na condução da política em cada esfera de governo</li>
+  <li><strong>IV — Centralidade na família</strong> para concepção e implementação dos benefícios, serviços, programas e projetos</li>
+</ul>
+
+<!-- ===== OBJETIVOS ===== -->
+<h2 id="s6">Objetivos</h2>
+
+<p>A PNAS/2004, realizada de forma integrada às políticas setoriais, objetiva:</p>
+<ul>
+  <li>Prover serviços, programas, projetos e benefícios de <strong>proteção social básica e/ou especial</strong> para famílias, indivíduos e grupos que deles necessitarem</li>
+  <li>Contribuir com a <strong>inclusão e equidade dos usuários e grupos específicos</strong>, ampliando o acesso aos bens e serviços socioassistenciais básicos e especiais, em áreas urbana e rural</li>
+  <li>Assegurar que as ações tenham <strong>centralidade na família</strong> e garantam a convivência familiar e comunitária</li>
+</ul>
+
+<!-- ===== PROTEÇÕES AFIANÇADAS ===== -->
+<h2 id="s7">Proteções Afiançadas — Básica e Especial</h2>
+
+<p>A PNAS/2004 organiza a assistência social em níveis hierarquizados de proteção, definidos pela complexidade das situações atendidas:</p>
+
+<h3>Proteção Social Básica (PSB)</h3>
+<p>Destina-se à população que vive em situação de vulnerabilidade social decorrente da <strong>pobreza, privação e/ou fragilização de vínculos afetivos</strong>. Objetiva <strong>prevenir situações de risco</strong> por meio do desenvolvimento de potencialidades e fortalecimento de vínculos familiares e comunitários — quando esses vínculos ainda não foram rompidos.</p>
+
+<div class="box example-box">
+  <div class="box-label">Serviços de Proteção Social Básica</div>
+  <ul>
+    <li>Programa de Atenção Integral às Famílias (PAIF)</li>
+    <li>Programa de inclusão produtiva e projetos de enfrentamento da pobreza</li>
+    <li>Centros de Convivência para Idosos</li>
+    <li>Serviços para crianças de 0 a 6 anos — fortalecimento de vínculos e socialização</li>
+    <li>Serviços socioeducativos para crianças, adolescentes e jovens de 6 a 24 anos</li>
+    <li>Programas de protagonismo juvenil e fortalecimento de vínculos</li>
+    <li>Centros de informação e educação para o trabalho (jovens e adultos)</li>
+    <li>Benefícios de Prestação Continuada (BPC) e Benefícios Eventuais</li>
+  </ul>
+</div>
+
+<h3>Proteção Social Especial (PSE)</h3>
+<p>Destinada a famílias e indivíduos em situação de <strong>risco pessoal e social</strong> por ocorrência de abandono, maus tratos, abuso sexual, uso de substâncias psicoativas, cumprimento de medidas socioeducativas, situação de rua ou trabalho infantil. Difere da básica porque atende <strong>situações de direitos já violados</strong>.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Nível</th><th>Característica</th><th>Serviços</th></tr></thead>
+  <tbody>
+    <tr><td>Média Complexidade</td><td>Direitos violados, mas vínculos familiar e comunitário ainda não rompidos. Atendimento especializado e monitorado.</td><td>Orientação e apoio sociofamiliar; Plantão Social; Abordagem de Rua; Cuidado no Domicílio; Reabilitação na comunidade; Medidas socioeducativas em meio aberto (PSC e LA); CREAS</td></tr>
+    <tr><td>Alta Complexidade</td><td>Proteção integral — sem referência familiar ou comunitária. Necessidade de acolhimento institucional.</td><td>Atendimento Integral Institucional; Casa Lar; República; Casa de Passagem; Albergue; Família Substituta; Família Acolhedora; Medidas socioeducativas restritivas; Trabalho Protegido</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== CRAS E CREAS ===== -->
+<h2 id="s8">Serviços e Equipamentos — CRAS e CREAS</h2>
+
+<h3>CRAS — Centro de Referência da Assistência Social</h3>
+<p>Unidade pública estatal de <strong>base territorial</strong>, localizada em áreas de vulnerabilidade social, que abrange até <strong>1.000 famílias/ano</strong>. É a porta de entrada da proteção social básica. Executa serviços, organiza e coordena a rede socioassistencial local.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">CRAS — Funções Essenciais</div>
+  <ul>
+    <li>Desenvolver o <strong>PAIF</strong> (Programa de Atenção Integral às Famílias) — referência territorializada</li>
+    <li>Prestar informação e orientação à população de sua área de abrangência</li>
+    <li>Mapear e organizar a rede socioassistencial de proteção básica do território</li>
+    <li>Encaminhar para outras políticas públicas (intersetorialidade)</li>
+    <li>Manter vigilância da exclusão social com produção de indicadores</li>
+    <li>Promover inserção das famílias nos serviços de assistência social local</li>
+  </ul>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label">Regra Crítica — Número mínimo de CRAS por porte</div>
+  <p class="absurd-scenario">A NOB/SUAS estabelece o número mínimo de CRAS exigido para habilitação nos níveis de gestão básica e plena, conforme o porte do município:</p>
+  <p class="absurd-anchor">Pequeno Porte I: ≥ 1 CRAS / 2.500 famílias · Pequeno Porte II: ≥ 1 CRAS / 3.500 famílias · Médio Porte: ≥ 2 CRAS / 5.000 famílias cada · Grande Porte: ≥ 4 CRAS / 5.000 famílias cada · Metrópoles: ≥ 8 CRAS / 5.000 famílias cada</p>
+</div>
+
+<h3>CREAS — Centro de Referência Especializado da Assistência Social</h3>
+<p>Equipamento da proteção social especial de <strong>média complexidade</strong>. Atende famílias e indivíduos cujos direitos foram violados, mas cujos vínculos familiares e comunitários ainda não foram rompidos. Requer maior estruturação técnico-operacional e acompanhamento sistemático.</p>
+
+<!-- ===== SUAS ===== -->
+<h2 id="s9">Organização do SUAS</h2>
+
+<p>O SUAS organiza os serviços socioassistenciais segundo três referências:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Referência</th><th>O que é</th></tr></thead>
+  <tbody>
+    <tr><td>Vigilância Social</td><td>Produção e sistematização de informações, indicadores e índices territorializados de vulnerabilidade e risco. Inclui vigilância sobre padrões de abrigos, albergues e moradias provisórias.</td></tr>
+    <tr><td>Proteção Social</td><td>Conjunto hierarquizado de seguranças: sobrevivência (renda e autonomia), convívio (vínculos), acolhida (necessidades básicas e abrigo) e desenvolvimento da autonomia.</td></tr>
+    <tr><td>Defesa Social e Institucional</td><td>Garantia do acesso dos usuários ao conhecimento de seus direitos socioassistenciais e sua defesa por meio de ouvidorias, centros de apoio sociojurídico e conselhos de direitos.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Os <strong>eixos estruturantes da gestão do SUAS</strong> são: matricialidade sociofamiliar; descentralização político-administrativa e territorialização; novas bases para a relação Estado e Sociedade Civil; financiamento; controle social; participação popular; política de recursos humanos; e informação, monitoramento e avaliação.</p>
+
+<h3>Classificação dos Municípios</h3>
+<p>A PNAS/2004 classifica os municípios por porte para fins de organização da rede de serviços:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Porte</th><th>Habitantes</th><th>Famílias (aprox.)</th><th>Características-chave</th></tr></thead>
+  <tbody>
+    <tr><td>Pequeno I</td><td>Até 20.000</td><td>Até 5.000</td><td>45% pop. rural; rede simplificada de PSB; PSE via referência regional ou consórcios</td></tr>
+    <tr><td>Pequeno II</td><td>20.001–50.000</td><td>5.000–10.000</td><td>30% pop. rural; mantém características do Pequeno I</td></tr>
+    <tr><td>Médio</td><td>50.001–100.000</td><td>10.000–25.000</td><td>Maior autonomia econômica; rede ampla de PSB; PSE pode ser regional</td></tr>
+    <tr><td>Grande</td><td>101.000–900.000</td><td>25.000–250.000</td><td>Rede complexa: PSB + PSE média e alta complexidade próprias</td></tr>
+    <tr><td>Metrópole</td><td>Acima de 900.000</td><td>Acima de 250.000</td><td>Territórios de fronteira; referência regional para municípios do entorno; rede mais complexa</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== MATRICIALIDADE E TERRITÓRIO ===== -->
+<h2 id="s10">Matricialidade Sociofamiliar e Territorialização</h2>
+
+<p>A <strong>matricialidade sociofamiliar</strong> reconhece que a família — independentemente de seu formato — é o núcleo social básico de acolhida, convívio, autonomia, sustentabilidade e protagonismo. A assistência social não atende apenas o indivíduo: atende a família como unidade de referência.</p>
+
+<p>Implicações práticas da matricialidade:</p>
+<ul>
+  <li>A família deve ser apoiada para prover sustento, guarda e educação de crianças e adolescentes, e proteção de idosos e pessoas com deficiência</li>
+  <li>Qualquer intervenção no grupo familiar precisa considerar sua singularidade, seus recursos simbólicos e afetivos</li>
+  <li>A concessão de benefícios considera a impossibilidade <em>tanto do beneficiário quanto da família</em> de prover a manutenção</li>
+</ul>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Territorialização na Prática</div>
+  <div class="analogy-text">
+    <p>Imagine uma cidade com bairros ricos ao norte e favelas ao sul. Colocar o CRAS no centro geográfico da cidade não resolve — as famílias mais vulneráveis moram no sul e têm menos mobilidade. Territorializar significa instalar o CRAS <em>dentro</em> dos territórios de maior vulnerabilidade, onde as pessoas vivem, não onde seria conveniente para o Estado.</p>
+    <span class="analogy-bridge">Territorializar ≠ descentralizar geograficamente de forma uniforme. É localizar os serviços onde a vulnerabilidade se concentra, usando diagnósticos territoriais como base.</span>
+  </div>
+</div>
+
+<!-- ===== COMPETÊNCIAS ===== -->
+<h2 id="s11">Competências por Esfera de Governo</h2>
+
+<h3>União — Gestão Federal</h3>
+<ul>
+  <li>Coordenar a formulação e implementação da PNAS/2004 e do SUAS</li>
+  <li>Regular e co-financiar serviços e programas de proteção básica e especial</li>
+  <li>Coordenar a gestão do BPC, articulando-o aos demais serviços</li>
+  <li>Gerir o Fundo Nacional de Assistência Social (FNAS)</li>
+  <li>Propor critérios de partilha e transferência de recursos</li>
+  <li>Apoiar técnica e financeiramente estados e municípios</li>
+  <li>Formular política para recursos humanos — capacitação sistemática e continuada</li>
+  <li>Instituir Sistema Nacional de Informação, Monitoramento e Avaliação</li>
+</ul>
+
+<h3>Estados — Gestão Estadual</h3>
+<ul>
+  <li>Organizar, coordenar e monitorar o Sistema Estadual de Assistência Social</li>
+  <li>Prestar apoio técnico aos municípios na estruturação de seus sistemas municipais</li>
+  <li>Coordenar o processo de revisão do BPC no estado</li>
+  <li>Estruturar a Secretaria Executiva da CIB com profissional de nível superior</li>
+  <li>Co-financiar a proteção social básica (informação, monitoramento, capacitação)</li>
+  <li>Gerir recursos de municípios não habilitados</li>
+  <li>Coordenar e co-financiar ações regionalizadas na PSE de média e alta complexidade</li>
+  <li>Promover implantação e co-financiamento de consórcios públicos</li>
+</ul>
+
+<h3>Municípios — Níveis de Gestão</h3>
+<p>A NOB/SUAS define três níveis de gestão municipal, com responsabilidades e incentivos distintos:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Nível</th><th>Escopo</th><th>Requisito-chave</th></tr></thead>
+  <tbody>
+    <tr><td>Gestão Inicial</td><td>Recebe recursos conforme série histórica. Cumpre art. 30 da LOAS (Conselho, Plano e Fundo). Aloca recursos próprios no Fundo.</td><td>CMAS, FMAS e Plano Municipal funcionando</td></tr>
+    <tr><td>Gestão Básica</td><td>Assume gestão total da Proteção Social Básica. Organiza e executa serviços de PSB no território referenciado.</td><td>CRAS implantado + CMDCA + CT + equipe de SS para BPC + Plano de inserção do BPC</td></tr>
+    <tr><td>Gestão Plena</td><td>Assume gestão total da Assistência Social — PSB e PSE. Instala sistema municipal de monitoramento e avaliação.</td><td>Tudo da Gestão Básica + CRAS + capacidade instalada PSE alta complexidade + política de RH com carreira</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== INSTÂNCIAS ===== -->
+<h2 id="s12">Instâncias de Controle e Pactuação</h2>
+
+<h3>Instâncias de Deliberação — Conselhos</h3>
+
+<div class="glossary-box">
+  <div class="box-label">Conselhos de Assistência Social</div>
+  <p class="glossary-term">CNAS — Conselho Nacional de Assistência Social</p>
+  <p class="glossary-def">Instância deliberativa máxima. Composição paritária (governo + sociedade civil). Aprova, fiscaliza e avalia a PNAS. Delibera sobre regulações da NOB/SUAS. Instância de recurso da CIT.</p>
+  <p class="glossary-term">CEAS / CMAS</p>
+  <p class="glossary-def">Conselhos Estaduais e Municipais. Caráter permanente, composição paritária. Aprovam os Planos de Assistência Social; aprovam propostas orçamentárias dos Fundos; fiscalizam e avaliam a política; aprovam o Relatório Anual de Gestão.</p>
+  <p class="glossary-term">Conferências de Assistência Social</p>
+  <p class="glossary-def">Instâncias deliberativas com atribuição de avaliar a política e propor diretrizes para o aperfeiçoamento do SUAS. Realizadas periodicamente em cada esfera de governo.</p>
+</div>
+
+<h3>Instâncias de Pactuação — Comissões Intergestores</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Instância</th><th>Âmbito</th><th>Composição</th><th>Função</th></tr></thead>
+  <tbody>
+    <tr><td>CIT — Comissão Intergestores Tripartite</td><td>Federal</td><td>5 rep. União + 5 rep. estados (FONSEAS) + 5 rep. municípios (CONGEMAS)</td><td>Pactuar estratégias do SUAS; critérios de partilha e transferência de recursos; habilitação e desabilitação de estados</td></tr>
+    <tr><td>CIB — Comissão Intergestores Bipartite</td><td>Estadual</td><td>3 rep. estado + 6 gestores municipais (por porte e região)</td><td>Habilitar e desabilitar municípios; pactuar organização do Sistema Estadual; distribuir recursos estaduais e federais</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção — Diferença entre Conselhos e Comissões</div>
+  <p>Os <strong>Conselhos</strong> têm caráter <em>deliberativo</em>: aprovam, fiscalizam e avaliam. As <strong>Comissões Intergestores</strong> têm caráter de <em>pactuação</em>: negociam aspectos operacionais da gestão. As pactuações das CIBs e CIT devem ser encaminhadas aos Conselhos para conhecimento e/ou aprovação.</p>
+</div>
+
+<!-- ===== FINANCIAMENTO ===== -->
+<h2 id="s13">Financiamento</h2>
+
+<p>O financiamento do SUAS é de co-responsabilidade das três esferas de governo e se efetiva pelos <strong>Fundos de Assistência Social</strong> (FNAS, FEAS, FMAS). O modelo superou a lógica convenial e instituiu o <strong>repasse automático fundo a fundo</strong> para serviços continuados.</p>
+
+<h3>Pisos de Proteção Social (NOB/SUAS)</h3>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Piso</th><th>Nível</th><th>Para quê</th></tr></thead>
+  <tbody>
+    <tr><td>Piso Básico Fixo</td><td>PSB</td><td>Atendimento à família no âmbito do CRAS — custo médio do serviço dividido pelas famílias referenciadas</td></tr>
+    <tr><td>Piso Básico de Transição</td><td>PSB</td><td>Manutenção dos serviços da rede já financiada, enquanto migra para o novo modelo</td></tr>
+    <tr><td>Piso Básico Variável</td><td>PSB</td><td>Recursos novos para prioridades nacionais pactuadas (ex.: Agente Jovem, revisão do BPC)</td></tr>
+    <tr><td>Piso Transição Média Complexidade</td><td>PSE Média</td><td>Manutenção dos serviços já financiados pelo FNAS nesse nível</td></tr>
+    <tr><td>Piso Fixo Média Complexidade</td><td>PSE Média</td><td>Custeio dos CREAS — serviços especializados de referência</td></tr>
+    <tr><td>Piso Alta Complexidade I</td><td>PSE Alta</td><td>Manutenção da rede de acolhimento — Casas Lares, Albergues, Abrigos</td></tr>
+    <tr><td>Piso Alta Complexidade II</td><td>PSE Alta</td><td>Atendimentos específicos de alta vulnerabilidade (situação de rua, dependência grave)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Critérios de Partilha de Recursos</div>
+  <p>A distribuição dos recursos do FNAS entre estados e municípios considera: <strong>porte populacional</strong> do município; <strong>taxa de vulnerabilidade social</strong> por estado (proporção da população com ao menos uma das condições de vulnerabilidade definidas na NOB); e <strong>cruzamento de indicadores socioterritoriais e de cobertura</strong> (receita corrente líquida per capita e recursos já repassados pelo FNAS per capita). O objetivo é equalizar, priorizar e projetar a universalização da cobertura.</p>
+</div>
+
+<!-- ===== RH E INFORMAÇÃO ===== -->
+<h2 id="s14">Recursos Humanos e Informação</h2>
+
+<h3>Política de Recursos Humanos</h3>
+<p>A PNAS/2004 reconhece que a precarização do trabalho (vínculos temporários, sem carreira) compromete a qualidade dos serviços. Propõe:</p>
+<ul>
+  <li>Plano de Carreira específico para servidores da assistência social</li>
+  <li>NOB de Recursos Humanos (a ser elaborada) definindo composição de equipes e qualificação</li>
+  <li>Capacitação sistemática e continuada de gestores, trabalhadores e conselheiros</li>
+  <li>Valorização do concurso público e combate à precarização</li>
+</ul>
+
+<h3>Informação, Monitoramento e Avaliação</h3>
+<p>Um dos eixos centrais do SUAS. A PNAS/2004 propõe a criação de um <strong>Sistema Nacional de Informação da Assistência Social</strong>, usando tecnologia da informação para:</p>
+<ul>
+  <li>Construir indicadores territorializados de vulnerabilidade e risco</li>
+  <li>Alimentar o <strong>SUAS-WEB</strong> (sistema de informação gerencial)</li>
+  <li>Monitorar e avaliar o impacto das ações sobre as condições de vida dos usuários</li>
+  <li>Fortalecer o controle social com dados públicos e acessíveis</li>
+</ul>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<!-- ===== CHECKPOINT ===== -->
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · PNAS 2004
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">O CRAS é o equipamento da proteção social especial de média complexidade, responsável por atender famílias com vínculos rompidos que necessitam de acompanhamento especializado.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>CRAS</strong> é o equipamento da <em>proteção social básica</em> — não da especial. É uma unidade pública estatal de base territorial localizada em áreas de vulnerabilidade social, que organiza e executa o PAIF. O equipamento da proteção social especial de média complexidade é o <strong>CREAS</strong> — Centro de Referência Especializado da Assistência Social.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Segundo a PNAS/2004, a proteção social especial de alta complexidade destina-se a famílias e indivíduos que necessitam ser retirados de seu núcleo familiar ou comunitário, garantindo proteção integral com moradia, alimentação, higienização e trabalho protegido.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> A proteção de alta complexidade é exatamente aquela que garante proteção integral (moradia, alimentação, higienização e trabalho protegido) a pessoas sem referência familiar ou em situação de ameaça, que precisam ser afastadas do núcleo familiar. Os serviços incluem Casa Lar, República, Albergue, Família Acolhedora, medidas socioeducativas restritivas e Trabalho Protegido.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">As Comissões Intergestores Bipartite (CIB) têm caráter deliberativo, podendo aprovar ou reprovar as políticas de assistência social definidas pelos respectivos conselhos estaduais.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> As CIBs têm caráter de <strong>pactuação</strong> — não de deliberação. Deliberação é competência dos Conselhos (CEAS, CNAS). As CIBs negociam aspectos operacionais da gestão e suas pactuações precisam ser encaminhadas ao Conselho Estadual para conhecimento e/ou aprovação. As CIBs não substituem os conselhos nem têm autoridade para reprovar políticas definidas por eles.</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">De acordo com a PNAS/2004, o BPC — Benefício de Prestação Continuada — é destinado ao idoso com 65 anos ou mais e à pessoa com deficiência que comprovem não ter meios para prover sua subsistência ou de tê-la suprida por sua família.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> A PNAS/2004 — ao contrário da PNAS/1998 que usava 67 anos — já incorpora a mudança trazida pelo Estatuto do Idoso (Lei nº 10.741/2003), que reduziu a idade para <strong>65 anos</strong>. O BPC compõe o nível de proteção social básica e seu repasse é efetuado diretamente ao beneficiário pelo Governo Federal, presente em todos os municípios.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="B">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Sobre a organização do SUAS e os equipamentos da política de assistência social, assinale a alternativa CORRETA:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) A proteção social especial de média complexidade atende exclusivamente a indivíduos cujos vínculos familiares foram definitivamente rompidos, exigindo acolhimento institucional.<br>
+      (B) O CRAS é responsável pela gestão territorial da proteção social básica, devendo estar localizado em áreas de maior vulnerabilidade social, e não no centro geográfico do município.<br>
+      (C) Municípios de pequeno porte I devem estruturar tanto a proteção social básica quanto a especial de média e alta complexidade de forma autônoma, sem possibilidade de consórcios.<br>
+      (D) A vigilância social é uma função exclusiva do governo federal, que centraliza a produção de indicadores de vulnerabilidade para orientar as ações dos estados e municípios.<br>
+      (E) Segundo a NOB/SUAS, a habilitação em Gestão Plena dispensa o município de implantar Centros de Referência da Assistência Social, bastando a existência de unidades da rede conveniada.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','B')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','B')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','B')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','B')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','B')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: B</strong></p>
+      <p><strong>(A) Errada.</strong> A PSE de média complexidade atende famílias cujos vínculos <em>ainda não foram rompidos</em>. Quando os vínculos estão rompidos e há necessidade de afastamento do núcleo familiar, a competência é da alta complexidade.</p>
+      <p><strong>(B) Correta.</strong> O CRAS deve estar localizado em áreas de maior vulnerabilidade social — essa é a lógica da territorialização. Colocar o CRAS no centro geográfico do município contraria o princípio da proximidade com o cotidiano de vida das famílias vulneráveis.</p>
+      <p><strong>(C) Errada.</strong> Municípios de pequeno porte I devem ter rede de PSB, mas os serviços de PSE podem ser ofertados como referência regional pelo estado, mediante consórcios intermunicipais ou por municípios de maior porte — exatamente para municípios que não têm demanda ou capacidade própria.</p>
+      <p><strong>(D) Errada.</strong> A vigilância social é uma função da assistência social em todos os níveis — municipal, estadual e federal. O município deve produzir indicadores territorializados da sua área de abrangência; o estado, dos seus municípios; e a União coordena o sistema nacional.</p>
+      <p><strong>(E) Errada.</strong> A implantação de CRAS é requisito expresso para a habilitação tanto na Gestão Básica quanto na Plena — com número mínimo definido pelo porte do município. Sem CRAS, não há habilitação.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais da PNAS/2004 — Resolução CNAS nº 145/15.10.2004)</p>
+</div>
+
+<!-- ===== RESUMO ===== -->
+<h2 id="resumo-final">Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>SUAS:</strong> sistema público não-contributivo, descentralizado e participativo. Organiza em todo território nacional as ações socioassistenciais com foco na família e no território.</li>
+      <li><strong>Matricialidade sociofamiliar:</strong> a família (em qualquer formato) é a unidade de referência — não o indivíduo isolado. Política atende necessidades das famílias, não apenas dos necessitados.</li>
+      <li><strong>Territorialização:</strong> serviços instalados onde a vulnerabilidade se concentra, a partir de diagnósticos territoriais — não no centro geográfico da cidade.</li>
+      <li><strong>PSB:</strong> previne risco, fortalece vínculos <em>ainda não rompidos</em>. Equipamento: CRAS. Serve famílias em vulnerabilidade pela pobreza e fragilidade de vínculos.</li>
+      <li><strong>PSE Média:</strong> atende direitos violados, vínculos <em>não rompidos</em>. Equipamento: CREAS. Exige acompanhamento especializado e monitorado.</li>
+      <li><strong>PSE Alta:</strong> proteção integral — afastamento do núcleo. Vínculos <em>rompidos</em>. Equipamentos: Casa Lar, Abrigo, Família Acolhedora, Albergue.</li>
+      <li><strong>BPC (PNAS/2004):</strong> idoso ≥ 65 anos ou PCD — 1 SM mensal. Proteção social básica. Comprovação de não ter meios o beneficiário nem a família.</li>
+      <li><strong>Conselhos:</strong> caráter <em>deliberativo</em> (aprovam, fiscalizam). CIBs/CIT: caráter de <em>pactuação</em> (negociam operacional). São funções complementares, não concorrentes.</li>
+      <li><strong>CRAS por porte:</strong> PP1=1/2.500fam · PP2=1/3.500fam · Médio=2/5.000fam · Grande=4/5.000fam · Metrópole=8/5.000fam.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>CRAS</dt><dd>Centro de Referência da Assistência Social — porta de entrada da PSB, base territorial, executa o PAIF.</dd>
+      <dt>CREAS</dt><dd>Centro de Referência Especializado — PSE média complexidade, atende direitos violados com vínculos não rompidos.</dd>
+      <dt>Matricialidade Sociofamiliar</dt><dd>Centralidade da família (em qualquer arranjo) como unidade de referência da política.</dd>
+      <dt>Territorialização</dt><dd>Localização de serviços onde a vulnerabilidade se concentra, com base em diagnósticos territoriais.</dd>
+      <dt>Vigilância Social</dt><dd>Produção de indicadores de vulnerabilidade e risco; também monitora padrões de serviços de acolhimento.</dd>
+      <dt>Pisos de Proteção</dt><dd>Mecanismo de transferência fundo-a-fundo conforme a complexidade dos serviços — supera o modelo convenial per capita.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Conexão PNAS/1998 → PNAS/2004:</strong> A PNAS/1998 criou a lógica de direito, centralidade na família e descentralização. A PNAS/2004 transformou esses princípios em sistema operacional: criou os equipamentos (CRAS e CREAS), definiu os níveis de complexidade (PSB, PSE média e alta), estruturou os pisos de financiamento e estabeleceu os níveis de gestão municipal. A lógica essencial é a mesma — mas com capacidade operacional totalmente diferente.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">PNAS 2004</span>
+  <span class="footer-sub">Resolução CNAS nº 145 · 15 de outubro de 2004 · Base do SUAS</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='PNAS2004-Resumo.html';
+  a.click();
+}
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+</script>
+</body>
+</html>

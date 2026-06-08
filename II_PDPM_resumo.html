@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>II PDPM — Plano Distrital de Políticas para Mulheres 2020-2023</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f8f4fa;
+  --bg-topbar:#4A1259; --bg-topbar-glass:rgba(74,18,89,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#7A2E8F; --accent-dim:#4A1259; --accent-glow:rgba(122,46,143,0.12); --accent-surface:#f3e8f7;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f8f4fa; --box-intro-border:#4A1259;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#7A2E8F;
+  --box-highlight-bg:#f3e8f7; --box-highlight-border:#7A2E8F;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#7A2E8F;
+  --box-analogy-bg:#f8f4fa; --box-analogy-border:#4A1259;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#7A2E8F;
+  --summary-bg:#f8f4fa; --summary-border:#7A2E8F;
+  --table-header-bg:#4A1259; --table-header-text:#ffffff;
+  --table-row-alt:#f8f4fa; --table-border:#cccccc; --table-hover:#f3e8f7;
+  --btn-correct:#7A2E8F; --btn-correct-bg:#f3e8f7; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#4A1259; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0c0010; --bg-surface:#120016; --bg-surface-raised:#1a0420;
+  --bg-topbar:#4A1259; --bg-topbar-glass:rgba(74,18,89,0.98);
+  --text-primary:#ffffff; --text-secondary:#e6d6ec; --text-tertiary:#a88bb0;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#D08BE8; --accent-dim:#A855C9; --accent-glow:rgba(208,139,232,0.15); --accent-surface:#33093d;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1542; --border-soft:#221026;
+  --box-intro-bg:#0c0010; --box-intro-border:#D08BE8;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120016; --box-example-border:#D08BE8;
+  --box-highlight-bg:#33093d; --box-highlight-border:#D08BE8;
+  --box-glossary-bg:#120016; --box-glossary-border:#ffffff; --box-glossary-term:#D08BE8;
+  --box-analogy-bg:#0c0010; --box-analogy-border:#D08BE8;
+  --checkpoint-bg:#120016; --checkpoint-border:#D08BE8;
+  --summary-bg:#0c0010; --summary-border:#D08BE8;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120016; --table-border:#3a1542; --table-hover:#33093d;
+  --btn-correct:#D08BE8; --btn-correct-bg:#33093d; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#D08BE8; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #B14FD8}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#B14FD8;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;gap:6px;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:600px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.lesson-progress{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-radius:8px;padding:16px 24px;margin-bottom:36px;display:flex;align-items:center;gap:16px}
+.lesson-progress-label{font-weight:700;font-size:.75em;text-transform:uppercase;letter-spacing:2px;color:var(--text-primary);white-space:nowrap}
+.lesson-progress-bar{flex:1;height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden}
+.lesson-progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.lesson-progress-text{font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--text-tertiary);white-space:nowrap}
+
+.checklist-section{margin:40px 0}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:9px 12px;border-radius:6px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--border-soft)}
+.check-item:hover{background:var(--bg-surface-raised)}
+.check-item input[type="checkbox"]{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin-top:3px}
+.check-item label{font-size:.93em;cursor:pointer;line-height:1.5;color:var(--text-secondary)}
+.check-item.done label{text-decoration:line-through;color:var(--text-tertiary)}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">II PDPM</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Políticas para Mulheres · DF</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Políticas Públicas para Mulheres</div>
+<h1>II PDPM — PLANO DISTRITAL DE POLÍTICAS PARA MULHERES</h1>
+<p class="doc-subtitle">II Plano Distrital de Políticas para Mulheres (2020-2023): instrumento de planejamento da Secretaria de Estado da Mulher do DF, estruturado em 9 eixos com objetivos, ações e metas para a promoção da igualdade de gênero.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Secretaria da Mulher do DF · Vigência 2020-2023</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~45 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> 9 eixos</span>
+</div>
+
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Objetivos</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar-top" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label-top">0 / 15</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s0">Contexto, Base Legal e Estrutura</a></li>
+    <li><a href="#e1">Eixo 1 — Trabalho e Autonomia Econômica</a></li>
+    <li><a href="#e2">Eixo 2 — Educação para a Igualdade</a></li>
+    <li><a href="#e3">Eixo 3 — Saúde Integral das Mulheres</a></li>
+    <li><a href="#e4">Eixo 4 — Enfrentamento à Violência</a></li>
+    <li><a href="#e5">Eixo 5 — Participação no Poder e Decisão</a></li>
+    <li><a href="#e6">Eixo 6 — Igualdade para Mulheres Rurais</a></li>
+    <li><a href="#e7">Eixo 7 — Cultura, Esporte, Comunicação e Mídia</a></li>
+    <li><a href="#e8">Eixo 8 — Racismo, Sexismo, Lesbofobia e Transfobia</a></li>
+    <li><a href="#e9">Eixo 9 — Jovens, Idosas e Mulheres com Deficiência</a></li>
+    <li><a href="#sintese">Síntese dos 9 Eixos</a></li>
+    <li><a href="#checklist">Checklist — Objetivos de Aprendizagem</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O II PDPM não é uma lei — é um <strong>plano de governo</strong> que organiza, em <strong>9 eixos temáticos</strong>, as ações e metas do GDF para reduzir as desigualdades de gênero até 2023. Cada eixo segue a mesma lógica: contexto e dados → objetivo geral → objetivos específicos → metas → ações governamentais com órgão responsável e ODS vinculado. Vamos percorrer os 9 eixos e os pontos que estruturam o plano.</p>
+</div>
+
+<!-- ===== S0 CONTEXTO ===== -->
+<h2 id="s0">Contexto, Base Legal e Estrutura</h2>
+
+<p>O II PDPM nasceu do diálogo entre o Governo do Distrito Federal e a sociedade civil, conduzido pela <strong>Secretaria de Estado da Mulher</strong>. É a continuidade do I Plano e tem por objetivo central efetivar políticas de <strong>promoção da igualdade e valorização das diversidades entre as mulheres</strong>.</p>
+
+<div class="art-line"><span class="art-badge">Base</span><span>O plano foi ancorado em três marcos: os <strong>17 ODS da ONU</strong> (em especial o <strong>ODS 5 — igualdade de gênero</strong>), o <strong>PPA-DF 2020-2023</strong> e o <strong>PEDF 2020-2060</strong>.</span></div>
+
+<div class="glossary-box">
+  <div class="box-label">Como o plano foi construído</div>
+  <p class="glossary-term"><span class="art-badge">1</span> Documentos referenciais</p>
+  <p class="glossary-def">Levantamento das ações do PPA e do Plano Estratégico do DF, validadas pelas secretarias responsáveis.</p>
+  <p class="glossary-term"><span class="art-badge">2</span> Comissão do Conselho</p>
+  <p class="glossary-def">Comissão especial do Conselho dos Direitos da Mulher do DF (CDM) analisou e sugeriu propostas à versão preliminar.</p>
+  <p class="glossary-term"><span class="art-badge">3</span> Consulta pública</p>
+  <p class="glossary-def">Pesquisa on-line (10/mar a 21/abr), em parceria com a CODEPLAN, aberta a qualquer pessoa para indicar prioridades.</p>
+  <p class="glossary-term"><span class="art-badge">4</span> Oficinas de escuta</p>
+  <p class="glossary-def">Escutas virtuais com mulheres de grupos vulneráveis: indígenas, quilombolas, negras, rurais, ciganas, LBTs, em situação de rua e com deficiência.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">A ideia-mestra: transversalidade</div>
+  <p>As políticas de gênero não cabem em uma só secretaria. O II PDPM exige <strong>parceria entre todos os órgãos do GDF e a sociedade civil</strong> — o monitoramento é feito pela <strong>CODEPLAN</strong> e pelo <strong>Conselho dos Direitos da Mulher</strong>.</p>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · O plano como um plano de contas</div>
+  <div class="analogy-text">
+    <p>Pense no II PDPM como um <strong>plano de contas com 9 grupos</strong>. Cada eixo é uma "conta sintética" (o tema), e dentro dela ficam as "contas analíticas": objetivo geral, objetivos específicos, metas e ações. Cada ação tem um "centro de custo" (o órgão responsável) e um "código de referência" (o ODS vinculado). Quem audita o lançamento? CODEPLAN e o Conselho da Mulher.</p>
+    <span class="analogy-bridge">Entender essa hierarquia destrava o plano inteiro: eixo → objetivo → meta → ação → responsável → ODS.</span>
+  </div>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span></hr>
+
+<!-- ===== EIXO 1 ===== -->
+<h2 id="e1">Eixo 1 — Trabalho e Autonomia Econômica</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 1</span><span>Igualdade no Mundo do Trabalho e Autonomia Econômica.</span></div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> O dado que justifica o eixo</div>
+  <p>Na PED/DF (maio/2021), o desemprego total era de 19,4%. Mas separado por sexo: homens 16,5% e <strong>mulheres 22,6%</strong>. Mesmo com mais escolaridade, as mulheres recebem menos e acumulam o trabalho doméstico não remunerado.</p>
+</div>
+
+<h4>Objetivo Geral</h4>
+<p>Promover a autonomia econômica das mulheres e a igualdade no mundo do trabalho — no acesso e na remuneração — eliminando a divisão sexual do trabalho, com ênfase na erradicação da pobreza.</p>
+
+<h4>Pontos-chave (objetivos e metas)</h4>
+<ul>
+  <li>Ampliar a inserção das mulheres no mercado e a igualdade salarial.</li>
+  <li>Qualificação profissional e fomento ao empreendedorismo feminino (Rede Sou Mais Mulher).</li>
+  <li>Acesso a crédito, economia solidária e espaços colaborativos de comercialização.</li>
+  <li><strong>Metas:</strong> reduzir a taxa de desemprego feminino; ampliar mulheres em formação profissional; aumentar parcerias e vagas em feiras/lojas.</li>
+</ul>
+
+<!-- ===== EIXO 2 ===== -->
+<h2 id="e2">Eixo 2 — Educação para a Igualdade</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 2</span><span>Educação para a Igualdade.</span></div>
+
+<p>O DF tem a maior taxa de mulheres com ensino superior do país (<strong>28,7%</strong>, quase o dobro da média nacional de 16,5%). O eixo trata a escola como lugar estratégico para uma educação não sexista e plural.</p>
+
+<h4>Objetivo Geral</h4>
+<p>Reduzir a desigualdade de gênero e enfrentar o preconceito étnico-racial, religioso, geracional e por orientação sexual/identidade de gênero, por meio da formação de gestores, profissionais e estudantes em todos os níveis.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Acesso e permanência de meninas e mulheres na educação formal (atenção a grupos de baixa escolaridade).</li>
+  <li>Diversidade na política educacional e prevenção da violência de gênero, sexual e doméstica no currículo.</li>
+  <li>Formação continuada com escuta qualificada, atitude protetiva e atuação em rede.</li>
+  <li><strong>Interseccionalidade</strong> como eixo orientador das ações.</li>
+</ul>
+
+<!-- ===== EIXO 3 ===== -->
+<h2 id="e3">Eixo 3 — Saúde Integral das Mulheres</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 3</span><span>Saúde Integral das Mulheres, Direitos Sexuais e Reprodutivos.</span></div>
+
+<p>O eixo incorpora a <strong>PNAISM</strong> (Política Nacional de Atenção Integral à Saúde da Mulher, 2004) e o SUS, consolidando avanços em direitos sexuais e reprodutivos.</p>
+
+<h4>Objetivo Geral</h4>
+<p>Assegurar o direito à saúde integral, sexual e reprodutiva das mulheres, com qualidade, equidade e sem discriminação — respeitadas raça, etnia, geração, classe, orientação sexual, identidade de gênero e deficiência.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Saúde física e mental em todas as fases da vida; enfrentamento de doenças crônicas e transtornos mentais.</li>
+  <li>Atenção humanizada ao planejamento reprodutivo, pré-natal, parto e puerpério.</li>
+  <li>Redução da gravidez na adolescência e prevenção de DST/IST.</li>
+  <li>Prevenção, diagnóstico e tratamento do câncer de mama e de colo de útero.</li>
+</ul>
+
+<!-- ===== EIXO 4 ===== -->
+<h2 id="e4">Eixo 4 — Enfrentamento à Violência</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 4</span><span>Enfrentamento de Todas as Formas de Violência contra as Mulheres.</span></div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> O dado que justifica o eixo</div>
+  <p>Mulheres são <strong>52% da população do DF</strong> (1,6 milhão). Segundo a SSP, em média <strong>43 mulheres são agredidas por dia — uma a cada 34 minutos</strong>. A Lei Maria da Penha (Lei 11.340/2006) é o marco do eixo.</p>
+</div>
+
+<h4>Objetivo Geral</h4>
+<p>Estabelecer princípios, diretrizes e políticas de prevenção e combate à violência, além de assistência e garantia de direitos às mulheres em situação de violência, conforme normas internacionais e legislação nacional e distrital.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Implementar e divulgar a Lei Maria da Penha; incluí-la na formação de agentes de segurança, saúde e educação.</li>
+  <li>Fortalecer a rede de serviços especializados e o abrigamento em risco de morte.</li>
+  <li>Responsabilização e reeducação de autores de violência; enfrentamento à exploração sexual e ao tráfico.</li>
+  <li><strong>Metas:</strong> reduzir índices de violência e feminicídios; ampliar e capilarizar o atendimento especializado.</li>
+</ul>
+
+<!-- ===== EIXO 5 ===== -->
+<h2 id="e5">Eixo 5 — Participação no Poder e Decisão</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 5</span><span>Participação das Mulheres nos Espaços de Poder e Decisão.</span></div>
+
+<p>Apesar de serem ~52% do eleitorado, as mulheres ocupam apenas <strong>13% do Senado</strong> e <strong>15% da Câmara</strong>; no DF, 25% das vagas eletivas de 2018. A Lei 9.504/1997 fixou cota mínima de 30% de candidaturas femininas.</p>
+
+<h4>Objetivo Geral</h4>
+<p>Fomentar a participação igualitária, plural e multirracial das mulheres nos espaços de poder e decisão, por meio de mudanças culturais, legislativas e institucionais.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Ampliar a ocupação feminina em cargos de decisão (governo e iniciativa privada).</li>
+  <li>Fortalecer o Conselho dos Direitos da Mulher (CDM) e a participação no controle social.</li>
+  <li>Formar lideranças femininas e ampliar a participação político-partidária.</li>
+  <li><strong>Metas:</strong> mais mulheres em cargos de decisão no GDF e em conselhos, fóruns e comitês.</li>
+</ul>
+
+<!-- ===== EIXO 6 ===== -->
+<h2 id="e6">Eixo 6 — Igualdade para Mulheres Rurais</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 6</span><span>Igualdade para as Mulheres Rurais.</span></div>
+
+<p>No Brasil, das 5,07 milhões de propriedades rurais, quase 1 milhão tem mulheres à frente (~19%). O eixo conecta o protagonismo da mulher rural ao desenvolvimento sustentável e à Agenda 2030.</p>
+
+<h4>Objetivo Geral</h4>
+<p>Promover o direito das mulheres à vida com qualidade no meio rural, garantindo acesso a bens, equipamentos e serviços públicos — em especial à terra e ao desenvolvimento rural sustentável.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Acesso a políticas públicas e valorização da contribuição econômica das mulheres rurais.</li>
+  <li>Fórum Distrital Permanente das Mulheres do Campo e do Cerrado; assistência técnica e extensão rural.</li>
+  <li>Fortalecimento da cadeia produtiva, comercialização e acesso a crédito.</li>
+  <li><strong>Metas:</strong> implantar a Agenda das Mulheres Rurais; 5 reuniões/ano do Fórum; ampliar atendimentos e geração de renda.</li>
+</ul>
+
+<!-- ===== EIXO 7 ===== -->
+<h2 id="e7">Eixo 7 — Cultura, Esporte, Comunicação e Mídia</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 7</span><span>Cultura, Esporte, Comunicação e Mídia.</span></div>
+
+<p>Estereótipos de gênero se reproduzem pela cultura, mídia e esporte. O eixo busca inserir mulheres em ambientes historicamente masculinos e combater o sexismo na publicidade e na produção de conteúdo.</p>
+
+<h4>Objetivo Geral</h4>
+<p>Ampliar e promover a participação das mulheres na vida cultural, no esporte, no lazer, na comunicação e na mídia, observadas suas dimensões de raça, etnia, orientação sexual, identidade de gênero, classe e deficiência.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Acesso à produção artística e cultural e às diferentes modalidades esportivas.</li>
+  <li>Combate aos estereótipos femininos em campanhas publicitárias.</li>
+  <li>Protagonismo feminino na comunicação e na mídia.</li>
+  <li><strong>Metas:</strong> plano de comunicação com recorte de gênero; divulgação periódica do Observatório da Mulher.</li>
+</ul>
+
+<!-- ===== EIXO 8 ===== -->
+<h2 id="e8">Eixo 8 — Racismo, Sexismo, Lesbofobia e Transfobia</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 8</span><span>Enfrentamento do Racismo, Sexismo, Lesbofobia e Transfobia.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">A chave deste eixo</div>
+  <p>A mulher negra é, no mínimo, <strong>duplamente vítima</strong> — pela cor e pelo gênero. O eixo aplica a perspectiva de raça, etnia e orientação sexual a todas as políticas direcionadas às mulheres.</p>
+</div>
+
+<h4>Objetivo Geral</h4>
+<p>Instituir políticas, programas e ações de enfrentamento ao racismo, sexismo, lesbofobia e transfobia, garantindo equidade pela incorporação da perspectiva de raça, etnia e orientação sexual.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Superar o racismo institucional e garantir acesso equânime a serviços.</li>
+  <li>Implantar a Rota da Diversidade do DF e o Plano Distrital de Promoção da Igualdade Racial.</li>
+  <li>Microcrédito para a população negra e mulheres LBTs.</li>
+  <li><strong>Metas:</strong> ampliar a inserção de mulheres negras e LBTs no trabalho; capacitação em direitos humanos para servidores.</li>
+</ul>
+
+<!-- ===== EIXO 9 ===== -->
+<h2 id="e9">Eixo 9 — Jovens, Idosas e Mulheres com Deficiência</h2>
+
+<div class="art-line"><span class="art-badge">Eixo 9</span><span>Igualdade para Mulheres Jovens, Idosas e Mulheres com Deficiência.</span></div>
+
+<p>A população idosa do DF pode chegar a 565 mil em 2030 (57,9% mulheres). Entre as mulheres do DF, 5,3% têm alguma deficiência. O eixo reconhece esses grupos como sujeitos de direito com demandas próprias.</p>
+
+<h4>Objetivo Geral</h4>
+<p>Promover a igualdade de direitos e de oportunidades para mulheres jovens, idosas e com deficiência.</p>
+
+<h4>Pontos-chave</h4>
+<ul>
+  <li>Recorte de gênero na Política Distrital de Atenção ao Jovem, ao Idoso e à Pessoa com Deficiência.</li>
+  <li>Acesso ao trabalho (1º emprego para jovens) e inclusão previdenciária (rurais e idosas).</li>
+  <li>Acessibilidade, educação especial e enfrentamento à violência.</li>
+  <li><strong>Metas:</strong> reduzir violência e discriminação; ampliar formação profissional e permanência escolar.</li>
+</ul>
+
+<hr class="section-divider"><span class="divider-icon"></span></hr>
+
+<!-- ===== SÍNTESE ===== -->
+<h2 id="sintese">Síntese dos 9 Eixos</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Eixo</th><th>Tema</th><th>Foco central</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Trabalho e Autonomia Econômica</td><td>Emprego, igualdade salarial, empreendedorismo e crédito</td></tr>
+    <tr><td>2</td><td>Educação para a Igualdade</td><td>Acesso, permanência e educação não sexista</td></tr>
+    <tr><td>3</td><td>Saúde Integral</td><td>Saúde, direitos sexuais e reprodutivos (PNAISM/SUS)</td></tr>
+    <tr><td>4</td><td>Enfrentamento à Violência</td><td>Lei Maria da Penha, rede de atendimento, feminicídio</td></tr>
+    <tr><td>5</td><td>Poder e Decisão</td><td>Representatividade política e cargos de decisão</td></tr>
+    <tr><td>6</td><td>Mulheres Rurais</td><td>Terra, produção sustentável e autonomia no campo</td></tr>
+    <tr><td>7</td><td>Cultura, Esporte e Mídia</td><td>Protagonismo cultural e combate ao estereótipo</td></tr>
+    <tr><td>8</td><td>Racismo e LGBTfobia</td><td>Interseccionalidade raça/gênero/orientação sexual</td></tr>
+    <tr><td>9</td><td>Jovens, Idosas e PcD</td><td>Direitos e oportunidades por especificidade etária/PcD</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">Pontos que não podem faltar</span>
+  </div>
+  <div class="summary-concepts">
+    <ul>
+      <li>O II PDPM é um <strong>plano de governo</strong> (não lei), vigência <strong>2020-2023</strong>, conduzido pela Secretaria da Mulher do DF.</li>
+      <li>Estrutura: <strong>9 eixos</strong>, cada um com objetivo geral, objetivos específicos, metas e ações com órgão responsável + ODS.</li>
+      <li>Base de construção: <strong>17 ODS (ODS 5)</strong>, PPA-DF 2020-2023 e PEDF 2020-2060.</li>
+      <li>Construção participativa: comissão do <strong>CDM</strong>, consulta pública e oficinas de escuta com grupos vulneráveis.</li>
+      <li>Monitoramento: <strong>CODEPLAN</strong> e <strong>Conselho dos Direitos da Mulher</strong>.</li>
+      <li>Princípio transversal: políticas de gênero atravessam <strong>todas as secretarias</strong>.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Mini-glossário</h4>
+    <dl>
+      <dt>Transversalidade</dt><dd>Política de gênero presente em todos os órgãos, não só na Secretaria da Mulher.</dd>
+      <dt>Interseccionalidade</dt><dd>Análise que cruza gênero, raça, classe, orientação sexual e deficiência ao mesmo tempo.</dd>
+      <dt>ODS 5</dt><dd>5º Objetivo de Desenvolvimento Sustentável: igualdade de gênero e empoderamento de mulheres e meninas.</dd>
+      <dt>CDM</dt><dd>Conselho dos Direitos da Mulher do DF — instância de controle social.</dd>
+    </dl>
+  </div>
+</div>
+
+<!-- ===== CHECKLIST ===== -->
+<h2 id="checklist">Checklist — Objetivos de Aprendizagem</h2>
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Progresso</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label">0 / 15 concluídos</span>
+</div>
+<div class="checklist-section" id="checklist-wrap"></div>
+
+<!-- ===== CHECKPOINT ===== -->
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> Teste seu conhecimento</span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="questao-block" id="q1" data-answer="E">
+    <div class="questao-header"><span class="questao-number">Q1</span><span class="questao-tag">Certo / Errado</span><span class="questao-difficulty" data-level="1"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">O II PDPM é uma lei distrital que cria a Secretaria de Estado da Mulher do DF.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="C" onclick="answerCE(this,'q1','C')">Certo</button>
+      <button class="answer-btn" data-value="E" onclick="answerCE(this,'q1','E')">Errado</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>Errado.</strong> O II PDPM é um <strong>plano de governo</strong> (2020-2023), não uma lei, e não cria a Secretaria — é por ela conduzido.</p></details>
+  </div>
+
+  <div class="questao-block" id="q2" data-answer="C">
+    <div class="questao-header"><span class="questao-number">Q2</span><span class="questao-tag">Certo / Errado</span><span class="questao-difficulty" data-level="2"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">O monitoramento e a avaliação do II PDPM cabem à CODEPLAN e ao Conselho dos Direitos da Mulher do DF.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="C" onclick="answerCE(this,'q2','C')">Certo</button>
+      <button class="answer-btn" data-value="E" onclick="answerCE(this,'q2','E')">Errado</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>Certo.</strong> O acompanhamento é compartilhado entre a CODEPLAN (dados) e o CDM (controle social).</p></details>
+  </div>
+
+  <div class="questao-block" id="q3">
+    <div class="questao-header"><span class="questao-number">Q3</span><span class="questao-tag">Múltipla escolha</span><span class="questao-difficulty" data-level="2"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">Qual eixo do II PDPM tem como marco a Lei Maria da Penha (Lei 11.340/2006)?</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q3','C')">A) Eixo 1</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q3','C')">B) Eixo 3</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q3','C')">C) Eixo 4</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q3','C')">D) Eixo 7</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>C) Eixo 4 — Enfrentamento à Violência.</strong> É nele que está a implementação e divulgação da Lei Maria da Penha e a meta de reduzir feminicídios.</p></details>
+  </div>
+
+  <div class="questao-block" id="q4">
+    <div class="questao-header"><span class="questao-number">Q4</span><span class="questao-tag">Múltipla escolha</span><span class="questao-difficulty" data-level="3"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">Qual Objetivo de Desenvolvimento Sustentável (ODS) é o principal eixo orientador do II PDPM?</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q4','B')">A) ODS 1</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q4','B')">B) ODS 5</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q4','B')">C) ODS 8</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q4','B')">D) ODS 16</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>B) ODS 5</strong> — "Alcançar a igualdade de gênero e empoderar todas as mulheres e meninas". É o ODS de referência do plano.</p></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">Questões autorais de revisão, baseadas no conteúdo do II PDPM 2020-2023.</p>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de estudo:</strong> guarde a "fórmula" de cada eixo — <strong>contexto/dado → objetivo geral → objetivos específicos → metas → ações (órgão + ODS)</strong>. E memorize os 3 números-âncora: desemprego feminino <strong>22,6%</strong> (Eixo 1), <strong>43 agressões/dia</strong> (Eixo 4) e mulheres = <strong>52%</strong> da população do DF.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">II PDPM</span>
+  <span class="footer-sub">II Plano Distrital de Políticas para Mulheres · 2020-2023 · Secretaria de Estado da Mulher do DF</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='II-PDPM-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+var objectives=[
+  "Reconhecer o II PDPM como plano de governo (não lei), de vigência 2020-2023, conduzido pela Secretaria da Mulher do DF",
+  "Identificar as bases de construção do plano: 17 ODS (com destaque ao ODS 5), PPA-DF 2020-2023 e PEDF 2020-2060",
+  "Descrever o processo participativo: comissão do CDM, consulta pública e oficinas de escuta com grupos vulneráveis",
+  "Explicar o monitoramento compartilhado por CODEPLAN e Conselho dos Direitos da Mulher",
+  "Compreender a transversalidade: política de gênero atravessa todas as secretarias",
+  "Eixo 1 — Trabalho: relacionar desemprego feminino (22,6%) com autonomia econômica e empreendedorismo",
+  "Eixo 2 — Educação: identificar acesso, permanência e educação não sexista, com interseccionalidade",
+  "Eixo 3 — Saúde: vincular a PNAISM e os direitos sexuais e reprodutivos no SUS",
+  "Eixo 4 — Violência: associar a Lei Maria da Penha e a meta de redução de feminicídios",
+  "Eixo 5 — Poder: relacionar sub-representação política e fortalecimento do CDM",
+  "Eixo 6 — Rurais: vincular acesso à terra, produção sustentável e o Fórum do Campo e do Cerrado",
+  "Eixo 7 — Cultura/Mídia: identificar combate ao estereótipo e protagonismo feminino",
+  "Eixo 8 — Racismo/LGBTfobia: aplicar a interseccionalidade raça/gênero/orientação sexual",
+  "Eixo 9 — Jovens/Idosas/PcD: reconhecer direitos por especificidade etária e de deficiência",
+  "Reproduzir a fórmula de cada eixo: objetivo geral → objetivos específicos → metas → ações (órgão + ODS)"
+];
+
+var clWrap=document.getElementById('checklist-wrap');
+var clBar=document.getElementById('cl-bar');
+var clBarTop=document.getElementById('cl-bar-top');
+var clLabel=document.getElementById('cl-label');
+var clLabelTop=document.getElementById('cl-label-top');
+
+function updateCL(){
+  var total=objectives.length;
+  var done=document.querySelectorAll('#checklist-wrap input:checked').length;
+  var pct=Math.round((done/total)*100);
+  clBar.style.width=pct+'%';
+  clBarTop.style.width=pct+'%';
+  clLabel.textContent=done+' / '+total+' concluídos';
+  clLabelTop.textContent=done+' / '+total;
+}
+
+objectives.forEach(function(obj,i){
+  var id='cl'+i;
+  var item=document.createElement('div');
+  item.className='check-item';
+  item.innerHTML='<input type="checkbox" id="'+id+'"><label for="'+id+'">'+obj+'</label>';
+  item.querySelector('input').addEventListener('change',function(){
+    item.classList.toggle('done',this.checked);
+    updateCL();
+  });
+  clWrap.appendChild(item);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CPC 25 – Provisões, Passivos Contingentes e Ativos Contingentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f8f9fa;
+  --bg-topbar:#0A2D4E; --bg-topbar-glass:rgba(10,45,78,0.97);
+  --text-primary:#000000; --text-secondary:#333333; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#1D7A5F; --accent-dim:#155C46; --accent-glow:rgba(29,122,95,0.12); --accent-surface:#e1f5ee;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f8f9fa; --box-intro-border:#0A2D4E;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#1D7A5F;
+  --box-highlight-bg:#e1f5ee; --box-highlight-border:#1D7A5F;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#1D7A5F;
+  --box-analogy-bg:#f8f9fa; --box-analogy-border:#0A2D4E;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#1D7A5F;
+  --summary-bg:#f8f9fa; --summary-border:#1D7A5F;
+  --table-header-bg:#0A2D4E; --table-header-text:#ffffff;
+  --table-row-alt:#f8f9fa; --table-border:#cccccc; --table-hover:#e1f5ee;
+  --btn-correct:#1D7A5F; --btn-correct-bg:#e1f5ee; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --bg-page:#000000; --bg-surface:#0a0a0a; --bg-surface-raised:#141414;
+  --bg-topbar:#0A2D4E; --bg-topbar-glass:rgba(10,45,78,0.98);
+  --text-primary:#ffffff; --text-secondary:#cccccc; --text-tertiary:#999999;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#9FE1CB; --accent-dim:#5DCAA5; --accent-glow:rgba(159,225,203,0.15); --accent-surface:#04342C;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#333333; --border-soft:#1f1f1f;
+  --box-intro-bg:#050505; --box-intro-border:#9FE1CB;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#0a0a0a; --box-example-border:#9FE1CB;
+  --box-highlight-bg:#04342C; --box-highlight-border:#9FE1CB;
+  --box-glossary-bg:#0a0a0a; --box-glossary-border:#ffffff; --box-glossary-term:#9FE1CB;
+  --box-analogy-bg:#050505; --box-analogy-border:#9FE1CB;
+  --checkpoint-bg:#0a0a0a; --checkpoint-border:#9FE1CB;
+  --summary-bg:#050505; --summary-border:#9FE1CB;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#0a0a0a; --table-border:#333333; --table-hover:#04342C;
+  --btn-correct:#9FE1CB; --btn-correct-bg:#04342C; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--amber);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--amber);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.lesson-progress{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-radius:8px;padding:16px 24px;margin-bottom:36px;display:flex;align-items:center;gap:16px}
+.lesson-progress-label{font-weight:700;font-size:.75em;text-transform:uppercase;letter-spacing:2px;color:var(--text-primary);white-space:nowrap}
+.lesson-progress-bar{flex:1;height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden}
+.lesson-progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.lesson-progress-text{font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--text-tertiary);white-space:nowrap}
+
+.checklist-section{margin:40px 0}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:9px 12px;border-radius:6px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--border-soft)}
+.check-item:hover{background:var(--bg-surface-raised)}
+.check-item input[type="checkbox"]{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin-top:3px}
+.check-item label{font-size:.93em;cursor:pointer;line-height:1.5;color:var(--text-secondary)}
+.check-item.done label{text-decoration:line-through;color:var(--text-tertiary)}
+
+.decision-tree{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-radius:12px;padding:28px;margin:28px 0;overflow-x:auto}
+.decision-tree-title{font-weight:800;font-size:.72em;text-transform:uppercase;letter-spacing:2.5px;color:var(--text-tertiary);margin-bottom:20px}
+.dt-flow{display:flex;flex-direction:column;align-items:center;gap:0}
+.dt-node{border:2px solid var(--border-hard);border-radius:8px;padding:10px 20px;font-size:.82em;font-weight:700;text-align:center;min-width:180px;background:var(--bg-surface)}
+.dt-diamond{border:2px solid var(--accent);background:var(--accent-surface);transform:rotate(45deg);width:120px;height:120px;display:flex;align-items:center;justify-content:center;margin:8px 0}
+.dt-diamond span{transform:rotate(-45deg);font-size:.72em;font-weight:700;color:var(--accent);text-align:center;padding:4px;line-height:1.3}
+.dt-arrow{width:2px;height:24px;background:var(--border-medium);margin:0 auto}
+.dt-label{font-size:.7em;font-weight:700;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1px;margin:-4px 0}
+.dt-row{display:flex;align-items:center;gap:32px;margin:8px 0}
+.dt-outcome-ok{background:var(--accent-surface);border-color:var(--accent);color:var(--accent)}
+.dt-outcome-warn{background:var(--amber-light);border-color:var(--amber);color:var(--amber)}
+.dt-outcome-none{background:var(--bg-surface-raised);border-color:var(--border-medium);color:var(--text-tertiary)}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">CPC</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Contabilidade Geral</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Imprimir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Imprimir</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Contabilidade Geral</div>
+<h1>CPC 25 — PROVISÕES, PASSIVOS CONTINGENTES E ATIVOS CONTINGENTES</h1>
+<p class="doc-subtitle">Os critérios de reconhecimento e mensuração de provisões, a distinção entre provisão e passivo contingente, o tratamento de contratos onerosos e reestruturações, e as obrigações de divulgação. A norma brasileira correlata ao IAS 37.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> NBC TG 25 · IAS 37</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~55 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Rev. 21 · em vigor</span>
+</div>
+
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Objetivos</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar-top" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label-top">0 / 18</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Objetivo</a></li>
+    <li><a href="#s2">Alcance</a></li>
+    <li><a href="#s3">Definições</a></li>
+    <li><a href="#s4">Provisão e Outros Passivos</a></li>
+    <li><a href="#s5">Relação entre Provisão e Passivo Contingente</a></li>
+    <li><a href="#s6">Reconhecimento — Provisão</a></li>
+    <li><a href="#s7">Reconhecimento — Passivo Contingente</a></li>
+    <li><a href="#s8">Reconhecimento — Ativo Contingente</a></li>
+    <li><a href="#s9">Mensuração</a></li>
+    <li><a href="#s10">Reembolso</a></li>
+    <li><a href="#s11">Mudança na Provisão e Uso de Provisão</a></li>
+    <li><a href="#s12">Aplicação — Perda Operacional Futura e Contrato Oneroso</a></li>
+    <li><a href="#s13">Aplicação — Reestruturação</a></li>
+    <li><a href="#s14">Divulgação</a></li>
+    <li><a href="#checklist">Checklist — Objetivos de Aprendizagem</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O CPC 25 responde a uma pergunta prática e recorrente: <strong>quando registrar uma obrigação incerta como passivo?</strong> Ele distingue com precisão o que é provisão (registra no balanço), o que é passivo contingente (divulga em nota), o que é ativo contingente (divulga quando provável) e o que não exige nada. Dominar esse CPC é essencial para a perícia contábil, a elaboração de notas explicativas e qualquer avaliação de risco em demonstrações financeiras.</p>
+</div>
+
+<h2 id="s1">Objetivo</h2>
+
+<p>O CPC 25 tem como objetivo garantir que sejam aplicados <strong>critérios de reconhecimento e bases de mensuração</strong> adequados a provisões e a passivos e ativos contingentes, além de assegurar que seja divulgada informação suficiente nas notas explicativas para que os usuários compreendam a <strong>natureza, o momento e o valor</strong> dessas obrigações e direitos.</p>
+
+<h2 id="s2">Alcance</h2>
+
+<p>O CPC 25 deve ser aplicado por <strong>todas as entidades</strong> na contabilização de provisões e de passivos e ativos contingentes, <strong>exceto:</strong></p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Aplica-se a</th><th>Não se aplica a (exceções)</th></tr></thead>
+  <tbody>
+    <tr><td>Provisões em geral</td><td>Contratos a executar — salvo se onerosos</td></tr>
+    <tr><td>Passivos contingentes</td><td>Instrumentos financeiros dentro do alcance do CPC 48</td></tr>
+    <tr><td>Ativos contingentes</td><td>Provisões cobertas por outro pronunciamento específico (ex.: CPC 32 — tributos; CPC 06 — arrendamentos; CPC 33 — benefícios a empregados; CPC 50 — contratos de seguro; CPC 15 — combinação de negócios)</td></tr>
+    <tr><td>Provisões para reestruturação</td><td>Receita proveniente de contratos com clientes — CPC 47 (exceto contratos onerosos)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção — Provisão ≠ Ajuste de Ativo</div>
+  <p>O CPC 25 <strong>não trata</strong> de depreciação, redução ao valor recuperável de ativos e créditos de liquidação duvidosa — embora esses itens sejam eventualmente chamados de "provisões" no linguajar cotidiano. Eles são ajustes de ativos, não passivos.</p>
+</div>
+
+<h2 id="s3">Definições</h2>
+
+<div class="glossary-box">
+  <div class="box-label">Termos Fundamentais (Item 10)</div>
+
+  <p class="glossary-term">Provisão</p>
+  <p class="glossary-def">Passivo de <strong>prazo ou valor incertos</strong>. Reconhecida no balanço quando os três critérios do item 14 são atendidos.</p>
+
+  <p class="glossary-term">Passivo Contingente</p>
+  <p class="glossary-def">(a) Obrigação <em>possível</em>, cuja existência será confirmada apenas por eventos futuros incertos não totalmente sob controle da entidade; ou (b) obrigação presente que não é reconhecida porque a saída não é provável ou o valor não pode ser estimado confiavelmente. <strong>Não reconhecido — apenas divulgado.</strong></p>
+
+  <p class="glossary-term">Ativo Contingente</p>
+  <p class="glossary-def">Ativo <em>possível</em> resultante de eventos passados, cuja existência depende de eventos futuros incertos. <strong>Não reconhecido</strong> — divulgado quando a entrada for provável.</p>
+
+  <p class="glossary-term">Evento que Cria Obrigação</p>
+  <p class="glossary-def">Evento que gera uma obrigação legal ou não formalizada que faz com que a entidade não tenha alternativa realista senão liquidar a obrigação.</p>
+
+  <p class="glossary-term">Obrigação Legal</p>
+  <p class="glossary-def">Deriva de contrato (termos explícitos ou implícitos), legislação ou outra ação da lei.</p>
+
+  <p class="glossary-term">Obrigação Não Formalizada</p>
+  <p class="glossary-def">Deriva de práticas passadas, políticas publicadas ou declarações que criam expectativa válida em terceiros de que a entidade cumprirá certas responsabilidades.</p>
+
+  <p class="glossary-term">Contrato Oneroso</p>
+  <p class="glossary-def">Contrato em que os <strong>custos inevitáveis</strong> de satisfazer as obrigações excedem os benefícios econômicos esperados. O custo inevitável é o menor entre: (a) custo de cumprir o contrato; ou (b) penalidades pelo não cumprimento.</p>
+
+  <p class="glossary-term">Reestruturação</p>
+  <p class="glossary-def">Programa planejado e controlado pela administração que altera materialmente: (a) o âmbito do negócio; ou (b) a maneira como o negócio é conduzido.</p>
+</div>
+
+<h2 id="s4">Provisão e Outros Passivos</h2>
+
+<p>A provisão se distingue de outros passivos pela <strong>incerteza quanto ao prazo ou valor</strong> do desembolso futuro:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Tipo de Passivo</th><th>Característica</th><th>Apresentação</th></tr></thead>
+  <tbody>
+    <tr><td>Provisão</td><td>Prazo ou valor <strong>incertos</strong></td><td>Divulgada separadamente</td></tr>
+    <tr><td>Contas a Pagar</td><td>Faturadas ou formalmente acordadas — <strong>certeza</strong></td><td>Parte das contas a pagar</td></tr>
+    <tr><td>Accruals (Apropriações por Competência)</td><td>Incorridas mas não faturadas — incerteza <strong>pequena</strong></td><td>Frequentemente junto às contas a pagar</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · A Fatura, o Cálculo e a Aposta</div>
+  <div class="analogy-text">
+    <p>Imagine três contas diferentes na mesa: (1) a <strong>fatura do fornecedor</strong> — valor exato, vencimento certo: isso é contas a pagar. (2) o <strong>pró-labore do mês</strong> ainda não processado — você sabe quanto é, mas ainda não foi faturado: isso é accrual. (3) a <strong>estimativa de processos trabalhistas em aberto</strong> — você sabe que vai pagar algo, mas não sabe exatamente quanto nem quando: isso é provisão.</p>
+    <span class="analogy-bridge">A diferença não é sobre certeza da obrigação existir — é sobre a certeza do <strong>valor e do prazo</strong>. Quanto maior a incerteza, mais se enquadra como provisão.</span>
+  </div>
+</div>
+
+<h2 id="s5">Relação entre Provisão e Passivo Contingente</h2>
+
+<p>Em sentido amplo, toda provisão tem alguma contingência — há incerteza de prazo ou valor. Mas o CPC 25 usa "contingente" especificamente para passivos que <strong>não atendem aos critérios de reconhecimento</strong>:</p>
+
+<div class="box highlight-box">
+  <div class="box-label">A Linha Divisória</div>
+  <ul>
+    <li><strong>Provisão</strong> → Obrigação presente + saída provável + estimativa confiável = <strong>Reconhece no balanço</strong></li>
+    <li><strong>Passivo contingente</strong> → Obrigação possível OU saída não provável OU sem estimativa confiável = <strong>Divulga em nota</strong> (se não remoto)</li>
+    <li><strong>Nada a fazer</strong> → Possibilidade remota = <strong>Silêncio total</strong></li>
+  </ul>
+</div>
+
+<h2 id="s6">Reconhecimento — Provisão</h2>
+
+<p>Uma provisão deve ser reconhecida quando os <strong>três critérios cumulativos</strong> do item 14 forem atendidos:</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Os Três Critérios (Item 14)</div>
+  <ol>
+    <li><strong>Obrigação presente</strong> (legal ou não formalizada) como resultado de evento passado</li>
+    <li><strong>Saída provável</strong> de recursos que incorporam benefícios econômicos para liquidar a obrigação</li>
+    <li><strong>Estimativa confiável</strong> do valor da obrigação</li>
+  </ol>
+  <p style="margin-top:12px;margin-bottom:0"><em>Se qualquer um dos critérios não for atendido, nenhuma provisão é reconhecida.</em></p>
+</div>
+
+<h3>Obrigação Presente (Itens 15–16)</h3>
+<p>Em casos raros em que não é claro se existe obrigação presente, presume-se que existe se, considerando toda a evidência disponível, for <strong>mais provável que sim do que não</strong>. A evidência inclui eventos posteriores à data do balanço.</p>
+
+<h3>Evento Passado — Evento que Cria Obrigação (Itens 17–22)</h3>
+<p>O evento passado cria obrigação somente quando: (a) a liquidação pode ser imposta legalmente; ou (b) no caso de obrigação não formalizada, quando cria expectativas válidas em terceiros. <strong>Nenhuma provisão é reconhecida para despesas futuras</strong> que a entidade possa evitar por suas próprias ações.</p>
+
+<div class="box example-box">
+  <div class="box-label">Exemplos Práticos de Evento que Cria Obrigação</div>
+  <ul>
+    <li><strong>Garantia de produto:</strong> a venda do produto é o evento — cria obrigação legal.</li>
+    <li><strong>Contaminação ambiental + política pública de limpeza:</strong> a contaminação cria obrigação não formalizada, pois a entidade gerou expectativa válida de remediar o dano.</li>
+    <li><strong>Treinamento futuro para compliance:</strong> nenhuma provisão — a entidade pode evitar o gasto mudando de atividade.</li>
+    <li><strong>Decisão interna de reestruturação não comunicada:</strong> nenhuma obrigação — mera decisão da diretoria não cria expectativa válida em terceiros.</li>
+  </ul>
+</div>
+
+<h3>Saída Provável (Itens 23–24)</h3>
+<p>"Provável" no CPC 25 significa <strong>mais provável que sim do que não</strong> (probabilidade acima de 50%). Quando há várias obrigações similares (ex.: garantias), a probabilidade é avaliada para o conjunto como um todo, e não item a item.</p>
+
+<h3>Estimativa Confiável (Itens 25–26)</h3>
+<p>O uso de estimativas é parte essencial da contabilidade e não prejudica a confiabilidade. Somente em casos extremamente raros, quando nenhuma estimativa confiável é possível, o passivo não pode ser reconhecido e é divulgado como passivo contingente.</p>
+
+<h2 id="s7">Reconhecimento — Passivo Contingente</h2>
+
+<p>A entidade <strong>não deve reconhecer</strong> um passivo contingente. Deve apenas divulgá-lo em nota (item 86), a menos que a possibilidade de saída seja remota. Os passivos contingentes devem ser avaliados periodicamente — se a saída se tornar provável, a provisão passa a ser reconhecida.</p>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> Regra Crítica — Obrigação Solidária</div>
+  <p class="absurd-scenario">Quando a entidade for conjunta e solidariamente responsável por uma obrigação, a parte que se espera que as <em>outras partes</em> liquidem é tratada como <strong>passivo contingente</strong>. A entidade reconhece provisão apenas pela parte cuja saída for provável para ela mesma.</p>
+  <p class="absurd-anchor">Passivos contingentes podem evoluir. Se o contexto mudar e a saída se tornar provável, a provisão deve ser reconhecida no período em que ocorrer a mudança na estimativa.</p>
+</div>
+
+<h2 id="s8">Reconhecimento — Ativo Contingente</h2>
+
+<p>A entidade <strong>não deve reconhecer</strong> um ativo contingente. O ativo contingente surge de eventos não planejados (ex.: processo judicial favorável em andamento) e só é reconhecido quando a realização do ganho é <strong>praticamente certa</strong> — e aí deixa de ser contingente.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Probabilidade de entrada</th><th>Tratamento</th></tr></thead>
+  <tbody>
+    <tr><td>Praticamente certa</td><td>Reconhece o ativo (não é mais contingente — item 33)</td></tr>
+    <tr><td>Provável (mas não praticamente certa)</td><td>Divulga em nota (item 89)</td></tr>
+    <tr><td>Não provável</td><td>Nenhuma divulgação exigida</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Assimetria Intencional</div>
+  <p>O tratamento de ativos e passivos contingentes é <strong>deliberadamente assimétrico</strong>. Para passivos: reconhece quando provável. Para ativos: só reconhece quando praticamente certo. Isso reflete a prudência contábil — evitar superavaliação de ativos e subavaliação de passivos.</p>
+</div>
+
+<h2 id="s9">Mensuração</h2>
+
+<h3>Melhor Estimativa (Itens 36–41)</h3>
+<p>O valor reconhecido como provisão deve ser a <strong>melhor estimativa</strong> do desembolso exigido para liquidar a obrigação presente na data do balanço — o valor que a entidade racionalmente pagaria para liquidar ou transferir a obrigação naquele momento.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Situação</th><th>Método de Estimativa</th></tr></thead>
+  <tbody>
+    <tr><td>Grande população de itens similares (ex.: garantias)</td><td>Valor esperado — média ponderada de todos os desfechos possíveis pelas probabilidades</td></tr>
+    <tr><td>Obrigação única</td><td>Desfecho individual mais provável — ajustado se outros desfechos forem significativamente maiores ou menores</td></tr>
+    <tr><td>Escala contínua de desfechos igualmente prováveis</td><td>Ponto médio da escala</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Exemplo — Valor Esperado de Garantia (Item 39)</div>
+  <p>Produto com garantia: 75% sem defeito (custo zero), 20% defeito menor (custo R$ 1 milhão), 5% defeito maior (custo R$ 4 milhões).</p>
+  <p><strong>Valor esperado = (75% × 0) + (20% × R$ 1M) + (5% × R$ 4M) = R$ 400.000</strong></p>
+</div>
+
+<h3>Risco e Incerteza (Itens 42–44)</h3>
+<p>Os riscos e incertezas devem ser considerados — mas sem criar provisões excessivas ou superavaliar passivos deliberadamente. A incerteza não justifica conservadorismo exagerado. Cuidado para não <strong>duplicar ajustes de risco</strong>.</p>
+
+<h3>Valor Presente (Itens 45–47)</h3>
+<p>Quando o efeito do valor do dinheiro no tempo for <strong>material</strong>, a provisão deve ser o valor presente dos desembolsos esperados. A taxa de desconto deve ser antes dos impostos, refletindo as avaliações de mercado sobre o valor do dinheiro no tempo e os riscos específicos do passivo — sem incluir riscos já embutidos nas estimativas de fluxo de caixa.</p>
+
+<h3>Evento Futuro (Itens 48–50)</h3>
+<p>Eventos futuros que possam afetar o valor da provisão devem ser refletidos quando houver <strong>evidência objetiva suficiente</strong> de que ocorrerão (ex.: redução esperada de custos por tecnologia futura). A possibilidade de nova legislação só é considerada quando sua promulgação for praticamente certa.</p>
+
+<h3>Alienação Esperada de Ativo (Itens 51–52)</h3>
+<p>Os ganhos esperados na alienação de ativos <strong>nunca devem</strong> ser levados em conta ao mensurar uma provisão — mesmo que a alienação esteja intimamente ligada ao evento que originou a provisão. Os ganhos são reconhecidos conforme o pronunciamento que trata do ativo específico.</p>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Mensuração Antes dos Impostos</div>
+  <p>A provisão deve ser mensurada <strong>antes dos impostos</strong>. As consequências fiscais são tratadas separadamente pelo CPC 32 — Tributos sobre o Lucro.</p>
+</div>
+
+<h2 id="s10">Reembolso</h2>
+
+<p>Quando se espera que parte ou todo o desembolso seja reembolsado por outra parte (ex.: seguro, garantia de fornecedor), o reembolso deve ser reconhecido como <strong>ativo separado</strong> — somente quando for praticamente certo que o reembolso será recebido se a entidade liquidar a obrigação. O valor do ativo reconhecido não pode ultrapassar o valor da provisão.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Situação de Reembolso</th><th>Tratamento</th></tr></thead>
+  <tbody>
+    <tr><td>Entidade não tem obrigação em relação à parcela que outra parte pagará</td><td>Nenhum passivo — nenhuma provisão para essa parcela (item 57)</td></tr>
+    <tr><td>Reembolso praticamente certo se a entidade liquidar</td><td>Reconhece ativo separado; pode apresentar despesa líquida na DR</td></tr>
+    <tr><td>Reembolso não praticamente certo</td><td>Não reconhece ativo; divulga o reembolso esperado em nota (item 85(c))</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="s11">Mudança na Provisão e Uso de Provisão</h2>
+
+<h3>Mudança na Provisão (Itens 59–60)</h3>
+<p>As provisões devem ser <strong>reavaliadas a cada data de balanço</strong> e ajustadas para refletir a melhor estimativa corrente. Se a saída de recursos deixar de ser provável, a provisão deve ser <strong>revertida</strong>. Quando usado o desconto a valor presente, o aumento do valor contábil ao longo do tempo (unwinding) deve ser reconhecido como <strong>despesa financeira</strong>.</p>
+
+<h3>Uso de Provisão (Itens 61–62)</h3>
+<p>Uma provisão deve ser usada <strong>somente para os desembolsos para os quais foi originalmente reconhecida</strong>. Reconhecer desembolsos contra uma provisão criada para outra finalidade esconderia o impacto de dois eventos distintos — o que distorce a informação financeira.</p>
+
+<h2 id="s12">Aplicação — Perda Operacional Futura e Contrato Oneroso</h2>
+
+<h3>Perda Operacional Futura (Itens 63–65)</h3>
+<p>Provisões para perdas operacionais futuras <strong>não devem ser reconhecidas</strong> — elas não satisfazem a definição de passivo nem os critérios do item 14. A expectativa de perdas futuras é, porém, um indicativo de que certos ativos podem não ser recuperáveis, exigindo teste de impairment conforme o CPC 01.</p>
+
+<h3>Contrato Oneroso (Itens 66–69)</h3>
+<p>Se a entidade tiver um contrato oneroso, a obrigação presente deve ser reconhecida e mensurada como provisão. O custo inevitável é o <strong>menor entre</strong>: (a) custo de cumprir o contrato (incluindo custos incrementais + alocação de custos diretos); ou (b) penalidades pelo não cumprimento.</p>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Ordem Obrigatória — Contrato Oneroso</div>
+  <p class="absurd-scenario">Antes de reconhecer a provisão para contrato oneroso, a entidade deve primeiro reconhecer qualquer perda por redução ao valor recuperável dos ativos <em>utilizados no cumprimento do contrato</em> (item 69, conforme CPC 01). A provisão só é constituída após o impairment desses ativos.</p>
+  <p class="absurd-anchor">Exemplo clássico: empresa abandona fábrica alugada e ainda deve pagar o aluguel por 4 anos — o contrato de arrendamento torna-se oneroso e origina provisão.</p>
+</div>
+
+<h2 id="s13">Aplicação — Reestruturação</h2>
+
+<p>A provisão para reestruturação só pode ser reconhecida quando os critérios gerais do item 14 forem cumpridos. Uma obrigação <strong>não formalizada</strong> de reestruturar surge somente quando a entidade:</p>
+
+<ul>
+  <li>Tiver um <strong>plano formal detalhado</strong> identificando: o negócio afetado, os locais afetados, o número de empregados, os desembolsos estimados e o cronograma; <strong>E</strong></li>
+  <li>Tiver <strong>criado expectativa válida</strong> nos afetados — seja ao começar a implementação do plano ou ao anunciar suas principais características a quem será impactado.</li>
+</ul>
+
+<div class="box highlight-box">
+  <div class="box-label">O que INCLUI a Provisão para Reestruturação (Item 80)</div>
+  <p>Somente desembolsos diretos que sejam <strong>simultaneamente</strong>: (a) necessariamente ocasionados pela reestruturação; e (b) não associados às atividades em andamento da entidade.</p>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> O que NÃO Inclui (Item 81)</div>
+  <p class="absurd-scenario">A provisão para reestruturação <strong>não inclui</strong>: (a) novo treinamento ou remanejamento da equipe permanente; (b) marketing; (c) investimentos em novos sistemas e redes de distribuição. Esses são gastos com a conduta futura do negócio.</p>
+  <p class="absurd-anchor">Também não incluem: perdas operacionais futuras (salvo se forem contratos onerosos) e ganhos esperados na alienação de ativos.</p>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Venda de Unidade Operacional (Itens 78–79)</div>
+  <p>Nenhuma provisão surge pela simples decisão ou anúncio de venda de uma unidade operacional. A obrigação só se consolida quando houver <strong>contrato firme de venda</strong> — até lá, a entidade pode mudar de ideia.</p>
+</div>
+
+<h2 id="s14">Divulgação</h2>
+
+<h3>Para Cada Classe de Provisão (Itens 84–85)</h3>
+<p>A entidade deve divulgar a movimentação da provisão no período (saldo inicial, adições, utilizações, reversões, unwinding de desconto) e também: (a) descrição da natureza da obrigação e cronograma esperado das saídas; (b) incertezas sobre valor ou cronograma; (c) valor de qualquer reembolso esperado.</p>
+
+<h3>Para Cada Classe de Passivo Contingente (Item 86)</h3>
+<p>A menos que a possibilidade de desembolso seja remota, a entidade deve divulgar: (a) descrição da natureza; (b) estimativa do efeito financeiro; (c) incertezas sobre valor ou momento; (d) possibilidade de reembolso.</p>
+
+<h3>Para Ativos Contingentes (Item 89)</h3>
+<p>Quando a entrada de benefícios for provável: descrição da natureza e, quando praticável, estimativa do efeito financeiro. As divulgações devem evitar indicações indevidas sobre a probabilidade de surgirem ganhos.</p>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Exceção à Divulgação (Item 92)</div>
+  <p>Em casos extremamente raros, a divulgação pode prejudicar seriamente a posição da entidade em uma disputa. Nesse caso, a entidade não precisa divulgar os detalhes, mas deve informar a <strong>natureza geral da disputa</strong> e o fato de que as informações não foram divulgadas, com a devida justificativa.</p>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checklist">Checklist — Objetivos de Aprendizagem</h2>
+
+<div class="lesson-progress" style="margin-bottom:20px">
+  <span class="lesson-progress-label">Progresso</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label">0 / 18 concluídos</span>
+</div>
+
+<div id="checklist-wrap" class="checklist-section"></div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · CPC 25
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Segundo o CPC 25, a depreciação acumulada reconhecida sobre o imobilizado é uma provisão, pois representa uma estimativa de redução de valor de um ativo sujeita a incerteza.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O CPC 25 é explícito no item 7: depreciação, redução ao valor recuperável e créditos de liquidação duvidosa são <em>ajustes de ativos</em> e não são tratados pelo pronunciamento. O termo "provisão" no CPC 25 refere-se exclusivamente a <strong>passivos de prazo ou valor incertos</strong>. Embora no jargão popular esses ajustes sejam chamados de "provisão", contabilmente são contas retificadoras de ativo.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Uma empresa varejista espera incorrer em perdas operacionais nos próximos dois exercícios em razão da abertura de novos concorrentes. De acordo com o CPC 25, ela deve reconhecer uma provisão pela melhor estimativa dessas perdas futuras.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O item 63 veda expressamente o reconhecimento de provisões para perdas operacionais futuras. Elas não satisfazem a definição de passivo (não há obrigação presente resultante de evento passado) nem os critérios do item 14. A expectativa de perdas futuras pode indicar necessidade de teste de impairment dos ativos envolvidos (CPC 01), mas não gera provisão.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Uma entidade que opera uma fábrica arrendada por mais quatro anos decide transferir suas atividades para um novo local. Caso o antigo arrendamento não possa ser cancelado nem subarrendado, a entidade deve reconhecer uma provisão pelo valor dos pagamentos inevitáveis do arrendamento, pois o contrato tornou-se oneroso.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> Este é exatamente o Exemplo 8 do Apêndice C do CPC 25. O contrato de arrendamento torna-se oneroso quando os custos inevitáveis (aluguéis a pagar) superam os benefícios econômicos que serão recebidos (zero, pois a fábrica está desocupada). O evento que criou a obrigação é a assinatura do contrato, que originou uma obrigação legal. A provisão deve ser reconhecida pela melhor estimativa dos pagamentos inevitáveis (item 66 c/c item 5(c)).</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Uma entidade obteve uma decisão judicial favorável em primeira instância para recebimento de indenização de R$ 5 milhões. Como a entrada de benefícios econômicos é provável, ela deve reconhecer um ativo contingente no balanço patrimonial pelo valor estimado.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O item 31 é claro: a entidade <strong>não deve reconhecer</strong> um ativo contingente. Quando a entrada de benefícios é provável (mas não praticamente certa), a entidade apenas <em>divulga</em> o ativo contingente em nota explicativa (item 89). O reconhecimento contábil do ativo e do correspondente ganho só ocorre quando a realização for <strong>praticamente certa</strong> — e nesse ponto o ativo deixa de ser contingente.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="C">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Em 15 de dezembro de 20X0, o conselho de administração de uma empresa decidiu fechar uma divisão deficitária. Em 20 de dezembro de 20X0, cartas foram enviadas a todos os empregados da divisão comunicando as demissões, e avisos foram enviados aos clientes. O balanço é encerrado em 31 de dezembro de 20X0. Sobre o reconhecimento de provisão para os custos de fechamento, é correto afirmar:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) Nenhuma provisão deve ser reconhecida, pois apenas uma decisão interna da administração não cria obrigação.<br>
+      (B) A provisão deve incluir o custo estimado de novo treinamento dos empregados que permanecerem na empresa.<br>
+      (C) A provisão deve ser reconhecida em 31/12/X0, pois a comunicação aos empregados e clientes antes da data do balanço criou uma obrigação não formalizada.<br>
+      (D) A provisão deve incluir as perdas operacionais previstas durante o período de transição do fechamento.<br>
+      (E) O reconhecimento da provisão só seria possível se houvesse contrato firme de venda da divisão.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','C')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','C')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','C')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','C')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','C')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: C</strong></p>
+      <p><strong>(A) Errada.</strong> Isoladamente, a decisão do conselho não criaria obrigação (item 75). Mas a questão informa que houve comunicação aos empregados e clientes antes da data do balanço — isso muda o cenário (Exemplo 5B do Apêndice C).</p>
+      <p><strong>(B) Errada.</strong> O item 81(a) veda a inclusão de treinamento ou remanejamento de equipe permanente na provisão para reestruturação.</p>
+      <p><strong>(C) Correta.</strong> A comunicação aos empregados e clientes em 20/12/X0 criou uma obrigação não formalizada, pois gerou expectativas válidas de que a divisão será fechada (itens 72 e 75). A provisão deve ser reconhecida em 31/12/X0.</p>
+      <p><strong>(D) Errada.</strong> O item 82 veda expressamente a inclusão de perdas operacionais futuras na provisão para reestruturação, salvo se se relacionarem a contratos onerosos.</p>
+      <p><strong>(E) Errada.</strong> Contrato firme de venda seria necessário para venda de unidade operacional (item 78), mas o caso trata de fechamento — não de venda. O evento que cria a obrigação é a comunicação às partes afetadas.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais do CPC 25 / NBC TG 25)</p>
+</div>
+
+<h2 id="resumo-final">Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li>Provisão = passivo de prazo ou valor incertos. Para reconhecer, precisa de <strong>obrigação presente + saída provável + estimativa confiável</strong>.</li>
+      <li>Passivo contingente: <strong>não reconhece, apenas divulga</strong> — exceto quando a possibilidade de saída for remota (silêncio total).</li>
+      <li>Ativo contingente: <strong>não reconhece</strong>; divulga quando provável; reconhece apenas quando praticamente certo (e aí não é mais contingente).</li>
+      <li>"Provável" no CPC 25 = <strong>mais de 50% de probabilidade</strong> ("mais provável que sim do que não").</li>
+      <li>Provisões para <strong>perdas operacionais futuras são vedadas</strong> — não existe obrigação presente.</li>
+      <li>Provisão para reestruturação exige <strong>plano formal + comunicação às partes afetadas</strong>. Não inclui custos com conduta futura do negócio.</li>
+      <li>Em contratos onerosos, o custo inevitável é o <strong>menor entre cumprir ou pagar penalidade</strong>.</li>
+      <li>Reembolso esperado: ativo separado, só quando praticamente certo; nunca ultrapassa o valor da provisão.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>Obrigação não formalizada</dt><dd>Obrigação criada por práticas passadas, políticas publicadas ou declarações que geram expectativa válida em terceiros.</dd>
+      <dt>Evento que cria obrigação</dt><dd>Evento passado que faz com que a entidade não tenha alternativa realista senão liquidar a obrigação gerada.</dd>
+      <dt>Contrato oneroso</dt><dd>Contrato cujos custos inevitáveis de cumprimento superam os benefícios econômicos esperados.</dd>
+      <dt>Unwinding do desconto</dt><dd>Aumento do valor contábil da provisão ao longo do tempo quando descontada a valor presente — reconhecido como despesa financeira.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> A distinção entre provisão, passivo contingente e ativo contingente é o coração do CPC 25 e o ponto mais cobrado em provas. Domine a árvore de decisão do Apêndice B: obrigação presente? → saída provável? → estimativa confiável? → reconhece. Se qualquer resposta for não, vai para divulgação ou silêncio. Aplique esse raciocínio em cada situação prática.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">CPC 25</span>
+  <span class="footer-sub">NBC TG 25 · IAS 37 · Revisão 21 · Correlação ao IASB aprovada pelo CFC</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='CPC25-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+// CHECKLIST
+var objectives=[
+  "Identificar o objetivo e o alcance do CPC 25",
+  "Distinguir os casos de exclusão do alcance (contratos a executar, instrumentos financeiros, CPCs específicos)",
+  "Definir com precisão: provisão, passivo contingente, ativo contingente, contrato oneroso e reestruturação",
+  "Diferenciar provisão de contas a pagar e de accruals (apropriações por competência)",
+  "Explicar a relação entre provisão e passivo contingente — onde cada um se encaixa",
+  "Aplicar os três critérios cumulativos de reconhecimento de provisão (item 14)",
+  "Identificar o que constitui um 'evento que cria obrigação' — legal e não formalizado",
+  "Definir 'provável' no contexto do CPC 25 (mais de 50%) e aplicar o conceito em casos práticos",
+  "Descrever as condições para reconhecimento, divulgação e silêncio quanto a passivos contingentes",
+  "Aplicar o tratamento assimétrico dos ativos contingentes (reconhece só se praticamente certo; divulga se provável)",
+  "Calcular a melhor estimativa usando valor esperado para populações de itens",
+  "Aplicar o desconto a valor presente e reconhecer o unwinding como despesa financeira",
+  "Descrever o tratamento do reembolso esperado e seus limites",
+  "Explicar por que provisões para perdas operacionais futuras são vedadas",
+  "Identificar e mensurar provisão para contrato oneroso — incluindo a ordem com o impairment",
+  "Aplicar os critérios de reconhecimento e composição da provisão para reestruturação",
+  "Listar os itens de divulgação obrigatória para provisões, passivos contingentes e ativos contingentes",
+  "Conhecer a exceção à divulgação em caso de disputa judicial prejudicial (item 92)"
+];
+
+var clWrap=document.getElementById('checklist-wrap');
+var clBar=document.getElementById('cl-bar');
+var clBarTop=document.getElementById('cl-bar-top');
+var clLabel=document.getElementById('cl-label');
+var clLabelTop=document.getElementById('cl-label-top');
+
+function updateCL(){
+  var total=objectives.length;
+  var done=document.querySelectorAll('#checklist-wrap input:checked').length;
+  var pct=Math.round((done/total)*100);
+  clBar.style.width=pct+'%';
+  clBarTop.style.width=pct+'%';
+  clLabel.textContent=done+' / '+total+' concluídos';
+  clLabelTop.textContent=done+' / '+total;
+}
+
+objectives.forEach(function(obj,i){
+  var id='cl'+i;
+  var item=document.createElement('div');
+  item.className='check-item';
+  item.innerHTML='<input type="checkbox" id="'+id+'"><label for="'+id+'">'+obj+'</label>';
+  item.querySelector('input').addEventListener('change',function(){
+    item.classList.toggle('done',this.checked);
+    updateCL();
+  });
+  clWrap.appendChild(item);
+});
+</script>
+</body>
+</html>

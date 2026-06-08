@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lei Maria da Penha — Lei 11.340/2006</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f9f5f5;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#C0152A; --accent-dim:#8B0000; --accent-glow:rgba(192,21,42,0.12); --accent-surface:#fce8ea;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f9f5f5; --box-intro-border:#8B0000;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#C0152A;
+  --box-highlight-bg:#fce8ea; --box-highlight-border:#C0152A;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C0152A;
+  --box-analogy-bg:#f9f5f5; --box-analogy-border:#8B0000;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C0152A;
+  --summary-bg:#f9f5f5; --summary-border:#C0152A;
+  --table-header-bg:#8B0000; --table-header-text:#ffffff;
+  --table-row-alt:#f9f5f5; --table-border:#cccccc; --table-hover:#fce8ea;
+  --btn-correct:#C0152A; --btn-correct-bg:#fce8ea; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#8B0000; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0d0000; --bg-surface:#120000; --bg-surface-raised:#1a0000;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0cccc; --text-tertiary:#aa8888;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#FF6B7A; --accent-dim:#E83347; --accent-glow:rgba(255,107,122,0.15); --accent-surface:#3a0008;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1515; --border-soft:#221010;
+  --box-intro-bg:#0d0000; --box-intro-border:#FF6B7A;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120000; --box-example-border:#FF6B7A;
+  --box-highlight-bg:#3a0008; --box-highlight-border:#FF6B7A;
+  --box-glossary-bg:#120000; --box-glossary-border:#ffffff; --box-glossary-term:#FF6B7A;
+  --box-analogy-bg:#0d0000; --box-analogy-border:#FF6B7A;
+  --checkpoint-bg:#120000; --checkpoint-border:#FF6B7A;
+  --summary-bg:#0d0000; --summary-border:#FF6B7A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120000; --table-border:#3a1515; --table-hover:#3a0008;
+  --btn-correct:#FF6B7A; --btn-correct-bg:#3a0008; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#FF6B7A; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #FF3347}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#FF3347;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">Lei Maria da Penha</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Legislação Social</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Legislação Social</div>
+<h1>LEI MARIA DA PENHA — 11.340/2006</h1>
+<p class="doc-subtitle">Mecanismos para coibir e prevenir a violência doméstica e familiar contra a mulher: formas de violência, medidas protetivas de urgência, assistência e procedimentos.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lei nº 11.340/2006 · Última atualização: Lei nº 15.412/2026</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~45 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Disposições Preliminares (Arts. 1º–4º)</a></li>
+    <li><a href="#s2">Conceito de Violência Doméstica e Familiar (Art. 5º)</a></li>
+    <li><a href="#s3">Formas de Violência (Art. 7º)</a></li>
+    <li><a href="#s4">Medidas Integradas de Prevenção (Art. 8º)</a></li>
+    <li><a href="#s5">Assistência à Mulher (Art. 9º)</a></li>
+    <li><a href="#s6">Atendimento Policial (Arts. 10–12-D)</a></li>
+    <li><a href="#s7">Medidas Protetivas de Urgência — Visão Geral (Arts. 18–19)</a></li>
+    <li><a href="#s8">Medidas que Obrigam o Agressor (Art. 22)</a></li>
+    <li><a href="#s9">Medidas à Ofendida e Proteção Patrimonial (Arts. 23–24)</a></li>
+    <li><a href="#s10">Descumprimento de Medidas Protetivas (Art. 24-A)</a></li>
+    <li><a href="#s11">MP, Assistência Judiciária e Equipe Multidisciplinar (Arts. 25–32)</a></li>
+    <li><a href="#s12">Regras Processuais Relevantes (Arts. 14, 16, 17, 41)</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>A Lei Maria da Penha é o principal instrumento jurídico de proteção à mulher em situação de violência doméstica no Brasil. Ela define o que é violência, classifica suas formas, cria mecanismos de proteção imediata (medidas protetivas de urgência), organiza o atendimento policial, assistencial e judiciário, e proíbe aplicação de penas brandas. Conhecer seus artigos centrais — especialmente os Arts. 5º, 7º, 22, 24-A e 41 — é essencial para concursos das áreas social, jurídica e de segurança pública.</p>
+</div>
+
+<!-- ===== S1 DISPOSIÇÕES PRELIMINARES ===== -->
+<h2 id="s1">Disposições Preliminares</h2>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>Cria mecanismos para <strong>coibir e prevenir</strong> a violência doméstica e familiar contra a mulher, com base no § 8º do Art. 226 da CF, na Convenção de Belém do Pará e em outros tratados internacionais ratificados pelo Brasil.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 2º</span><span>Toda mulher, <strong>independentemente</strong> de classe, raça, etnia, orientação sexual, renda, cultura, nível educacional, idade e religião, goza do direito fundamental de viver sem violência.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 3º</span><span>São assegurados às mulheres os direitos à vida, segurança, saúde, alimentação, educação, moradia, acesso à justiça, dignidade, liberdade e convivência familiar. O poder público deve protegê-las de negligência, discriminação, exploração, violência, crueldade e opressão.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>Diretriz interpretativa: a lei deve ser aplicada considerando seus <strong>fins sociais</strong> e as condições peculiares das mulheres em situação de violência doméstica.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Premissa-mestre da Lei Maria da Penha</div>
+  <p><span class="art-ref">Art. 6º</span> — A violência doméstica e familiar contra a mulher constitui <strong>uma das formas de violação dos direitos humanos</strong>. Esse dispositivo é isoladamente um dos mais cobrados em concursos de todas as áreas.</p>
+</div>
+
+<!-- ===== S2 CONCEITO ===== -->
+<h2 id="s2">Conceito de Violência Doméstica e Familiar</h2>
+
+<div class="art-line"><span class="art-badge">Art. 5º</span><span>Configura violência doméstica e familiar qualquer <strong>ação ou omissão baseada no gênero</strong> que cause morte, lesão, sofrimento físico, sexual ou psicológico, dano moral ou patrimonial.</span></div>
+
+<p>A lei delimita três hipóteses de incidência — basta que a violência ocorra em uma delas:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Inciso</th><th>Âmbito</th><th>Definição</th></tr></thead>
+  <tbody>
+    <tr><td>I</td><td>Unidade doméstica</td><td>Espaço de convívio permanente de pessoas, com ou sem vínculo familiar, inclusive as esporadicamente agregadas</td></tr>
+    <tr><td>II</td><td>Família</td><td>Comunidade formada por indivíduos que são ou se consideram aparentados — por laços naturais, afinidade ou vontade expressa</td></tr>
+    <tr><td>III</td><td>Relação íntima de afeto</td><td>Qualquer relação em que o agressor conviva ou <em>tenha convivido</em> com a ofendida, <strong>independentemente de coabitação</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção — Parágrafo Único do Art. 5º</div>
+  <p>As relações pessoais protegidas <strong>independem de orientação sexual</strong>. Ou seja, a lei protege mulheres em relacionamentos homoafetivos com a mesma amplitude que em relacionamentos heterossexuais. Questão frequente em concurso.</p>
+</div>
+
+<!-- ===== S3 FORMAS DE VIOLÊNCIA ===== -->
+<h2 id="s3">Formas de Violência Doméstica e Familiar</h2>
+
+<div class="art-line"><span class="art-badge">Art. 7º</span><span>São formas de violência doméstica e familiar, <em>entre outras</em> (rol exemplificativo):</span></div>
+
+<div class="glossary-box">
+  <div class="box-label">As Seis Formas de Violência</div>
+  <p class="glossary-term"><span class="art-badge">I</span> Física</p>
+  <p class="glossary-def">Qualquer conduta que ofenda a integridade ou saúde corporal da mulher. Ex.: socos, tapas, empurrões, queimaduras.</p>
+  <p class="glossary-term"><span class="art-badge">II</span> Psicológica</p>
+  <p class="glossary-def">Conduta que cause dano emocional, diminuição da autoestima, controle de ações, manipulação, isolamento, vigilância constante, perseguição, chantagem, violação de intimidade, ridicularização ou limitação do direito de ir e vir.</p>
+  <p class="glossary-term"><span class="art-badge">III</span> Sexual</p>
+  <p class="glossary-def">Constrangimento a presenciar, manter ou participar de relação sexual não desejada; indução à comercialização da sexualidade; impedimento ao uso de contraceptivos; coação ao matrimônio, gravidez, aborto ou prostituição; violação de direitos sexuais e reprodutivos.</p>
+  <p class="glossary-term"><span class="art-badge">IV</span> Patrimonial</p>
+  <p class="glossary-def">Retenção, subtração ou destruição de objetos, instrumentos de trabalho, documentos pessoais, bens, valores e recursos econômicos da mulher, incluindo os destinados a satisfazer suas necessidades.</p>
+  <p class="glossary-term"><span class="art-badge">V</span> Moral</p>
+  <p class="glossary-def">Conduta que configure calúnia, difamação ou injúria. Inclui humilhações e ofensas à honra da mulher.</p>
+  <p class="glossary-term"><span class="art-badge">VI</span> Vicária <span style="font-weight:400;font-size:.8em;color:var(--text-tertiary)">(incluída pela Lei nº 15.384/2026)</span></p>
+  <p class="glossary-def">Violência praticada contra descendente, ascendente, dependente, enteado, parente, pessoa sob guarda ou pessoa da rede de apoio da mulher, com vistas a atingi-la emocionalmente. É o uso de terceiros como instrumento de atingir a vítima.</p>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Violência Vicária</div>
+  <div class="analogy-text">
+    <p>Imagine um agressor que, ao perder o acesso direto à vítima por medida protetiva, passa a maltratar os filhos ou o animal de estimação para continuar controlando e causando sofrimento à mulher. Isso é violência vicária — ela não é o alvo direto, mas é o alvo pretendido. A lei passou a nomear e tipificar essa conduta em 2026.</p>
+    <span class="analogy-bridge">Vicária vem do latim "vicar" = em lugar de. A violência acontece por meio de terceiros, no lugar de atingir diretamente a mulher.</span>
+  </div>
+</div>
+
+<!-- ===== S4 PREVENÇÃO ===== -->
+<h2 id="s4">Medidas Integradas de Prevenção</h2>
+
+<div class="art-line"><span class="art-badge">Art. 8º</span><span>A política pública de enfrentamento à violência doméstica será implementada de forma <strong>articulada</strong> entre União, Estados, DF, Municípios e ONGs.</span></div>
+
+<p>Entre as diretrizes previstas estão: integração entre Judiciário, MP, Defensoria, saúde, assistência social, educação, trabalho e segurança pública; realização de estudos e estatísticas com perspectiva de gênero e raça; capacitação permanente de profissionais; promoção de campanhas educativas; e implementação das <strong>DEAMs — Delegacias Especializadas de Atendimento à Mulher</strong>.</p>
+
+<!-- ===== S5 ASSISTÊNCIA ===== -->
+<h2 id="s5">Assistência à Mulher em Situação de Violência</h2>
+
+<div class="art-line"><span class="art-badge">Art. 9º</span><span>A assistência será prestada em caráter <strong>prioritário no SUS e no SUSP</strong>, de forma articulada com a LOAS e demais políticas de proteção.</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Dispositivo</th><th>Direito Garantido</th></tr></thead>
+  <tbody>
+    <tr><td><span class="art-ref">§ 1º</span></td><td>O juiz poderá determinar a inclusão da mulher em programas assistenciais do governo federal, estadual e municipal</td></tr>
+    <tr><td><span class="art-ref">§ 2º, I</span></td><td>Acesso prioritário à remoção quando servidora pública</td></tr>
+    <tr><td><span class="art-ref">§ 2º, II</span></td><td>Manutenção do vínculo trabalhista por até <strong>6 meses</strong> quando necessário o afastamento do trabalho</td></tr>
+    <tr><td><span class="art-ref">§ 2º, III</span></td><td>Encaminhamento à assistência judiciária para separação, divórcio ou dissolução de união estável</td></tr>
+    <tr><td><span class="art-ref">§ 3º</span></td><td>Acesso a contracepção de emergência, profilaxia de ISTs/HIV e outros procedimentos médicos decorrentes de violência sexual</td></tr>
+    <tr><td><span class="art-ref">§ 7º</span></td><td>Prioridade de matrícula ou transferência escolar dos dependentes para escola mais próxima do domicílio</td></tr>
+    <tr><td><span class="art-ref">§§ 4º e 5º</span></td><td>Agressor ressarce o SUS pelos custos dos serviços de saúde prestados à vítima e os custos dos dispositivos de monitoração eletrônica</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== S6 ATENDIMENTO POLICIAL ===== -->
+<h2 id="s6">Atendimento pela Autoridade Policial</h2>
+
+<div class="art-line"><span class="art-badge">Art. 10</span><span>A autoridade policial que tomar conhecimento de violência doméstica deve adotar <strong>de imediato</strong> as providências legais cabíveis — inclusive no caso de descumprimento de medida protetiva.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 10-A</span><span>Direito ao atendimento policial e pericial <strong>especializado, ininterrupto</strong> e preferencialmente por servidoras mulheres capacitadas. Vedado contato direto com o agressor. Proibida a revitimização.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 11</span><span>Providências obrigatórias no atendimento: proteção policial; encaminhamento ao hospital e ao IML; transporte para abrigo seguro; acompanhamento para retirada de pertences; informação sobre direitos e serviços disponíveis.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 12</span><span>Após o registro da ocorrência: oitiva da vítima; colheita de provas; remessa do pedido de medidas protetivas ao juiz em <strong>48 horas</strong>; verificação de arma de fogo do agressor.</span></div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Afastamento Emergencial (Art. 12-C)</div>
+  <p class="absurd-scenario">Verificado risco atual ou iminente à vida ou integridade da mulher, o agressor será imediatamente afastado do lar: pelo juiz; pelo delegado, quando o município não for sede de comarca; ou pelo policial, quando não houver delegado disponível. Nas hipóteses II e III, o juiz deve ser comunicado em <strong>24 horas</strong> e decidir em igual prazo.</p>
+  <p class="absurd-anchor">Novidade de 2026 (Art. 12-D): nas mesmas situações, o agressor também pode ser submetido à monitoração eletrônica pelo juiz ou delegado.</p>
+</div>
+
+<!-- ===== S7 MEDIDAS PROTETIVAS GERAL ===== -->
+<h2 id="s7">Medidas Protetivas de Urgência — Visão Geral</h2>
+
+<div class="art-line"><span class="art-badge">Art. 18</span><span>Recebido o pedido, o juiz tem <strong>48 horas</strong> para decidir sobre as medidas protetivas, encaminhar a vítima à assistência judiciária, comunicar o MP e determinar apreensão de arma de fogo do agressor.</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 19</span><span>As medidas podem ser concedidas <strong>de imediato, independentemente de audiência</strong> das partes e de manifestação do MP. Podem ser aplicadas isolada ou cumulativamente.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Regra de Ouro — Art. 19, § 5º</div>
+  <p>As medidas protetivas de urgência serão concedidas <strong>independentemente da tipificação penal da violência, do ajuizamento de ação penal ou cível, da existência de inquérito policial ou do registro de boletim de ocorrência.</strong> Ou seja: nem BO, nem inquérito, nem processo criminal são requisitos para a medida protetiva.</p>
+</div>
+
+<div class="art-line"><span class="art-badge">Art. 19, § 6º</span><span>As medidas protetivas <strong>vigorarão enquanto persistir risco</strong> à integridade física, psicológica, sexual, patrimonial ou moral da ofendida ou de seus dependentes. Não há prazo fixo de validade.</span></div>
+
+<!-- ===== S8 MEDIDAS AO AGRESSOR ===== -->
+<h2 id="s8">Medidas que Obrigam o Agressor</h2>
+
+<div class="art-line"><span class="art-badge">Art. 22</span><span>O juiz pode aplicar ao agressor, em conjunto ou separadamente, as seguintes medidas:</span></div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Inciso</th><th>Medida</th></tr></thead>
+  <tbody>
+    <tr><td>I</td><td>Suspensão da posse ou restrição do porte de armas</td></tr>
+    <tr><td>II</td><td>Afastamento do lar, domicílio ou local de convivência com a ofendida</td></tr>
+    <tr><td>III-a</td><td>Proibição de aproximação da ofendida, familiares e testemunhas (com fixação de distância mínima)</td></tr>
+    <tr><td>III-b</td><td>Proibição de contato por qualquer meio de comunicação</td></tr>
+    <tr><td>III-c</td><td>Proibição de frequentar determinados lugares</td></tr>
+    <tr><td>IV</td><td>Restrição ou suspensão de visitas aos dependentes menores</td></tr>
+    <tr><td>V</td><td>Prestação de alimentos provisionais ou provisórios</td></tr>
+    <tr><td>VI</td><td>Comparecimento a programas de recuperação e reeducação</td></tr>
+    <tr><td>VII</td><td>Acompanhamento psicossocial individual e/ou em grupo de apoio</td></tr>
+    <tr><td>VIII</td><td>Monitoração eletrônica — dispositivo de segurança que alerta a vítima sobre aproximação do agressor <span style="font-size:.8em;color:var(--text-tertiary)">(Lei 15.383/2026)</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Monitoração Eletrônica — Prioridade (Art. 22, § 6º)</div>
+  <p>A monitoração eletrônica tem prioridade de aplicação quando houver <strong>descumprimento de medidas protetivas anteriores</strong> ou quando verificado <strong>risco iminente à integridade física ou psicológica</strong> da vítima. O sistema emite alerta automático e simultâneo à vítima e à unidade policial mais próxima se o agressor romper o perímetro de exclusão.</p>
+</div>
+
+<!-- ===== S9 MEDIDAS À OFENDIDA E PATRIMONIAL ===== -->
+<h2 id="s9">Medidas à Ofendida e Proteção Patrimonial</h2>
+
+<div class="art-line"><span class="art-badge">Art. 23</span><span>Medidas protetivas voltadas diretamente à ofendida:</span></div>
+
+<ul>
+  <li>Encaminhamento a programa oficial ou comunitário de proteção ou atendimento</li>
+  <li>Recondução ao domicílio após afastamento do agressor</li>
+  <li>Afastamento da ofendida do lar, sem prejuízo dos direitos sobre bens, guarda e alimentos</li>
+  <li>Separação de corpos</li>
+  <li>Matrícula ou transferência dos dependentes para escola mais próxima do domicílio, independentemente de vaga</li>
+  <li><strong>Auxílio-aluguel</strong> por até <strong>6 meses</strong>, com valor fixado conforme vulnerabilidade social e econômica da ofendida <span class="art-ref">(inc. VI — Lei 14.674/2023)</span></li>
+</ul>
+
+<div class="art-line"><span class="art-badge">Art. 24</span><span>Proteção patrimonial: restituição de bens subtraídos; proibição de venda/locação de bens comuns; suspensão de procurações conferidas pelo agressor; caução provisória por perdas e danos.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Novidade — Título Executivo Judicial (Art. 22, § 10)</div>
+  <p>As medidas protetivas de natureza cível, inclusive prestação de alimentos, constituem <strong>título executivo judicial de pleno direito</strong>, dispensando a propositura de ação principal. <span class="art-ref">(Lei 15.412/2026)</span></p>
+</div>
+
+<!-- ===== S10 DESCUMPRIMENTO ===== -->
+<h2 id="s10">Crime de Descumprimento de Medidas Protetivas</h2>
+
+<div class="art-line"><span class="art-badge">Art. 24-A</span><span>Descumprir decisão judicial que defere medidas protetivas de urgência é crime autônomo.</span></div>
+
+<div class="box absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Pena e Fiança</div>
+  <p class="absurd-scenario"><strong>Pena atual: reclusão de 2 a 5 anos e multa</strong> (redação dada pela Lei nº 14.994/2024 — antes era detenção de 3 meses a 2 anos). A configuração do crime independe da competência civil ou criminal do juiz que deferiu as medidas. Em caso de flagrante, <strong>apenas a autoridade judicial pode conceder fiança</strong>.</p>
+  <p class="absurd-anchor">Agravante: a pena é aumentada de 1/3 até a metade se o descumprimento decorrer de violação de áreas de exclusão monitoradas eletronicamente ou da remoção/violação do dispositivo de monitoração sem autorização judicial. (Art. 24-A, § 4º — Lei 15.383/2026)</p>
+</div>
+
+<!-- ===== S11 MP, JUDICIÁRIA, MULTIDISCIPLINAR ===== -->
+<h2 id="s11">MP, Assistência Judiciária e Equipe Multidisciplinar</h2>
+
+<h3>Ministério Público <span class="art-ref">(Arts. 25–26)</span></h3>
+<p>O MP intervém em todas as causas cíveis e criminais decorrentes de violência doméstica. Pode requisitar força policial e serviços públicos, fiscalizar estabelecimentos de atendimento à mulher e cadastrar os casos de violência doméstica.</p>
+
+<h3>Assistência Judiciária <span class="art-ref">(Arts. 27–28)</span></h3>
+<div class="art-line"><span class="art-badge">Art. 27</span><span>Em todos os atos processuais, a mulher deve estar acompanhada de advogado.</span></div>
+<div class="art-line"><span class="art-badge">Art. 28</span><span>É garantido acesso à <strong>Defensoria Pública ou assistência judiciária gratuita</strong>, com atendimento específico e humanizado, em sede policial e judicial.</span></div>
+
+<h3>Equipe Multidisciplinar <span class="art-ref">(Arts. 29–32)</span></h3>
+<p>Os Juizados de Violência Doméstica poderão ter equipe multidisciplinar integrada por profissionais das áreas <strong>psicossocial, jurídica e de saúde</strong>, responsáveis por laudos técnicos, orientação, encaminhamento e prevenção — voltados à ofendida, ao agressor e aos familiares.</p>
+
+<!-- ===== S12 REGRAS PROCESSUAIS ===== -->
+<h2 id="s12">Regras Processuais Relevantes</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Artigo</th><th>Regra</th><th>Importância</th></tr></thead>
+  <tbody>
+    <tr><td><span class="art-ref">Art. 14</span></td><td>Os Juizados de Violência Doméstica têm competência <strong>cível e criminal</strong></td><td>Podem julgar tanto ações penais quanto demandas cíveis (divórcio, alimentos, guarda)</td></tr>
+    <tr><td><span class="art-ref">Art. 14-A</span></td><td>A ofendida pode propor ação de divórcio ou dissolução de união estável no próprio Juizado de Violência Doméstica</td><td>Exceto partilha de bens, que fica de fora da competência</td></tr>
+    <tr><td><span class="art-ref">Art. 15</span></td><td>Competência por opção da ofendida: domicílio da vítima, lugar do fato ou domicílio do agressor</td><td>A escolha é da mulher — não do Estado</td></tr>
+    <tr><td><span class="art-ref">Art. 16</span></td><td>Renúncia à representação somente perante o juiz, em audiência específica, antes do recebimento da denúncia</td><td>Protege a mulher de pressões do agressor</td></tr>
+    <tr><td><span class="art-ref">Art. 17</span></td><td>Vedada a aplicação de pena de cesta básica, prestação pecuniária isolada ou substituição por multa</td><td>Proíbe que o agressor "compre" impunidade com dinheiro</td></tr>
+    <tr><td><span class="art-ref">Art. 17-A</span></td><td>Nome da ofendida ficará sob sigilo nos processos</td><td>Protege a privacidade e segurança da vítima</td></tr>
+    <tr><td><span class="art-ref">Art. 41</span></td><td><strong>Não se aplica a Lei nº 9.099/1995</strong> (Juizados Especiais Criminais) aos crimes praticados com violência doméstica, independentemente da pena prevista</td><td>Veda suspensão condicional do processo, transação penal e outros benefícios da lei dos JECrims</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Art. 41 (o mais cobrado)</div>
+  <p class="absurd-scenario">O Art. 41 é absoluto: <strong>não se aplica a Lei 9.099/95</strong> em nenhuma hipótese de violência doméstica — nem quando a pena for pequena. Isso significa: sem transação penal, sem suspensão condicional do processo, sem termo circunstanciado em substituição ao flagrante, sem composição civil de danos. O rito é sempre ordinário ou sumário do CPP.</p>
+  <p class="absurd-anchor">Analogia: mesmo que a lesão seja levíssima, se praticada no contexto doméstico, o processo segue o rito normal — não vai para o JECrim. A gravidade do contexto supera a classificação da pena.</p>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · Lei 11.340/2006
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A Lei Maria da Penha aplica-se apenas às mulheres em relacionamentos heterossexuais, não alcançando situações de violência doméstica em relações homoafetivas.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O parágrafo único do <strong>Art. 5º</strong> é explícito: as relações pessoais enunciadas neste artigo <em>independem de orientação sexual</em>. A Lei Maria da Penha protege mulheres em situação de violência doméstica independentemente de serem hetero, homo ou bissexuais.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Para a concessão de medidas protetivas de urgência, é indispensável o registro de boletim de ocorrência e a instauração de inquérito policial.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 19, § 5º</strong> é expresso: as medidas protetivas de urgência serão concedidas <em>independentemente da tipificação penal da violência, do ajuizamento de ação penal ou cível, da existência de inquérito policial ou do registro de boletim de ocorrência</em>. A ausência de BO não impede a medida protetiva.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Aos crimes praticados com violência doméstica e familiar contra a mulher não se aplica a Lei nº 9.099/1995, independentemente da pena prevista para o delito.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 41</strong> é um dos mais cobrados da lei: a exclusão da Lei 9.099/95 (Juizados Especiais Criminais) é absoluta — não comporta exceções por faixa de pena ou gravidade do delito. O STF confirmou a constitucionalidade desta regra na ADI 4424.</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">O agressor que descumprir medida protetiva de urgência pratica crime punido com detenção de 3 meses a 2 anos, podendo a fiança ser concedida pela própria autoridade policial em caso de flagrante.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> Dois erros na assertiva: (1) a pena atual, conforme redação da Lei nº 14.994/2024, é de <strong>reclusão de 2 a 5 anos e multa</strong> — não mais detenção de 3 meses a 2 anos; (2) o <strong>Art. 24-A, § 2º</strong> determina que em caso de flagrante, <strong>apenas a autoridade judicial</strong> pode conceder fiança — a autoridade policial não tem essa competência no crime do Art. 24-A.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="D">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Sobre as formas de violência doméstica e familiar previstas no Art. 7º da Lei Maria da Penha, assinale a afirmação CORRETA:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) A violência moral somente se configura quando houver lesão corporal concomitante, pois é necessária a demonstração de dano físico para caracterizá-la.<br>
+      (B) A violência patrimonial exige a destruição total dos bens da mulher; a subtração parcial ou retenção temporária de documentos não se enquadra no conceito legal.<br>
+      (C) A violência psicológica somente se verifica quando há ameaça explícita de dano físico, não abrangendo condutas de vigilância constante ou isolamento sem ameaça direta.<br>
+      (D) A violência vicária consiste em violência praticada contra pessoas do convívio ou da rede de apoio da mulher com o objetivo de atingi-la emocionalmente, sem que ela seja a vítima direta da agressão.<br>
+      (E) O rol de formas de violência previsto no Art. 7º é taxativo, de modo que condutas não expressamente listadas não podem ser enquadradas como violência doméstica.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','D')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','D')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','D')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','D')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','D')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: D</strong></p>
+      <p><strong>(A) Errada.</strong> A violência moral (Art. 7º, V) consiste em calúnia, difamação ou injúria — condutas que atingem a honra. Não exige lesão corporal concomitante. São ofensas à reputação e à dignidade da mulher.</p>
+      <p><strong>(B) Errada.</strong> A violência patrimonial (Art. 7º, IV) abrange retenção, subtração <em>ou</em> destruição <em>parcial ou total</em> de bens, incluindo documentos pessoais. A subtração parcial e a retenção temporária de documentos já configuram violência patrimonial.</p>
+      <p><strong>(C) Errada.</strong> A violência psicológica (Art. 7º, II) abrange expressamente vigilância constante, isolamento e perseguição — independentemente de ameaça de dano físico. O dano é emocional e à autodeterminação da mulher.</p>
+      <p><strong>(D) Correta.</strong> A violência vicária (Art. 7º, VI — incluída pela Lei 15.384/2026) é exatamente a violência praticada contra terceiros da rede da mulher (filhos, parentes, animais, pessoas sob sua guarda) com o objetivo de atingi-la emocionalmente. Ela não é a vítima direta da agressão, mas é o alvo pretendido.</p>
+      <p><strong>(E) Errada.</strong> O caput do Art. 7º usa a expressão "entre outras", tornando o rol <em>exemplificativo</em>, não taxativo. Outras formas de violência não listadas podem ser enquadradas na lei.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais da Lei nº 11.340/2006 — Lei Maria da Penha)</p>
+</div>
+
+<h2>Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>Art. 6º:</strong> violência doméstica é violação dos direitos humanos — mais cobrado em concurso.</li>
+      <li><strong>Art. 5º, parágrafo único:</strong> a proteção independe de orientação sexual.</li>
+      <li><strong>Seis formas:</strong> física, psicológica, sexual, patrimonial, moral e vicária (2026). Rol exemplificativo.</li>
+      <li><strong>Medidas protetivas independem</strong> de BO, inquérito, ação penal ou tipificação — Art. 19, § 5º.</li>
+      <li><strong>Vigência ilimitada</strong> das medidas protetivas — enquanto persistir o risco — Art. 19, § 6º.</li>
+      <li><strong>Descumprimento:</strong> crime com pena de reclusão de 2 a 5 anos e multa. Fiança só por juiz — Art. 24-A.</li>
+      <li><strong>Art. 41:</strong> afasta absolutamente a Lei 9.099/95 (JECrims), independentemente da pena.</li>
+      <li><strong>Art. 17:</strong> vedadas penas de cesta básica, prestação pecuniária isolada ou substituição por multa.</li>
+      <li><strong>Assistência:</strong> manutenção do vínculo trabalhista por até 6 meses e acesso prioritário ao SUS — Art. 9º.</li>
+      <li><strong>Art. 12-C:</strong> afastamento emergencial do agressor pelo delegado ou policial quando município não for sede de comarca — comunicação ao juiz em 24h.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>Violência vicária</dt><dd>Violência contra terceiros da rede da mulher para atingi-la emocionalmente. Incluída em 2026.</dd>
+      <dt>Medida protetiva de urgência</dt><dd>Providência judicial imediata para proteção da ofendida. Independe de BO ou processo penal.</dd>
+      <dt>DEAM</dt><dd>Delegacia Especializada de Atendimento à Mulher — atendimento policial especializado e ininterrupto.</dd>
+      <dt>Equipe multidisciplinar</dt><dd>Profissionais de psicossocial, jurídica e saúde nos Juizados de Violência Doméstica.</dd>
+      <dt>Art. 24-A</dt><dd>Crime de descumprimento de medida protetiva — reclusão de 2 a 5 anos e multa. Fiança só judicial.</dd>
+      <dt>Art. 41</dt><dd>Veda aplicação da Lei 9.099/95 (JECrims) a crimes de violência doméstica, sem exceção.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Para concursos, foque em quatro blocos: <strong>(1)</strong> Arts. 5º e 7º — conceito e formas de violência, especialmente o parágrafo único do Art. 5º e a violência vicária; <strong>(2)</strong> Arts. 18-19 — prazos e independência das medidas protetivas; <strong>(3)</strong> Art. 24-A — pena atualizada (reclusão 2 a 5 anos) e fiança somente pelo juiz; <strong>(4)</strong> Art. 41 — afastamento absoluto da Lei 9.099/95. Esses quatro blocos respondem a maioria das questões de concurso sobre a Lei Maria da Penha.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">Lei Maria da Penha</span>
+  <span class="footer-sub">Lei nº 11.340, de 7 de agosto de 2006 · Última redação: Lei nº 15.412/2026 · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='LeiMariaDaPenha-11340-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+</script>
+</body>
+</html>

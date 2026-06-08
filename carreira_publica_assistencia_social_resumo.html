@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carreira Pública de Desenvolvimento e Assistência Social — Lei 7.484/2024</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f9f5f5;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#C0152A; --accent-dim:#8B0000; --accent-glow:rgba(192,21,42,0.12); --accent-surface:#fce8ea;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f9f5f5; --box-intro-border:#8B0000;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#C0152A;
+  --box-highlight-bg:#fce8ea; --box-highlight-border:#C0152A;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C0152A;
+  --box-analogy-bg:#f9f5f5; --box-analogy-border:#8B0000;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C0152A;
+  --summary-bg:#f9f5f5; --summary-border:#C0152A;
+  --table-header-bg:#8B0000; --table-header-text:#ffffff;
+  --table-row-alt:#f9f5f5; --table-border:#cccccc; --table-hover:#fce8ea;
+  --btn-correct:#C0152A; --btn-correct-bg:#fce8ea; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#8B0000; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0d0000; --bg-surface:#120000; --bg-surface-raised:#1a0000;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0cccc; --text-tertiary:#aa8888;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#FF6B7A; --accent-dim:#E83347; --accent-glow:rgba(255,107,122,0.15); --accent-surface:#3a0008;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1515; --border-soft:#221010;
+  --box-intro-bg:#0d0000; --box-intro-border:#FF6B7A;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120000; --box-example-border:#FF6B7A;
+  --box-highlight-bg:#3a0008; --box-highlight-border:#FF6B7A;
+  --box-glossary-bg:#120000; --box-glossary-border:#ffffff; --box-glossary-term:#FF6B7A;
+  --box-analogy-bg:#0d0000; --box-analogy-border:#FF6B7A;
+  --checkpoint-bg:#120000; --checkpoint-border:#FF6B7A;
+  --summary-bg:#0d0000; --summary-border:#FF6B7A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120000; --table-border:#3a1515; --table-hover:#3a0008;
+  --btn-correct:#FF6B7A; --btn-correct-bg:#3a0008; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#FF6B7A; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #FF3347}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#FF3347;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topbar-left"><a href="#" class="topbar-brand"><span class="topbar-logo">Carreira Social</span><span class="topbar-sep"></span><span class="topbar-label">Resumos</span></a><span class="topbar-discipline">Legislação Social</span></div><div class="topbar-right"><button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg><span class="toggle-label">Baixar</span></button><button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><span class="toggle-label">Escuro</span></button></div></header>
+<div class="reading-progress" id="readingProgress"></div>
+<main class="container"><article class="document-surface">
+<div class="doc-eyebrow">Resumo · Legislação Social</div>
+<h1>CARREIRA PÚBLICA DE DESENVOLVIMENTO E ASSISTÊNCIA SOCIAL — LEI 7.484/2024</h1>
+<p class="doc-subtitle">Reestruturação da carreira pública distrital vinculada às políticas de assistência social, segurança alimentar, direitos humanos, mulheres, criança e adolescente, pessoa idosa, igualdade racial e pessoa com deficiência.</p>
+<div class="doc-meta">
+  <span>📘 Lei nº 7.484/2024 · Carreira Pública de Desenvolvimento e Assistência Social</span>
+  <span>⏱️ ~55 min</span>
+  <span>✅ Em vigor · efeitos financeiros nas datas indicadas</span>
+</div>
+
+<nav class="toc"><div class="toc-title">Nesta aula</div><ol>
+<li><a href="#s1">Carreira, campos de atuação e cargos — Arts. 1º e 2º</a></li>
+<li><a href="#s2">Conceitos básicos — Art. 3º</a></li>
+<li><a href="#s3">Ingresso na carreira — Arts. 4º e 5º</a></li>
+<li><a href="#s4">Gestão, mobilidade, cessão e cargos em comissão — Arts. 6º a 8º</a></li>
+<li><a href="#s5">Atribuições dos cargos — Arts. 9º a 12</a></li>
+<li><a href="#s6">Progressão e promoção — Arts. 13 e 14</a></li>
+<li><a href="#s7">Formação continuada — Arts. 15 e 16</a></li>
+<li><a href="#s8">Remuneração e gratificações — Arts. 17 a 22</a></li>
+<li><a href="#s9">Disposições gerais — Arts. 23 a 31</a></li>
+<li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+</ol></nav>
+
+<div class="box intro-box"><div class="box-label">O que vamos aprender</div>
+<p>A Lei nº 7.484/2024 reorganiza a antiga Carreira Pública de Assistência Social e passa a denominá-la <strong>Carreira Pública de Desenvolvimento e Assistência Social</strong>. Para concurso da SEDES/DF, a leitura deve focar em: composição dos cargos, campos de atuação, requisitos de ingresso, etapas possíveis do concurso, gestão da carreira, mobilidade, atribuições, progressão, promoção, formação continuada, gratificações e regras de transição.</p></div>
+
+<h2 id="s1">Carreira, campos de atuação e cargos</h2>
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>A carreira é reestruturada e passa a se chamar <strong>Carreira Pública de Desenvolvimento e Assistência Social</strong>.</span></div>
+<p>Os servidores da carreira atuam nos órgãos distritais responsáveis por executar políticas públicas de alta relevância social. A lei vincula a carreira não apenas à assistência social, mas a um conjunto amplo de políticas de proteção, desenvolvimento social e direitos humanos.</p>
+<div class="table-wrapper"><table><thead><tr><th>Campo de atuação</th><th>Política pública abrangida</th></tr></thead><tbody>
+<tr><td>Assistência social</td><td>Política Nacional de Assistência Social no âmbito do SUAS</td></tr>
+<tr><td>Segurança alimentar</td><td>Política Nacional de Segurança Alimentar e Nutricional no âmbito do SISAN</td></tr>
+<tr><td>Mulheres</td><td>Enfrentamento à violência contra as mulheres e promoção da mulher</td></tr>
+<tr><td>Criança e adolescente</td><td>Política Pública dos Direitos da Criança e do Adolescente</td></tr>
+<tr><td>Pessoa idosa</td><td>Política Pública dos Direitos do Idoso</td></tr>
+<tr><td>Direitos humanos</td><td>Política Nacional de Direitos Humanos</td></tr>
+<tr><td>Igualdade racial</td><td>Política Pública de Promoção da Igualdade Racial</td></tr>
+<tr><td>Pessoa com deficiência</td><td>Política Pública de inclusão da Pessoa com Deficiência</td></tr>
+<tr><td>Demais políticas correlatas</td><td>Políticas relacionadas às atribuições próprias de desenvolvimento e assistência social</td></tr>
+</tbody></table></div>
+<div class="art-line"><span class="art-badge">Art. 2º</span><span>A carreira é organizada em classes e padrões e composta por três cargos: Especialista, Técnico e Auxiliar.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Cargo</th><th>Quantidade legal</th><th>Nível</th></tr></thead><tbody>
+<tr><td>Especialista em Desenvolvimento e Assistência Social</td><td>2.000 cargos</td><td>Superior</td></tr>
+<tr><td>Técnico em Desenvolvimento e Assistência Social</td><td>3.000 cargos</td><td>Médio, com possibilidade de formação profissional/conselho quando exigido</td></tr>
+<tr><td>Auxiliar em Desenvolvimento e Assistência Social</td><td>500 cargos</td><td>Fundamental</td></tr>
+</tbody></table></div>
+<div class="box alert-box"><div class="box-label">Atenção de prova</div><p>A banca pode tentar restringir a carreira apenas ao SUAS. Isso está incompleto. O art. 1º inclui SUAS, SISAN, mulheres, criança e adolescente, idoso, direitos humanos, igualdade racial, pessoa com deficiência e demais políticas correlatas.</p></div>
+
+<h2 id="s2">Conceitos básicos</h2>
+<div class="art-line"><span class="art-badge">Art. 3º</span><span>O artigo define a linguagem técnica da carreira.</span></div>
+<div class="glossary-box"><div class="box-label">Conceitos do Art. 3º</div>
+<p class="glossary-term">Carreira</p><p class="glossary-def">Conjunto de cargos distribuídos conforme responsabilidade e complexidade.</p>
+<p class="glossary-term">Cargo</p><p class="glossary-def">Conjunto de atribuições e responsabilidades previstas na estrutura organizacional e cometidas ao servidor.</p>
+<p class="glossary-term">Especialidade</p><p class="glossary-def">Área de competência correspondente às atribuições específicas desempenhadas pelo servidor.</p>
+<p class="glossary-term">Qualificação profissional</p><p class="glossary-def">Aprimoramento do servidor para formação continuada e desenvolvimento no cargo.</p>
+<p class="glossary-term">Habilitação</p><p class="glossary-def">Formação em razão do grau de escolaridade e da qualificação profissional.</p>
+<p class="glossary-term">Progressão</p><p class="glossary-def">Passagem de um padrão para os subsequentes, dentro da mesma classe, considerando tempo de serviço no cargo.</p>
+<p class="glossary-term">Classe/padrão</p><p class="glossary-def">Posição do servidor na tabela de escalonamento vertical.</p>
+<p class="glossary-term">Vencimento básico</p><p class="glossary-def">Percepção pecuniária equivalente ao padrão do cargo, observada a jornada.</p>
+<p class="glossary-term">Remuneração</p><p class="glossary-def">Valor mensal recebido pelo servidor, conforme a LC nº 840/2011.</p>
+<p class="glossary-term">Mobilidade</p><p class="glossary-def">Deslocamento do servidor no Quadro de Lotação de Pessoal entre órgãos do GDF.</p>
+</div>
+
+<h2 id="s3">Ingresso na carreira</h2>
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>O ingresso ocorre mediante concurso público, com requisitos próprios para cada cargo.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Cargo</th><th>Requisito de investidura</th></tr></thead><tbody>
+<tr><td>Especialista</td><td>Diploma de curso superior ou habilitação legal equivalente, com formação nas áreas indicadas; quando o edital exigir, registro em conselho de classe.</td></tr>
+<tr><td>Técnico</td><td>Certificado de conclusão do ensino médio; quando o edital exigir, curso de formação profissional na área e registro em conselho de classe.</td></tr>
+<tr><td>Auxiliar</td><td>Certificado de conclusão do ensino fundamental.</td></tr>
+</tbody></table></div>
+<div class="art-line"><span class="art-badge">Art. 5º</span><span>O concurso pode ser de provas ou provas e títulos e pode incluir etapas adicionais, conforme cargo e especialidade.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Etapa possível</th><th>Natureza</th><th>Observação</th></tr></thead><tbody>
+<tr><td>Teste de avaliação psicológica</td><td>Apto ou inapto</td><td>Compatível com as atribuições do cargo</td></tr>
+<tr><td>Investigação social</td><td>Eliminatória</td><td>Pode ser exigida conforme edital</td></tr>
+<tr><td>Curso de formação</td><td>Eliminatório e classificatório</td><td>Desenvolvido pela entidade do processo seletivo em articulação com o órgão de gestão de pessoas</td></tr>
+<tr><td>Prova de conhecimentos gerais e específicos</td><td>Eliminatória e classificatória</td><td>Serve também para convocação às demais etapas</td></tr>
+</tbody></table></div>
+<div class="box highlight-box"><div class="box-label">Ponto-chave</div><p>As exigências de cada fase dependem das atribuições do cargo e da especialidade e devem ser definidas em edital. O curso de formação, quando houver, também classifica os aprovados.</p></div>
+
+<h2 id="s4">Gestão, mobilidade, cessão e cargos em comissão</h2>
+<div class="art-line"><span class="art-badge">Art. 6º</span><span>A gestão da carreira compete ao órgão central de gestão de pessoas do GDF.</span></div>
+<p>Os servidores podem ter mobilidade para qualquer órgão distrital atendido pela carreira, desde que observado o campo de atuação descrito no art. 1º. As regras de mobilidade devem ser definidas por ato do órgão gestor no prazo de 180 dias, com possibilidade de participação do sindicato representativo.</p>
+<ul>
+<li>Servidores já lotados e em exercício em órgãos atendidos pela carreira permanecem nessa condição até a promoção da mobilidade.</li>
+<li>Nos casos de desmembramento, fusão ou extinção de órgãos, a lotação e o exercício serão definidos pelo órgão gestor.</li>
+<li>O órgão gestor deve apresentar proposta de Quadro de Lotação de Pessoal de cada órgão atendido pela carreira no prazo de até 90 dias, para aprovação pelo CIGP.</li>
+</ul>
+<div class="art-line"><span class="art-badge">Art. 7º</span><span>A cessão ocorre nas hipóteses da LC nº 840/2011 e respeita limite de 3% dos servidores ativos por órgão de lotação.</span></div>
+<div class="art-line"><span class="art-badge">Art. 8º</span><span>Os cargos em comissão, inclusive os de natureza especial, serão exercidos preferencialmente por servidores da carreira.</span></div>
+<div class="box alert-box"><div class="box-label">Pegadinha</div><p>A lei não diz que os cargos em comissão serão obrigatoriamente ocupados por servidores da carreira. O termo é <strong>preferencialmente</strong>.</p></div>
+
+<h2 id="s5">Atribuições dos cargos</h2>
+<div class="table-wrapper"><table><thead><tr><th>Artigo</th><th>Cargo</th><th>Atribuições gerais</th></tr></thead><tbody>
+<tr><td>Art. 9º</td><td>Especialista</td><td>Formular, planejar, coordenar, supervisionar e avaliar atividades de gestão governamental nas políticas do art. 1º; executar atividades de mesma natureza e complexidade, conforme legislação específica e especialidade.</td></tr>
+<tr><td>Art. 10</td><td>Técnico</td><td>Executar atividades de natureza executivo-operacional relacionadas à gestão governamental das políticas do art. 1º; executar atividades de mesma natureza e complexidade, conforme legislação específica e especialidade.</td></tr>
+<tr><td>Art. 11</td><td>Auxiliar</td><td>Auxiliar atividades de natureza executivo-operacional relacionadas à gestão governamental das políticas do art. 1º; auxiliar atividades semelhantes, sob orientação e supervisão.</td></tr>
+<tr><td>Art. 12</td><td>Todos</td><td>As atribuições específicas e especialidades serão definidas em ato próprio do titular do órgão gestor da carreira.</td></tr>
+</tbody></table></div>
+<div class="box highlight-box"><div class="box-label">Diferença essencial</div><p><strong>Especialista</strong> formula, planeja, coordena, supervisiona e avalia. <strong>Técnico</strong> executa atividades executivo-operacionais. <strong>Auxiliar</strong> auxilia atividades executivo-operacionais sob orientação e supervisão.</p></div>
+
+<h2 id="s6">Progressão e promoção</h2>
+<div class="art-line"><span class="art-badge">Art. 13</span><span>A progressão exige efetivo exercício e interstício de 12 meses no padrão atual.</span></div>
+<p>A progressão ocorre de forma automática, dispensa publicação de ato e deve ser registrada nos assentamentos funcionais. A lei garante progressão também aos servidores em estágio probatório.</p>
+<div class="art-line"><span class="art-badge">Art. 14</span><span>A promoção funcional é a mudança do último padrão da classe atual para o primeiro padrão da classe imediatamente superior, no mesmo cargo.</span></div>
+<p>Para promoção, exige-se interstício de 12 meses de efetivo exercício no padrão atual e observância do critério de merecimento, conforme regulamento próprio.</p>
+<div class="table-wrapper"><table><thead><tr><th>Instituto</th><th>Movimento</th><th>Requisito central</th><th>Observação</th></tr></thead><tbody>
+<tr><td>Progressão</td><td>Entre padrões da mesma classe</td><td>12 meses de efetivo exercício no padrão atual</td><td>Automática e sem publicação de ato</td></tr>
+<tr><td>Promoção</td><td>Do último padrão de uma classe para o primeiro padrão da classe superior</td><td>12 meses + merecimento</td><td>Depende de regulamento próprio</td></tr>
+</tbody></table></div>
+
+<h2 id="s7">Programa de formação continuada</h2>
+<div class="art-line"><span class="art-badge">Art. 15</span><span>O órgão central de gestão de pessoas, junto aos órgãos atendidos pela carreira, deve instituir cursos de capacitação, especialização e aperfeiçoamento.</span></div>
+<ul>
+<li>Os cursos buscam excelência dos serviços prestados e aperfeiçoamento de habilidades ligadas às áreas de atuação.</li>
+<li>Os programas são oferecidos com base em levantamento prévio de necessidades e prioridades.</li>
+<li>Podem ser ofertados pela EGOV, entidade de classe ou instituição externa, preferencialmente pública, aprovada em credenciamento.</li>
+<li>O credenciamento e as diretrizes ficam a cargo da EGOV.</li>
+<li>É garantido afastamento remunerado de, no mínimo, 1% dos servidores ativos para formação continuada, preservada a lotação e respeitada a conveniência e oportunidade da administração.</li>
+<li>Os órgãos atendidos devem instituir plano anual de capacitação até 31 de março de cada exercício.</li>
+<li>A aplicação observa a LC nº 840/2011.</li>
+</ul>
+<div class="art-line"><span class="art-badge">Art. 16</span><span>A EGOV e os órgãos atendidos ficam encarregados de criar programa de formação continuada voltado às políticas públicas do art. 1º.</span></div>
+
+<h2 id="s8">Remuneração e gratificações</h2>
+<div class="art-line"><span class="art-badge">Art. 17</span><span>A tabela de escalonamento da carreira é reestruturada na forma do Anexo I.</span></div>
+<p>Servidores aposentados com paridade são reposicionados conforme tempo de serviço no cargo em que ocorreu a aposentadoria, usando como parâmetro um padrão para cada 12 meses de efetivo exercício.</p>
+<div class="art-line"><span class="art-badge">Art. 18</span><span>Os vencimentos básicos ficam estabelecidos na forma do Anexo II, com aplicação dos reajustes da Lei nº 7.253/2023.</span></div>
+<h3>Gratificação de Desempenho Social — GDS</h3>
+<div class="art-line"><span class="art-badge">Art. 19</span><span>A GDS tem percentuais reduzidos gradualmente até sua extinção.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Data</th><th>Percentual da GDS</th></tr></thead><tbody>
+<tr><td>1º de maio de 2024</td><td>25%</td></tr>
+<tr><td>1º de outubro de 2024</td><td>20%</td></tr>
+<tr><td>1º de maio de 2025</td><td>15%</td></tr>
+<tr><td>1º de outubro de 2025</td><td>10%</td></tr>
+<tr><td>1º de fevereiro de 2026</td><td>5%</td></tr>
+<tr><td>1º de junho de 2026</td><td>Extinta</td></tr>
+</tbody></table></div>
+<h3>Gratificação em Desenvolvimento e Assistência Social — GDAS</h3>
+<div class="art-line"><span class="art-badge">Art. 20</span><span>Cria a GDAS, calculada sobre o vencimento básico da classe e padrão do servidor, conforme atividade executada.</span></div>
+<div class="table-wrapper"><table><thead><tr><th>Percentual</th><th>Atividades/unidades</th></tr></thead><tbody>
+<tr><td>15%</td><td>Execução em unidades administrativas e supervisão de serviços.</td></tr>
+<tr><td>25%</td><td>Serviço de proteção e atenção social básica; SCFV; PAEFI; equipamentos de segurança alimentar e nutricional; proteção especial para PcD, idosos com direitos violados e famílias; conselho tutelar; proteção e atendimento aos órfãos do feminicídio; promoção das mulheres e atendimento a mulheres vítimas de violência.</td></tr>
+<tr><td>30%</td><td>Abordagem social; população em situação de rua; acolhimento e abrigamento; centro integrado de atendimento a criança e adolescente vítimas de violência sexual; abordagem multidisciplinar a dependentes químicos e famílias; serviços funerários.</td></tr>
+</tbody></table></div>
+<p>A GDAS passa a vigorar a partir de 1º de outubro de 2024.</p>
+<div class="art-line"><span class="art-badge">Art. 21</span><span>A Gratificação em Políticas Sociais — GPS fica extinta a partir de 1º de outubro de 2024.</span></div>
+<div class="art-line"><span class="art-badge">Art. 22</span><span>Os servidores deixam de receber a Gratificação por Atividade de Risco — GAR a partir de 1º de outubro de 2024.</span></div>
+<div class="box alert-box"><div class="box-label">Atenção para datas</div><p>GDS é reduzida em etapas e extinta em 1º/6/2026. GDAS vigora a partir de 1º/10/2024. GPS e GAR deixam de ser pagas em 1º/10/2024.</p></div>
+
+<h2 id="s9">Disposições gerais e finais</h2>
+<div class="table-wrapper"><table><thead><tr><th>Artigo</th><th>Regra</th></tr></thead><tbody>
+<tr><td>Art. 23</td><td>A jornada pode ser cumprida em escala de revezamento, inclusive em unidades de funcionamento ininterrupto, conforme regulamento e necessidade do serviço.</td></tr>
+<tr><td>Art. 24</td><td>Órgãos alcançados pela carreira devem instituir Comissão Permanente de Avaliação de Desempenho em 30 dias, composta por no mínimo 3 integrantes da carreira.</td></tr>
+<tr><td>Art. 25</td><td>Cria o Comitê Gestor da Política de Desenvolvimento e Assistência Social, a ser regulamentado pelo órgão gestor em até 90 dias.</td></tr>
+<tr><td>Art. 26</td><td>Institui identidade funcional para os servidores da carreira, a ser regulamentada a partir de proposta do órgão gestor.</td></tr>
+<tr><td>Art. 27</td><td>Veda redução de remuneração ou proventos; eventual diferença é assegurada como VPNI, atualizada apenas por índices gerais de reajuste dos servidores públicos distritais.</td></tr>
+<tr><td>Art. 28</td><td>Aplica a lei, no que couber, a aposentados e pensionistas vinculados à carreira com paridade.</td></tr>
+<tr><td>Art. 29</td><td>Despesas correm à conta das dotações orçamentárias do Distrito Federal.</td></tr>
+<tr><td>Art. 30</td><td>A lei entra em vigor na data de publicação, com efeitos financeiros nas datas indicadas.</td></tr>
+<tr><td>Art. 31</td><td>Revoga as Leis nº 4.450/2009, nº 5.184/2013 e nº 5.352/2014.</td></tr>
+</tbody></table></div>
+<div class="box highlight-box"><div class="box-label">Fechamento artigo por artigo</div><p>A lei possui 31 artigos. Para prova, o núcleo mais cobrado tende a ser: arts. 1º e 2º (estrutura e cargos), arts. 4º e 5º (ingresso e concurso), arts. 9º a 12 (atribuições), arts. 13 e 14 (progressão/promoção), arts. 19 a 22 (gratificações) e art. 27 (irredutibilidade e VPNI).</p></div>
+
+<div class="summary-card"><div class="summary-card-header"><span class="summary-card-title">Mapa rápido — todos os artigos</span></div>
+<div class="summary-concepts"><ul>
+<li><strong>Arts. 1º-2º:</strong> reestruturação, campos de atuação, cargos e quantitativos.</li>
+<li><strong>Art. 3º:</strong> conceitos básicos da carreira.</li>
+<li><strong>Arts. 4º-5º:</strong> ingresso, requisitos, etapas e regras do concurso.</li>
+<li><strong>Arts. 6º-8º:</strong> gestão da carreira, mobilidade, cessão e cargos em comissão.</li>
+<li><strong>Arts. 9º-12:</strong> atribuições gerais e específicas dos cargos.</li>
+<li><strong>Arts. 13-14:</strong> progressão e promoção.</li>
+<li><strong>Arts. 15-16:</strong> formação continuada.</li>
+<li><strong>Arts. 17-22:</strong> estrutura remuneratória, GDS, GDAS, GPS e GAR.</li>
+<li><strong>Arts. 23-31:</strong> jornada, avaliação, comitê gestor, identidade funcional, VPNI, paridade, orçamento, vigência e revogações.</li>
+</ul></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+<div class="checkpoint-block"><div class="checkpoint-header"><div class="checkpoint-title">Questões estilo Certo/Errado e múltipla escolha</div><div class="checkpoint-dots"><span></span><span></span><span></span></div></div>
+<div class="questao-block" id="q1" data-answer="E"><div class="questao-header"><span class="questao-number">Q1</span><span class="questao-tag">Certo/Errado</span></div><p class="questao-enunciado">A Carreira Pública de Desenvolvimento e Assistência Social limita-se à execução da Política Nacional de Assistência Social no âmbito do SUAS.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q1','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q1','E')">Errado</button></div><details><summary>Gabarito Comentado</summary><div><p><strong>Errado.</strong> A carreira também abrange SISAN, políticas para mulheres, criança e adolescente, idoso, direitos humanos, igualdade racial, pessoa com deficiência e demais políticas correlatas.</p></div></details></div>
+<div class="questao-block" id="q2" data-answer="C"><div class="questao-header"><span class="questao-number">Q2</span><span class="questao-tag">Certo/Errado</span></div><p class="questao-enunciado">A progressão exige 12 meses de efetivo exercício no padrão atual e ocorre de forma automática, dispensada a publicação do ato.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q2','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q2','E')">Errado</button></div><details><summary>Gabarito Comentado</summary><div><p><strong>Certo.</strong> É a literalidade do art. 13, inclusive com registro nos assentamentos funcionais e garantia aos servidores em estágio probatório.</p></div></details></div>
+<div class="questao-block" id="q3"><div class="questao-header"><span class="questao-number">Q3</span><span class="questao-tag">Múltipla escolha</span></div><p class="questao-enunciado">Nos termos da Lei nº 7.484/2024, a GDAS no percentual de 30% é devida, entre outras hipóteses, para execução de:</p><p class="questao-enunciado">(A) unidades administrativas e supervisão de serviços.<br>(B) serviço de proteção e atenção social básica.<br>(C) serviço especializado em abordagem social e unidades de acolhimento e abrigamento.<br>(D) atividades exclusivas de gestão orçamentária.<br>(E) curso de formação continuada.</p><div class="answer-buttons"><button class="answer-btn" data-value="A" onclick="answerMC(this,'q3','C')">A</button><button class="answer-btn" data-value="B" onclick="answerMC(this,'q3','C')">B</button><button class="answer-btn" data-value="C" onclick="answerMC(this,'q3','C')">C</button><button class="answer-btn" data-value="D" onclick="answerMC(this,'q3','C')">D</button><button class="answer-btn" data-value="E" onclick="answerMC(this,'q3','C')">E</button></div><details><summary>Gabarito Comentado</summary><div><p><strong>Gabarito: C.</strong> O art. 20, III, prevê 30% para abordagem social, população em situação de rua, acolhimento/abrigamento e outras atividades especializadas.</p></div></details></div>
+<div class="questao-block" id="q4" data-answer="E"><div class="questao-header"><span class="questao-number">Q4</span><span class="questao-tag">Certo/Errado</span></div><p class="questao-enunciado">A promoção funcional ocorre entre padrões de uma mesma classe e dispensa critério de merecimento.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q4','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q4','E')">Errado</button></div><details><summary>Gabarito Comentado</summary><div><p><strong>Errado.</strong> Essa descrição confunde promoção com progressão. Promoção é a mudança do último padrão de uma classe para o primeiro padrão da classe imediatamente superior e exige merecimento.</p></div></details></div>
+<div class="questao-block" id="q5" data-answer="C"><div class="questao-header"><span class="questao-number">Q5</span><span class="questao-tag">Certo/Errado</span></div><p class="questao-enunciado">A aplicação da Lei nº 7.484/2024 não pode resultar em redução de remuneração ou proventos, sendo eventual diferença assegurada como VPNI.</p><div class="answer-buttons"><button class="answer-btn" data-value="C" onclick="answerCE(this,'q5','C')">Certo</button><button class="answer-btn" data-value="E" onclick="answerCE(this,'q5','E')">Errado</button></div><details><summary>Gabarito Comentado</summary><div><p><strong>Certo.</strong> O art. 27 assegura a irredutibilidade e transforma eventual diferença em Vantagem Pessoal Nominalmente Identificada.</p></div></details></div>
+<p class="checkpoint-disclaimer">Questões elaboradas para fixação dos pontos centrais da Lei nº 7.484/2024.</p></div>
+
+<div class="bridge-box"><p><strong>Dica de estudo:</strong> Antes da prova, revise em blocos: cargos e quantitativos; etapas do concurso; mobilidade e cessão; diferença entre progressão e promoção; percentuais da GDAS; cronograma de extinção da GDS; e cláusula de irredutibilidade com VPNI.</p></div>
+<footer class="doc-footer"><span class="footer-brand">Carreira Pública de Desenvolvimento e Assistência Social</span><span class="footer-sub">Lei nº 7.484, de 27 de março de 2024 · Distrito Federal</span></footer>
+</article></main>
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg></button>
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='Carreira-Publica-Desenvolvimento-Assistencia-Social-Resumo.html';
+  a.click();
+}
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId); if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')} else {btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details'); if(d)d.open=true;
+}
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId); if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')} else {btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details'); if(d)d.open=true;
+}
+</script>
+</body></html>
