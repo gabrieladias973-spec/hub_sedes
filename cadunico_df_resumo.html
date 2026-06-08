@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro Único — Programas Sociais do Governo Federal e do DF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f3f7f4;
+  --bg-topbar:#1B7A47; --bg-topbar-glass:rgba(27,122,71,0.97);
+  --text-primary:#0d1f15; --text-secondary:#26352c; --text-tertiary:#5f7068;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#1B9E58; --accent-dim:#147a43; --accent-glow:rgba(27,158,88,0.12); --accent-surface:#e3f4ea;
+  --amber:#7A4FB0; --amber-light:#f0e9f7; --amber-mid:#b89ad6;
+  --border-hard:#0d1f15; --border-medium:#cdd6d0; --border-soft:#e6ece8;
+  --box-intro-bg:#f3f7f4; --box-intro-border:#147a43;
+  --box-alert-bg:#f0e9f7; --box-alert-border:#7A4FB0;
+  --box-example-bg:#ffffff; --box-example-border:#1B9E58;
+  --box-highlight-bg:#e3f4ea; --box-highlight-border:#1B9E58;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#0d1f15; --box-glossary-term:#1B9E58;
+  --box-analogy-bg:#f3f7f4; --box-analogy-border:#7A4FB0;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#1B9E58;
+  --summary-bg:#f3f7f4; --summary-border:#1B9E58;
+  --table-header-bg:#1B7A47; --table-header-text:#ffffff;
+  --table-row-alt:#f3f7f4; --table-border:#cdd6d0; --table-hover:#e3f4ea;
+  --btn-correct:#1B9E58; --btn-correct-bg:#e3f4ea; --btn-wrong:#0d1f15; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#7A4FB0; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#04140b; --bg-surface:#071a0f; --bg-surface-raised:#0c2415;
+  --bg-topbar:#147a43; --bg-topbar-glass:rgba(20,122,67,0.98);
+  --text-primary:#ffffff; --text-secondary:#cfe6d8; --text-tertiary:#8aa897;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#48D88A; --accent-dim:#2BB46A; --accent-glow:rgba(72,216,138,0.15); --accent-surface:#0a3520;
+  --amber:#C4A2E8; --amber-light:#2a1840; --amber-mid:#8a64bd;
+  --border-hard:#ffffff; --border-medium:#1f3a29; --border-soft:#11261a;
+  --box-intro-bg:#04140b; --box-intro-border:#48D88A;
+  --box-alert-bg:#1c1230; --box-alert-border:#C4A2E8;
+  --box-example-bg:#071a0f; --box-example-border:#48D88A;
+  --box-highlight-bg:#0a3520; --box-highlight-border:#48D88A;
+  --box-glossary-bg:#071a0f; --box-glossary-border:#ffffff; --box-glossary-term:#48D88A;
+  --box-analogy-bg:#04140b; --box-analogy-border:#C4A2E8;
+  --checkpoint-bg:#071a0f; --checkpoint-border:#48D88A;
+  --summary-bg:#04140b; --summary-border:#48D88A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#071a0f; --table-border:#1f3a29; --table-hover:#0a3520;
+  --btn-correct:#48D88A; --btn-correct-bg:#0a3520; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#C4A2E8; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #48D88A}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#48D88A;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;gap:6px;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.lesson-progress{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-radius:8px;padding:16px 24px;margin-bottom:36px;display:flex;align-items:center;gap:16px}
+.lesson-progress-label{font-weight:700;font-size:.75em;text-transform:uppercase;letter-spacing:2px;color:var(--text-primary);white-space:nowrap}
+.lesson-progress-bar{flex:1;height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden}
+.lesson-progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.lesson-progress-text{font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--text-tertiary);white-space:nowrap}
+
+.checklist-section{margin:40px 0}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:9px 12px;border-radius:6px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--border-soft)}
+.check-item:hover{background:var(--bg-surface-raised)}
+.check-item input[type="checkbox"]{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin-top:3px}
+.check-item label{font-size:.93em;cursor:pointer;line-height:1.5;color:var(--text-secondary)}
+.check-item.done label{text-decoration:line-through;color:var(--text-tertiary)}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">CADÚNICO</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Política Social · DF</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Política Social</div>
+<h1>CADASTRO ÚNICO</h1>
+<p class="doc-subtitle">A porta de entrada para os programas sociais do Governo Federal e do Distrito Federal: identificação das famílias de baixa renda, serviços, benefícios e transferências de renda.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Decreto nº 11.016/2022 · LOAS 8.742/93 · Coord. MDS / Sedes-DF</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~35 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Objetivos</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar-top" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label-top">0 / 16</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">O que é o Cadastro Único</a></li>
+    <li><a href="#s2">Quem pode se cadastrar — critério de renda</a></li>
+    <li><a href="#s3">Conceito de família e Responsável (RUF)</a></li>
+    <li><a href="#s4">Documentos necessários</a></li>
+    <li><a href="#s5">Onde cadastrar e recadastrar no DF</a></li>
+    <li><a href="#s6">Atualização cadastral — regra dos 24 meses</a></li>
+    <li><a href="#s7">Transferências de Renda</a></li>
+    <li><a href="#s8">Benefícios e Descontos</a></li>
+    <li><a href="#s9">Serviços e Programas usuários do CadÚnico</a></li>
+    <li><a href="#s10">Consulta e canais oficiais</a></li>
+    <li><a href="#checklist">Checklist — Objetivos de Aprendizagem</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O Cadastro Único é o <strong>instrumento que identifica e caracteriza as famílias de baixa renda</strong> do país. Ele reúne dados de endereço, composição familiar, escolaridade, trabalho e renda, e funciona como a <strong>porta de entrada</strong> para dezenas de programas federais, estaduais e distritais. Cadastrar-se <strong>não garante</strong> a concessão automática de nenhum benefício — cada programa tem seus próprios critérios. Coordenado pelo MDS nacionalmente e pela Sedes no DF.</p>
+</div>
+
+<!-- S1 -->
+<h2 id="s1">O que é o Cadastro Único</h2>
+<p>O <strong>Cadastro Único para Programas Sociais do Governo Federal</strong> registra informações de famílias de baixa renda de todo o território nacional: endereço, características do domicílio, composição familiar, identificação de cada pessoa, escolaridade, situação de trabalho e renda, deficiência, entre outras.</p>
+<p>É a ferramenta que permite ao governo conhecer os riscos e vulnerabilidades da população de baixa renda — apoiando a formulação de políticas públicas — e é o <strong>principal instrumento de seleção</strong> para inclusão em programas sociais.</p>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Analogia</div>
+  <div class="analogy-text">
+    <p>Pense no CadÚnico como o <strong>plano de contas</strong> de uma empresa. Ele não é, por si só, um lançamento nem um pagamento — é a estrutura organizada que classifica e identifica cada conta. Sem ele cadastrado e atualizado, nenhum lançamento (benefício) consegue ser corretamente alocado.</p>
+    <span class="analogy-bridge">Estar no CadÚnico = ter a conta aberta no plano. Receber o benefício = o lançamento efetivo, que depende de regras próprias.</span>
+  </div>
+</div>
+
+<!-- S2 -->
+<h2 id="s2">Quem pode se cadastrar — critério de renda</h2>
+<div class="art-line"><span class="art-badge">Renda</span><span>Famílias com renda mensal de até <strong>meio salário-mínimo por pessoa</strong>; ou famílias com renda acima disso, desde que pleiteiem ou participem de programa que exija o cadastramento.</span></div>
+
+<p>A cartilha do MDS usa como referência o valor de <strong>R$ 706,00 por pessoa/mês</strong> (meio salário-mínimo) para definir baixa renda. Pessoas que moram sozinhas (família <strong>unipessoal</strong>) e pessoas em situação de rua também podem se cadastrar.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Nº de pessoas na família</th><th>Renda total mensal (até)</th></tr></thead>
+  <tbody>
+    <tr><td>1 pessoa</td><td>R$ 706,00</td></tr>
+    <tr><td>2 pessoas</td><td>R$ 1.412,00</td></tr>
+    <tr><td>3 pessoas</td><td>R$ 2.118,00</td></tr>
+    <tr><td>4 pessoas</td><td>R$ 2.824,00</td></tr>
+    <tr><td>5 pessoas</td><td>R$ 3.530,00</td></tr>
+    <tr><td>6 pessoas</td><td>R$ 4.236,00</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- S3 -->
+<h2 id="s3">Conceito de família e Responsável (RUF)</h2>
+<p>O cadastro <strong>não é individual, é da família</strong>. Família, aqui, não exige parentesco "de sangue": basta que as pessoas <strong>morem na mesma casa e dividam renda e despesas</strong>.</p>
+<div class="art-line"><span class="art-badge">RUF</span><span>O <strong>Responsável pela Unidade Familiar</strong> é quem declara os dados de todos os membros. Precisa ter <strong>no mínimo 16 anos</strong> e levar os documentos de toda a família.</span></div>
+
+<!-- S4 -->
+<h2 id="s4">Documentos necessários</h2>
+<h3>Para o Responsável (RUF)</h3>
+<ul>
+  <li><strong>CPF (obrigatório)</strong>;</li>
+  <li>RG ou documento com foto (obrigatório);</li>
+  <li>Comprovante de residência em nome de membro da família (preferencialmente água, luz, celular ou cartão) — na falta, assina-se <strong>declaração de residência</strong>;</li>
+  <li>Título de eleitor, carteira de trabalho, certidão de nascimento/casamento e comprovante de matrícula (se tiver).</li>
+</ul>
+<h3>Para os demais membros</h3>
+<ul>
+  <li><strong>CPF (obrigatório)</strong> — o documento mais importante;</li>
+  <li>Comprovante de matrícula de crianças e adolescentes (obrigatório);</li>
+  <li>RG, título de eleitor, carteira de trabalho e certidão (se tiver).</li>
+</ul>
+<div class="box highlight-box">
+  <div class="box-label">Ponto-chave</div>
+  <p>O cadastro é <strong>totalmente gratuito</strong>. De todos os documentos, o <strong>CPF é o mais importante</strong> — leve de todos os membros que tiverem.</p>
+</div>
+
+<!-- S5 -->
+<h2 id="s5">Onde cadastrar e recadastrar no DF</h2>
+<p>No Distrito Federal, o cadastramento e a atualização podem ser feitos em um <strong>CRAS</strong>, nos <strong>Postos Na Hora</strong> e nos <strong>Postos do Cadastro Único</strong>.</p>
+<div class="art-line"><span class="art-badge">Agenda</span><span>O agendamento da entrevista é feito pelo telefone <strong>156</strong> ou pelo site <strong>sistemas2.df.gov.br/Agendamento</strong>. As vagas são liberadas diariamente conforme a capacidade das unidades.</span></div>
+<p>Em <strong>CREAS, Centros Pop e Unidades de Acolhimento</strong>, o cadastramento e a atualização ocorrem para as famílias ali atendidas.</p>
+
+<!-- S6 -->
+<h2 id="s6">Atualização cadastral — regra dos 24 meses</h2>
+<div class="art-line"><span class="art-badge">Prazo</span><span>Os dados devem ser atualizados <strong>pelo menos a cada 24 meses (2 anos)</strong> — e sempre que houver mudança: nascimento, mudança de casa, escola, trabalho ou saída de um membro.</span></div>
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção</div>
+  <p>Cadastro <strong>desatualizado</strong> impede a participação em muitos programas — e quem já é beneficiário <strong>pode perder o benefício</strong>.</p>
+</div>
+
+<!-- S7 -->
+<h2 id="s7">Transferências de Renda</h2>
+<p>São os programas que entregam <strong>dinheiro diretamente</strong> à família. O carro-chefe é o Bolsa Família.</p>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Programa</th><th>O que é</th><th>Critério de renda</th></tr></thead>
+  <tbody>
+    <tr><td>Bolsa Família (PBF)</td><td>Valor que varia conforme o nº de pessoas e a idade de cada uma; exige condicionalidades de saúde e educação</td><td>Até R$ 218,00 por pessoa/mês</td></tr>
+    <tr><td>BPC / LOAS</td><td>1 salário-mínimo ao idoso 65+ ou à pessoa com deficiência de qualquer idade. Não é transferência condicionada, é benefício assistencial</td><td>Até R$ 353,00 (¼ SM) por pessoa</td></tr>
+    <tr><td>Programa DF Social</td><td>Transferência de renda complementar do Governo do DF às famílias de baixa renda</td><td>Critérios distritais (via CadÚnico)</td></tr>
+    <tr><td>Pé-de-Meia</td><td>Poupança/incentivo financeiro a estudantes do ensino médio da rede pública</td><td>Famílias no CadÚnico</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="box highlight-box">
+  <div class="box-label">Diferença que cai em prova</div>
+  <p><strong>Bolsa Família</strong> é transferência <em>condicionada</em> (exige frequência escolar e acompanhamento de saúde). O <strong>BPC</strong> é benefício assistencial da LOAS, <em>não condicionado</em>, de 1 SM, pago pela União.</p>
+</div>
+
+<!-- S8 -->
+<h2 id="s8">Benefícios e Descontos</h2>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Benefício</th><th>O que oferece</th><th>Critério</th></tr></thead>
+  <tbody>
+    <tr><td>Tarifa Social de Energia</td><td>Desconto na conta de luz</td><td>Até R$ 706,00/pessoa; ou até R$ 4.236,00 familiar se houver uso contínuo de aparelho elétrico para tratamento de saúde</td></tr>
+    <tr><td>Tarifa Social de Água</td><td>Desconto na conta de água e esgoto</td><td>Famílias de baixa renda no CadÚnico</td></tr>
+    <tr><td>Minha Casa Minha Vida (Faixa 1)</td><td>Desconto em juros para aquisição de moradia</td><td>Renda mensal de até R$ 2.640,00</td></tr>
+    <tr><td>Isenção em concursos e ENEM</td><td>Não paga taxa de inscrição</td><td>Até R$ 706,00/pessoa ou R$ 4.236,00 familiar</td></tr>
+    <tr><td>Carteira da Pessoa Idosa</td><td>Transporte interestadual gratuito ou 50% off</td><td>Idoso de família com até R$ 2.824,00/pessoa</td></tr>
+    <tr><td>ID Jovem</td><td>Meia-entrada e vagas no transporte interestadual</td><td>Jovens 15–29 anos, família até R$ 2.824,00</td></tr>
+    <tr><td>Cartão Gás / Gás do Povo</td><td>Auxílio para compra de gás de cozinha</td><td>Famílias de baixa renda no CadÚnico</td></tr>
+    <tr><td>Dignidade Menstrual</td><td>Acesso gratuito a produtos de higiene</td><td>Público vulnerável no CadÚnico</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- S9 -->
+<h2 id="s9">Serviços e Programas usuários do CadÚnico</h2>
+<p>Além das transferências e descontos, o CadÚnico alimenta serviços socioassistenciais e programas diversos:</p>
+<ul>
+  <li><strong>Serviço de Convivência e Fortalecimento de Vínculos (SCFV)</strong> — proteção social básica;</li>
+  <li><strong>Auxílio-Inclusão</strong> à pessoa com deficiência e <strong>BPC na Escola</strong>;</li>
+  <li><strong>Fomento às Atividades Produtivas Rurais</strong>, PNCF e Reforma Agrária;</li>
+  <li><strong>Programa Internet Brasil</strong> e <strong>Telefone Social</strong>;</li>
+  <li><strong>Redução da contribuição previdenciária</strong> da dona de casa (aposentadoria);</li>
+  <li><strong>Programa Morar Bem</strong> (habitação no DF).</li>
+</ul>
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Regra de ouro</div>
+  <p>Estar no CadÚnico <strong>não inclui automaticamente</strong> a família em nenhum programa. A seleção e a concessão seguem os <strong>critérios e procedimentos específicos de cada um</strong>.</p>
+</div>
+
+<!-- S10 -->
+<h2 id="s10">Consulta e canais oficiais</h2>
+<ul>
+  <li>Consulta da situação: <strong>cadunico.dataprev.gov.br</strong> ou app do Cadastro Único (opção "Consulta Simples");</li>
+  <li>Agendamento no DF: telefone <strong>156</strong> ou <strong>sistemas2.df.gov.br/Agendamento</strong>;</li>
+  <li>Informações nacionais: <strong>gov.br/mds</strong> (SAGICAD/MDS).</li>
+</ul>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checklist">Checklist — Objetivos de Aprendizagem</h2>
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Progresso</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label">0 / 16 concluídos</span>
+</div>
+
+<div id="checklist-wrap" class="checklist-section"></div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · Cadastro Único
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A inclusão de uma família no Cadastro Único garante automaticamente a concessão do Bolsa Família e dos demais programas sociais.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O cadastramento <em>não</em> garante inclusão automática. O CadÚnico é apenas o instrumento de identificação e seleção; cada programa concede o benefício segundo seus próprios critérios e procedimentos.</p></div></details>
+  </div>
+
+  <div class="questao-block" id="q2" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Uma pessoa que mora sozinha pode ser cadastrada no Cadastro Único, constituindo uma família unipessoal.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> Pessoas que moram sozinhas formam as chamadas famílias <em>unipessoais</em>. Pessoas em situação de rua, sozinhas ou com família, também podem se cadastrar.</p></div></details>
+  </div>
+
+  <div class="questao-block" id="q3" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Para integrar a mesma família no Cadastro Único é indispensável haver parentesco consanguíneo entre os membros.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> Não é preciso parentesco "de sangue". Basta que as pessoas morem na mesma casa e dividam renda e despesas.</p></div></details>
+  </div>
+
+  <div class="questao-block" id="q4" data-answer="C">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Múltipla escolha</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Assinale a alternativa que apresenta corretamente o prazo máximo para atualização do Cadastro Único:</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q4','C')">A) 6 meses</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q4','C')">B) 12 meses</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q4','C')">C) 24 meses</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q4','C')">D) 48 meses</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: C.</strong> A atualização deve ocorrer no máximo a cada <strong>24 meses (2 anos)</strong> — ou antes, sempre que houver mudança na família. Cadastro desatualizado pode levar à perda de benefícios.</p></div></details>
+  </div>
+
+  <div class="questao-block" id="q5" data-answer="B">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Sobre as transferências e benefícios vinculados ao CadÚnico, assinale a correta:</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','B')">A) O BPC exige contrapartidas de saúde e educação, como o Bolsa Família.</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','B')">B) O BPC paga 1 salário-mínimo ao idoso 65+ ou à PcD, sem condicionalidades.</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','B')">C) A Tarifa Social de Energia atende apenas famílias até R$ 218,00 por pessoa.</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','B')">D) O Bolsa Família é benefício assistencial não condicionado.</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: B.</strong></p>
+      <p><strong>(A) Errada.</strong> O BPC não tem condicionalidades de saúde/educação — quem tem é o Bolsa Família.</p>
+      <p><strong>(B) Correta.</strong> O BPC (LOAS) paga 1 SM ao idoso 65+ ou à pessoa com deficiência, com renda per capita até ¼ SM, sem contrapartidas.</p>
+      <p><strong>(C) Errada.</strong> A Tarifa Social atende até R$ 706,00/pessoa (½ SM), ou até R$ 4.236,00 familiar no caso de uso contínuo de equipamento de saúde.</p>
+      <p><strong>(D) Errada.</strong> O Bolsa Família é justamente o programa <em>condicionado</em>.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais do Cadastro Único e seus programas)</p>
+</div>
+
+<h2 id="resumo-final">Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>CadÚnico:</strong> instrumento que identifica famílias de baixa renda e é porta de entrada para programas sociais.</li>
+      <li><strong>Critério:</strong> renda de até ½ SM por pessoa (ref. R$ 706,00) — ou acima, se exigido por algum programa.</li>
+      <li><strong>Família ≠ parentesco:</strong> basta morar junto e dividir renda e despesas. Unipessoal é válida.</li>
+      <li><strong>RUF:</strong> Responsável pela Unidade Familiar, no mínimo 16 anos, declara por todos.</li>
+      <li><strong>CPF</strong> é o documento mais importante; cadastro é <strong>gratuito</strong>.</li>
+      <li><strong>Atualização:</strong> no máximo a cada 24 meses ou a cada mudança — sob pena de perder benefícios.</li>
+      <li><strong>Transferências:</strong> Bolsa Família (condicionado), BPC (não condicionado), DF Social, Pé-de-Meia.</li>
+      <li><strong>Benefícios/descontos:</strong> Tarifa Social de energia e água, MCMV, isenção ENEM/concursos, Carteira do Idoso, ID Jovem, Cartão/Gás do Povo.</li>
+      <li><strong>No DF:</strong> CRAS, Postos Na Hora e do CadÚnico; agendamento pelo 156.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>CadÚnico</dt><dd>Cadastro Único para Programas Sociais: registro das famílias de baixa renda, porta de entrada dos benefícios.</dd>
+      <dt>RUF</dt><dd>Responsável pela Unidade Familiar: declara os dados de toda a família; mínimo 16 anos.</dd>
+      <dt>Família unipessoal</dt><dd>Pessoa que mora sozinha, também elegível ao cadastro.</dd>
+      <dt>Bolsa Família</dt><dd>Transferência de renda condicionada (saúde e educação); renda até R$ 218,00/pessoa.</dd>
+      <dt>BPC / LOAS</dt><dd>Benefício assistencial de 1 SM ao idoso 65+ ou PcD; renda até ¼ SM; pago pela União, sem condicionalidades.</dd>
+      <dt>Sedes-DF</dt><dd>Secretaria de Desenvolvimento Social do DF: coordena o CadÚnico no Distrito Federal.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> a confusão mais comum cai em três pontos: <strong>(1)</strong> cadastro não garante benefício; <strong>(2)</strong> diferença entre Bolsa Família (condicionado) e BPC (assistencial, não condicionado); <strong>(3)</strong> prazo de atualização de 24 meses. Memorizar as faixas de renda (½ SM por pessoa e R$ 4.236,00 familiar) resolve a maioria das questões sobre elegibilidade.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">CADASTRO ÚNICO</span>
+  <span class="footer-sub">Programas Sociais do Governo Federal e do DF · Coordenação MDS / Sedes-DF · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='CadastroUnico-DF-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+var objectives=[
+  "Definir o Cadastro Único e seu papel como porta de entrada para programas sociais",
+  "Identificar o critério de renda de baixa renda: até meio salário-mínimo por pessoa (ref. R$ 706,00)",
+  "Reconhecer a família unipessoal e o cadastramento de pessoas em situação de rua",
+  "Compreender que família no CadÚnico independe de parentesco consanguíneo",
+  "Definir o Responsável pela Unidade Familiar (RUF) e seus requisitos (mínimo 16 anos)",
+  "Listar os documentos obrigatórios do RUF e dos demais membros, com destaque para o CPF",
+  "Saber que o cadastro é gratuito e onde fazê-lo no DF (CRAS, Postos Na Hora e do CadÚnico)",
+  "Identificar os canais de agendamento no DF: telefone 156 e site de agendamento",
+  "Explicar a regra de atualização cadastral de no máximo 24 meses e suas consequências",
+  "Distinguir Bolsa Família (transferência condicionada) do BPC (benefício assistencial não condicionado)",
+  "Identificar as principais transferências de renda vinculadas ao CadÚnico",
+  "Reconhecer os benefícios e descontos: Tarifa Social de energia e água, MCMV, isenção ENEM/concursos",
+  "Identificar a Carteira da Pessoa Idosa e o ID Jovem e seus critérios de renda",
+  "Listar serviços e programas usuários do CadÚnico (SCFV, Auxílio-Inclusão, Internet Brasil etc.)",
+  "Compreender que estar no CadÚnico não garante concessão automática de benefícios",
+  "Saber consultar a situação cadastral pelo site cadunico.dataprev.gov.br ou aplicativo"
+];
+
+var clWrap=document.getElementById('checklist-wrap');
+var clBar=document.getElementById('cl-bar');
+var clBarTop=document.getElementById('cl-bar-top');
+var clLabel=document.getElementById('cl-label');
+var clLabelTop=document.getElementById('cl-label-top');
+
+function updateCL(){
+  var total=objectives.length;
+  var done=document.querySelectorAll('#checklist-wrap input:checked').length;
+  var pct=Math.round((done/total)*100);
+  clBar.style.width=pct+'%';
+  clBarTop.style.width=pct+'%';
+  clLabel.textContent=done+' / '+total+' concluídos';
+  clLabelTop.textContent=done+' / '+total;
+}
+
+objectives.forEach(function(obj,i){
+  var id='cl'+i;
+  var item=document.createElement('div');
+  item.className='check-item';
+  item.innerHTML='<input type="checkbox" id="'+id+'"><label for="'+id+'">'+obj+'</label>';
+  item.querySelector('input').addEventListener('change',function(){
+    item.classList.toggle('done',this.checked);
+    updateCL();
+  });
+  clWrap.appendChild(item);
+});
+</script>
+</body>
+</html>
