@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pessoa Idosa e Pessoa com Deficiência — PNI, Estatuto e LBI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f9f5f5;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#C0152A; --accent-dim:#8B0000; --accent-glow:rgba(192,21,42,0.12); --accent-surface:#fce8ea;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f9f5f5; --box-intro-border:#8B0000;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#C0152A;
+  --box-highlight-bg:#fce8ea; --box-highlight-border:#C0152A;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C0152A;
+  --box-analogy-bg:#f9f5f5; --box-analogy-border:#8B0000;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C0152A;
+  --summary-bg:#f9f5f5; --summary-border:#C0152A;
+  --table-header-bg:#8B0000; --table-header-text:#ffffff;
+  --table-row-alt:#f9f5f5; --table-border:#cccccc; --table-hover:#fce8ea;
+  --btn-correct:#C0152A; --btn-correct-bg:#fce8ea; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#8B0000; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#0d0000; --bg-surface:#120000; --bg-surface-raised:#1a0000;
+  --bg-topbar:#8B0000; --bg-topbar-glass:rgba(139,0,0,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0cccc; --text-tertiary:#aa8888;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#FF6B7A; --accent-dim:#E83347; --accent-glow:rgba(255,107,122,0.15); --accent-surface:#3a0008;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a1515; --border-soft:#221010;
+  --box-intro-bg:#0d0000; --box-intro-border:#FF6B7A;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#120000; --box-example-border:#FF6B7A;
+  --box-highlight-bg:#3a0008; --box-highlight-border:#FF6B7A;
+  --box-glossary-bg:#120000; --box-glossary-border:#ffffff; --box-glossary-term:#FF6B7A;
+  --box-analogy-bg:#0d0000; --box-analogy-border:#FF6B7A;
+  --checkpoint-bg:#120000; --checkpoint-border:#FF6B7A;
+  --summary-bg:#0d0000; --summary-border:#FF6B7A;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#120000; --table-border:#3a1515; --table-hover:#3a0008;
+  --btn-correct:#FF6B7A; --btn-correct-bg:#3a0008; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#FF6B7A; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid #FF3347}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:#FF3347;z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;gap:6px;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:600px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.lesson-progress{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-radius:8px;padding:16px 24px;margin-bottom:36px;display:flex;align-items:center;gap:16px}
+.lesson-progress-label{font-weight:700;font-size:.75em;text-transform:uppercase;letter-spacing:2px;color:var(--text-primary);white-space:nowrap}
+.lesson-progress-bar{flex:1;height:6px;background:var(--border-soft);border-radius:3px;overflow:hidden}
+.lesson-progress-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .3s}
+.lesson-progress-text{font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--text-tertiary);white-space:nowrap}
+
+.checklist-section{margin:40px 0}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:9px 12px;border-radius:6px;cursor:pointer;transition:background .1s;border-bottom:1px solid var(--border-soft)}
+.check-item:hover{background:var(--bg-surface-raised)}
+.check-item input[type="checkbox"]{width:17px;height:17px;accent-color:var(--accent);cursor:pointer;flex-shrink:0;margin-top:3px}
+.check-item label{font-size:.93em;cursor:pointer;line-height:1.5;color:var(--text-secondary)}
+.check-item.done label{text-decoration:line-through;color:var(--text-tertiary)}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.law-tab{display:inline-block;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.7em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+.law-tab.pni{background:#1a5e3a;color:#fff}
+.law-tab.idoso{background:#8B0000;color:#fff}
+.law-tab.lbi{background:#1a3a7a;color:#fff}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">IDOSO + PCD</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Legislação Social</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Direitos da Pessoa Idosa e da Pessoa com Deficiência</div>
+<h1>PESSOA IDOSA E PESSOA COM DEFICIÊNCIA</h1>
+<p class="doc-subtitle">Síntese integrada de três marcos legais: a Política Nacional do Idoso (Lei 8.842/94), o Estatuto da Pessoa Idosa (Lei 10.741/03) e a Lei Brasileira de Inclusão — LBI (Lei 13.146/15). Objetivos, princípios, diretrizes e principais artigos.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Leis 8.842/94 · 10.741/03 · 13.146/15</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~55 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Objetivos</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar-top" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label-top">0 / 22</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s0">Panorama: as três leis em uma página</a></li>
+    <li><a href="#s1">PNI — Finalidade e Objetivo (Lei 8.842/94)</a></li>
+    <li><a href="#s2">PNI — Princípios (Art. 3º)</a></li>
+    <li><a href="#s3">PNI — Diretrizes (Art. 4º)</a></li>
+    <li><a href="#s4">PNI — Organização, Gestão e Ações</a></li>
+    <li><a href="#s5">Estatuto da Pessoa Idosa — Conceito e Garantia de Prioridade</a></li>
+    <li><a href="#s6">Estatuto — Direitos Fundamentais</a></li>
+    <li><a href="#s7">Estatuto — Medidas de Proteção e Acesso à Justiça</a></li>
+    <li><a href="#s8">Estatuto — Crimes em Espécie</a></li>
+    <li><a href="#s9">LBI — Objetivo e Conceito de Deficiência (Lei 13.146/15)</a></li>
+    <li><a href="#s10">LBI — Conceitos-chave (Art. 3º) e Igualdade (Art. 4º)</a></li>
+    <li><a href="#s11">LBI — Direitos Fundamentais</a></li>
+    <li><a href="#s12">LBI — Acessibilidade e Tecnologia Assistiva</a></li>
+    <li><a href="#s13">LBI — Capacidade Civil, Curatela e Tomada de Decisão Apoiada</a></li>
+    <li><a href="#s14">LBI — Crimes e Cadastro-Inclusão</a></li>
+    <li><a href="#checklist">Checklist — Objetivos de Aprendizagem</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>São três leis que protegem grupos vulneráveis distintos, mas com lógica parecida: garantem <strong>prioridade, dignidade e inclusão</strong>. A <strong>PNI</strong> (1994) criou a política do idoso. O <strong>Estatuto da Pessoa Idosa</strong> (2003) deu corpo a direitos, proteções e crimes. A <strong>LBI</strong> (2015) — também chamada Estatuto da Pessoa com Deficiência — incorpora a Convenção da ONU e tem força de emenda constitucional. Vamos ver objetivos, princípios, diretrizes e os artigos mais cobrados de cada uma.</p>
+</div>
+
+<!-- ===== S0 PANORAMA ===== -->
+<h2 id="s0">Panorama: as três leis em uma página</h2>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Analogia</div>
+  <div class="analogy-text">
+    <p>Pense num prédio sendo construído. A <strong>PNI</strong> é a planta baixa: define a finalidade e quem coordena a obra. O <strong>Estatuto da Pessoa Idosa</strong> é a construção com paredes, portas e regras de uso — direitos detalhados e punições para quem desrespeita. A <strong>LBI</strong> é um prédio paralelo, mais novo, construído já com rampa, elevador e acessibilidade em cada cômodo desde o projeto — porque nasceu sob o conceito de inclusão.</p>
+    <span class="analogy-bridge">PNI = política/moldura · Estatuto Idoso = direitos + crimes · LBI = inclusão com base na Convenção da ONU</span>
+  </div>
+</div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Aspecto</th><th>PNI (8.842/94)</th><th>Estatuto Idoso (10.741/03)</th><th>LBI (13.146/15)</th></tr></thead>
+  <tbody>
+    <tr><td>Quem protege</td><td>Pessoa maior de 60 anos</td><td>Pessoa ≥ 60 anos</td><td>Pessoa com deficiência (impedimento de longo prazo)</td></tr>
+    <tr><td>Natureza</td><td>Política pública</td><td>Estatuto de direitos + crimes</td><td>Estatuto + Convenção da ONU (status constitucional)</td></tr>
+    <tr><td>Coordenação</td><td>Órgão de assistência e promoção social + Conselhos</td><td>Conselhos da Pessoa Idosa + MP</td><td>MDHC / SNDPD</td></tr>
+    <tr><td>Destaque</td><td>Define princípios e diretrizes</td><td>Prioridade especial aos ≥ 80; tipifica crimes</td><td>Acessibilidade, tomada de decisão apoiada, capacidade civil</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span></hr>
+
+<!-- ============ PNI ============ -->
+<h2 id="s1">PNI — Finalidade e Objetivo</h2>
+<span class="law-tab pni">Lei 8.842/1994 · Política Nacional do Idoso</span>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>A PNI tem por objetivo assegurar os <strong>direitos sociais do idoso</strong>, criando condições para promover sua <strong>autonomia, integração e participação efetiva</strong> na sociedade.</span></div>
+<div class="art-line"><span class="art-badge">Art. 2º</span><span>Considera-se idoso a pessoa <strong>maior de 60 anos</strong> de idade.</span></div>
+
+<h2 id="s2">PNI — Princípios</h2>
+<div class="art-line"><span class="art-badge">Art. 3º</span><span>Princípios que regem a política do idoso:</span></div>
+<ul>
+  <li>Família, sociedade e Estado têm o <strong>dever</strong> de assegurar os direitos da cidadania, defendendo dignidade, bem-estar e o direito à vida;</li>
+  <li>O envelhecimento diz respeito a toda a sociedade e deve ser objeto de informação para todos;</li>
+  <li>O idoso <strong>não deve sofrer discriminação</strong> de qualquer natureza;</li>
+  <li>O idoso deve ser o <strong>principal agente e destinatário</strong> das transformações da política;</li>
+  <li>As diferenças econômicas, sociais, regionais e a contradição rural/urbano devem ser observadas.</li>
+</ul>
+
+<h2 id="s3">PNI — Diretrizes</h2>
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>Diretrizes da política nacional do idoso:</span></div>
+<ul>
+  <li>Formas alternativas de participação, ocupação e convívio que integrem o idoso às demais gerações;</li>
+  <li>Participação do idoso, por suas organizações, na formulação e avaliação das políticas;</li>
+  <li><strong>Priorização do atendimento pela própria família</strong>, em detrimento do asilar (salvo quem não tem condições de sobrevivência);</li>
+  <li>Descentralização político-administrativa;</li>
+  <li>Capacitação em geriatria e gerontologia;</li>
+  <li>Sistema de informações e divulgação educativa sobre o envelhecimento;</li>
+  <li>Apoio a estudos e pesquisas.</li>
+</ul>
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Atenção</div>
+  <p>É <strong>vedada</strong> a permanência de portadores de doenças que necessitem de assistência médica ou de enfermagem permanente em instituições asilares de caráter social (parágrafo único do Art. 4º).</p>
+</div>
+
+<h2 id="s4">PNI — Organização, Gestão e Ações</h2>
+<div class="art-line"><span class="art-badge">Art. 5º/6º</span><span>Coordenação geral pelo órgão de assistência e promoção social, com participação dos <strong>Conselhos</strong> (nacional, estaduais, DF e municipais), <strong>paritários, deliberativos e permanentes</strong>.</span></div>
+<div class="art-line"><span class="art-badge">Art. 10</span><span>Define ações por área: promoção/assistência social, saúde (atendimento no SUS, geriatria em concursos), educação, trabalho/previdência (vedada discriminação por idade), habitação/urbanismo, justiça, cultura/esporte/lazer.</span></div>
+<p>É assegurado ao idoso o direito de dispor de seus bens, salvo incapacidade comprovada judicialmente; nesse caso, nomeia-se curador. Todo cidadão tem o dever de denunciar negligência ou desrespeito.</p>
+
+<hr class="section-divider"><span class="divider-icon"></span></hr>
+
+<!-- ============ ESTATUTO DA PESSOA IDOSA ============ -->
+<h2 id="s5">Estatuto da Pessoa Idosa — Conceito e Garantia de Prioridade</h2>
+<span class="law-tab idoso">Lei 10.741/2003 · Estatuto da Pessoa Idosa</span>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>Regula os direitos das pessoas com idade <strong>igual ou superior a 60 anos</strong>.</span></div>
+<div class="art-line"><span class="art-badge">Art. 3º</span><span>É obrigação da família, comunidade, sociedade e poder público assegurar, com <strong>absoluta prioridade</strong>, a efetivação dos direitos (vida, saúde, alimentação, educação, trabalho, dignidade, convivência etc.).</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> A garantia de prioridade compreende (§ 1º do Art. 3º)</div>
+  <ul>
+    <li>Atendimento preferencial imediato e individualizado;</li>
+    <li>Preferência na formulação e execução de políticas sociais;</li>
+    <li>Destinação privilegiada de recursos públicos;</li>
+    <li>Formas alternativas de participação e convívio;</li>
+    <li>Priorização do atendimento pela própria família;</li>
+    <li>Capacitação em geriatria e gerontologia;</li>
+    <li>Garantia de acesso à rede de saúde e assistência social;</li>
+    <li><strong>Prioridade no recebimento da restituição do Imposto de Renda.</strong></li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Prioridade especial</div>
+  <p>Entre os idosos, há <strong>prioridade especial aos maiores de 80 anos</strong>, atendidos preferencialmente em relação aos demais idosos (§ 2º do Art. 3º). Cai muito em prova.</p>
+</div>
+
+<h2 id="s6">Estatuto — Direitos Fundamentais</h2>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Direito</th><th>Pontos-chave</th></tr></thead>
+  <tbody>
+    <tr><td>Vida e Liberdade (Arts. 8º–10)</td><td>Envelhecimento é direito personalíssimo; liberdade de ir e vir, opinião, crença, participação familiar e política</td></tr>
+    <tr><td>Alimentos (Arts. 11–14)</td><td>Obrigação alimentar <strong>solidária</strong>; idoso pode optar entre os prestadores; se não houver condições, cabe ao poder público</td></tr>
+    <tr><td>Saúde (Arts. 15–19)</td><td>Atenção integral pelo SUS; medicamentos gratuitos de uso continuado; <strong>vedada cobrança diferenciada por idade em planos de saúde</strong>; notificação compulsória de violência</td></tr>
+    <tr><td>Educação/Cultura (Arts. 20–25)</td><td>Desconto mínimo de <strong>50%</strong> em eventos culturais e de lazer; universidade aberta à terceira idade</td></tr>
+    <tr><td>Trabalho (Arts. 26–28)</td><td>Vedada discriminação e limite máximo de idade; <strong>idade é o 1º critério de desempate</strong> em concurso público</td></tr>
+    <tr><td>Assistência Social (Arts. 33–36)</td><td>BPC de 1 salário mínimo aos ≥ 65 anos sem meios de subsistência (LOAS)</td></tr>
+    <tr><td>Transporte (Arts. 39–42)</td><td><strong>Gratuidade</strong> no transporte público urbano aos ≥ 65 anos; reserva de 10% dos assentos; 2 vagas gratuitas no interestadual (renda ≤ 2 SM)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="s7">Estatuto — Medidas de Proteção e Acesso à Justiça</h2>
+<div class="art-line"><span class="art-badge">Art. 43</span><span>Medidas de proteção aplicáveis quando os direitos forem ameaçados/violados por ação ou omissão da sociedade/Estado, abuso da família/curador ou pela própria condição do idoso.</span></div>
+<div class="art-line"><span class="art-badge">Art. 71</span><span><strong>Prioridade na tramitação</strong> de processos para ≥ 60 anos, em qualquer instância; prioridade especial aos ≥ 80 anos.</span></div>
+<p>O Ministério Público tem papel central (Arts. 72–77): atua como fiscal, substituto processual e na defesa de interesses difusos e coletivos. Sua falta de intervenção gera nulidade do feito.</p>
+
+<h2 id="s8">Estatuto — Crimes em Espécie</h2>
+<p>Os crimes são de <strong>ação penal pública incondicionada</strong> (Art. 95). Não se aplica a Lei 9.099/95 (juizados especiais) a crimes praticados com violência contra a pessoa idosa.</p>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Conduta</th><th>Artigo</th><th>Pena</th></tr></thead>
+  <tbody>
+    <tr><td>Discriminar idoso / dificultar acesso a operações bancárias, transporte etc.</td><td>Art. 96</td><td>Reclusão 6 meses–1 ano + multa</td></tr>
+    <tr><td>Deixar de prestar assistência</td><td>Art. 97</td><td>Detenção 6 meses–1 ano + multa</td></tr>
+    <tr><td>Abandonar idoso em hospital/ILPI</td><td>Art. 98</td><td>Detenção 6 meses–3 anos + multa</td></tr>
+    <tr><td>Expor a perigo a saúde/integridade (condições desumanas)</td><td>Art. 99</td><td>Reclusão 2–5 anos (mais se houver lesão/morte)</td></tr>
+    <tr><td>Apropriar-se de bens, proventos, pensão</td><td>Art. 102</td><td>Reclusão 1–4 anos + multa</td></tr>
+    <tr><td>Reter cartão magnético/benefício</td><td>Art. 104</td><td>Detenção 6 meses–2 anos + multa</td></tr>
+    <tr><td>Coagir idoso a doar, contratar, testar ou outorgar procuração</td><td>Art. 107</td><td>Reclusão 2–5 anos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span></hr>
+
+<!-- ============ LBI ============ -->
+<h2 id="s9">LBI — Objetivo e Conceito de Deficiência</h2>
+<span class="law-tab lbi">Lei 13.146/2015 · Lei Brasileira de Inclusão (Estatuto da Pessoa com Deficiência)</span>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>Assegura e promove, em <strong>condições de igualdade</strong>, o exercício dos direitos e liberdades fundamentais da pessoa com deficiência, visando sua inclusão social e cidadania. Tem base na <strong>Convenção da ONU</strong> (status de emenda constitucional).</span></div>
+<div class="art-line"><span class="art-badge">Art. 2º</span><span>Pessoa com deficiência: tem <strong>impedimento de longo prazo</strong> (físico, mental, intelectual ou sensorial) que, em <strong>interação com barreiras</strong>, pode obstruir sua participação plena. A avaliação é <strong>biopsicossocial</strong>, por equipe multiprofissional.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Mudança de paradigma</div>
+  <p>A deficiência deixou de ser vista como problema individual de saúde (modelo médico) e passou a ser entendida como resultado da <strong>interação entre a pessoa e as barreiras</strong> do ambiente (modelo social/biopsicossocial). É isso que justifica o foco em acessibilidade.</p>
+</div>
+
+<h2 id="s10">LBI — Conceitos-chave (Art. 3º) e Igualdade (Art. 4º)</h2>
+<div class="glossary-box">
+  <div class="box-label">Termos do Art. 3º</div>
+  <p class="glossary-term">Acessibilidade</p>
+  <p class="glossary-def">Condição de alcance, com segurança e autonomia, de espaços, transportes, informação e comunicação por pessoa com deficiência ou mobilidade reduzida.</p>
+  <p class="glossary-term">Desenho universal</p>
+  <p class="glossary-def">Concepção de produtos e ambientes usados por todos, sem necessidade de adaptação. <strong>Regra geral</strong>; quando inviável, adota-se adaptação razoável.</p>
+  <p class="glossary-term">Tecnologia assistiva</p>
+  <p class="glossary-def">Produtos, recursos e serviços que promovem funcionalidade, autonomia e inclusão.</p>
+  <p class="glossary-term">Barreiras</p>
+  <p class="glossary-def">Urbanísticas, arquitetônicas, nos transportes, nas comunicações/informação, atitudinais e tecnológicas.</p>
+  <p class="glossary-term">Adaptações razoáveis</p>
+  <p class="glossary-def">Ajustes necessários que não acarretem ônus desproporcional, para garantir igualdade de condições.</p>
+</div>
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>Toda pessoa com deficiência tem direito à igualdade de oportunidades. <strong>Capacitismo</strong> = discriminação por deficiência, incluindo recusa de adaptações razoáveis e de tecnologia assistiva.</span></div>
+
+<h2 id="s11">LBI — Direitos Fundamentais</h2>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Direito</th><th>Pontos-chave</th></tr></thead>
+  <tbody>
+    <tr><td>Vida (Arts. 10–13)</td><td>Vedada institucionalização forçada; <strong>consentimento prévio, livre e esclarecido</strong> indispensável</td></tr>
+    <tr><td>Habilitação/Reabilitação (Arts. 14–17)</td><td>Direito a desenvolver potencialidades; atuação articulada SUS/SUAS</td></tr>
+    <tr><td>Saúde (Arts. 18–26)</td><td>Atenção integral pelo SUS; <strong>vedada cobrança diferenciada em planos de saúde</strong>; notificação compulsória de violência</td></tr>
+    <tr><td>Educação (Arts. 27–30)</td><td>Sistema educacional <strong>inclusivo</strong>; vedada cobrança de valores adicionais nas mensalidades; profissional de apoio escolar</td></tr>
+    <tr><td>Moradia (Arts. 31–33)</td><td>Reserva mínima de <strong>3%</strong> das unidades em programas habitacionais</td></tr>
+    <tr><td>Trabalho (Arts. 34–38)</td><td>Trabalho de livre escolha; vedada exigência de aptidão plena; igual remuneração</td></tr>
+    <tr><td>Assistência/Previdência (Arts. 39–41)</td><td>BPC (Lei 8.742/93); aposentadoria especial (LC 142/2013)</td></tr>
+    <tr><td>Cultura/Esporte/Transporte (Arts. 42–52)</td><td>Acessibilidade em eventos; <strong>2%</strong> de vagas de estacionamento; <strong>10%</strong> de táxis acessíveis</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="s12">LBI — Acessibilidade e Tecnologia Assistiva</h2>
+<div class="art-line"><span class="art-badge">Art. 53–55</span><span>Acessibilidade é direito que garante viver de forma independente. <strong>Desenho universal é a regra</strong>; adaptação razoável só quando comprovadamente inviável.</span></div>
+<div class="art-line"><span class="art-badge">Art. 63</span><span>Obrigatória acessibilidade em <strong>sítios da internet</strong> de empresas e órgãos de governo.</span></div>
+<div class="art-line"><span class="art-badge">Art. 74–75</span><span>Garantido acesso à tecnologia assistiva; plano específico renovado a cada 4 anos (crédito, importação, fomento, redução tributária).</span></div>
+
+<h2 id="s13">LBI — Capacidade Civil, Curatela e Tomada de Decisão Apoiada</h2>
+<div class="box highlight-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Mudança central da LBI</div>
+  <p>A deficiência <strong>não afeta a plena capacidade civil</strong> (Art. 6º): casar, ter filhos, votar, exercer guarda. A LBI alterou o Código Civil — pessoas com deficiência <strong>deixaram de ser absolutamente incapazes</strong>.</p>
+</div>
+<div class="art-line"><span class="art-badge">Art. 84–85</span><span>Capacidade legal em igualdade. <strong>Curatela é medida extraordinária</strong>, proporcional, pelo menor tempo possível, e afeta <strong>apenas atos patrimoniais e negociais</strong> — não alcança corpo, sexualidade, casamento, voto, trabalho e saúde.</span></div>
+<div class="glossary-box">
+  <div class="box-label">Tomada de Decisão Apoiada (Art. 1.783-A CC)</div>
+  <p class="glossary-def">A pessoa com deficiência <strong>elege ao menos 2 pessoas idôneas e de confiança</strong> para apoiá-la em decisões da vida civil, fornecendo informações. Diferente da curatela: aqui a pessoa <strong>mantém a autonomia</strong> e apenas é apoiada — não substituída.</p>
+</div>
+
+<h2 id="s14">LBI — Crimes e Cadastro-Inclusão</h2>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Conduta</th><th>Artigo</th><th>Pena</th></tr></thead>
+  <tbody>
+    <tr><td>Praticar, induzir ou incitar discriminação por deficiência</td><td>Art. 88</td><td>Reclusão 1–3 anos + multa (2–5 anos se por meio de comunicação)</td></tr>
+    <tr><td>Apropriar-se/desviar bens, pensão, benefícios</td><td>Art. 89</td><td>Reclusão 1–4 anos + multa</td></tr>
+    <tr><td>Abandonar pessoa com deficiência</td><td>Art. 90</td><td>Reclusão 6 meses–3 anos + multa</td></tr>
+    <tr><td>Reter/utilizar cartão ou documento para vantagem indevida</td><td>Art. 91</td><td>Detenção 6 meses–2 anos + multa</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="art-line"><span class="art-badge">Art. 92</span><span>Cria o <strong>Cadastro Nacional de Inclusão (Cadastro-Inclusão)</strong>: registro eletrônico para identificar e caracterizar socioeconomicamente a pessoa com deficiência e as barreiras existentes.</span></div>
+<div class="art-line"><span class="art-badge">Art. 94</span><span>Cria o <strong>auxílio-inclusão</strong> para pessoa com deficiência moderada ou grave que recebia BPC e passa a exercer atividade remunerada.</span></div>
+
+<!-- ===== CHECKLIST ===== -->
+<h2 id="checklist">Checklist — Objetivos de Aprendizagem</h2>
+<div class="lesson-progress">
+  <span class="lesson-progress-label">Progresso</span>
+  <div class="lesson-progress-bar"><div class="lesson-progress-fill" id="cl-bar" style="width:0%"></div></div>
+  <span class="lesson-progress-text" id="cl-label">0 / 22 concluídos</span>
+</div>
+<div class="checklist-section" id="checklist-wrap"></div>
+
+<!-- ===== CHECKPOINT ===== -->
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <div class="checkpoint-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> Teste seu conhecimento</div>
+    <div class="checkpoint-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="questao-block" id="q1" data-answer="C">
+    <div class="questao-header"><span class="questao-number">Q1</span><span class="questao-tag">PNI</span><span class="questao-difficulty" data-level="1"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">Pela Lei 8.842/94, considera-se idoso a pessoa maior de 60 anos.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="C" onclick="answerCE(this,'q1','C')">Certo</button>
+      <button class="answer-btn" data-value="E" onclick="answerCE(this,'q1','E')">Errado</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>Certo.</strong> Art. 2º da PNI. O Estatuto da Pessoa Idosa também usa o marco de 60 anos.</p></details>
+  </div>
+
+  <div class="questao-block" id="q2" data-answer="C">
+    <div class="questao-header"><span class="questao-number">Q2</span><span class="questao-tag">Estatuto Idoso</span><span class="questao-difficulty" data-level="2"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">Entre as próprias pessoas idosas, é assegurada prioridade especial aos maiores de 80 anos.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="C" onclick="answerCE(this,'q2','C')">Certo</button>
+      <button class="answer-btn" data-value="E" onclick="answerCE(this,'q2','E')">Errado</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>Certo.</strong> § 2º do Art. 3º do Estatuto. Detalhe muito cobrado.</p></details>
+  </div>
+
+  <div class="questao-block" id="q3" data-answer="E">
+    <div class="questao-header"><span class="questao-number">Q3</span><span class="questao-tag">LBI</span><span class="questao-difficulty" data-level="3"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">Pela LBI, a pessoa com deficiência é considerada absolutamente incapaz e deve, em regra, ser submetida à curatela.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="C" onclick="answerCE(this,'q3','C')">Certo</button>
+      <button class="answer-btn" data-value="E" onclick="answerCE(this,'q3','E')">Errado</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>Errado.</strong> A deficiência não afeta a plena capacidade civil (Art. 6º). A curatela é medida <strong>extraordinária</strong>, proporcional e pelo menor tempo possível, restrita a atos patrimoniais e negociais (Arts. 84–85).</p></details>
+  </div>
+
+  <div class="questao-block" id="q4" data-answer="B">
+    <div class="questao-header"><span class="questao-number">Q4</span><span class="questao-tag">LBI</span><span class="questao-difficulty" data-level="2"><span></span><span></span><span></span></span></div>
+    <p class="questao-enunciado">Na LBI, qual conceito é tomado como regra geral, recorrendo-se à adaptação razoável apenas quando comprovadamente inviável?</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q4','B')">Tecnologia assistiva</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q4','B')">Desenho universal</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q4','B')">Atendimento prioritário</button>
+    </div>
+    <details><summary>Gabarito</summary><p><strong>Desenho universal</strong> (Art. 55, § 1º). É a regra de caráter geral; a adaptação razoável é exceção.</p></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">Questões autorais para fixação. Confira sempre o texto legal atualizado.</p>
+</div>
+
+<!-- ===== RESUMO FINAL ===== -->
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+    <span class="summary-card-title">Resumo da Aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Pontos-chave</h4>
+    <ul>
+      <li>PNI (8.842/94): política do idoso — autonomia, integração e participação. Idoso = maior de 60. Conselhos paritários e deliberativos.</li>
+      <li>Estatuto Idoso (10.741/03): absoluta prioridade; prioridade especial aos ≥ 80; gratuidade no transporte aos ≥ 65; tipifica crimes de ação penal pública incondicionada.</li>
+      <li>LBI (13.146/15): base na Convenção da ONU; avaliação biopsicossocial; deficiência não afeta capacidade civil; desenho universal como regra; tomada de decisão apoiada.</li>
+      <li>Curatela na LBI = extraordinária, só atos patrimoniais/negociais. Tomada de decisão apoiada preserva a autonomia.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave</h4>
+    <dl>
+      <dt>Capacitismo</dt><dd>Discriminação por deficiência, incluindo recusa de adaptações razoáveis (Art. 4º LBI).</dd>
+      <dt>Avaliação biopsicossocial</dt><dd>Análise multiprofissional que considera impedimentos, fatores socioambientais e barreiras (Art. 2º LBI).</dd>
+      <dt>Tomada de decisão apoiada</dt><dd>Pessoa com deficiência elege ≥ 2 apoiadores de confiança, mantendo sua autonomia.</dd>
+      <dt>Absoluta prioridade</dt><dd>Dever da família, sociedade e Estado de efetivar com primazia os direitos da pessoa idosa (Art. 3º Estatuto).</dd>
+      <dt>Cadastro-Inclusão</dt><dd>Registro eletrônico nacional da pessoa com deficiência (Art. 92 LBI).</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Bancas adoram confundir os marcos de idade (60 para a maioria dos direitos; 65 para gratuidade no transporte e BPC do idoso; ≥ 80 para prioridade especial) e a natureza da curatela na LBI (extraordinária, só patrimonial). Memorize também os percentuais: 3% habitação, 2% estacionamento, 10% táxis e assentos no transporte.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">IDOSO + PCD</span>
+  <span class="footer-sub">Lei 8.842/1994 (PNI) · Lei 10.741/2003 (Estatuto da Pessoa Idosa) · Lei 13.146/2015 (LBI) · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='Idoso-PCD-Resumo.html';
+  a.click();
+}
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+var objectives=[
+  "Identificar o objetivo da PNI: assegurar direitos sociais e promover autonomia, integração e participação do idoso (Art. 1º)",
+  "Saber que idoso é a pessoa maior de 60 anos na PNI e ≥ 60 no Estatuto (Art. 2º)",
+  "Enumerar os princípios da PNI, com destaque para o dever de família/sociedade/Estado e a vedação à discriminação (Art. 3º)",
+  "Listar as diretrizes da PNI, incluindo a priorização do atendimento familiar e a descentralização (Art. 4º)",
+  "Reconhecer os Conselhos do Idoso como órgãos paritários, deliberativos e permanentes (Arts. 5º–7º)",
+  "Identificar as áreas de ação governamental da PNI (saúde, educação, trabalho, habitação, justiça, cultura) (Art. 10)",
+  "Compreender a garantia de absoluta prioridade do Estatuto e seus componentes (Art. 3º, § 1º)",
+  "Saber que há prioridade especial aos maiores de 80 anos (Art. 3º, § 2º)",
+  "Distinguir os direitos fundamentais do Estatuto: vida, alimentos solidários, saúde, educação, trabalho",
+  "Identificar a gratuidade no transporte público urbano aos ≥ 65 anos e a reserva de assentos (Arts. 39–40)",
+  "Reconhecer que crimes contra o idoso são de ação penal pública incondicionada (Art. 95)",
+  "Associar condutas e penas dos principais crimes do Estatuto (Arts. 96–107)",
+  "Compreender que a LBI tem base na Convenção da ONU, com status de emenda constitucional (Art. 1º)",
+  "Definir pessoa com deficiência pelo modelo biopsicossocial (impedimento + barreiras) (Art. 2º)",
+  "Diferenciar acessibilidade, desenho universal, tecnologia assistiva e adaptação razoável (Art. 3º)",
+  "Conceituar capacitismo como discriminação por deficiência (Art. 4º)",
+  "Saber que a deficiência não afeta a plena capacidade civil (Art. 6º)",
+  "Identificar os direitos fundamentais da LBI: saúde, educação inclusiva, moradia, trabalho",
+  "Reconhecer o desenho universal como regra e a adaptação razoável como exceção (Art. 55)",
+  "Compreender a curatela como medida extraordinária restrita a atos patrimoniais/negociais (Arts. 84–85)",
+  "Explicar a tomada de decisão apoiada e sua diferença da curatela (Art. 1.783-A CC)",
+  "Identificar o Cadastro-Inclusão e o auxílio-inclusão (Arts. 92 e 94)"
+];
+var clWrap=document.getElementById('checklist-wrap');
+var clBar=document.getElementById('cl-bar');
+var clBarTop=document.getElementById('cl-bar-top');
+var clLabel=document.getElementById('cl-label');
+var clLabelTop=document.getElementById('cl-label-top');
+function updateCL(){
+  var total=objectives.length;
+  var done=document.querySelectorAll('#checklist-wrap input:checked').length;
+  var pct=Math.round((done/total)*100);
+  clBar.style.width=pct+'%';clBarTop.style.width=pct+'%';
+  clLabel.textContent=done+' / '+total+' concluídos';
+  clLabelTop.textContent=done+' / '+total;
+}
+objectives.forEach(function(obj,i){
+  var id='cl'+i;
+  var item=document.createElement('div');
+  item.className='check-item';
+  item.innerHTML='<input type="checkbox" id="'+id+'"><label for="'+id+'">'+obj+'</label>';
+  item.querySelector('input').addEventListener('change',function(){
+    item.classList.toggle('done',this.checked);updateCL();
+  });
+  clWrap.appendChild(item);
+});
+</script>
+</body>
+</html>
