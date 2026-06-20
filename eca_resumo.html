@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECA — Estatuto da Criança e do Adolescente (Lei 8.069/1990)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f4f7f8;
+  --bg-topbar:#0B3B3C; --bg-topbar-glass:rgba(11,59,60,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#5f6b6b;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#0E8A6E; --accent-dim:#0A6B55; --accent-glow:rgba(14,138,110,0.12); --accent-surface:#dff4ee;
+  --amber:#C2740C; --amber-light:#FEF1DA; --amber-mid:#F2BC55;
+  --border-hard:#000000; --border-medium:#c7d1d1; --border-soft:#e5eaea;
+  --box-intro-bg:#f4f7f8; --box-intro-border:#0B3B3C;
+  --box-alert-bg:#FEF1DA; --box-alert-border:#C2740C;
+  --box-example-bg:#ffffff; --box-example-border:#0E8A6E;
+  --box-highlight-bg:#dff4ee; --box-highlight-border:#0E8A6E;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#0E8A6E;
+  --box-analogy-bg:#f4f7f8; --box-analogy-border:#0B3B3C;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#0E8A6E;
+  --summary-bg:#f4f7f8; --summary-border:#0E8A6E;
+  --table-header-bg:#0B3B3C; --table-header-text:#ffffff;
+  --table-row-alt:#f4f7f8; --table-border:#c7d1d1; --table-hover:#dff4ee;
+  --btn-correct:#0E8A6E; --btn-correct-bg:#dff4ee; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#0B3B3C; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#000000; --bg-surface:#070a0a; --bg-surface-raised:#0f1414;
+  --bg-topbar:#0B3B3C; --bg-topbar-glass:rgba(11,59,60,0.98);
+  --text-primary:#ffffff; --text-secondary:#cdd6d6; --text-tertiary:#8a9696;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#5FD9B6; --accent-dim:#33C39B; --accent-glow:rgba(95,217,182,0.15); --accent-surface:#04342B;
+  --amber:#F2BC55; --amber-light:#3a2402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#2a3434; --border-soft:#161d1d;
+  --box-intro-bg:#050707; --box-intro-border:#5FD9B6;
+  --box-alert-bg:#1a1200; --box-alert-border:#F2BC55;
+  --box-example-bg:#070a0a; --box-example-border:#5FD9B6;
+  --box-highlight-bg:#04342B; --box-highlight-border:#5FD9B6;
+  --box-glossary-bg:#070a0a; --box-glossary-border:#ffffff; --box-glossary-term:#5FD9B6;
+  --box-analogy-bg:#050707; --box-analogy-border:#5FD9B6;
+  --checkpoint-bg:#070a0a; --checkpoint-border:#5FD9B6;
+  --summary-bg:#050707; --summary-border:#5FD9B6;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#070a0a; --table-border:#2a3434; --table-hover:#04342B;
+  --btn-correct:#5FD9B6; --btn-correct-bg:#04342B; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#5FD9B6; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">ECA</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Estatuto da Criança e do Adolescente</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Legislação Social</div>
+<h1>ECA — ESTATUTO DA CRIANÇA E DO ADOLESCENTE</h1>
+<p class="doc-subtitle">Lei nº 8.069/1990: proteção integral, direitos fundamentais, política de atendimento, medidas de proteção, ato infracional, Conselho Tutelar e adoção. Fundada no art. 227 da CF/88.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lei nº 8.069/1990 · CF/88 art. 227 · atual. Lei 15.426/2026</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~50 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Conceitos e Disposições Preliminares (Arts. 1º–6º)</a></li>
+    <li><a href="#s2">Doutrina da Proteção Integral e Prioridade Absoluta</a></li>
+    <li><a href="#s3">Direitos Fundamentais (Arts. 7º–69)</a></li>
+    <li><a href="#s4">Direito à Convivência Familiar — Guarda, Tutela e Adoção</a></li>
+    <li><a href="#s5">Política de Atendimento (Arts. 86–89)</a></li>
+    <li><a href="#s6">Medidas de Proteção (Arts. 98–101)</a></li>
+    <li><a href="#s7">Ato Infracional e Medidas Socioeducativas (Arts. 103–125)</a></li>
+    <li><a href="#s8">Conselho Tutelar (Arts. 131–140)</a></li>
+    <li><a href="#s9">Princípios da Aplicação das Medidas (Art. 100)</a></li>
+    <li><a href="#s10">Pontos Mais Cobrados em Concurso</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>O ECA é a lei que rompe com o antigo Código de Menores (doutrina da situação irregular) e instaura a <strong>doutrina da proteção integral</strong>: criança e adolescente passam a ser <strong>sujeitos de direitos</strong>, não objetos de tutela. Você vai dominar os conceitos de idade, a prioridade absoluta, os direitos fundamentais, o sistema de medidas (de proteção e socioeducativas), o papel do Conselho Tutelar e as regras de adoção — os blocos que mais caem em prova nas áreas social, jurídica e de segurança.</p>
+</div>
+
+<!-- ===== S1 CONCEITOS ===== -->
+<h2 id="s1">Conceitos e Disposições Preliminares</h2>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>Esta Lei dispõe sobre a <strong>proteção integral</strong> à criança e ao adolescente.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">A Pegadinha Clássica — Definição de Idade (Art. 2º)</div>
+  <p><strong>Criança:</strong> pessoa até <strong>12 anos incompletos</strong> (ou seja, 0 a 11 anos). <strong>Adolescente:</strong> entre <strong>12 e 18 anos</strong>. Excepcionalmente, nos casos expressos em lei, o ECA aplica-se a pessoas entre <strong>18 e 21 anos</strong>. Bancas adoram trocar "12 completos" por "12 incompletos" — a criança vai até 12 <em>incompletos</em>; ao completar 12, já é adolescente.</p>
+</div>
+
+<div class="glossary-box">
+  <div class="box-label">Termos Fundamentais</div>
+  <p class="glossary-term">Proteção Integral</p>
+  <p class="glossary-def">Doutrina que reconhece criança e adolescente como <strong>sujeitos de direitos</strong> e pessoas em desenvolvimento, com prioridade absoluta na efetivação de seus direitos. Substitui a doutrina da situação irregular do Código de Menores.</p>
+  <p class="glossary-term">Família Natural</p>
+  <p class="glossary-def">Comunidade formada pelos pais ou qualquer deles e seus descendentes (Art. 25).</p>
+  <p class="glossary-term">Família Extensa ou Ampliada</p>
+  <p class="glossary-def">Aquela que se estende além da unidade pais e filhos, formada por <strong>parentes próximos</strong> com os quais a criança convive e mantém vínculos de afinidade e afetividade (Art. 25, p. único).</p>
+  <p class="glossary-term">Família Substituta</p>
+  <p class="glossary-def">Colocação por <strong>guarda, tutela ou adoção</strong> (Art. 28). Medida excepcional quando esgotados os recursos na família natural ou extensa.</p>
+  <p class="glossary-term">Ato Infracional</p>
+  <p class="glossary-def">Conduta descrita como <strong>crime ou contravenção penal</strong> praticada por criança ou adolescente (Art. 103).</p>
+</div>
+
+<div class="art-line"><span class="art-badge">Art. 5º</span><span>Nenhuma criança ou adolescente será objeto de <strong>negligência, discriminação, exploração, violência, crueldade e opressão</strong>, punido na forma da lei qualquer atentado a seus direitos. Inclui o <strong>abandono afetivo</strong> como conduta sujeita a reparação (Lei 15.240/2025).</span></div>
+
+<div class="art-line"><span class="art-badge">Art. 6º</span><span>Interpretação: levam-se em conta os <strong>fins sociais</strong> da Lei, o bem comum, os direitos individuais e coletivos e a <strong>condição peculiar de pessoa em desenvolvimento</strong>.</span></div>
+
+<!-- ===== S2 PROTEÇÃO INTEGRAL ===== -->
+<h2 id="s2">Doutrina da Proteção Integral e Prioridade Absoluta</h2>
+
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>É dever da <strong>família, comunidade, sociedade e poder público</strong> assegurar, com <strong>absoluta prioridade</strong>, os direitos da criança e do adolescente.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">A Garantia de Prioridade Abrange (Art. 4º, p. único)</div>
+  <ul>
+    <li><strong>Primazia</strong> de receber proteção e socorro em quaisquer circunstâncias</li>
+    <li><strong>Precedência</strong> de atendimento nos serviços públicos ou de relevância pública</li>
+    <li><strong>Preferência</strong> na formulação e execução das políticas sociais públicas</li>
+    <li><strong>Destinação privilegiada</strong> de recursos públicos nas áreas de proteção à infância e juventude</li>
+  </ul>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Situação Irregular vs. Proteção Integral</div>
+  <div class="analogy-text">
+    <p>O antigo Código de Menores tratava a criança como um "carro com defeito" que o Estado consertava só quando quebrava — agia apenas sobre o "menor em situação irregular". O ECA inverte: toda criança é um <strong>passageiro VIP</strong> com prioridade de embarque, independentemente de estar ou não em risco. O Estado, a família e a sociedade são <strong>co-responsáveis</strong> por garantir os direitos de todas, sempre.</p>
+    <span class="analogy-bridge">Proteção integral = direitos para TODOS, sempre. Situação irregular = atenção só ao "menor problema". O ECA é a virada de chave.</span>
+  </div>
+</div>
+
+<!-- ===== S3 DIREITOS FUNDAMENTAIS ===== -->
+<h2 id="s3">Direitos Fundamentais</h2>
+
+<p>O ECA organiza os direitos fundamentais em cinco capítulos. Os mais cobrados:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Direito</th><th>Pontos de Atenção</th></tr></thead>
+  <tbody>
+    <tr><td>Vida e Saúde (Arts. 7º–14)</td><td>Atendimento integral pelo SUS; vacinação obrigatória; teste do pezinho (PNTN); direito a acompanhante no parto; saúde mental (Art. 11-A, Lei 15.413/2026)</td></tr>
+    <tr><td>Liberdade, Respeito e Dignidade (Arts. 15–18-B)</td><td>Direito de ir e vir, opinião, crença, brincar. <strong>Vedado castigo físico</strong> e tratamento cruel ou degradante (Lei Menino Bernardo, Art. 18-A)</td></tr>
+    <tr><td>Convivência Familiar e Comunitária (Arts. 19–52-D)</td><td>Direito de ser criado na própria família; acolhimento como exceção; guarda, tutela e adoção</td></tr>
+    <tr><td>Educação, Cultura, Esporte e Lazer (Arts. 53–59)</td><td>Acesso à escola próxima; vaga para irmãos; dever de comunicar evasão ao Conselho Tutelar</td></tr>
+    <tr><td>Profissionalização e Proteção no Trabalho (Arts. 60–69)</td><td><strong>Proibido trabalho a menor de 14 anos, salvo aprendiz</strong>; vedado noturno, perigoso, insalubre</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Trabalho — os Números que Caem</div>
+  <p><strong>Proibido qualquer trabalho a menores de 14 anos</strong>, salvo na condição de aprendiz. A aprendizagem é permitida a partir dos 14. É <strong>vedado</strong> ao adolescente trabalho noturno (entre 22h e 5h), perigoso, insalubre, penoso, ou em horários/locais que impeçam a escola. Não confunda: criança até 12 incompletos jamais trabalha; menor de 14 só como aprendiz.</p>
+</div>
+
+<!-- ===== S4 CONVIVÊNCIA / ADOÇÃO ===== -->
+<h2 id="s4">Convivência Familiar — Guarda, Tutela e Adoção</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Modalidade</th><th>Características essenciais</th></tr></thead>
+  <tbody>
+    <tr><td>Guarda</td><td>Regulariza a posse de fato; obriga assistência material, moral e educacional; confere condição de dependente (inclusive previdenciário); <strong>revogável a qualquer tempo</strong></td></tr>
+    <tr><td>Tutela</td><td>Deferida a menor de 18 anos; pressupõe <strong>prévia perda ou suspensão do poder familiar</strong>; implica dever de guarda</td></tr>
+    <tr><td>Adoção</td><td>Medida <strong>excepcional e irrevogável</strong>; atribui condição de filho com os mesmos direitos (inclusive sucessórios); desliga de pais e parentes biológicos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Adoção — Números de Prova</div>
+  <ul>
+    <li>Podem adotar <strong>maiores de 18 anos</strong>, independentemente do estado civil (Art. 42)</li>
+    <li>O adotante deve ser <strong>pelo menos 16 anos mais velho</strong> que o adotando (Art. 42, §3º)</li>
+    <li><strong>Não podem adotar</strong> ascendentes e irmãos do adotando</li>
+    <li>Maior de 12 anos: necessário <strong>seu consentimento</strong> (Art. 45, §2º / Art. 28, §2º)</li>
+    <li>Estágio de convivência: prazo máximo de <strong>90 dias</strong>, prorrogável por igual período</li>
+    <li>Adoção é <strong>irrevogável</strong>; vedada adoção por procuração</li>
+  </ul>
+</div>
+
+<div class="art-line"><span class="art-badge">Art. 19</span><span>Direito de ser criado e educado no seio da <strong>própria família</strong> e, excepcionalmente, em família substituta. Acolhimento institucional não passa de <strong>18 meses</strong>, salvo necessidade fundamentada; reavaliação a cada <strong>3 meses</strong>.</span></div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Pobreza não tira filho (Art. 23)</div>
+  <p class="absurd-scenario">A <strong>falta ou carência de recursos materiais NÃO é motivo</strong> para perda ou suspensão do poder familiar. A família carente deve ser incluída em programas de proteção e apoio — não ter o filho retirado. É um dos dispositivos mais cobrados e mais "pegadinhados" em prova.</p>
+  <p class="absurd-anchor">Atenção: a condenação criminal do pai/mãe só destitui o poder familiar em crime doloso com pena de reclusão contra filho ou outro titular do mesmo poder familiar (Art. 23, §2º).</p>
+</div>
+
+<!-- ===== S5 POLÍTICA DE ATENDIMENTO ===== -->
+<h2 id="s5">Política de Atendimento</h2>
+
+<div class="art-line"><span class="art-badge">Art. 86</span><span>A política de atendimento far-se-á por meio de um <strong>conjunto articulado de ações governamentais e não-governamentais</strong> da União, Estados, DF e Municípios.</span></div>
+
+<div class="box example-box">
+  <div class="box-label">Diretrizes da Política de Atendimento (Art. 88)</div>
+  <ul>
+    <li><strong>Municipalização</strong> do atendimento</li>
+    <li>Criação de <strong>conselhos</strong> dos direitos (nacional, estaduais, municipais) — deliberativos, controladores e <strong>paritários</strong> (governo + sociedade civil)</li>
+    <li>Manutenção de <strong>fundos</strong> vinculados aos conselhos de direitos</li>
+    <li>Integração operacional dos órgãos (Judiciário, MP, Defensoria, Segurança, Assistência Social)</li>
+    <li>Descentralização político-administrativa</li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Não Confunda — Conselho de Direitos × Conselho Tutelar</div>
+  <p>O <strong>Conselho dos Direitos da Criança e do Adolescente (CMDCA)</strong> é <strong>deliberativo, controlador e paritário</strong> — formula políticas. O <strong>Conselho Tutelar</strong> é <strong>executivo, permanente, autônomo e NÃO jurisdicional</strong> — atende casos concretos. São órgãos diferentes; bancas trocam as funções de propósito.</p>
+</div>
+
+<!-- ===== S6 MEDIDAS DE PROTEÇÃO ===== -->
+<h2 id="s6">Medidas de Proteção</h2>
+
+<div class="art-line"><span class="art-badge">Art. 98</span><span>As medidas de proteção aplicam-se quando os direitos forem <strong>ameaçados ou violados</strong>: por ação/omissão da sociedade ou do Estado; por falta/omissão/abuso dos pais; ou em razão da <strong>conduta da própria criança/adolescente</strong>.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Medidas Específicas de Proteção (Art. 101)</div>
+  <p>Vão da mais branda à mais drástica: encaminhamento aos pais; orientação e acompanhamento temporários; matrícula obrigatória; inclusão em programas; requisição de tratamento médico/psicológico; <strong>acolhimento institucional</strong>; <strong>acolhimento familiar</strong>; e <strong>colocação em família substituta</strong>.</p>
+  <p>Acolhimento institucional e familiar são <strong>provisórios e excepcionais</strong>, transição para reintegração ou família substituta — <strong>não implicam privação de liberdade</strong>. O afastamento do convívio familiar é de <strong>competência exclusiva da autoridade judiciária</strong>.</p>
+</div>
+
+<!-- ===== S7 ATO INFRACIONAL ===== -->
+<h2 id="s7">Ato Infracional e Medidas Socioeducativas</h2>
+
+<div class="art-line"><span class="art-badge">Art. 104</span><span>São <strong>penalmente inimputáveis</strong> os menores de 18 anos, sujeitos às medidas do ECA. Considera-se a idade do adolescente <strong>à data do fato</strong>.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Quem pratica ato infracional responde como?</div>
+  <p><strong>Criança</strong> (até 12 incompletos): aplicam-se apenas <strong>medidas de proteção</strong> (Art. 101), por meio do Conselho Tutelar. <strong>Adolescente</strong> (12 a 18): aplicam-se <strong>medidas socioeducativas</strong> (Art. 112), pela autoridade judiciária. Essa distinção é certeira em prova.</p>
+</div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Medida Socioeducativa (Art. 112)</th><th>Prazos / Regras de Prova</th></tr></thead>
+  <tbody>
+    <tr><td>Advertência</td><td>Admoestação verbal reduzida a termo</td></tr>
+    <tr><td>Obrigação de reparar o dano</td><td>Atos com reflexos patrimoniais</td></tr>
+    <tr><td>Prestação de serviços à comunidade (PSC)</td><td>Até <strong>6 meses</strong>; jornada máx. <strong>8h semanais</strong>, sem prejudicar escola/trabalho</td></tr>
+    <tr><td>Liberdade assistida (LA)</td><td>Prazo mínimo de <strong>6 meses</strong>; prorrogável, revogável ou substituível</td></tr>
+    <tr><td>Semiliberdade</td><td>Sem prazo determinado; atividades externas independem de autorização judicial</td></tr>
+    <tr><td>Internação</td><td>Privativa de liberdade; <strong>brevidade, excepcionalidade e respeito à condição de pessoa em desenvolvimento</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Os Prazos da Internação (Art. 121–122)</div>
+  <p class="absurd-scenario">Reavaliação no máximo a cada <strong>6 meses</strong>. Período máximo de internação: <strong>3 anos</strong>. Liberação <strong>compulsória aos 21 anos</strong>. Internação provisória (antes da sentença): máximo de <strong>45 dias</strong>. A internação por descumprimento de medida (internação-sanção, Art. 122, III) não passa de <strong>3 meses</strong>.</p>
+  <p class="absurd-anchor">Internação só cabe em 3 hipóteses: (I) ato com grave ameaça ou violência a pessoa; (II) reiteração de infrações graves; (III) descumprimento reiterado e injustificável de medida anterior. Havendo outra medida adequada, jamais se aplica internação.</p>
+</div>
+
+<div class="art-line"><span class="art-badge">Art. 126</span><span><strong>Remissão:</strong> perdão concedido pelo MP (antes do processo, exclui) ou pelo juiz (depois de iniciado, suspende ou extingue). <strong>Não</strong> implica reconhecimento de responsabilidade nem prevalece para antecedentes. Não pode incluir semiliberdade nem internação.</span></div>
+
+<!-- ===== S8 CONSELHO TUTELAR ===== -->
+<h2 id="s8">Conselho Tutelar</h2>
+
+<div class="art-line"><span class="art-badge">Art. 131</span><span>Órgão <strong>permanente e autônomo, NÃO jurisdicional</strong>, encarregado pela sociedade de zelar pelo cumprimento dos direitos da criança e do adolescente.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Composição e Mandato (Arts. 132–133)</div>
+  <ul>
+    <li>No mínimo <strong>1 Conselho Tutelar por município</strong>, com <strong>5 membros</strong></li>
+    <li>Mandato de <strong>4 anos</strong>, permitida recondução por novos processos de escolha</li>
+    <li>Requisitos do candidato: <strong>idoneidade moral; idade superior a 21 anos; residir no município</strong></li>
+    <li>Escolha unificada em todo o país, no <strong>1º domingo de outubro</strong> do ano seguinte à eleição presidencial; posse em <strong>10 de janeiro</strong></li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> O que o Conselho Tutelar NÃO faz</div>
+  <p>O CT <strong>não aplica medidas socioeducativas</strong>, <strong>não destitui poder familiar</strong> e <strong>não decreta afastamento do convívio familiar</strong> — isso é do juiz. O CT atende criança/adolescente (medidas do Art. 101, I a VII), aconselha pais (Art. 129, I a VII), requisita serviços públicos e <strong>representa ao MP</strong> para ações de perda/suspensão do poder familiar. Decisão do CT só é revista pelo juiz a pedido de quem tenha legítimo interesse.</p>
+</div>
+
+<!-- ===== S9 PRINCÍPIOS ===== -->
+<h2 id="s9">Princípios da Aplicação das Medidas (Art. 100)</h2>
+
+<p>O parágrafo único do Art. 100 traz os princípios que regem a aplicação de medidas — campeões de prova:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Princípio</th><th>Significado</th></tr></thead>
+  <tbody>
+    <tr><td>Interesse superior</td><td>A intervenção atende prioritariamente aos interesses e direitos da criança/adolescente</td></tr>
+    <tr><td>Intervenção precoce</td><td>Atuação logo que a situação de perigo é conhecida</td></tr>
+    <tr><td>Intervenção mínima</td><td>Só as autoridades/instituições indispensáveis intervêm</td></tr>
+    <tr><td>Proporcionalidade e atualidade</td><td>Medida necessária e adequada à situação no momento da decisão</td></tr>
+    <tr><td>Responsabilidade parental</td><td>Intervenção de modo que os pais assumam seus deveres</td></tr>
+    <tr><td>Prevalência da família</td><td>Preferência por manter/reintegrar na família natural ou extensa</td></tr>
+    <tr><td>Oitiva obrigatória e participação</td><td>Criança/adolescente têm direito a ser ouvidos e ter opinião considerada</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== S10 MAIS COBRADOS ===== -->
+<h2 id="s10">Pontos Mais Cobrados em Concurso</h2>
+
+<div class="box example-box">
+  <div class="box-label">Top dos campeões de prova</div>
+  <ul>
+    <li><strong>Idade (Art. 2º):</strong> criança até 12 incompletos; adolescente de 12 a 18; excepcionalmente até 21</li>
+    <li><strong>Prioridade absoluta (Art. 4º):</strong> primazia, precedência, preferência, destinação privilegiada</li>
+    <li><strong>Pobreza não destitui poder familiar (Art. 23)</strong></li>
+    <li><strong>Inimputabilidade penal dos menores de 18 (Art. 104)</strong> — idade considerada à data do fato</li>
+    <li><strong>Criança = medida de proteção; adolescente = medida socioeducativa</strong></li>
+    <li><strong>Prazos da internação:</strong> reavaliação 6 meses, máximo 3 anos, liberação compulsória aos 21, provisória 45 dias, internação-sanção 3 meses</li>
+    <li><strong>Conselho Tutelar:</strong> 5 membros, mandato 4 anos, não jurisdicional, requisitos do Art. 133</li>
+    <li><strong>Adoção:</strong> irrevogável, maior de 18, diferença de 16 anos, consentimento do maior de 12</li>
+    <li><strong>Crimes do ECA são de ação pública incondicionada (Art. 227)</strong> e não admitem a Lei 9.099/95 (Art. 226, §1º)</li>
+  </ul>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · Lei 8.069/1990
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Para os efeitos do ECA, considera-se criança a pessoa até 12 anos completos e adolescente aquela entre 12 e 18 anos.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 2º</strong> define criança como pessoa até <strong>12 anos incompletos</strong> — não "completos". A pessoa de 11 anos e 364 dias é criança; ao completar 12, torna-se adolescente. A troca de "incompletos" por "completos" é a pegadinha mais clássica do ECA.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A carência de recursos materiais da família constitui motivo suficiente para a suspensão ou perda do poder familiar, autorizando o acolhimento institucional da criança.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 23</strong> é expresso: a falta ou carência de recursos materiais <em>não</em> constitui motivo para perda ou suspensão do poder familiar. A família deve ser incluída em programas de proteção, apoio e promoção — não ter a criança retirada.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">À criança que pratica ato infracional aplicam-se medidas de proteção do art. 101, ao passo que ao adolescente autor de ato infracional aplicam-se medidas socioeducativas do art. 112.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 105</strong> determina que ao ato infracional praticado por <em>criança</em> correspondem as medidas do art. 101 (proteção). Ao <em>adolescente</em>, aplicam-se as medidas socioeducativas do art. 112. A criança nunca recebe medida socioeducativa.</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">O período máximo de internação do adolescente é de cinco anos, com liberação compulsória aos dezoito anos de idade.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> Dois erros: o período máximo de internação é de <strong>3 anos</strong> (Art. 121, §3º), não cinco; e a liberação compulsória ocorre aos <strong>21 anos</strong> (Art. 121, §5º), não aos dezoito. A reavaliação se dá no máximo a cada 6 meses.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="C">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Sobre o Conselho Tutelar, assinale a alternativa CORRETA:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) É órgão jurisdicional, com competência para aplicar medidas socioeducativas ao adolescente autor de ato infracional.<br>
+      (B) Compõe-se de três membros, com mandato de dois anos, vedada a recondução.<br>
+      (C) É órgão permanente e autônomo, não jurisdicional, composto de cinco membros escolhidos pela população local para mandato de quatro anos, permitida a recondução.<br>
+      (D) Pode decretar a perda ou suspensão do poder familiar, independentemente de manifestação judicial.<br>
+      (E) Para a candidatura, exige-se idade superior a dezoito anos e formação superior em Direito ou Serviço Social.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','C')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','C')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','C')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','C')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','C')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: C</strong></p>
+      <p><strong>(A) Errada.</strong> O Conselho Tutelar é <em>não jurisdicional</em> (Art. 131) e não aplica medidas socioeducativas — isso é função da autoridade judiciária.</p>
+      <p><strong>(B) Errada.</strong> São <em>5 membros</em>, mandato de <em>4 anos</em>, com recondução permitida (Art. 132).</p>
+      <p><strong>(C) Correta.</strong> Reproduz fielmente os Arts. 131 e 132: órgão permanente, autônomo, não jurisdicional, 5 membros, mandato de 4 anos, recondução permitida.</p>
+      <p><strong>(D) Errada.</strong> O CT não destitui poder familiar — apenas <em>representa ao MP</em> para essa ação (Art. 136, XI). A destituição é judicial.</p>
+      <p><strong>(E) Errada.</strong> Os requisitos do Art. 133 são idoneidade moral, idade <em>superior a 21 anos</em> e residir no município. Não se exige formação superior específica.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais da Lei nº 8.069/1990 — Estatuto da Criança e do Adolescente)</p>
+</div>
+
+<h2>Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>Doutrina da proteção integral:</strong> criança e adolescente são sujeitos de direitos e pessoas em desenvolvimento.</li>
+      <li><strong>Idade (Art. 2º):</strong> criança até 12 incompletos; adolescente 12 a 18; excepcionalmente até 21.</li>
+      <li><strong>Prioridade absoluta (Art. 4º):</strong> primazia, precedência, preferência e destinação privilegiada de recursos.</li>
+      <li><strong>Art. 23:</strong> pobreza não destitui o poder familiar.</li>
+      <li><strong>Família substituta:</strong> guarda (revogável), tutela (após perda do poder familiar) e adoção (irrevogável).</li>
+      <li><strong>Inimputáveis os menores de 18 (Art. 104)</strong> — idade à data do fato.</li>
+      <li><strong>Criança = medida de proteção (CT); adolescente = medida socioeducativa (juiz).</strong></li>
+      <li><strong>Internação:</strong> reavaliação 6 meses, máximo 3 anos, compulsória aos 21, provisória 45 dias, sanção 3 meses.</li>
+      <li><strong>Conselho Tutelar:</strong> permanente, autônomo, não jurisdicional, 5 membros, mandato 4 anos.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>Proteção integral</dt><dd>Doutrina que reconhece criança e adolescente como sujeitos de direitos com prioridade absoluta.</dd>
+      <dt>Poder familiar</dt><dd>Conjunto de deveres dos pais; perda/suspensão só por decisão judicial em contraditório.</dd>
+      <dt>Ato infracional</dt><dd>Conduta descrita como crime ou contravenção praticada por criança ou adolescente.</dd>
+      <dt>Remissão</dt><dd>Perdão pelo MP (exclui) ou juiz (suspende/extingue); não gera antecedentes.</dd>
+      <dt>Conselho Tutelar</dt><dd>Órgão permanente, autônomo e não jurisdicional que zela pelos direitos no caso concreto.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Concentre a memorização em quatro blocos: <strong>(1)</strong> conceitos de idade e prioridade absoluta (Arts. 2º e 4º); <strong>(2)</strong> distinção criança × adolescente nas medidas (101 × 112); <strong>(3)</strong> os prazos numéricos da internação e do acolhimento; <strong>(4)</strong> a estrutura do Conselho Tutelar e a diferença para o Conselho de Direitos. Decore os números — bancas vivem trocando "3 anos" por "5 anos" e "21" por "18".</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">ECA</span>
+  <span class="footer-sub">Lei nº 8.069, de 13 de julho de 1990 · CF/88, art. 227 · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='ECA-8069-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+</script>
+</body>
+</html>
