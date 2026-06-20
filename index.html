@@ -36,13 +36,19 @@
     <div class="dashboard" id="dashboard">
       <section class="hero"><div class="eyebrow">Central de revisão</div><h3>LEGISLAÇÃO E SUAS</h3><p>Use este painel para navegar pelos seus resumos HTML na ordem do edital. Os arquivos são abertos dentro do painel mantendo o layout, cores, fontes e esquemas de cada resumo.</p></section>
       <div class="cards"><div class="stat"><b id="statTotal">0</b><span>tópicos no edital</span></div><div class="stat"><b id="statReady">0</b><span>resumos prontos</span></div><div class="stat"><b id="statTodo">0</b><span>pendentes</span></div><div class="stat"><b>06/09</b><span>data da prova</span></div></div>
-      <section class="guide"><h3>Como adicionar novos resumos</h3><p>1) Salve o novo arquivo HTML na mesma pasta deste painel. 2) Abra este arquivo no editor. 3) No bloco <code>const materiais = [...]</code>, adicione um novo item seguindo o modelo abaixo:</p><pre>{
-  grupo: "Fundamentos, Organização e Gestão do SUAS",
-  titulo: "NOB SUAS 2012",
-  subtitulo: "Responsabilidades, cofinanciamento, gestão e rede",
-  arquivo: "nobsuas_resumo.html",
-  status: "pronto"
-}</pre><p>Quando ainda não tiver o HTML, deixe <code>arquivo: ""</code> e <code>status: "pendente"</code>.</p></section>
+      <section id="cronograma-section" class="guide" style="margin-top:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <h3 style="font-size:1.1rem;font-weight:900">📅 Cronograma de Leitura</h3>
+          <div style="display:flex;gap:8px;align-items:center">
+            <span id="crono-progresso" style="font-size:.8rem;color:var(--muted);font-weight:700"></span>
+            <button class="btn" onclick="resetCronograma()" style="font-size:.7rem;padding:6px 10px">Resetar</button>
+          </div>
+        </div>
+        <div id="crono-barra" style="height:8px;border-radius:99px;background:var(--line);margin-bottom:16px;overflow:hidden">
+          <div id="crono-fill" style="height:100%;border-radius:99px;background:var(--ok);width:0%;transition:.4s"></div>
+        </div>
+        <div id="crono-lista" style="display:flex;flex-direction:column;gap:8px"></div>
+      </section>
     </div>
     <section class="viewer-card hidden" id="viewerCard"><div class="iframe-head"><div><strong id="frameTitle">Resumo</strong><div class="path" id="framePath"></div></div><button class="btn" onclick="backHome()">Voltar ao painel</button></div><iframe class="viewer" id="viewer" title="Visualizador de resumo"></iframe><div class="empty hidden" id="empty">Este tópico ainda está marcado como pendente. Quando você criar o HTML, coloque o arquivo na pasta e preencha o campo <code>arquivo</code> no bloco de materiais.</div></section>
   </div>
@@ -87,7 +93,103 @@ function toggleTheme(){const html=document.documentElement;const next=html.datas
 function toggleMenu(force){const s=document.getElementById('sidebar');s.classList.toggle('open', force===undefined?!s.classList.contains('open'):force)}
 function updateCountdown(){const target=new Date('2026-09-06T08:00:00-03:00');const diff=target-new Date();const t=Math.max(0,diff);const d=Math.floor(t/86400000),h=Math.floor(t%86400000/3600000),m=Math.floor(t%3600000/60000),sec=Math.floor(t%60000/1000);days.textContent=d+' dias';hours.textContent=String(h).padStart(2,'0');mins.textContent=String(m).padStart(2,'0');secs.textContent=String(sec).padStart(2,'0')}
 let pomo=25*60,pomoBase=25*60,pomoInt=null;function drawPomo(){pomoTime.textContent=String(Math.floor(pomo/60)).padStart(2,'0')+':'+String(pomo%60).padStart(2,'0')}function setPomo(min){pomoPause();pomoBase=pomo=min*60;drawPomo()}function pomoStart(){if(pomoInt)return;pomoInt=setInterval(()=>{if(pomo>0){pomo--;drawPomo()}else{pomoPause();alert('Pomodoro finalizado!')}},1000)}function pomoPause(){clearInterval(pomoInt);pomoInt=null}function pomoReset(){pomoPause();pomo=pomoBase;drawPomo()}
-(function init(){const saved=localStorage.getItem('sedesTheme');if(saved)document.documentElement.dataset.theme=saved;renderMenu();updateCountdown();setInterval(updateCountdown,1000);drawPomo()})();
+// CRONOGRAMA — 3 ciclos completos até 06/09
+function buildCronograma(){
+  const INICIO=new Date('2026-06-20');INICIO.setHours(0,0,0,0);
+  const PROVA=new Date('2026-09-06');PROVA.setHours(0,0,0,0);
+  const hoje=new Date();hoje.setHours(0,0,0,0);
+  const nomes=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const prontos=materiais.filter(i=>i.status==='pronto');
+  if(!prontos.length)return;
+
+  // 1. Gera todos os dias úteis de INICIO até PROVA (exclusive)
+  const diasUteis=[];
+  let d=new Date(INICIO);
+  while(d<PROVA){if(d.getDay()>=1&&d.getDay()<=5)diasUteis.push(new Date(d));d.setDate(d.getDate()+1);}
+
+  // 2. Monta sequência 3x (ciclo 1, ciclo 2, ciclo 3) = 69 slots de resumo
+  const sequencia=[...prontos,...prontos,...prontos];
+
+  // 3. Distribui: quantos resumos por dia para caber tudo
+  // porDia = ceil(69 / diasUteis.length), mínimo 1
+  const porDia=Math.max(1,Math.ceil(sequencia.length/diasUteis.length));
+
+  // 4. Monta slots [{data, ciclo, itens:[]}]
+  const slots=[];
+  let si=0;
+  for(let di=0;di<diasUteis.length&&si<sequencia.length;di++){
+    const bloco={data:diasUteis[di],itens:[]};
+    for(let k=0;k<porDia&&si<sequencia.length;k++){
+      const ciclo=Math.floor(si/prontos.length)+1;
+      bloco.itens.push({item:sequencia[si],ciclo,globalIdx:si});
+      si++;
+    }
+    slots.push(bloco);
+  }
+
+  const saved=JSON.parse(localStorage.getItem('cronoLidos2')||'{}');
+  const lista=document.getElementById('crono-lista');
+  lista.innerHTML='';
+  let lidos=0,total=0;
+
+  // 5. Separa passado, hoje, futuro para organizar visualmente
+  // Agrupa por ciclo para exibir cabeçalho de ciclo
+  let cicloAtual=0;
+
+  slots.forEach(slot=>{
+    const ds=slot.data.toISOString().slice(0,10);
+    const isPast=slot.data<hoje;
+    const isHoje=slot.data.getTime()===hoje.getTime();
+
+    // Cabeçalho de ciclo quando muda
+    const primeiroCiclo=slot.itens[0]?.ciclo;
+    if(primeiroCiclo&&primeiroCiclo!==cicloAtual){
+      cicloAtual=primeiroCiclo;
+      const sep=document.createElement('div');
+      const cicloColors=['','var(--accent)','var(--warn)','var(--ok)'];
+      sep.style.cssText='display:flex;align-items:center;gap:10px;margin:14px 0 6px;';
+      sep.innerHTML='<div style="height:2px;flex:1;background:'+cicloColors[cicloAtual]+'40"></div>'
+        +'<span style="font-size:.72rem;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:'+cicloColors[cicloAtual]+'">Ciclo '+cicloAtual+' de 3</span>'
+        +'<div style="height:2px;flex:1;background:'+cicloColors[cicloAtual]+'40"></div>';
+      lista.appendChild(sep);
+    }
+
+    const block=document.createElement('div');
+    let bStyle='border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:4px;';
+    if(isHoje) bStyle+=';border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent),transparent 75%)';
+    if(isPast) bStyle+=';opacity:.6';
+    block.style.cssText=bStyle;
+
+    const hdr=document.createElement('div');
+    hdr.style.cssText='display:flex;align-items:center;gap:10px;padding:9px 14px;background:var(--surface2);border-bottom:1px solid var(--line)';
+    const dd=String(slot.data.getDate()).padStart(2,'0'),mm=String(slot.data.getMonth()+1).padStart(2,'0');
+    const emoji=isPast?'✓ ':(isHoje?'📌 Hoje — ':'');
+    hdr.innerHTML='<span style="font-weight:900;font-size:.88rem'+(isHoje?';color:var(--accent)':isPast?';color:var(--muted)':'')+'">'+emoji+nomes[slot.data.getDay()]+' '+dd+'/'+mm+'</span>'
+      +'<span style="font-size:.7rem;color:var(--muted);margin-left:auto">⏱ 2h</span>';
+    block.appendChild(hdr);
+
+    slot.itens.forEach(({item,globalIdx})=>{
+      const key='g'+globalIdx;
+      const lido=!!saved[key];
+      if(lido)lidos++;total++;
+      const row=document.createElement('div');
+      row.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);cursor:pointer;transition:.15s;'+(lido?'opacity:.45':'');
+      const check=lido?'<svg width="11" height="11" viewBox="0 0 11 11"><polyline points="1.5,5.5 4.5,8.5 9.5,2.5" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>':'';
+      row.innerHTML='<div style="width:20px;height:20px;border-radius:50%;border:2px solid '+(lido?'var(--ok)':'var(--line)')+';background:'+(lido?'var(--ok)':'transparent')+';display:grid;place-items:center;flex-shrink:0;transition:.15s">'+check+'</div>'
+        +'<div style="min-width:0"><div style="font-weight:800;font-size:.85rem;'+(lido?'text-decoration:line-through;color:var(--muted)':'')+'">'+item.titulo+'</div>'
+        +'<div style="font-size:.7rem;color:var(--muted);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+item.subtitulo+'</div></div>';
+      row.onclick=()=>{saved[key]=!saved[key];localStorage.setItem('cronoLidos2',JSON.stringify(saved));buildCronograma();};
+      block.appendChild(row);
+    });
+    lista.appendChild(block);
+  });
+
+  const pct=total>0?Math.round(lidos/total*100):0;
+  document.getElementById('crono-fill').style.width=pct+'%';
+  document.getElementById('crono-progresso').textContent=lidos+'/'+total+' lidos ('+pct+'%)';
+}
+function resetCronograma(){if(confirm('Resetar progresso do cronograma?')){localStorage.removeItem('cronoLidos2');buildCronograma();}}
+(function init(){const saved=localStorage.getItem('sedesTheme');if(saved)document.documentElement.dataset.theme=saved;renderMenu();updateCountdown();setInterval(updateCountdown,1000);drawPomo();buildCronograma();})();
 </script>
 </body>
 </html>
