@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOB-RH/SUAS – Resumo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f8f9fa;
+  --bg-topbar:#0A2D4E; --bg-topbar-glass:rgba(10,45,78,0.97);
+  --text-primary:#000000; --text-secondary:#333333; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#1D7A5F; --accent-dim:#155C46; --accent-glow:rgba(29,122,95,0.12); --accent-surface:#e1f5ee;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f8f9fa; --box-intro-border:#0A2D4E;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#1D7A5F;
+  --box-highlight-bg:#e1f5ee; --box-highlight-border:#1D7A5F;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#1D7A5F;
+  --box-analogy-bg:#f8f9fa; --box-analogy-border:#0A2D4E;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#1D7A5F;
+  --summary-bg:#f8f9fa; --summary-border:#1D7A5F;
+  --table-header-bg:#0A2D4E; --table-header-text:#ffffff;
+  --table-row-alt:#f8f9fa; --table-border:#cccccc; --table-hover:#e1f5ee;
+  --btn-correct:#1D7A5F; --btn-correct-bg:#e1f5ee; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --bg-page:#000000; --bg-surface:#0a0a0a; --bg-surface-raised:#141414;
+  --bg-topbar:#0A2D4E; --bg-topbar-glass:rgba(10,45,78,0.98);
+  --text-primary:#ffffff; --text-secondary:#cccccc; --text-tertiary:#999999;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#9FE1CB; --accent-dim:#5DCAA5; --accent-glow:rgba(159,225,203,0.15); --accent-surface:#04342C;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#333333; --border-soft:#1f1f1f;
+  --box-intro-bg:#050505; --box-intro-border:#9FE1CB;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#0a0a0a; --box-example-border:#9FE1CB;
+  --box-highlight-bg:#04342C; --box-highlight-border:#9FE1CB;
+  --box-glossary-bg:#0a0a0a; --box-glossary-border:#ffffff; --box-glossary-term:#9FE1CB;
+  --box-analogy-bg:#050505; --box-analogy-border:#9FE1CB;
+  --checkpoint-bg:#0a0a0a; --checkpoint-border:#9FE1CB;
+  --summary-bg:#050505; --summary-border:#9FE1CB;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#0a0a0a; --table-border:#333333; --table-hover:#04342C;
+  --btn-correct:#9FE1CB; --btn-correct-bg:#04342C; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8em,7vw,4.2em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2.4em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">SUAS</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Gestão do Trabalho · Assistência Social</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="window.print()" aria-label="Imprimir">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Imprimir</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Política de Assistência Social</div>
+<h1>NOB-RH/SUAS</h1>
+<p class="doc-subtitle">Norma Operacional Básica de Recursos Humanos do Sistema Único de Assistência Social: gestão do trabalho, equipes de referência, capacitação, PCCS e controle social. Aprovada pela Resolução CNAS nº 269/2006, publicada pela Resolução nº 01/2007. Versão Anotada e Comentada — MDS, 2011.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Res. CNAS nº 269/2006 · LOAS · CF/88</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~60 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Atualizado Jun/2026</span>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label">🎯 O que mais cai — Mapa das Questões Recentes (2023–2026)</div>
+  <p>Análise de 50 questões (FUNDATEC, FGV, FEPESE, AVANÇASP, VUNESP e outras). Os 5 temas com maior frequência:</p>
+  <ul>
+    <li><strong>1º — Princípios Éticos:</strong> questões do tipo "EXCETO" que invertem o princípio da desburocratização — ~30% das questões</li>
+    <li><strong>2º — Equipes de Referência do CRAS:</strong> composição exata por porte de município (números e perfis profissionais)</li>
+    <li><strong>3º — Conceitos-Chave:</strong> Família Referenciada, Controle Social, Avaliação de Desempenho, Educação Permanente</li>
+    <li><strong>4º — Capacitação:</strong> os 6 atributos obrigatórios, especialmente a distinção entre "nacionalizada" e "descentralizada"</li>
+    <li><strong>5º — Gestão do Trabalho:</strong> desprecarização, concurso público, responsabilidades por esfera</li>
+  </ul>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Introdução e Base Legal</a></li>
+    <li><a href="#s2">Princípios e Diretrizes para a Gestão do Trabalho</a></li>
+    <li><a href="#s3">Princípios Éticos dos Trabalhadores ⭐ Mais cobrado</a></li>
+    <li><a href="#s4">Equipes de Referência ⭐ Mais cobrado</a></li>
+    <li><a href="#s5">Política Nacional de Capacitação ⭐ Mais cobrado</a></li>
+    <li><a href="#s6">Planos de Carreira, Cargos e Salários (PCCS)</a></li>
+    <li><a href="#s7">Diretrizes para Entidades e Organizações</a></li>
+    <li><a href="#s8">Cofinanciamento da Gestão do Trabalho</a></li>
+    <li><a href="#s9">Responsabilidades dos Gestores</a></li>
+    <li><a href="#s10">Cadastro Nacional dos Trabalhadores — CADSUAS</a></li>
+    <li><a href="#s11">Controle Social da Gestão do Trabalho</a></li>
+    <li><a href="#s12">Regras de Transição</a></li>
+    <li><a href="#s13">Conceitos Básicos ⭐ Mais cobrado</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões Recentes 2024–2026</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>A NOB-RH/SUAS é a norma que estrutura a <strong>política de gestão do trabalho</strong> em toda a rede socioassistencial brasileira. Ela define quem são os trabalhadores do SUAS, como devem ser recrutados (concurso público), quais as composições mínimas das equipes de referência nos CRAS e CREAS, como capacitá-los de forma permanente, como estruturar planos de carreira e como financiar tudo isso. Entender esta norma é entender as condições humanas que sustentam a oferta de serviços de qualidade no SUAS.</p>
+</div>
+
+<!-- ===== I - INTRODUÇÃO ===== -->
+<h2 id="s1">I — Introdução e Base Legal</h2>
+
+<p>A NOB-RH/SUAS representa um avanço na <strong>profissionalização da política de assistência social</strong>. Suas diretrizes orientam gestores das três esferas de governo, trabalhadores e representantes de entidades que lidam cotidianamente com os desafios de implantação do SUAS.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Base Normativa</div>
+  <ul>
+    <li><strong>Constituição Federal de 1988</strong> — direitos sociais e princípios da administração pública</li>
+    <li><strong>LOAS — Lei 8.742/1993</strong>, atualizada pela Lei 12.435/2011 — institui entre os objetivos do SUAS implementar a gestão do trabalho e a educação permanente</li>
+    <li><strong>PNAS/2004</strong> — Política Nacional de Assistência Social</li>
+    <li><strong>NOB/SUAS</strong> — Norma Operacional Básica que define níveis de gestão</li>
+    <li><strong>Resolução CNAS nº 269/2006</strong> — aprova a NOB-RH/SUAS</li>
+    <li><strong>Resolução CNAS nº 17/2011</strong> — amplia categorias profissionais das equipes de referência</li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Ponto-chave</div>
+  <p>A versão <em>Anotada e Comentada</em> (MDS, 2011) apresenta dois tipos de intervenção no texto original: <strong>anotações em azul</strong> (referências legais e normativas relacionadas ao conteúdo) e <strong>comentários em verde</strong> (linguagem acessível que traduz os propósitos dos princípios e diretrizes).</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== II - PRINCÍPIOS E DIRETRIZES ===== -->
+<h2 id="s2">II — Princípios e Diretrizes para a Gestão do Trabalho</h2>
+
+<p>A gestão do trabalho no SUAS deve ser tratada como uma <strong>questão estratégica</strong>. A qualidade dos serviços socioassistenciais disponibilizados à sociedade depende diretamente da estruturação do trabalho, da qualificação e valorização dos trabalhadores.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Diretrizes Fundamentais (Item II)</div>
+  <ul>
+    <li>Caráter <strong>público</strong> da prestação dos serviços socioassistenciais — necessidade de servidores públicos efetivos responsáveis pela execução</li>
+    <li><strong>Concurso público</strong> como único meio de provimento de cargos nas equipes de referência dos CRAS e CREAS</li>
+    <li>Contratação de profissionais com <strong>qualificação acadêmica</strong> e profissões regulamentadas por lei</li>
+    <li>Estabelecimento de uma <strong>Política Nacional de Capacitação</strong> fundada na educação permanente</li>
+    <li><strong>Desprecarização</strong> dos vínculos trabalhistas e fim da terceirização</li>
+    <li><strong>Gestão participativa</strong> com controle social</li>
+    <li>Integração e alimentação do <strong>sistema de informação</strong> (CADSUAS)</li>
+    <li>Planejamento estratégico da força de trabalho</li>
+  </ul>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label">💡 Por que isso importa</div>
+  <div class="analogy-text">
+    <p>A gestão do trabalho no SUAS contribui para aprimorar o Sistema e a qualidade da oferta dos serviços na perspectiva de <strong>consolidar o direito socioassistencial</strong>. Sem trabalhadores qualificados, estáveis e bem gerenciados, não há serviço de qualidade — independentemente da norma ou do recurso disponível.</p>
+    <span class="analogy-bridge">→ A NOB-RH é o instrumento que garante as condições humanas do SUAS</span>
+  </div>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== III - PRINCÍPIOS ÉTICOS ===== -->
+<h2 id="s3">III — Princípios Éticos dos Trabalhadores da Assistência Social</h2>
+
+<p>A Assistência Social deve ofertar seus serviços com <strong>conhecimento e compromisso ético e político</strong> de profissionais que operem técnicas e procedimentos impulsionadores da emancipação dos usuários. Os princípios éticos de cada profissão devem orientar toda a intervenção.</p>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Armadilha Recorrente — Cobrada em 8+ questões recentes</div>
+  <p>A banca sempre inclui como "princípio ético" a alternativa: <em>"Contribuição para a criação de mecanismos que venham <strong>burocratizar</strong> a relação com os usuários"</em>. Isso é <strong>ERRADO</strong>. O princípio correto é a <strong>desburocratização</strong> (agilizar, melhorar). Qualquer alternativa com "burocratizar" é a resposta a ser marcada como EXCETO / incorreta.</p>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Segunda Armadilha — Acesso à informação</div>
+  <p>O princípio correto é: <em>"Promoção aos usuários do acesso à informação, garantindo <strong>conhecer o nome e a credencial</strong> de quem os atende."</em> Alternativas erradas usam "confidencialidade" ou "restrição" ao acesso — marque como incorreta.</p>
+</div>
+
+<h3>Os 10 Princípios Éticos (Art. III)</h3>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Princípio h) — Pegadinha da Elegibilidade</div>
+  <p>O princípio correto é: acesso SEM discriminação, <strong>resguardados os critérios de elegibilidade</strong>. A banca trocou por "flexibilizando, quando necessário, os critérios de elegibilidade" — isso é ERRADO. Os critérios são preservados, não flexibilizados.</p>
+</div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Princípio</th><th>Conteúdo Correto</th><th>Alerta de Prova</th></tr></thead>
+  <tbody>
+    <tr><td>a) Defesa de direitos</td><td>Defesa <strong>intransigente</strong> dos direitos socioassistenciais</td><td>Banca troca por "transigente" — errado</td></tr>
+    <tr><td>b) Qualidade dos serviços</td><td>Compromisso com serviços, programas, projetos e benefícios de qualidade que garantam convívio e fortalecimento de vínculos familiares e sociais</td><td>—</td></tr>
+    <tr><td>c) Acesso à informação</td><td>Garantia de que o usuário conheça o <strong>nome e a credencial</strong> de quem o atende</td><td>Banca troca por "confidencialidade" — errado</td></tr>
+    <tr><td>d) Privacidade e sigilo</td><td>Proteção à privacidade, sigilo profissional, preservação da história de vida</td><td>—</td></tr>
+    <tr><td>e) Autonomia</td><td>Atenção profissional para construção de projetos pessoais e sociais para autonomia e sustentabilidade</td><td>—</td></tr>
+    <tr><td>f) Renda e benefícios</td><td>Reconhecimento do direito ao acesso a benefícios, renda e programas de inserção profissional e social</td><td>—</td></tr>
+    <tr><td>g) Participação social</td><td>Incentivo ao direito de participar de fóruns, conselhos, movimentos sociais e cooperativas populares</td><td>—</td></tr>
+    <tr><td>h) Não discriminação</td><td>Acesso à política sem discriminação de gênero, raça/etnia, credo, orientação sexual, classe social — <strong>resguardados os critérios de elegibilidade</strong></td><td>Banca troca por "flexibilizando critérios" — errado</td></tr>
+    <tr><td>i) Devolução de informações</td><td>Devolução das informações colhidas em estudos e pesquisas para fortalecer os interesses dos usuários</td><td>—</td></tr>
+    <tr><td>j) Desburocratização</td><td>Contribuição para mecanismos que <strong>agilizem e melhorem</strong> os serviços — <strong>NÃO burocratizar</strong></td><td>⚠️ Mais cobrado: banca inverte para "burocratizar"</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== IV - EQUIPES DE REFERÊNCIA ===== -->
+<h2 id="s4">IV — Equipes de Referência</h2>
+
+<p>Equipes de referência são aquelas constituídas por <strong>servidores efetivos</strong> responsáveis pela organização e oferta de serviços, programas, projetos e benefícios de proteção social básica e especial, levando em consideração o número de famílias e indivíduos referenciados, o tipo de atendimento e as aquisições que devem ser garantidas aos usuários.</p>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Conceito-Chave</div>
+  <p><strong>Família referenciada</strong>: aquela que vive em áreas caracterizadas como de vulnerabilidade, definidas a partir de indicadores estabelecidos por órgão federal, pactuados e deliberados. Também abrange famílias e indivíduos atendidos de forma isolada e eventual que demandem proteção social.</p>
+</div>
+
+<h3>Proteção Social Básica — CRAS</h3>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Os números que mais caem — Decore esses exatos</div>
+  <p>Pequeno Porte I = <strong>2.500 famílias / 2 sup + 2 méd</strong> | Pequeno Porte II = <strong>3.500 famílias / 3 sup + 3 méd</strong> | Médio/Grande = <strong>5.000 famílias / 4 sup + 4 méd</strong>. Questões erram propositalmente trocando "3.000" por "3.500" (Q33 Q34) ou "2.000" por "2.500".</p>
+</div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Porte do Município</th><th>Famílias Referenciadas</th><th>Equipe Mínima (Nível Superior)</th><th>Nível Médio</th></tr></thead>
+  <tbody>
+    <tr><td>Pequeno Porte I</td><td>Até <strong>2.500</strong> famílias</td><td>2 técnicos: 1 Assistente Social + preferencialmente 1 Psicólogo</td><td><strong>2</strong> técnicos</td></tr>
+    <tr><td>Pequeno Porte II</td><td>Até <strong>3.500</strong> famílias</td><td>3 técnicos: 2 Assistentes Sociais + preferencialmente 1 Psicólogo</td><td><strong>3</strong> técnicos</td></tr>
+    <tr><td>Médio, Grande, Metrópole e DF</td><td>A cada <strong>5.000</strong> famílias</td><td>4 técnicos: 2 Assistentes Sociais + 1 Psicólogo + 1 profissional do SUAS</td><td><strong>4</strong> técnicos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Coordenador do CRAS — Cobrado em Q30</div>
+  <p>O CRAS deve ter <strong>sempre</strong> um coordenador (não "sempre que possível"). Perfil: técnico de <strong>nível superior</strong>, <strong>concursado</strong> (não nível médio), com experiência em trabalhos comunitários e gestão de programas, projetos, serviços e benefícios socioassistenciais.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Funções do Orientador Social / Cuidador Social — Cobrado em Q45, Q46, Q47, Q49, Q50</div>
+  <p><strong>Orientador/Educador Social</strong> — funções pela NOB-RH/SUAS:</p>
+  <ul>
+    <li>Atividades socioeducativas, de convivência e socialização</li>
+    <li>Apoio à equipe de referência</li>
+    <li>Organização de eventos artísticos, lúdicos e culturais</li>
+    <li>Abordagem social e busca ativa</li>
+  </ul>
+  <p style="margin-top:12px"><strong>Cuidador Social</strong> — funções pela NOB-RH/SUAS:</p>
+  <ul>
+    <li>Atuar na recepção dos usuários possibilitando ambiência acolhedora</li>
+    <li>Identificar as necessidades e demandas dos usuários</li>
+    <li>Apoiar os usuários no planejamento e organização de sua rotina diária</li>
+    <li>❌ <strong>NÃO é função do cuidador</strong>: desenvolver atividades socioeducativas e de convivência (isso é do orientador/educador social)</li>
+  </ul>
+</div>
+
+<h3>Proteção Social Especial — CREAS</h3>
+
+<h4>Média Complexidade</h4>
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Gestão</th><th>Capacidade</th><th>Composição da Equipe</th></tr></thead>
+  <tbody>
+    <tr><td>Gestão Inicial e Básica</td><td>50 pessoas/indivíduos</td><td>1 coordenador, 1 assistente social, 1 psicólogo, 1 advogado, 2 profissionais nível superior/médio, 1 auxiliar administrativo</td></tr>
+    <tr><td>Gestão Plena e Estados (Serviços Regionais)</td><td>80 pessoas/indivíduos</td><td>1 coordenador, 2 assistentes sociais, 2 psicólogos, 1 advogado, 4 profissionais nível superior/médio, 2 auxiliares administrativos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h4>Alta Complexidade</h4>
+
+<details>
+  <summary>Abrigo institucional / casa-lar / casa de passagem</summary>
+  <div>
+    <p><strong>Equipe de atendimento direto:</strong></p>
+    <ul>
+      <li><strong>Coordenador</strong> (nível superior ou médio): 1 profissional para até 20 usuários acolhidos em, no máximo, 2 equipamentos</li>
+      <li><strong>Cuidador</strong> (nível médio + qualificação específica): 1 para cada 10 usuários por turno; ajuste para usuários com demandas específicas (1:8 se 1 usuário especial; 1:6 se 2 ou mais)</li>
+      <li><strong>Auxiliar Cuidador</strong> (nível fundamental + qualificação): mesma proporção do cuidador</li>
+      <li><strong>Assistente Social</strong> (nível superior): 1 para até 20 usuários em até 2 equipamentos</li>
+      <li><strong>Psicólogo</strong> (nível superior): 1 para até 20 usuários em até 2 equipamentos</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>Família Acolhedora</summary>
+  <div>
+    <ul>
+      <li><strong>Coordenador</strong>: 1 para até 45 usuários acolhidos</li>
+      <li><strong>Assistente Social</strong>: 1 para acompanhamento de até 15 famílias acolhedoras e até 15 famílias de origem</li>
+      <li><strong>Psicólogo</strong>: 1 para acompanhamento de até 15 famílias acolhedoras e até 15 famílias de origem</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>República</summary>
+  <div>
+    <ul>
+      <li><strong>Coordenador</strong>: 1 para até 20 usuários</li>
+      <li><strong>Assistente Social</strong>: 1 para até 20 usuários em até 2 equipamentos</li>
+      <li><strong>Psicólogo</strong>: 1 para até 20 usuários em até 2 equipamentos</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>Instituição de Longa Permanência para Idosos (ILPI)</summary>
+  <div>
+    <p>Equipe de referência para atendimento direto:</p>
+    <ul>
+      <li>1 Coordenador (nível superior ou médio)</li>
+      <li>Cuidadores (nível médio)</li>
+      <li>1 Assistente Social (nível superior)</li>
+      <li>1 Psicólogo (nível superior)</li>
+      <li>1 Profissional para atividades socioculturais (nível superior)</li>
+      <li>Profissionais de limpeza, alimentação e lavanderia (nível fundamental)</li>
+    </ul>
+  </div>
+</details>
+
+<h3>Funções Essenciais para a Gestão do SUAS</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Esfera de Gestão</th><th>Funções Essenciais</th></tr></thead>
+  <tbody>
+    <tr><td>Gestão Municipal</td><td>Gestão do Sistema Municipal; Coordenação da PSB e PSE; Planejamento e Orçamento; Gerenciamento do Fundo Municipal; Sistemas de Informação; Monitoramento da Rede; Gestão do Trabalho; Apoio às Instâncias de Deliberação</td></tr>
+    <tr><td>Gestão Estadual</td><td>Gestão do Sistema Estadual; PSB e PSE; Planejamento; Fundo Estadual; Cooperação Técnica/Assessoria aos Municípios; Gestão do Trabalho e Capacitação; Apoio às Instâncias de Pactuação</td></tr>
+    <tr><td>Gestão do DF</td><td>Funções equivalentes às estaduais adaptadas ao território do Distrito Federal</td></tr>
+    <tr><td>Gestão Federal</td><td>Gestão do SUAS nacional; PSB, PSE e Benefícios; Cooperação/Assessoria à gestão descentralizada; Gestão do Trabalho e Capacitação; Apoio às Instâncias de Pactuação e Deliberação</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Atenção</div>
+  <p>Para as equipes estaduais que apoiam municípios com presença de <strong>povos e comunidades tradicionais</strong> (indígenas, quilombolas, seringueiros etc.), é necessário contar com profissional com curso superior em ciências sociais (habilitação em antropologia) ou com especialização/mestrado/doutorado em antropologia.</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== V - CAPACITAÇÃO ===== -->
+<h2 id="s5">V — Política Nacional de Capacitação</h2>
+
+<p>A capacitação dos trabalhadores da Assistência Social tem por fundamento a <strong>educação permanente</strong> e deve envolver gestores, trabalhadores (técnicos e administrativos), dos setores governamentais e não-governamentais, e conselheiros.</p>
+
+<h3>Características da Capacitação no SUAS</h3>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Confusão mais comum — Cobrada em Q11, Q14, Q45, Q46</div>
+  <p>A banca troca "sistemática e continuada" por "avaliada e monitorada" e vice-versa. Decore: <strong>Sistemática e continuada = planos anuais</strong>. <strong>Nacionalizada = conteúdos mínimos</strong>. <strong>Descentralizada = execução regionalizada</strong>. Esses três são os mais trocados.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">6 Atributos Obrigatórios — Decore a ordem e o significado de cada um</div>
+  <ul>
+    <li><strong>Sistemática e continuada</strong> — elaboração e implementação de <strong>planos anuais</strong> de capacitação</li>
+    <li><strong>Sustentável</strong> — com provisão de recursos financeiros, humanos, tecnológicos e materiais adequados</li>
+    <li><strong>Participativa</strong> — com envolvimento de diversos atores no planejamento, execução, monitoramento e avaliação (aprovados pelos <strong>conselhos</strong>)</li>
+    <li><strong>Nacionalizada</strong> — com definição de <strong>conteúdos mínimos</strong>, respeitando diversidades e especificidades regionais</li>
+    <li><strong>Descentralizada</strong> — executada de forma <strong>regionalizada</strong>, considerando características geográficas de regiões, estados e municípios</li>
+    <li><strong>Avaliada e monitorada</strong> — com suporte de sistema informatizado e garantia do controle social</li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ O que a banca gosta de tornar INCORRETO — Q11, Q44</div>
+  <p>Questão Q11 declarou V ou F para: "Sistemática e continuada: por meio de planos anuais" (V), "Sustentável" (V), "Participativa: com envolvimento de diversos atores, aprovados pelos conselhos" (V), "Descentralizada: com definição de conteúdos <strong>máximos</strong>" (F — são mínimos), "Nacionalizada: executada de forma regionalizada <strong>sem considerar</strong> características geográficas" (F — deve considerar). Gabarito correto: apenas I, II e III.</p>
+</div>
+
+<h3>Responsabilidades na Capacitação</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Esfera</th><th>Responsabilidade</th></tr></thead>
+  <tbody>
+    <tr><td>União + Estados + DF</td><td>Coordenam e cofinanciam a Política Nacional de Capacitação (PNC/SUAS)</td></tr>
+    <tr><td>Gestores Municipais</td><td>Liberam os técnicos para capacitação sem prejuízo de remuneração; elaboram Plano Municipal de Capacitação</td></tr>
+    <tr><td>Todos os gestores</td><td>Publicam planos anuais; destinam capacitação a todos os atores; adotam metodologias inovadoras (EaD, teleconferências etc.)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Estrutura da PNC/SUAS</div>
+  <p>A Política Nacional de Capacitação deve estar estruturada em patamares formativos progressivos: <strong>capacitação introdutória → atualização → aperfeiçoamento → especialização → mestrado profissional</strong>. O princípio da interdisciplinaridade deve ser contemplado em todos os níveis.</p>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label">⚠️ Atenção à Acessibilidade</div>
+  <p>A capacitação no âmbito do SUAS deve <strong>garantir acessibilidade das pessoas com deficiência</strong> aos projetos de capacitação por meio da adoção de recursos técnicos adequados (Decreto nº 5.296/04, ABNT NBR 9050:2004).</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== VI - PCCS ===== -->
+<h2 id="s6">VI — Planos de Carreira, Cargos e Salários (PCCS)</h2>
+
+<p>Os PCCS devem ser instituídos em <strong>cada esfera de governo</strong> para os trabalhadores do SUAS da administração direta e indireta. Expressam o compromisso da administração pública com o desenvolvimento profissional dos servidores para melhorar a qualidade dos serviços.</p>
+
+<h3>9 Princípios dos PCCS</h3>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Princípio</th><th>Significado</th></tr></thead>
+  <tbody>
+    <tr><td>1. Universalidade</td><td>Abrangem todos os trabalhadores que participam dos processos de trabalho do SUAS nas três esferas de governo</td></tr>
+    <tr><td>2. Equivalência de cargos</td><td>Categorias profissionais classificadas em grupos de cargos com equiparação salarial proporcional à carga horária, escolaridade e complexidade</td></tr>
+    <tr><td>3. Concurso público</td><td>O acesso à carreira está condicionado à aprovação em concurso público de provas ou de provas e títulos</td></tr>
+    <tr><td>4. Mobilidade do trabalhador</td><td>Garantia de trânsito pelo SUAS nas diversas esferas de governo sem perda de direitos ou possibilidade de ascensão funcional</td></tr>
+    <tr><td>5. Adequação funcional</td><td>Os PCCS se adéquam periodicamente às necessidades, dinâmica e funcionamento do SUAS</td></tr>
+    <tr><td>6. Gestão partilhada das carreiras</td><td>Garantia da participação dos trabalhadores, por mecanismos legitimamente constituídos, na formulação e gestão dos PCCS</td></tr>
+    <tr><td>7. PCCS como instrumento de gestão</td><td>Constitui instrumento gerencial de política de pessoal integrado ao planejamento e desenvolvimento organizacional</td></tr>
+    <tr><td>8. Educação permanente</td><td>Atendimento às necessidades de formação e qualificação sistemática e continuada dos trabalhadores</td></tr>
+    <tr><td>9. Compromisso solidário</td><td>Acordo entre gestores e representantes dos trabalhadores em prol da qualidade dos serviços e das condições de trabalho</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>Diretrizes para os PCCS</h3>
+
+<div class="box highlight-box">
+  <div class="box-label">Principais Diretrizes</div>
+  <ul>
+    <li>PCCS devem ser <strong>únicos com isonomia</strong> em cada esfera de governo</li>
+    <li>Criação de <strong>Programações Pactuadas Integradas (PPI)</strong> sobre pisos salariais regionais</li>
+    <li>Evolução na carreira considerando <strong>formação, capacitação, titulação e avaliação de desempenho</strong></li>
+    <li>Estímulo à <strong>dedicação integral ou exclusiva</strong> com vantagens financeiras</li>
+    <li>Cargos de funções de confiança previstos para direção, chefia e assessoramento</li>
+    <li>Aplicação dos princípios aos trabalhadores das <strong>entidades conveniadas</strong>, garantindo isonomia entre público e privado</li>
+  </ul>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Mesa Nacional de Negociação do SUAS</div>
+  <p>A Resolução CNAS nº 172/2007 recomendou ao MDS a instituição da <strong>Mesa Nacional de Negociação Permanente do SUAS</strong> — espaço de democratização das relações de trabalho na assistência social para negociação e pactuação entre os diversos atores do Sistema.</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== VII - ENTIDADES ===== -->
+<h2 id="s7">VII — Diretrizes para Entidades e Organizações de Assistência Social</h2>
+
+<p>As entidades e organizações de assistência social que compõem o SUAS devem alinhar-se aos princípios éticos dos trabalhadores e às diretrizes da gestão do trabalho. Suas obrigações incluem:</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Obrigações das Entidades Conveniadas</div>
+  <ul>
+    <li><strong>Valorizar seus trabalhadores</strong> de modo a ofertar serviços com caráter público e qualidade</li>
+    <li><strong>Executar plano de capacitação</strong> em consonância com as diretrizes da Política Nacional de Capacitação</li>
+    <li><strong>Viabilizar a participação</strong> de seus trabalhadores em eventos de capacitação nos âmbitos municipal, estadual, distrital e federal</li>
+    <li><strong>Buscar isonomia salarial</strong> entre trabalhadores da rede pública e da rede prestadora de serviços, em parceria com o poder público</li>
+    <li><strong>Manter atualizadas as informações</strong> sobre seus trabalhadores, disponibilizando-as aos gestores para alimentação do CADSUAS</li>
+  </ul>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== VIII - COFINANCIAMENTO ===== -->
+<h2 id="s8">VIII — Cofinanciamento da Gestão do Trabalho</h2>
+
+<p>O cofinanciamento da gestão do trabalho é responsabilidade das três esferas de governo. Os recursos devem estar alocados nos respectivos fundos de assistência social.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Diretrizes de Cofinanciamento</div>
+  <ul>
+    <li>Garantir que os recursos transferidos pelo governo federal aos municípios possam incluir o <strong>pagamento de remuneração das equipes de referência concursadas</strong> (art. 6º-E da LOAS, inserido pela Lei 12.435/2011)</li>
+    <li><strong>Até 60%</strong> dos recursos do FNAS destinados às ações continuadas podem ser usados para pagamento dos profissionais das equipes de referência (Res. CNAS nº 32/2011)</li>
+    <li>O valor transferido pela União serve de <strong>referência para o percentual</strong> a ser assumido por Estados e Municípios em cofinanciamento</li>
+    <li>Prever recursos para <strong>concursos públicos</strong> e para capacitação dos trabalhadores</li>
+    <li>Assegurar <strong>rubrica específica</strong> na Lei Orçamentária com a designação "Gestão do Trabalho"</li>
+    <li>Prever recursos para <strong>estudos e pesquisas</strong> que demonstrem a realidade dos territórios</li>
+  </ul>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== IX - RESPONSABILIDADES ===== -->
+<h2 id="s9">IX — Responsabilidades dos Gestores</h2>
+
+<p>A NOB-RH/SUAS detalha as responsabilidades e atribuições de cada esfera de governo para a gestão do trabalho no SUAS. Há responsabilidades comuns e responsabilidades específicas por nível.</p>
+
+<h3>IX.1 — Gestor Federal</h3>
+<div class="box example-box">
+  <div class="box-label">Atribuições-Chave da União</div>
+  <ul>
+    <li>Criar diretriz de acompanhamento nacional da implantação da NOB-RH/SUAS</li>
+    <li>Designar setor responsável pela gestão do trabalho no SUAS (CGIAP-RH/DGSUAS)</li>
+    <li>Elaborar diagnóstico da situação de gestão do trabalho em sua área de atuação</li>
+    <li>Organizar e disponibilizar o <strong>CADSUAS</strong> aos municípios, estados e DF</li>
+    <li>Formular, coordenar, cofinanciar e executar a <strong>Política Nacional de Capacitação</strong> com os estados e DF</li>
+    <li>Definir a Política de Estágio Curricular obrigatório no SUAS</li>
+    <li>Nomear comissão paritária para elaboração do PCCS federal</li>
+    <li>Instituir a Mesa Nacional de Negociações paritária</li>
+    <li>Estabelecer critérios de repasse fundo-a-fundo como incentivo ao cumprimento da NOB-RH</li>
+    <li>Buscar cooperação técnica e financeira com organismos nacionais e internacionais</li>
+  </ul>
+</div>
+
+<h3>IX.2 — Gestores Estaduais</h3>
+<div class="box example-box">
+  <div class="box-label">Atribuições-Chave dos Estados</div>
+  <ul>
+    <li>Prestar <strong>apoio técnico e assessoramento</strong> aos municípios não habilitados</li>
+    <li>Realizar <strong>concurso público</strong> e manter quadro de pessoal para serviços de média e alta complexidade</li>
+    <li>Elaborar e implementar junto com os municípios a <strong>Política Estadual de Capacitação (PEC/SUAS)</strong></li>
+    <li>Organizar centros de estudos regionalizados nas unidades de assistência social</li>
+    <li>Estabelecer <strong>comunicação permanente com municípios</strong> sobre questões de trabalhadores</li>
+    <li>Manter e alimentar o CADSUAS em seu âmbito</li>
+  </ul>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Incentivos e Requisitos Estaduais</div>
+  <p><strong>Incentivo:</strong> Receber recursos para implantação do Programa de Incentivo à Gestão do Trabalho no SUAS, a ser regulado pelo MDS.</p>
+  <p><strong>Requisitos:</strong> (a) Preencher o CADSUAS; (b) Celebrar Pacto de Aprimoramento da Gestão com instrumentos de comprovação de cumprimento.</p>
+</div>
+
+<h3>IX.3 — Gestor do Distrito Federal</h3>
+<p>O DF acumula as responsabilidades da gestão estadual e municipal, com especificidades próprias quanto à gestão do CADSUAS/DF, do Fundo de Assistência Social do DF e do Conselho de Assistência Social do DF (CAS/DF).</p>
+
+<h3>IX.4 — Gestores Municipais</h3>
+<div class="box example-box">
+  <div class="box-label">Atribuições Comuns a Todos os Municípios</div>
+  <ul>
+    <li>Contratar e manter quadro de pessoal por <strong>concurso público</strong></li>
+    <li>Elaborar diagnóstico da gestão do trabalho em seu território</li>
+    <li>Alimentar o CADSUAS, inclusive com dados das entidades conveniadas</li>
+    <li>Elaborar e implementar <strong>Plano Municipal de Capacitação</strong>, deliberado pelo CMAS</li>
+    <li>Participar da formulação e execução da Política Nacional de Capacitação</li>
+    <li>Instituir política de estágio curricular obrigatório em parceria com IES</li>
+  </ul>
+</div>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Nível de Gestão</th><th>Atribuições Adicionais</th></tr></thead>
+  <tbody>
+    <tr><td>Gestão Básica</td><td>Planejar ingresso de pessoal com quantitativos anuais; instituir Mesa de Negociações paritária; organizar centros de estudos regionalizados; participar da definição dos critérios de repasse fundo-a-fundo</td></tr>
+    <tr><td>Gestão Plena</td><td>Fortalecer mecanismos de desenvolvimento profissional nas carreiras; propiciar participação de IES em atividades conjuntas; organizar centros de estudos; participar da definição dos critérios de repasse fundo-a-fundo</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Incentivos e Requisitos Municipais (Gestão Básica e Plena)</div>
+  <p><strong>Incentivo:</strong> Receber recursos para implantação do Programa de Incentivo à Gestão do Trabalho no SUAS (regulado pelo MDS).</p>
+  <p><strong>Requisitos:</strong> (a) Preencher o CADSUAS; (b) Apresentar Plano para Qualificação e Estruturação aprovado pelo CMAS e pactuado na CIB.</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== X - CADSUAS ===== -->
+<h2 id="s10">X — Cadastro Nacional dos Trabalhadores do SUAS — CADSUAS</h2>
+
+<p>O CADSUAS é o módulo do sistema de informação cadastral do SUAS que configura a <strong>base de dados sobre os trabalhadores</strong> do sistema. É instrumento fundamental de gestão, desde que devidamente atualizado pelos gestores e conselheiros das três esferas de governo.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">3 Diretrizes do CADSUAS</div>
+  <ul>
+    <li><strong>Composição federativa</strong> — informações da União, Estados, DF e Municípios para identificação e qualificação de todos os profissionais</li>
+    <li><strong>Abrangência total</strong> — todos os níveis de escolaridade que atuam nos serviços, benefícios e gestão da Assistência Social</li>
+    <li><strong>Atualização sistemática</strong> — regida por fluxo de regulação específica; utilizada para subsidiar planejamento, gerência, administração, avaliação e desenvolvimento profissional</li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label">Base Legal do CADSUAS</div>
+  <p>Portaria MDS nº 430/2008 institui o CADSUAS. Portaria MDS nº 08/2009 institui o Sistema de Informação do SUAS (Rede SUAS), do qual o CADSUAS é aplicativo.</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== XI - CONTROLE SOCIAL ===== -->
+<h2 id="s11">XI — Controle Social da Gestão do Trabalho</h2>
+
+<p>Uma das diretrizes da organização da Assistência Social é a <strong>participação da população</strong>, por meio de organizações representativas, na formulação e no controle dos serviços socioassistenciais em todos os níveis de governo.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">8 Mecanismos de Controle Social</div>
+  <ul>
+    <li>Implementação das discussões e deliberações das instâncias de controle social sobre a Gestão do Trabalho, com foco no impacto na qualidade dos serviços</li>
+    <li><strong>Fiscalização do exercício profissional</strong> pelos Conselhos Federais e Regionais das profissões regulamentadas</li>
+    <li>Ampliação do debate com a população, garantindo participação de todas as entidades representativas</li>
+    <li>Constituição, nos Conselhos de Assistência Social estaduais, do DF e municipais, de <strong>comissões paritárias</strong> (governo × sociedade civil) para tratar da gestão do trabalho</li>
+    <li>Representações de trabalhadores e entidades podem propor agenda de discussão ao Plenário dos Conselhos de Assistência Social</li>
+    <li>Criação de espaços de debate e Seminários Nacionais, Estaduais, Regionais e locais do trabalho para revisão da NOB-RH/SUAS</li>
+    <li><strong>Gestão colegiada e participativa</strong> no SUAS para democratizar as relações de trabalho</li>
+    <li>Conselhos de Assistência Social devem acolher, deliberar e encaminhar <strong>denúncias de usuários</strong> sobre baixa resolutividade, maus-tratos e negligência, estimulando a criação de Ouvidorias</li>
+  </ul>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== XII - REGRAS DE TRANSIÇÃO ===== -->
+<h2 id="s12">XII — Regras de Transição</h2>
+
+<p>A aprovação da NOB-RH/SUAS exigiu uma agenda de prioridades entre SNAS, CNAS e CIT, contemplando medidas regulatórias e operacionais para a sua implementação gradual.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Medida</th><th>Prazo / Status</th></tr></thead>
+  <tbody>
+    <tr><td>Proposta legislativa para pagamento de trabalhadores com recursos do cofinanciamento</td><td>180 dias — Concluída: art. 6º-E da LOAS (Lei 12.435/2011)</td></tr>
+    <tr><td>Elaboração da Política Nacional de Capacitação (PNC/SUAS)</td><td>Parceria com IES e escolas de governo — Apresentada ao FONSEAS e CIT em outubro/2011</td></tr>
+    <tr><td>Comissão paritária para elaboração dos PCCS</td><td>Representantes das três esferas, entidades de trabalhadores, conselhos de categorias e rede complementar</td></tr>
+    <tr><td>Grupo de trabalho para Plano de Estágio Curricular obrigatório no SUAS</td><td>12 meses</td></tr>
+    <tr><td>Grupo de trabalho na CIT para regulamentação dos serviços e custos</td><td>180 dias</td></tr>
+    <tr><td>Implantação de equipes de referência conforme NOB-RH</td><td>Até 2013 (Res. CIT nº 05/2010)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Critérios para Distribuição de Recursos</div>
+  <p>Os critérios para distribuição de recursos na implantação da NOB devem ser <strong>equânimes</strong>, priorizando municípios com: menor capacidade fiscal, menor concentração econômica, mercado de trabalho menos dinâmico, indicadores de vulnerabilidade mais elevados, e que já implementaram: concurso público, PCCS, progressividade salarial e procedimentos de desprecarização do trabalho.</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== XIII - CONCEITOS BÁSICOS ===== -->
+<h2 id="s13">XIII — Conceitos Básicos</h2>
+
+<div class="box alert-box">
+  <div class="box-label">🎯 Cobrado em múltiplas questões — Q2, Q10, Q29, Q34, Q40</div>
+  <p>As bancas adoram misturar os conceitos: <strong>Família Referenciada</strong> é quem mora em área de vulnerabilidade (território). <strong>Controle Social</strong> é a participação da sociedade organizada (conferências, conselhos, fóruns). <strong>Avaliação de Desempenho</strong> considera individual + equipe + condições de trabalho. Esses três aparecem juntos em questões de associação de colunas.</p>
+</div>
+
+<div class="glossary-box">
+  <div class="box-label">Glossário NOB-RH/SUAS</div>
+
+  <p class="glossary-term">Família Referenciada ⭐ Mais cobrado</p>
+  <p class="glossary-def">Aquela que vive em áreas caracterizadas como de <strong>vulnerabilidade</strong>, definidas a partir de <strong>indicadores estabelecidos por órgão federal</strong>, pactuados e deliberados. Inclui famílias e indivíduos atendidos de forma isolada e eventual que demandem proteção social do ente público.</p>
+
+  <p class="glossary-term">Controle Social ⭐ Mais cobrado</p>
+  <p class="glossary-def">Participação efetiva da <strong>sociedade organizada</strong> (Conferências, Conselhos e Fóruns de Assistência Social) na <strong>definição, planejamento, implementação e avaliação</strong> da Política Pública. No SUAS, deve ser extensivo à gestão do trabalho. É uma característica do <strong>Estado Democrático de Direito</strong>, com objetivo de acompanhar, contribuir e fiscalizar a ação do <strong>agente público</strong>, visando à maior efetividade dos direitos fundamentais.<br><br>⚠️ <em>Não confundir com Descentralização</em>, que é a transferência da gerência de ações para instâncias mais próximas dos usuários — conceito diferente.</p>
+
+  <p class="glossary-term">Avaliação de Desempenho ⭐ Mais cobrado</p>
+  <p class="glossary-def">Apuração do desempenho efetivo do trabalhador, considerando: (1) desempenho <strong>individual</strong>, (2) desempenho da <strong>equipe</strong>, (3) <strong>análise institucional</strong>, (4) <strong>condições de trabalho</strong> oferecidas e (5) adaptação ao cargo. Subsidia a progressão na carreira.</p>
+
+  <p class="glossary-term">Educação Permanente ⭐ Mais cobrado</p>
+  <p class="glossary-def">Processo <strong>contínuo</strong> de aquisição de informações pelo trabalhador, por meio de escolarização formal ou não formal, vivências e experiências laborais e emocionais. Fundamento da Política Nacional de Capacitação.</p>
+
+  <p class="glossary-term">NOB-RH/SUAS</p>
+  <p class="glossary-def">Instrumento normativo de <strong>caráter nacional</strong> colocado nas instâncias municipais para padronizar a gestão de recursos humanos nos serviços de assistência social. Responsável pela definição de diretrizes e responsabilidades no âmbito da política do trabalho na área da assistência social. Previsto como Meta 2 da V Conferência Nacional de Assistência Social.</p>
+
+  <p class="glossary-term">Descentralização dos Serviços</p>
+  <p class="glossary-def">Transferência da gerência, execução de ações e prestação de serviços para instâncias mais próximas dos usuários. A coordenação e as normas gerais cabem à esfera federal; a coordenação e execução, aos estados e municípios.</p>
+
+  <p class="glossary-term">Desenvolvimento do Trabalhador para o SUAS</p>
+  <p class="glossary-def">Atitudes, circunstâncias, ações e eventos que assegurem ao trabalhador o crescimento profissional e laboral, possibilitando pleno desenvolvimento humano, satisfação com o trabalho, reconhecimento e prestação de serviços com acolhimento e qualidade.</p>
+
+  <p class="glossary-term">Empregadores do SUAS</p>
+  <p class="glossary-def">Os gestores públicos dos serviços de assistência social e as entidades e organizações de assistência social que atuam no SUAS.</p>
+
+  <p class="glossary-term">Gestão do Trabalho no SUAS</p>
+  <p class="glossary-def">Gestão do processo de trabalho necessário ao funcionamento da organização do sistema, abarcando novos desenhos organizacionais, educação permanente, desprecarização do trabalho, avaliação de desempenho, adequação dos perfis profissionais, processos de negociação, sistemas de informação e planos de carreira, cargos e salários.</p>
+
+  <p class="glossary-term">Organizações de Trabalhadores da Assistência Social</p>
+  <p class="glossary-def">Todas as formas de organização de trabalhadores do setor: associações, sindicatos, federações, confederações, centrais sindicais e conselhos federais de profissões regulamentadas que defendem e representam os interesses dos trabalhadores na política de assistência social.</p>
+
+  <p class="glossary-term">Trabalhadores da Assistência Social</p>
+  <p class="glossary-def">Todos aqueles que atuam institucionalmente na política de assistência social, conforme preconizado na LOAS, na PNAS e no SUAS, inclusive quando se tratar de consórcios intermunicipais e entidades e organizações de assistência social.</p>
+
+  <p class="glossary-term">Vínculo de Trabalho do Servidor Público</p>
+  <p class="glossary-def">Aquele baseado na forma estatutária prevista no art. 37 da Constituição Federal, com ingresso por concurso público.</p>
+</div>
+
+<hr class="section-divider"><span class="divider-icon"></span>
+
+<!-- ===== CHECKPOINT ===== -->
+<div class="checkpoint-block" id="checkpoint">
+  <div class="checkpoint-header">
+    <div class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint — Baseado nas Questões Mais Recentes (2024–2026)
+    </div>
+    <div class="checkpoint-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 01</span>
+      <span class="questao-tag">Princípios Éticos — EXCETO</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(FEPESE/2026 — Adaptada) São princípios éticos que orientam a intervenção dos profissionais da área de assistência social, EXCETO:</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Defesa intransigente dos direitos socioassistenciais</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Devolução das informações colhidas nos estudos e pesquisas aos usuários</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">Contribuição para criar mecanismos que burocratizem a relação com os usuários</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Proteção à privacidade dos usuários, observado o sigilo profissional</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 02</span>
+      <span class="questao-tag">Conceitos-Chave — Associação</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(FUNDATEC/2025 — Adaptada) Qual conceito da NOB-RH/SUAS corresponde a: "participação efetiva da sociedade organizada na definição, planejamento, implementação e avaliação da Política Pública"?</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Avaliação de desempenho</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">Controle social</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Descentralização dos serviços</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Educação permanente</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 03</span>
+      <span class="questao-tag">CRAS — Pequeno Porte II</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(URI/2023 — Reproduzida) As equipes do CRAS com 3 técnicos de nível superior (2 assistentes sociais e 1 psicólogo) e 3 técnicos de nível médio correspondem a qual porte de município?</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Pequeno Porte I, até 2.500 famílias</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Pequeno Porte II, até 3.000 famílias</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">Pequeno Porte II, até 3.500 famílias</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Médio Porte, até 5.000 famílias</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 04</span>
+      <span class="questao-tag">Capacitação — Atributos</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(OBJETIVA/2023 — Adaptada) Conforme a NOB-RH/SUAS, a capacitação de forma "nacionalizada" significa:</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Por meio de planos anuais de capacitação</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Com execução regionalizada considerando características geográficas</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">Com definição de conteúdos mínimos, respeitando diversidades e especificidades</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Com suporte de sistema informatizado e controle social</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 05</span>
+      <span class="questao-tag">Gestão do Trabalho — Princípios</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(FUNDATEC/2025 — Reproduzida) Com base nos princípios da NOB-RH/SUAS, a gestão do trabalho no SUAS deve priorizar:</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">A terceirização dos serviços socioassistenciais como alternativa econômica</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">A contratação de trabalhadores de forma temporária para reduzir custos</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">A desprecarização dos vínculos e o fortalecimento da política de concursos públicos</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">A rotatividade dos trabalhadores para garantir maior dinamismo</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 06</span>
+      <span class="questao-tag">Responsabilidades dos Gestores</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(FGV/2025 — Reproduzida) São responsabilidades e atribuições dos gestores estaduais conforme a NOB-RH/SUAS: I. Elaborar quadro de necessidades de trabalhadores. II. Oferecer condições adequadas de trabalho. III. Organizar centros de estudos nas unidades de assistência social.</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Apenas I</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">I e II apenas</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">I e III apenas</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">I, II e III</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 07</span>
+      <span class="questao-tag">Coordenador do CRAS</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(Instituto AOCP/2017 — Reproduzida) Julgue: "A NOB/RH prevê que o CRAS deve contar sempre que possível com um coordenador, devendo ele ser técnico, no mínimo, de nível médio, concursado e com experiência na área."</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Certo</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">Errado — o coordenador é obrigatório (não "sempre que possível") e deve ser de nível superior</button>
+    </div>
+  </div>
+
+  <div class="questao-block">
+    <div class="questao-header">
+      <span class="questao-number">Q 08</span>
+      <span class="questao-tag">Capacitação — Finalidade</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <div class="questao-enunciado">
+      <p>(FGV/2025 — Reproduzida) À luz da NOB-RH/SUAS, a capacitação dos trabalhadores da área da Assistência Social tem como finalidade:</p>
+    </div>
+    <div class="answer-buttons">
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Contratar e manter quadro de pessoal qualificado academicamente</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Criar Plano de Carreira, Cargos e Salários</button>
+      <button class="answer-btn" onclick="checkAnswer(this, false)">Aprimorar a carreira e distribuir profissionais por equipes</button>
+      <button class="answer-btn" onclick="checkAnswer(this, true)">Produzir e difundir conhecimentos para desenvolvimento de habilidades, controle social e empoderamento dos usuários</button>
+    </div>
+  </div>
+
+  <p class="checkpoint-disclaimer">Revise as seções correspondentes caso tenha dúvidas nas questões acima.</p>
+</div>
+
+<!-- ===== RESUMO FINAL ===== -->
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <span class="summary-card-title">Resumo Integrado — O Que Não Pode Faltar (Atualizado Jun/2026)</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>🎯 Princípios Éticos — 30% das questões</h4>
+    <ul>
+      <li>São 10 princípios; questões do tipo "EXCETO" cobram qual NÃO é princípio</li>
+      <li>"Burocratizar" = ERRADO. O correto é <strong>desburocratizar</strong></li>
+      <li>"Transigente" = ERRADO. O correto é defesa <strong>intransigente</strong></li>
+      <li>"Confidencialidade ao nome" = ERRADO. O correto é <strong>garantir que o usuário conheça</strong> o nome e credencial</li>
+      <li>"Flexibilizar os critérios de elegibilidade" = ERRADO. O correto é <strong>resguardar</strong> esses critérios</li>
+    </ul>
+    <h4>🎯 Equipes de Referência — 25% das questões</h4>
+    <ul>
+      <li>CRAS Pequeno Porte I: até 2.500 famílias → 2 sup (1 AS + 1 Psicólogo) + 2 médio</li>
+      <li>CRAS Pequeno Porte II: até 3.500 famílias → 3 sup (2 AS + 1 Psicólogo) + 3 médio</li>
+      <li>CRAS Médio/Grande/Metrópole/DF: a cada 5.000 famílias → 4 sup (2 AS + 1 Psic + 1 SUAS) + 4 médio</li>
+      <li>Coordenador: obrigatório (não "sempre que possível"), nível <strong>superior</strong>, concursado</li>
+      <li>Equipes constituídas por <strong>servidores efetivos</strong> — não voluntários, não temporários</li>
+    </ul>
+    <h4>🎯 Conceitos-Chave — Aparecem em questões de associação</h4>
+    <ul>
+      <li><strong>Família Referenciada</strong>: vive em área de vulnerabilidade, indicadores por órgão federal pactuados</li>
+      <li><strong>Controle Social</strong>: participação da sociedade organizada (conferências, conselhos, fóruns) — característica do Estado Democrático de Direito</li>
+      <li><strong>Avaliação de Desempenho</strong>: individual + equipe + institucional + condições de trabalho</li>
+      <li><strong>Controle Social ≠ Descentralização</strong>: banca troca os dois — cuidado</li>
+    </ul>
+    <h4>🎯 Capacitação — 6 Atributos</h4>
+    <ul>
+      <li>Sistemática e continuada = <strong>planos anuais</strong></li>
+      <li>Nacionalizada = <strong>conteúdos mínimos</strong> (não máximos)</li>
+      <li>Descentralizada = <strong>execução regionalizada</strong> (considerando características geográficas)</li>
+      <li>Finalidade: produzir e difundir conhecimentos para habilidades técnicas, controle social e empoderamento</li>
+      <li>Destina-se a TODOS: gestores, trabalhadores, técnicos, administrativos, governamentais, não-governamentais e conselheiros</li>
+    </ul>
+    <h4>🎯 Gestão do Trabalho</h4>
+    <ul>
+      <li>Concurso público = único meio de ingresso</li>
+      <li>PCCS devem ser únicos em cada esfera (não diversificados por esfera — isso é errado)</li>
+      <li>Até 60% dos recursos do FNAS para pagamento das equipes de referência</li>
+      <li>Eixo estruturante do SUAS ao lado da descentralização, financiamento e controle social</li>
+    </ul>
+  </div>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">SUAS · Resumos</span>
+  <p class="footer-sub">NOB-RH/SUAS — Anotada e Comentada · MDS/SNAS 2011 · Res. CNAS nº 269/2006</p>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function toggleTheme(){
+  const html=document.documentElement;
+  const isDark=html.getAttribute('data-theme')==='dark';
+  html.setAttribute('data-theme',isDark?'light':'dark');
+  const sun=document.querySelector('.icon-sun');
+  const moon=document.querySelector('.icon-moon');
+  const label=document.querySelector('.theme-toggle:last-child .toggle-label');
+  if(isDark){sun.style.display='';moon.style.display='none';if(label)label.textContent='Escuro';}
+  else{sun.style.display='none';moon.style.display='';if(label)label.textContent='Claro';}
+}
+
+window.addEventListener('scroll',()=>{
+  const el=document.getElementById('readingProgress');
+  const btt=document.getElementById('backToTop');
+  const scrollTop=window.scrollY;
+  const docHeight=document.documentElement.scrollHeight-window.innerHeight;
+  el.style.width=(scrollTop/docHeight*100)+'%';
+  btt.classList.toggle('visible',scrollTop>400);
+});
+
+function checkAnswer(btn,isCorrect){
+  const container=btn.closest('.questao-block');
+  const buttons=container.querySelectorAll('.answer-btn');
+  buttons.forEach(b=>{
+    b.disabled=true;
+    if(b===btn){b.classList.add(isCorrect?'selected-correct':'selected-wrong');}
+    else if(isCorrect===false&&b.onclick.toString().includes('true')){b.classList.add('revealed-correct');}
+  });
+}
+</script>
+</body>
+</html>
