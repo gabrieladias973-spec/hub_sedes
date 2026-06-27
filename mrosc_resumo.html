@@ -207,6 +207,23 @@ li::marker{color:var(--accent);font-weight:700}
 .flow-step .flow-name{font-weight:800;font-size:.95em;color:var(--text-primary);margin:4px 0 6px}
 .flow-step .flow-desc{font-size:.8em;color:var(--text-tertiary);line-height:1.5}
 
+/* termômetro de incidência */
+.heat-list{margin:24px 0;border:1px solid var(--border-medium);border-radius:8px;overflow:hidden}
+.heat-row{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--border-soft)}
+.heat-row:last-child{border-bottom:none}
+.heat-row:nth-child(even){background:var(--bg-surface-raised)}
+.heat-rank{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--accent);min-width:24px}
+.heat-topic{flex:1;font-size:.9em;font-weight:600;color:var(--text-primary)}
+.heat-bar-wrap{flex:1.4;background:var(--border-soft);border-radius:20px;height:14px;overflow:hidden;min-width:80px}
+.heat-bar{height:100%;background:var(--accent);border-radius:20px}
+.heat-pct{font-family:'JetBrains Mono',monospace;font-size:.78em;color:var(--text-tertiary);min-width:42px;text-align:right}
+
+.decision-tree{background:var(--bg-surface-raised);border:2px solid var(--accent);border-radius:12px;padding:24px 28px;margin:28px 0}
+.decision-tree .dt-q{font-weight:800;font-size:.95em;color:var(--text-primary);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.decision-tree .dt-q .art-badge{background:var(--accent);color:var(--text-on-accent)}
+.decision-tree .dt-branch{margin:8px 0 16px 12px;padding-left:16px;border-left:2px dashed var(--border-medium);font-size:.92em;color:var(--text-secondary)}
+.decision-tree .dt-result{font-weight:700;color:var(--accent)}
+
 .doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
 .footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
 .footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
@@ -229,6 +246,7 @@ li::marker{color:var(--accent);font-weight:700}
   .answer-buttons{flex-direction:column}
   .answer-btn{width:100%;text-align:center}
   .flow-step{min-width:100%}
+  .heat-bar-wrap{display:none}
 }
 @media print{
   .topbar,.reading-progress,.back-to-top{display:none!important}
@@ -269,300 +287,279 @@ li::marker{color:var(--accent);font-weight:700}
 
 <div class="doc-eyebrow">Resumo · Parcerias com OSCs</div>
 <h1>MROSC — LEI 13.019/2014</h1>
-<p class="doc-subtitle">Marco Regulatório das Organizações da Sociedade Civil: regime jurídico das parcerias entre a administração pública e OSCs — celebração, chamamento, execução, monitoramento e prestação de contas. Com aplicação no DF (Decreto Distrital nº 37.843/2016).</p>
+<p class="doc-subtitle">Marco Regulatório das Organizações da Sociedade Civil. Resumo reorganizado por incidência em prova, a partir da análise de 150 questões (CESPE, FGV, FCC, VUNESP, 2016–2026).</p>
 <div class="doc-meta">
-  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lei nº 13.019/2014 · Lei nº 13.204/2015 · Decreto DF nº 37.843/2016</span>
-  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~50 min</span>
-  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lei nº 13.019/2014 · Lei nº 13.204/2015</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~45 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Foco: o que mais cai</span>
 </div>
 
 <nav class="toc">
-  <div class="toc-title">Nesta aula</div>
+  <div class="toc-title">Nesta aula (em ordem de incidência)</div>
   <ol>
-    <li><a href="#s1">Conceitos Fundamentais e Instrumentos</a></li>
-    <li><a href="#s2">Os Três Instrumentos de Parceria</a></li>
-    <li><a href="#s3">Fundamentos, Diretrizes e Vedações</a></li>
-    <li><a href="#s4">O Ciclo da Parceria — Visão Geral</a></li>
-    <li><a href="#s5">Chamamento Público</a></li>
-    <li><a href="#s6">Dispensa e Inexigibilidade</a></li>
-    <li><a href="#s7">Requisitos da OSC e Plano de Trabalho</a></li>
-    <li><a href="#s8">Execução Financeira da Parceria</a></li>
-    <li><a href="#s9">Monitoramento e Avaliação</a></li>
-    <li><a href="#s10">Prestação de Contas</a></li>
-    <li><a href="#s11">Sanções e Responsabilização</a></li>
-    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+    <li><a href="#s0">Termômetro de Incidência — o que estudar primeiro</a></li>
+    <li><a href="#s1">Os Três Instrumentos (70% das questões)</a></li>
+    <li><a href="#s2">Árvore de Decisão — qual instrumento usar</a></li>
+    <li><a href="#s3">PMIS — Procedimento de Manifestação de Interesse Social</a></li>
+    <li><a href="#s4">Chamamento, Dispensa e Inexigibilidade</a></li>
+    <li><a href="#s5">Conceitos do Art. 2º (definições cobradas)</a></li>
+    <li><a href="#s6">Vedações e Impedimentos</a></li>
+    <li><a href="#s7">Requisitos, Plano de Trabalho e Despesas</a></li>
+    <li><a href="#s8">Transparência, Execução e Prestação de Contas</a></li>
+    <li><a href="#s9">Não aplicação da Lei e Diretrizes</a></li>
+    <li><a href="#checkpoint">Checkpoint — 8 Questões no Padrão da Banca</a></li>
   </ol>
 </nav>
 
 <div class="box intro-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
-  <p>O MROSC é o conjunto de regras que disciplina como a administração pública firma parcerias com organizações da sociedade civil (OSCs). Ele substituiu o modelo antigo dos convênios — que controlava processos — por um modelo de <strong>controle de resultados com segurança jurídica</strong>. Esta aula percorre todo o ciclo da parceria: como ela nasce (chamamento), como é executada, como é monitorada e como as contas são prestadas. O foco é o desenho legal da Lei 13.019/2014 com os procedimentos práticos do Distrito Federal (Decreto 37.843/2016).</p>
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> Como este resumo foi montado</div>
+  <p>Analisei as 150 questões do caderno. Diferente de um resumo "linear da lei", este aqui está ordenado pela <strong>frequência real de cobrança</strong>. Spoiler: se você dominar a tabela dos três instrumentos e as três pegadinhas do PMIS, você acerta a grande maioria. O resto é detalhe de desempate. Estude de cima para baixo — a ordem é proposital.</p>
 </div>
 
-<!-- ===== S1 CONCEITOS ===== -->
-<h2 id="s1">Conceitos Fundamentais e Instrumentos</h2>
+<!-- ===== S0 TERMOMETRO ===== -->
+<h2 id="s0">Termômetro de Incidência</h2>
+<p>Distribuição aproximada dos temas nas 150 questões analisadas. Use isto para alocar seu tempo de estudo:</p>
 
-<p>O <span class="art-ref">Art. 2º</span> da Lei 13.019/2014 define os termos centrais que estruturam todo o MROSC. Dominar esse vocabulário é pré-requisito para entender o ciclo da parceria.</p>
-
-<div class="glossary-box">
-  <div class="box-label">Termos Fundamentais</div>
-  <p class="glossary-term">OSC — Organização da Sociedade Civil</p>
-  <p class="glossary-def">Entidade privada <strong>sem fins lucrativos</strong> que não distribui resultados a sócios, dirigentes ou terceiros e aplica tudo no objeto social. Inclui também sociedades cooperativas de interesse social e organizações religiosas com atividades de cunho social.</p>
-  <p class="glossary-term">Parceria</p>
-  <p class="glossary-def">Relação jurídica formal entre a administração pública e a OSC, em <strong>regime de mútua cooperação</strong>, para finalidades de interesse público e recíproco. Materializa-se em três instrumentos: termo de colaboração, termo de fomento e acordo de cooperação.</p>
-  <p class="glossary-term">Chamamento Público</p>
-  <p class="glossary-def">Procedimento que <strong>seleciona a OSC</strong> para firmar parceria, sob os princípios da isonomia, impessoalidade, publicidade e julgamento objetivo. É a regra geral para celebrar termos de colaboração e fomento.</p>
-  <p class="glossary-term">Plano de Trabalho</p>
-  <p class="glossary-def">Documento que detalha o objeto, metas, atividades, receitas/despesas e os parâmetros de aferição. É <strong>anexo indissociável</strong> de toda parceria (Art. 22).</p>
-  <p class="glossary-term">Gestor da Parceria</p>
-  <p class="glossary-def">Agente público designado por ato oficial, com poderes de <strong>controle e fiscalização</strong> da execução. Emite o parecer técnico conclusivo da prestação de contas.</p>
-  <p class="glossary-term">Comissão de Seleção</p>
-  <p class="glossary-def">Órgão colegiado que processa e julga o chamamento público. Exige ao menos <strong>um servidor efetivo</strong>. Impedida quem teve relação jurídica com a OSC nos últimos 5 anos.</p>
-  <p class="glossary-term">Comissão de Monitoramento e Avaliação</p>
-  <p class="glossary-def">Órgão colegiado que <strong>homologa o relatório técnico</strong> de monitoramento e avaliação. Também exige ao menos um servidor efetivo.</p>
+<div class="heat-list">
+  <div class="heat-row"><span class="heat-rank">1º</span><span class="heat-topic">Identificar o instrumento correto (colaboração/fomento/acordo)</span><span class="heat-bar-wrap"><span class="heat-bar" style="width:100%"></span></span><span class="heat-pct">~68%</span></div>
+  <div class="heat-row"><span class="heat-rank">2º</span><span class="heat-topic">PMIS — as 3 pegadinhas fixas</span><span class="heat-bar-wrap"><span class="heat-bar" style="width:37%"></span></span><span class="heat-pct">~12%</span></div>
+  <div class="heat-row"><span class="heat-rank">3º</span><span class="heat-topic">Chamamento / dispensa / inexigibilidade</span><span class="heat-bar-wrap"><span class="heat-bar" style="width:28%"></span></span><span class="heat-pct">~9%</span></div>
+  <div class="heat-row"><span class="heat-rank">4º</span><span class="heat-topic">Vedações e impedimentos (Arts. 39-40)</span><span class="heat-bar-wrap"><span class="heat-bar" style="width:18%"></span></span><span class="heat-pct">~6%</span></div>
+  <div class="heat-row"><span class="heat-rank">5º</span><span class="heat-topic">Despesas / cláusulas / contrapartida / responsabilidade</span><span class="heat-bar-wrap"><span class="heat-bar" style="width:15%"></span></span><span class="heat-pct">~5%</span></div>
+  <div class="heat-row"><span class="heat-rank">6º</span><span class="heat-topic">Não aplicação da Lei + diretrizes (Art. 6º)</span><span class="heat-bar-wrap"><span class="heat-bar" style="width:9%"></span></span><span class="heat-pct">~3%</span></div>
 </div>
 
-<!-- ===== S2 INSTRUMENTOS ===== -->
-<h2 id="s2">Os Três Instrumentos de Parceria</h2>
-
-<p>A escolha do instrumento depende de <strong>quem propõe</strong> o plano de trabalho e de <strong>se há repasse de dinheiro</strong>. Esta é a distinção mais cobrada do MROSC.</p>
+<!-- ===== S1 INSTRUMENTOS ===== -->
+<h2 id="s1">Os Três Instrumentos</h2>
+<p>Este é <em>o</em> assunto. Mais de dois terços das questões pedem para você identificar o instrumento correto a partir de um caso. A tabela abaixo resolve quase todas:</p>
 
 <div class="table-wrapper">
 <table>
-  <thead><tr><th>Instrumento</th><th>Quem propõe</th><th>Repasse de recursos?</th><th>Base legal</th></tr></thead>
+  <thead><tr><th>Instrumento</th><th>Quem PROPÕE o plano</th><th>Tem $ (repasse)?</th><th>Artigo</th></tr></thead>
   <tbody>
-    <tr><td>Termo de Colaboração</td><td>Administração pública</td><td>Sim</td><td>Art. 2º, VII e Art. 16</td></tr>
-    <tr><td>Termo de Fomento</td><td>Organização da sociedade civil</td><td>Sim</td><td>Art. 2º, VIII e Art. 17</td></tr>
-    <tr><td>Acordo de Cooperação</td><td>Qualquer das partes</td><td>Não</td><td>Art. 2º, VIII-A</td></tr>
+    <tr><td>Termo de Colaboração</td><td>Administração pública</td><td>SIM</td><td>Art. 16</td></tr>
+    <tr><td>Termo de Fomento</td><td>Organização da sociedade civil</td><td>SIM</td><td>Art. 17</td></tr>
+    <tr><td>Acordo de Cooperação</td><td>Qualquer um</td><td>NÃO</td><td>Art. 2º, VIII-A</td></tr>
   </tbody>
 </table>
 </div>
 
 <div class="analogy-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Colaboração vs. Fomento</div>
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Macete · "CO-laboração = Comando da Administração"</div>
   <div class="analogy-text">
-    <p>Pense em quem teve a ideia primeiro. No <strong>termo de colaboração</strong>, o poder público chega com o projeto pronto — "preciso de uma OSC para executar isto que eu planejei". No <strong>termo de fomento</strong>, é a OSC que bate à porta com a ideia — "tenho este projeto, fomente-o". O <strong>acordo de cooperação</strong> é a parceria sem dinheiro envolvido: as partes somam esforços, mas o orçamento não passa de um para o outro.</p>
-    <span class="analogy-bridge">Colaboração = ideia do Estado. Fomento = ideia da OSC. Ambos com $. Acordo de cooperação = sem $.</span>
+    <p>O <strong>CO</strong> de <strong>CO</strong>laboração lembra <strong>CO</strong>mando: a ideia parte da Administração (o Estado comanda o plano). Já o Fomento é a OSC que "fomenta" a própria ideia. Os dois têm dinheiro. O Acordo de Cooperação é o único <strong>sem dinheiro</strong> — "cooperam" mas ninguém paga ninguém.</p>
+    <span class="analogy-bridge">Viu "proposto pela administração + recursos" → COLABORAÇÃO. "Proposto pela OSC + recursos" → FOMENTO. "Sem recursos" → ACORDO DE COOPERAÇÃO (não importa quem propôs).</span>
   </div>
 </div>
 
-<!-- ===== S3 FUNDAMENTOS ===== -->
-<h2 id="s3">Fundamentos, Diretrizes e Vedações</h2>
-
-<h3>Fundamentos do Regime (Art. 5º)</h3>
-<p>O regime jurídico tem como base a <strong>gestão pública democrática</strong>, a participação social, o fortalecimento da sociedade civil, a transparência e os princípios da legalidade, moralidade, economicidade, eficiência e eficácia.</p>
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> A inversão clássica (cai SEMPRE)</div>
+  <p>A banca inverte os dois termos para te derrubar. <strong>ERRADO:</strong> "termo de fomento é proposto pela administração". <strong>ERRADO:</strong> "termo de colaboração é proposto pela OSC". <strong>ERRADO:</strong> "acordo de cooperação envolve transferência de recursos". Decore a tabela e leia o enunciado caçando essas três trocas — é onde está a pegadinha em 90% dos casos.</p>
+</div>
 
 <div class="box highlight-box">
-  <div class="box-label">Diretrizes-chave (Art. 6º)</div>
-  <ul>
-    <li><strong>Priorização do controle de resultados</strong> — o coração da mudança de paradigma do MROSC</li>
-    <li>Fortalecimento institucional e capacitação das OSCs</li>
-    <li>Uso de tecnologias de informação e plataformas eletrônicas</li>
-    <li>Ampliação de transparência e publicidade</li>
-    <li>Práticas de gestão para coibir benefícios ou vantagens indevidos</li>
-  </ul>
+  <div class="box-label">Instrumentos que NÃO existem na lei (distratores)</div>
+  <p>A banca enche as alternativas de nomes inventados ou de <em>outras</em> leis para confundir. Se aparecer, está errado dentro do MROSC: <strong>termo de parceria</strong> (é da Lei 9.790/99, das OSCIPs), <strong>contrato de gestão</strong> (é da Lei 9.637/98, das OS), <strong>convênio</strong> (regra geral afastada pela 13.019), termo de pactuação, acordo de troca, termo de participação, acordo de gestão, acordo de finanças, termo de cooperação técnica.</p>
 </div>
 
-<div class="box alert-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Vedações que mais caem (Arts. 39 e 40)</div>
-  <p>Fica <strong>impedida</strong> de celebrar parceria a OSC que: esteja omissa em prestar contas anteriores; tenha tido contas rejeitadas nos últimos 5 anos; tenha contas julgadas irregulares por Tribunal de Contas nos últimos 8 anos; ou tenha como dirigente membro de Poder ou do MP da mesma esfera (estendido a cônjuges e parentes até 2º grau). É <strong>vedada</strong> ainda parceria que delegue funções de regulação, fiscalização ou poder de polícia (atividades exclusivas de Estado).</p>
-</div>
+<!-- ===== S2 ARVORE ===== -->
+<h2 id="s2">Árvore de Decisão</h2>
+<p>Quando bater a dúvida na hora da prova, percorra estas duas perguntas na ordem:</p>
 
-<!-- ===== S4 CICLO ===== -->
-<h2 id="s4">O Ciclo da Parceria — Visão Geral</h2>
-
-<p>O manual do DF organiza toda a parceria em cinco fases encadeadas. Use este mapa como bússola: cada seção seguinte detalha uma etapa.</p>
-
-<div class="flow-steps">
-  <div class="flow-step"><span class="flow-num">FASE 01</span><div class="flow-name">Planejamento</div><div class="flow-desc">PMIS, definição do objeto e elaboração do edital com nota técnica e parecer jurídico.</div></div>
-  <div class="flow-step"><span class="flow-num">FASE 02</span><div class="flow-name">Seleção e Celebração</div><div class="flow-desc">Chamamento público, julgamento pela Comissão de Seleção, habilitação e assinatura.</div></div>
-  <div class="flow-step"><span class="flow-num">FASE 03</span><div class="flow-name">Execução</div><div class="flow-desc">Liberação de recursos, realização de despesas e cumprimento do objeto.</div></div>
-  <div class="flow-step"><span class="flow-num">FASE 04</span><div class="flow-name">Monitoramento e Avaliação</div><div class="flow-desc">Acompanhamento pelo gestor, relatório técnico e homologação pela comissão.</div></div>
-  <div class="flow-step"><span class="flow-num">FASE 05</span><div class="flow-name">Prestação de Contas</div><div class="flow-desc">Relatórios da OSC, parecer técnico conclusivo e julgamento das contas.</div></div>
-</div>
-
-<!-- ===== S5 CHAMAMENTO ===== -->
-<h2 id="s5">Chamamento Público</h2>
-
-<p>Como regra, a celebração de termo de colaboração ou de fomento é <strong>precedida de chamamento público</strong> (Art. 24). O objetivo é selecionar a proposta que torne mais eficaz a execução do objeto.</p>
-
-<h3>Procedimento de Manifestação de Interesse Social — PMIS (Arts. 18-21)</h3>
-<p>Instrumento pelo qual OSCs, movimentos sociais e cidadãos <strong>apresentam propostas</strong> ao poder público para que avalie a realização de um chamamento. Importante: o PMIS <strong>não obriga</strong> a fazer o chamamento, e é <strong>vedado</strong> condicionar a parceria à prévia realização de PMIS (Art. 21, §3º).</p>
-
-<h3>O Edital (Art. 24)</h3>
-<p>O edital deve especificar, no mínimo: a programação orçamentária, o objeto, prazos e forma de apresentação das propostas, critérios de seleção e metodologia de pontuação, o valor previsto, as condições de recurso e a minuta do instrumento da parceria.</p>
-
-<div class="box alert-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Prazos do chamamento</div>
-  <p><strong>30 dias</strong> de antecedência mínima para divulgação do edital no sítio oficial (Art. 26). No DF, o prazo de habilitação não pode ser <strong>inferior a 5 dias</strong> (Anexo I do Decreto 37.843/2016). A homologação <strong>não gera direito</strong> à celebração da parceria (Art. 27, §6º).</p>
+<div class="decision-tree">
+  <div class="dt-q"><span class="art-badge">1</span> Tem transferência de recursos financeiros?</div>
+  <div class="dt-branch">
+    <strong>NÃO</strong> → <span class="dt-result">Acordo de Cooperação.</span> Pare aqui. Não importa quem propôs nem a área (educação, saúde, meio ambiente). Sem dinheiro = sempre acordo de cooperação.
+  </div>
+  <div class="dt-q"><span class="art-badge">2</span> Se TEM dinheiro: quem propôs o plano de trabalho?</div>
+  <div class="dt-branch">
+    <strong>Administração pública</strong> (plano de iniciativa do poder público) → <span class="dt-result">Termo de Colaboração.</span><br>
+    <strong>Organização da sociedade civil</strong> (a OSC chegou com a proposta) → <span class="dt-result">Termo de Fomento.</span>
+  </div>
 </div>
 
 <div class="box example-box">
-  <div class="box-label">A sequência do julgamento (Art. 28)</div>
+  <div class="box-label">Testando a árvore em casos reais das provas</div>
   <ul>
-    <li>Primeiro: <strong>etapa competitiva</strong> — as propostas são julgadas e ordenadas</li>
-    <li>Só depois: <strong>verificação documental</strong> (habilitação) da OSC melhor classificada (requisitos dos Arts. 33 e 34)</li>
-    <li>Se a 1ª colocada não habilitar, convida-se a <strong>imediatamente mais bem classificada</strong></li>
+    <li>Município cria projeto e busca OSC, <strong>com</strong> repasse → tem $ + Estado propôs → <strong>Colaboração</strong></li>
+    <li>OSC de aeromodelismo procura a Secretaria; Estado só cede espaço, <strong>sem</strong> repasse → sem $ → <strong>Acordo de cooperação</strong></li>
+    <li>OSC ambiental (10 anos) pede vínculo ao Estado <strong>com</strong> repasse → tem $ + OSC propôs → <strong>Fomento</strong></li>
+    <li>Parceria sem repasse na área de educação → sem $ → <strong>Acordo de cooperação</strong> (a área "educação" é só distração)</li>
   </ul>
 </div>
 
-<!-- ===== S6 DISPENSA ===== -->
-<h2 id="s6">Dispensa e Inexigibilidade</h2>
+<!-- ===== S3 PMIS ===== -->
+<h2 id="s3">PMIS — Procedimento de Manifestação de Interesse Social</h2>
+<p>Segundo tema mais cobrado. O PMIS é o canal pelo qual <strong>OSCs, movimentos sociais e cidadãos</strong> apresentam propostas ao poder público para que ele <em>avalie</em> a possibilidade de fazer um chamamento (Arts. 18-21).</p>
 
-<p>O chamamento pode ser afastado em duas situações distintas — não confunda.</p>
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> As 3 PEGADINHAS FIXAS do PMIS (decore na ordem)</div>
+  <p><strong>1. PMIS NÃO obriga a fazer chamamento.</strong> Mesmo com proposta ótima e bem aceita pela sociedade, a Administração não é obrigada a nada — é discricionário (Art. 21).<br><br>
+  <strong>2. PMIS NÃO dispensa/substitui o chamamento.</strong> Se a Administração decidir seguir, ainda terá de fazer chamamento público normalmente (Art. 21, §1º).<br><br>
+  <strong>3. É VEDADO condicionar</strong> o chamamento ou a parceria à prévia realização de PMIS (Art. 21, §3º). E quem propôs o PMIS <strong>pode</strong> participar do chamamento depois (§2º) — não fica impedido.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Requisitos da proposta de PMIS (Art. 19)</div>
+  <p>São três: (1) <strong>identificação do subscritor</strong>; (2) <strong>indicação do interesse público</strong> envolvido; (3) <strong>diagnóstico da realidade</strong> a modificar e, quando possível, viabilidade, custos, benefícios e prazos. Atendidos, a Administração torna pública a proposta e faz a oitiva da sociedade (Art. 20).</p>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · PMIS é uma "sugestão na caixinha"</div>
+  <div class="analogy-text">
+    <p>O PMIS é como deixar uma sugestão na caixinha do RH. Você sugere ("seria bom ter creche na empresa"), o RH avalia, ouve os colegas... mas não é obrigado a criar a creche, e se criar, ainda terá processo seletivo normal para contratar a empresa de creche. A sugestão abre a conversa — não pula nenhuma etapa nem te dá o contrato.</p>
+    <span class="analogy-bridge">PMIS = só dá início à conversa. Não obriga, não dispensa chamamento, não pode ser exigido como pré-requisito.</span>
+  </div>
+</div>
+
+<!-- ===== S4 CHAMAMENTO ===== -->
+<h2 id="s4">Chamamento, Dispensa e Inexigibilidade</h2>
+<p>A regra geral: termo de colaboração e de fomento são <strong>precedidos de chamamento público</strong> (Art. 24). Atenção: a banca adora trocar "chamamento" por "licitação" (pregão, concorrência, diálogo competitivo) — tudo isso está ERRADO. Não é licitação, é chamamento.</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Detalhes do chamamento que já caíram</div>
+  <ul>
+    <li><strong>Critério obrigatório de julgamento</strong> (Art. 27): grau de adequação da proposta aos objetivos do programa e ao valor de referência. Não é "menor preço" nem "metodologia".</li>
+    <li><strong>30 dias</strong> de antecedência mínima para divulgar o edital (Art. 26). Cuidado: NÃO são 90 dias.</li>
+    <li><strong>Comissão de seleção</strong>: impedida quem teve relação jurídica com a OSC nos últimos <strong>5 anos</strong> (não 3, não 10).</li>
+    <li><strong>Homologação NÃO gera direito</strong> à celebração da parceria (Art. 27, §6º).</li>
+    <li>Pode haver seleção justificada de proposta que não seja a melhor no valor de referência — desde que justificada (Art. 27, §5º).</li>
+  </ul>
+</div>
 
 <div class="table-wrapper">
 <table>
-  <thead><tr><th>Hipótese</th><th>Lógica</th><th>Exemplos (Lei)</th></tr></thead>
+  <thead><tr><th>Afastar o chamamento</th><th>Lógica</th><th>Hipóteses (cobradas)</th></tr></thead>
   <tbody>
-    <tr><td>Dispensa (Art. 30)</td><td>Competição seria possível, mas a lei autoriza não fazer</td><td>Urgência por paralisação (até 180 dias); guerra, calamidade, grave perturbação da ordem; proteção a pessoas ameaçadas; serviços de educação/saúde/assistência com OSC credenciada</td></tr>
-    <tr><td>Inexigibilidade (Art. 31)</td><td>Competição é inviável por natureza singular do objeto</td><td>Objeto previsto em acordo internacional indicando a instituição; entidade beneficiária identificada em lei (subvenção)</td></tr>
+    <tr><td>Dispensa (Art. 30)</td><td>Competição seria possível, mas a lei permite não fazer</td><td>Urgência por paralisação <strong>(até 180 dias)</strong>; guerra/calamidade/perturbação da ordem; proteção a pessoas ameaçadas; serviços de educação/saúde/assistência social com OSC credenciada</td></tr>
+    <tr><td>Inexigibilidade (Art. 31)</td><td>Competição é inviável (objeto singular)</td><td>Objeto previsto em acordo internacional que indica a instituição; entidade beneficiária identificada em lei</td></tr>
+    <tr><td>Sem chamamento por natureza (Art. 29)</td><td>A própria lei não exige</td><td>Recursos de <strong>emenda parlamentar</strong>; <strong>acordos de cooperação</strong> (salvo comodato/doação/compartilhamento patrimonial)</td></tr>
   </tbody>
 </table>
 </div>
 
-<div class="box highlight-box">
-  <div class="box-label">Sem chamamento por natureza (Art. 29)</div>
-  <p>Não dependem de chamamento: parcerias com recursos de <strong>emenda parlamentar</strong> e os <strong>acordos de cooperação</strong> (salvo quando envolverem comodato, doação de bens ou compartilhamento patrimonial). Em qualquer dispensa/inexigibilidade, o administrador deve <strong>justificar e publicar</strong> o extrato (Art. 32), cabendo impugnação em 5 dias.</p>
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Não confunda dispensa × inexigibilidade</div>
+  <p>Pegadinha recorrente: a banca coloca uma hipótese de <em>dispensa</em> (ex.: guerra, calamidade) e chama de <em>inexigibilidade</em> — ou o contrário. Memória rápida: <strong>inexigibilidade = objeto singular / só uma entidade serve</strong> (Art. 31). Todo o resto da lista (urgência, calamidade, proteção a pessoas, educação/saúde/assistência) é <strong>dispensa</strong> (Art. 30). E "180 dias" da urgência é trocado por "360 dias" — fique atento.</p>
 </div>
 
-<!-- ===== S7 REQUISITOS E PLANO ===== -->
-<h2 id="s7">Requisitos da OSC e Plano de Trabalho</h2>
+<!-- ===== S5 CONCEITOS ===== -->
+<h2 id="s5">Conceitos do Art. 2º</h2>
+<p>A FCC e a VUNESP gostam de cobrar a definição literal. As que mais aparecem:</p>
 
-<h3>Requisitos de organização interna (Art. 33)</h3>
-<p>A OSC deve ter normas internas que prevejam objetivos de relevância pública, destinação do patrimônio em caso de dissolução, escrituração conforme as Normas Brasileiras de Contabilidade e, conforme a esfera, tempo mínimo de existência: <strong>1 ano (Municípios), 2 anos (DF) e 3 anos (Estados/União)</strong>, além de experiência prévia e capacidade técnica/operacional.</p>
+<div class="glossary-box">
+  <div class="box-label">Definições literais cobradas</div>
+  <p class="glossary-term">Parceria</p>
+  <p class="glossary-def">Conjunto de <strong>direitos, responsabilidades e obrigações</strong> de relação jurídica estabelecida <strong>formalmente</strong> entre administração pública e OSC, em regime de mútua cooperação, para finalidades de interesse público e recíproco, mediante atividade ou projeto expressos em colaboração, fomento ou acordo de cooperação. (cuidado: é "formalmente", nunca "informalmente")</p>
+  <p class="glossary-term">OSC — Organização da Sociedade Civil</p>
+  <p class="glossary-def">Entidade privada <strong>sem fins lucrativos</strong> que não distribui resultados/sobras/excedentes a sócios, dirigentes, empregados ou terceiros e aplica tudo no objeto social. Inclui cooperativas sociais e <strong>organizações religiosas</strong> com atividades de cunho social (distintas das exclusivamente religiosas).</p>
+  <p class="glossary-term">Atividade × Projeto</p>
+  <p class="glossary-def"><strong>Atividade</strong> = operações <em>contínuas/permanentes</em>. <strong>Projeto</strong> = operações <em>limitadas no tempo</em>. A banca troca as duas definições.</p>
+  <p class="glossary-term">Dirigente × Gestor × Administrador público</p>
+  <p class="glossary-def"><strong>Dirigente</strong> = manda na OSC (lado privado). <strong>Administrador público</strong> = assina a parceria pelo poder público. <strong>Gestor</strong> = agente público que controla e fiscaliza a parceria. Troca de papéis é pegadinha clássica.</p>
+  <p class="glossary-term">Chamamento Público</p>
+  <p class="glossary-def">Procedimento para <strong>selecionar a OSC</strong> sob isonomia, legalidade, impessoalidade, moralidade, publicidade, probidade, vinculação ao instrumento convocatório e julgamento objetivo.</p>
+</div>
 
-<div class="box example-box">
-  <div class="box-label">Documentos de habilitação (Art. 34)</div>
+<!-- ===== S6 VEDACOES ===== -->
+<h2 id="s6">Vedações e Impedimentos</h2>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> OSC impedida de celebrar parceria (Art. 39) — atenção aos PRAZOS</div>
+  <p>Está impedida a OSC que: esteja <strong>omissa</strong> no dever de prestar contas anteriores; tenha contas <strong>rejeitadas</strong> pela administração nos últimos <strong>5 anos</strong>; tenha contas julgadas <strong>irregulares por Tribunal/Conselho de Contas</strong> em decisão irrecorrível nos últimos <strong>8 anos</strong> (a banca troca por "10 anos" → ERRADO); ou tenha como dirigente <strong>membro de Poder ou do MP</strong> da mesma esfera — vedação estendida a <strong>cônjuge/companheiro e parentes até 2º grau</strong>.</p>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Detalhes finos das vedações que já caíram</div>
   <ul>
-    <li>Certidões de regularidade fiscal, previdenciária, tributária e de dívida ativa</li>
-    <li>Certidão de existência jurídica ou estatuto registrado</li>
-    <li>Ata de eleição e relação nominal atualizada dos dirigentes (com CPF e identidade)</li>
-    <li>Comprovação de funcionamento no endereço declarado</li>
+    <li>Contas rejeitadas com <strong>recurso de efeito suspensivo pendente</strong> → NÃO impede (a apreciação está suspensa). Pegadinha CESPE.</li>
+    <li>Dirigente <strong>cônjuge de membro do MP</strong> da mesma esfera → impede. (cônjuge de condenado por improbidade, isoladamente, não é a hipótese do art. 39, III)</li>
+    <li>É <strong>vedada</strong> parceria que delegue regulação, fiscalização, poder de polícia ou atividades exclusivas de Estado (Art. 40).</li>
+    <li>Conselheiros de conselhos de direitos/políticas públicas <strong>não</strong> são "membros de Poder" (Art. 39, §6º).</li>
+    <li>Vedação NÃO alcança organização estrangeira autorizada a funcionar no país — estrangeira pode participar.</li>
   </ul>
 </div>
 
-<h3>Plano de Trabalho (Art. 22)</h3>
-<p>Conteúdo mínimo após a Lei 13.204/2015 (muito enxugado): descrição da realidade e o <strong>nexo</strong> com as metas; descrição das metas e atividades/projetos; previsão de receitas e despesas; forma de execução; e <strong>parâmetros de aferição do cumprimento das metas</strong>.</p>
+<!-- ===== S7 REQUISITOS ===== -->
+<h2 id="s7">Requisitos, Plano de Trabalho e Despesas</h2>
 
 <div class="box highlight-box">
-  <div class="box-label">Contrapartida — regra de ouro (Art. 35, §1º)</div>
-  <p><strong>Não se exige contrapartida financeira</strong> como requisito para celebrar a parceria. É facultada apenas contrapartida em <strong>bens e serviços</strong>, com valor monetário identificado no termo.</p>
+  <div class="box-label">Tempo mínimo de existência da OSC (Art. 33, V) — mnemônico 1-2-3</div>
+  <p><strong>1 ano (Municípios) · 2 anos (DF) · 3 anos (Estados e União)</strong>, comprovado por CNPJ ativo. Admite-se redução por ato do ente se nenhuma OSC atingir o prazo. Macete: quanto "maior" o ente, mais anos exige.</p>
 </div>
-
-<!-- ===== S8 EXECUÇÃO ===== -->
-<h2 id="s8">Execução Financeira da Parceria</h2>
-
-<p>Os recursos são depositados em <strong>conta corrente específica</strong>, isenta de tarifa, em instituição financeira pública (Art. 51). As parcelas seguem o cronograma de desembolso (Art. 48), e os rendimentos das aplicações devem ser usados no objeto.</p>
 
 <div class="box example-box">
   <div class="box-label">Despesas PERMITIDAS com recursos da parceria (Art. 46)</div>
   <ul>
-    <li>Remuneração da equipe do plano de trabalho — inclusive encargos, FGTS, férias, 13º e verbas rescisórias</li>
+    <li>Remuneração da equipe do plano de trabalho — <strong>inclusive pessoal próprio da OSC</strong>, com encargos, FGTS, férias, 13º e verbas rescisórias (cai muito: PODE pagar pessoal próprio)</li>
     <li>Diárias de deslocamento, hospedagem e alimentação quando o objeto exigir</li>
-    <li><strong>Custos indiretos</strong> necessários à execução, qualquer que seja a proporção</li>
-    <li>Equipamentos e materiais permanentes essenciais e adequação de espaço físico</li>
+    <li><strong>Custos indiretos</strong>, qualquer que seja a proporção em relação ao valor total</li>
+    <li>Equipamentos/materiais permanentes essenciais e adequação do espaço físico</li>
   </ul>
 </div>
 
 <div class="box alert-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Vedações na execução (Art. 45)</div>
-  <p>É <strong>vedado</strong>: usar recursos para finalidade alheia ao objeto; e pagar servidor ou empregado público com recursos da parceria (salvo exceções em lei específica e na LDO). Os pagamentos devem ser por <strong>transferência eletrônica</strong> com identificação do beneficiário final (Art. 53); pagamento em espécie só quando comprovada a impossibilidade física.</p>
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> O que é VEDADO e a regra da contrapartida</div>
+  <p>É <strong>vedado pagar servidor ou empregado público</strong> com recursos da parceria (salvo lei específica e LDO) e usar recursos fora do objeto (Art. 45). Sobre contrapartida (Art. 35, §1º): <strong>NÃO se exige contrapartida financeira</strong> como requisito; só se admite contrapartida em <strong>bens e serviços</strong>, com valor identificado no termo. Essa regra vale inclusive para OSCIP.</p>
 </div>
 
 <div class="box highlight-box">
-  <div class="box-label">Responsabilidade exclusiva da OSC (Art. 42, XIX-XX)</div>
-  <p>A OSC responde sozinha pelo gerenciamento administrativo e financeiro e pelos <strong>encargos trabalhistas, previdenciários, fiscais e comerciais</strong>. A inadimplência da OSC <strong>não</strong> gera responsabilidade solidária nem subsidiária da administração pública. O pagamento de pessoal com recursos da parceria não cria vínculo com o poder público.</p>
+  <div class="box-label">Plano de Trabalho e responsabilidade (cai como cláusula essencial)</div>
+  <p>O plano de trabalho é <strong>obrigatório</strong> e anexo indissociável nos termos de colaboração e fomento (e na aprovação para celebrar). Pode ser revisto por <strong>termo aditivo ou apostila</strong> (Art. 57). A responsabilidade pelos <strong>encargos trabalhistas, previdenciários, fiscais e comerciais é EXCLUSIVA da OSC</strong>, sem solidariedade nem subsidiariedade do poder público (Art. 42, XX). A prerrogativa de assumir/transferir a execução em caso de paralisação é da <strong>Administração</strong>, não da OSC.</p>
 </div>
 
-<!-- ===== S9 MONITORAMENTO ===== -->
-<h2 id="s9">Monitoramento e Avaliação</h2>
+<!-- ===== S8 EXECUCAO E CONTAS ===== -->
+<h2 id="s8">Transparência, Execução e Prestação de Contas</h2>
 
-<p>A administração pública <strong>deve</strong> promover o monitoramento e a avaliação do cumprimento do objeto (Art. 58). Pode valer-se de apoio técnico de terceiros e, nas parcerias com vigência superior a 1 ano, fazer <strong>pesquisa de satisfação</strong> com os beneficiários.</p>
+<div class="box highlight-box">
+  <div class="box-label">Transparência e movimentação (já cobrados)</div>
+  <ul>
+    <li><strong>Ambas</strong> divulgam a parceria na internet; a OSC também em <strong>locais visíveis</strong> de suas sedes (Arts. 10-11).</li>
+    <li>Administração mantém no site a relação das parcerias e planos por até <strong>180 dias</strong> após o encerramento (Art. 10).</li>
+    <li>Conta corrente <strong>específica, isenta de tarifa</strong>, em instituição financeira pública determinada pela Administração (Art. 51). Rendimentos vão para o objeto.</li>
+    <li>Movimentação por <strong>transferência eletrônica</strong> com identificação do beneficiário final (Art. 53).</li>
+    <li>Prestação de contas em <strong>plataforma eletrônica</strong> (Art. 65); onde não houver, a Administração oferece forma alternativa que viabilize o controle social.</li>
+  </ul>
+</div>
 
 <div class="box example-box">
-  <div class="box-label">Relatório Técnico de Monitoramento e Avaliação (Art. 59)</div>
-  <p>Emitido pela administração e <strong>homologado pela Comissão de Monitoramento e Avaliação</strong>. Deve conter: descrição das atividades e metas; análise do cumprimento e do impacto social com base nos indicadores; valores efetivamente transferidos; e análise das despesas <strong>quando não comprovado o alcance das metas</strong>.</p>
-</div>
-
-<div class="analogy-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Controle de resultados</div>
-  <div class="analogy-text">
-    <p>No velho convênio, o foco era a nota fiscal — provava-se onde cada centavo foi gasto, mas ninguém perguntava se a creche funcionou. O MROSC inverte: o foco é <strong>se a meta foi entregue</strong>. É como pagar um pedreiro pela parede pronta, não por cada saco de cimento comprado. A análise financeira detalhada só entra <em>se</em> a entrega falhar.</p>
-    <span class="analogy-bridge">Bateu a meta = nexo de causalidade presumido. Não bateu = abre-se a análise da despesa.</span>
-  </div>
-</div>
-
-<p>A execução também é fiscalizada pelos <strong>conselhos de políticas públicas</strong> da área (Art. 60) e pelos mecanismos de controle social.</p>
-
-<!-- ===== S10 PRESTAÇÃO DE CONTAS ===== -->
-<h2 id="s10">Prestação de Contas</h2>
-
-<p>Procedimento em que se verifica o <strong>cumprimento do objeto e o alcance das metas</strong> (Art. 2º, XIV). Tem duas fases: apresentação (pela OSC) e análise/manifestação conclusiva (pela administração). A regra é a verdade real e o foco nos resultados.</p>
-
-<div class="box alert-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Prazos-chave (decore estes)</div>
-  <p><strong>90 dias</strong> — a OSC presta contas após o fim da vigência (prorrogável por 30 dias). <strong>Anual</strong> — se a parceria durar mais de 1 ano, há prestação ao fim de cada exercício. <strong>150 dias</strong> — a administração aprecia a prestação final (prorrogável por igual período). <strong>45 dias</strong> — prazo por notificação para a OSC sanar irregularidade (prorrogável por igual período).</p>
+  <div class="box-label">Parecer técnico de prestação de contas (Art. 67, §4º) — FGV cobra a lista exata</div>
+  <p>Para avaliar eficácia/efetividade, o parecer deve <strong>obrigatoriamente</strong> mencionar os QUATRO itens: <strong>(1)</strong> resultados alcançados e benefícios; <strong>(2)</strong> impactos econômicos ou sociais; <strong>(3)</strong> grau de satisfação do público-alvo; <strong>(4)</strong> possibilidade de sustentabilidade das ações após a conclusão. Se a alternativa traz "apenas" alguns deles → ERRADO. São os quatro.</p>
 </div>
 
 <div class="box highlight-box">
-  <div class="box-label">Procedimento simplificado no DF — até R$ 200 mil</div>
-  <p>O manual do DF prevê <strong>prestação de contas final simplificada</strong> para parcerias até R$ 200 mil. A lógica acompanha o Art. 64, §4º: as regras variam conforme o montante de recursos públicos envolvidos — quanto menor o valor, mais enxuto o procedimento.</p>
+  <div class="box-label">Avaliação das contas (Art. 72)</div>
+  <p><strong>Regulares</strong>: cumpriu objetivos/metas. <strong>Regulares com ressalva</strong>: impropriedade <em>formal</em> sem dano ao erário. <strong>Irregulares</strong>: omissão no dever de prestar contas, descumprimento injustificado de metas, dano ao erário, ou desvio/desfalque. Pegadinha FGV: omissão, descumprimento de metas e dano ao erário NÃO são "regular com ressalva" — são <em>irregulares</em>.</p>
 </div>
 
-<h3>Documentos da prestação de contas (Art. 66)</h3>
-<ul>
-  <li><strong>Relatório de execução do objeto</strong> — atividades e comparativo metas × resultados (sempre)</li>
-  <li><strong>Relatório de execução financeira</strong> — exigido <em>apenas</em> na hipótese de descumprimento de metas e resultados</li>
-</ul>
+<!-- ===== S9 NAO APLICACAO ===== -->
+<h2 id="s9">Não Aplicação da Lei e Diretrizes</h2>
 
-<h3>Resultado do julgamento (Arts. 69, §5º e 72)</h3>
-<div class="table-wrapper">
-<table>
-  <thead><tr><th>Resultado</th><th>Quando ocorre</th></tr></thead>
-  <tbody>
-    <tr><td>Regulares</td><td>Cumprimento claro dos objetivos e metas do plano de trabalho</td></tr>
-    <tr><td>Regulares com ressalva</td><td>Impropriedade ou falha formal que não gera dano ao erário</td></tr>
-    <tr><td>Irregulares</td><td>Omissão no dever de prestar contas; descumprimento injustificado de metas; dano ao erário; desvio ou desfalque</td></tr>
-  </tbody>
-</table>
+<div class="box highlight-box">
+  <div class="box-label">A Lei 13.019 NÃO se aplica a (Art. 3º) — cobrado por exclusão</div>
+  <ul>
+    <li>Contratos de gestão com <strong>Organizações Sociais (OS)</strong> — Lei 9.637/98</li>
+    <li>Termos de parceria com <strong>OSCIP</strong> — Lei 9.790/99</li>
+    <li>Convênios com <strong>entidades filantrópicas e sem fins lucrativos do SUS</strong> (art. 199, §1º, CF)</li>
+    <li>Parcerias com <strong>serviços sociais autônomos</strong> (Sistema S)</li>
+    <li>Pagamentos de anuidades a organismos internacionais; transferências de tratados homologados pelo Congresso</li>
+  </ul>
 </div>
 
 <div class="box example-box">
-  <div class="box-label">Ações compensatórias (Art. 72, §2º)</div>
-  <p>Se as contas forem irregulares (sem dolo ou fraude e fora de restituição integral), a OSC pode pedir para <strong>ressarcir o erário por ações compensatórias de interesse público</strong>, mediante novo plano de trabalho. É uma saída de reparação alinhada à finalidade social do MROSC.</p>
-</div>
-
-<!-- ===== S11 SANÇÕES ===== -->
-<h2 id="s11">Sanções e Responsabilização</h2>
-
-<p>Pela execução em desacordo com o plano e a lei, garantida a prévia defesa, a administração pode aplicar três sanções (Art. 73):</p>
-
-<div class="table-wrapper">
-<table>
-  <thead><tr><th>Sanção</th><th>Alcance / prazo</th></tr></thead>
-  <tbody>
-    <tr><td>Advertência</td><td>Aplicável a faltas leves</td></tr>
-    <tr><td>Suspensão temporária</td><td>Impede parceria/contrato na esfera sancionadora por até <strong>2 anos</strong></td></tr>
-    <tr><td>Declaração de inidoneidade</td><td>Impede em <strong>todas as esferas</strong> enquanto durarem os motivos; reabilitação após ressarcimento e 2 anos</td></tr>
-  </tbody>
-</table>
-</div>
-
-<div class="box alert-box">
-  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Improbidade e prescrição</div>
-  <p>A Lei 13.019 alterou a Lei de Improbidade (8.429/92): frustrar processo seletivo de parceria, agir negligentemente na fiscalização e liberar recursos sem observar as normas viraram atos de improbidade. A aplicação de penalidade <strong>prescreve em 5 anos</strong> contados da apresentação da prestação de contas (Art. 73, §2º).</p>
+  <div class="box-label">Diretrizes do regime (Art. 6º) — a FGV cobra qual NÃO é</div>
+  <p>São diretrizes: fortalecimento/capacitação das OSCs; <strong>priorização do controle de resultados</strong>; uso de TICs; cooperação entre entes; ampliar gestão da informação, transparência e publicidade; ação <strong>integrada, complementar e descentralizada</strong>. <strong>Pegadinha:</strong> "ação centralizada de recursos junto à União" NÃO é diretriz — é o oposto (a diretriz é descentralizada).</p>
 </div>
 
 <hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
 
-<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+<h2 id="checkpoint">Checkpoint — 8 Questões no Padrão da Banca</h2>
 
 <div class="checkpoint-block">
   <div class="checkpoint-header">
     <span class="checkpoint-title">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-      Checkpoint · MROSC — Lei 13.019/2014
+      Checkpoint · MROSC — padrão CESPE / FGV / FCC / VUNESP
     </span>
     <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
   </div>
@@ -571,76 +568,96 @@ li::marker{color:var(--accent);font-weight:700}
   <div class="questao-block" id="q1" data-answer="ERRADO">
     <div class="questao-header">
       <span class="questao-number">Q1</span>
-      <span class="questao-tag">Certo ou Errado</span>
-      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+      <span class="questao-tag">Certo ou Errado · Instrumentos</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
     </div>
-    <p class="questao-enunciado">No regime do MROSC, o termo de fomento é o instrumento adotado para a consecução de planos de trabalho propostos pela própria administração pública e que envolvam transferência de recursos financeiros.</p>
+    <p class="questao-enunciado">No termo de fomento, a formalização da parceria não envolve transferência de recursos financeiros, enquanto no acordo de cooperação há transferência de recursos dessa natureza.</p>
     <div class="answer-buttons">
       <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
       <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
     </div>
-    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> Trocaram os conceitos. No <strong>termo de fomento</strong> (Art. 17), o plano de trabalho é proposto pela <em>organização da sociedade civil</em>. Quando a proposta parte da <em>administração pública</em>, o instrumento é o <strong>termo de colaboração</strong> (Art. 16). Ambos envolvem repasse de recursos; o acordo de cooperação é que não envolve.</p></div></details>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> Está tudo invertido. O <strong>termo de fomento ENVOLVE</strong> transferência de recursos (proposto pela OSC). O <strong>acordo de cooperação NÃO envolve</strong> recursos. É a inversão clássica que a banca repete. (questão no padrão CESPE/MJSP-2021)</p></div></details>
   </div>
 
   <!-- Q2 -->
-  <div class="questao-block" id="q2" data-answer="ERRADO">
+  <div class="questao-block" id="q2" data-answer="C">
     <div class="questao-header">
       <span class="questao-number">Q2</span>
-      <span class="questao-tag">Certo ou Errado</span>
+      <span class="questao-tag">Múltipla Escolha · Instrumentos</span>
       <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
     </div>
-    <p class="questao-enunciado">A verificação dos documentos de habilitação da OSC (regularidade fiscal, estatuto, atas) deve ocorrer antes da etapa competitiva, de modo que apenas as entidades já habilitadas tenham suas propostas julgadas pela Comissão de Seleção.</p>
+    <p class="questao-enunciado">A União vai firmar três parcerias com OSCs: (I) sem transferência de recursos; (II) proposta pela administração, com recursos; (III) proposta pela OSC, com recursos. A associação correta é:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) I. termo de colaboração; II. acordo de cooperação; III. termo de fomento.<br>
+      (B) I. termo de fomento; II. termo de colaboração; III. acordo de cooperação.<br>
+      (C) I. acordo de cooperação; II. termo de colaboração; III. termo de fomento.<br>
+      (D) I. termo de colaboração; II. termo de fomento; III. acordo de cooperação.<br>
+      (E) I. acordo de cooperação; II. termo de fomento; III. termo de colaboração.
+    </p>
     <div class="answer-buttons">
-      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
-      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q2','C')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q2','C')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q2','C')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q2','C')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q2','C')">E</button>
     </div>
-    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> A ordem é inversa. Pelo <strong>Art. 28</strong>, somente <em>depois</em> de encerrada a etapa competitiva e ordenadas as propostas é que a administração verifica os documentos de habilitação (Arts. 33 e 34) da OSC selecionada. Primeiro julga as propostas, depois habilita a melhor classificada — isso agiliza o processo.</p></div></details>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: C.</strong> Aplique a árvore: (I) sem recursos = <em>acordo de cooperação</em>; (II) com recursos + administração propõe = <em>termo de colaboração</em>; (III) com recursos + OSC propõe = <em>termo de fomento</em>. (padrão FGV/STN-2024)</p></div></details>
   </div>
 
   <!-- Q3 -->
-  <div class="questao-block" id="q3" data-answer="CERTO">
+  <div class="questao-block" id="q3" data-answer="D">
     <div class="questao-header">
       <span class="questao-number">Q3</span>
-      <span class="questao-tag">Certo ou Errado</span>
-      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+      <span class="questao-tag">Múltipla Escolha · PMIS</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
     </div>
-    <p class="questao-enunciado">A exigência de contrapartida financeira não pode ser condição para a celebração da parceria, sendo facultada apenas a contrapartida em bens e serviços, cuja expressão monetária deve constar do termo.</p>
+    <p class="questao-enunciado">Uma OSC encaminhou proposta de PMIS muito bem recebida pela sociedade, com concretas aptidões para os efeitos almejados. Conforme a Lei 13.019/2014:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) a OSC proponente fica impedida de participar do respectivo chamamento.<br>
+      (B) a boa aceitação obriga a Administração a executar o chamamento.<br>
+      (C) o PMIS não tem previsão na lei das parcerias.<br>
+      (D) a realização do PMIS não dispensa a convocação por chamamento público para celebrar a parceria.<br>
+      (E) por ser discricionário, não deveria ter havido oitiva da sociedade.
+    </p>
     <div class="answer-buttons">
-      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
-      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q3','D')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q3','D')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q3','D')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q3','D')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q3','D')">E</button>
     </div>
-    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> O <strong>Art. 35, §1º</strong> veda exigir contrapartida <em>financeira</em> como requisito para celebrar a parceria. Só se admite contrapartida em <em>bens e serviços</em>, com a expressão monetária obrigatoriamente identificada no termo de colaboração ou de fomento.</p></div></details>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: D.</strong> Pegadinha 2 do PMIS: ele não dispensa o chamamento. (A) errada — a proponente PODE participar. (B) errada — não obriga (pegadinha 1). (E) errada — a oitiva é prevista. (padrão FGV/Pref RJ-2023)</p></div></details>
   </div>
 
   <!-- Q4 -->
   <div class="questao-block" id="q4" data-answer="ERRADO">
     <div class="questao-header">
       <span class="questao-number">Q4</span>
-      <span class="questao-tag">Certo ou Errado</span>
-      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+      <span class="questao-tag">Certo ou Errado · PMIS</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
     </div>
-    <p class="questao-enunciado">A inadimplência da organização da sociedade civil quanto aos encargos trabalhistas e previdenciários relativos à execução do objeto transfere automaticamente à administração pública a responsabilidade subsidiária por esses pagamentos.</p>
+    <p class="questao-enunciado">A realização do procedimento de manifestação de interesse social implica, necessariamente, a execução de chamamento público para selecionar a OSC.</p>
     <div class="answer-buttons">
       <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
       <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
     </div>
-    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 42, XX</strong> é expresso: a responsabilidade pelos encargos trabalhistas, previdenciários, fiscais e comerciais é <em>exclusiva</em> da OSC. A inadimplência da OSC <strong>não</strong> implica responsabilidade solidária <em>nem subsidiária</em> da administração pública. O pagamento de pessoal com recursos da parceria também não gera vínculo com o poder público (Art. 46, §3º).</p></div></details>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> Pegadinha 1: o PMIS NÃO obriga a fazer chamamento. A realização do chamamento ocorre conforme os interesses da Administração (Art. 21). (padrão CESPE/CAU-MG-2025)</p></div></details>
   </div>
 
   <!-- Q5 -->
   <div class="questao-block" id="q5" data-answer="C">
     <div class="questao-header">
       <span class="questao-number">Q5</span>
-      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-tag">Múltipla Escolha · Vedações</span>
       <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
     </div>
-    <p class="questao-enunciado">Sobre chamamento, dispensa e inexigibilidade no MROSC, assinale a alternativa CORRETA:</p>
+    <p class="questao-enunciado">A associação Bela está omissa na prestação de contas de um termo de fomento. A Glamourosa teve contas rejeitadas, mas há recurso com efeito suspensivo pendente. Sobre celebrar nova parceria:</p>
     <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
-      (A) O acordo de cooperação, por não envolver repasse de recursos, sempre exige prévio chamamento público para sua celebração.<br>
-      (B) A realização do Procedimento de Manifestação de Interesse Social (PMIS) obriga a administração a realizar o chamamento público correspondente.<br>
-      (C) A inexigibilidade de chamamento ocorre quando há inviabilidade de competição em razão da natureza singular do objeto ou quando as metas só podem ser atingidas por entidade específica.<br>
-      (D) Na hipótese de dispensa por urgência decorrente de paralisação de atividades de relevante interesse público, o prazo máximo da parceria sem chamamento é de 360 dias.<br>
-      (E) Parcerias custeadas com recursos de emenda parlamentar exigem, em regra, a realização de chamamento público.
+      (A) apenas a Glamourosa está impedida, pela rejeição das contas.<br>
+      (B) ambas estão impedidas por 5 anos.<br>
+      (C) apenas a Bela está impedida, pela omissão no dever de prestar contas.<br>
+      (D) a Bela pode após sanar; a Glamourosa fica impedida 5 anos independentemente do recurso.<br>
+      (E) nenhuma está impedida, pois as irregularidades são sanáveis.
     </p>
     <div class="answer-buttons">
       <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','C')">A</button>
@@ -649,61 +666,116 @@ li::marker{color:var(--accent);font-weight:700}
       <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','C')">D</button>
       <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','C')">E</button>
     </div>
-    <details><summary>+ Gabarito Comentado</summary><div>
-      <p><strong>Gabarito: C</strong></p>
-      <p><strong>(A) Errada.</strong> O acordo de cooperação, em regra, é celebrado <em>sem</em> chamamento (Art. 29). A exceção é quando envolver comodato, doação de bens ou compartilhamento patrimonial.</p>
-      <p><strong>(B) Errada.</strong> O PMIS <em>não</em> obriga a realizar o chamamento (Art. 21). E é vedado condicionar a parceria à prévia realização de PMIS (§3º).</p>
-      <p><strong>(C) Correta.</strong> É a definição literal do <strong>Art. 31</strong>: inexigibilidade quando inviável a competição pela natureza singular do objeto ou quando só uma entidade específica pode atingir as metas.</p>
-      <p><strong>(D) Errada.</strong> O prazo da dispensa por urgência (Art. 30, I) é de até <em>180 dias</em>, não 360.</p>
-      <p><strong>(E) Errada.</strong> Parcerias com recursos de emenda parlamentar são celebradas <em>sem</em> chamamento (Art. 29).</p>
-    </div></details>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: C.</strong> A <strong>omissão</strong> no dever de prestar contas impede (Art. 39, II) → Bela impedida. A rejeição da Glamourosa está com <strong>recurso de efeito suspensivo pendente</strong>, o que afasta o impedimento (Art. 39, IV, "c"). (padrão FGV/CGE-PB-2024)</p></div></details>
   </div>
 
-  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais do MROSC — Lei nº 13.019/2014 e Decreto DF nº 37.843/2016)</p>
+  <!-- Q6 -->
+  <div class="questao-block" id="q6" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q6</span>
+      <span class="questao-tag">Certo ou Errado · Despesas</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Podem ser pagos, com recursos da parceria, os custos indiretos necessários à execução do objeto, seja qual for a proporção em relação ao valor total, e as diárias de deslocamento, hospedagem e alimentação quando o objeto assim exigir.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q6','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q6','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> Reprodução do Art. 46. Custos indiretos são permitidos em qualquer proporção, e as diárias quando o objeto exigir. Lembre também: pode pagar pessoal PRÓPRIO da OSC. O que não pode é pagar servidor público. (padrão CESPE/MJSP-2021)</p></div></details>
+  </div>
+
+  <!-- Q7 -->
+  <div class="questao-block" id="q7" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q7</span>
+      <span class="questao-tag">Certo ou Errado · Não aplicação</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Aplicam-se as exigências da Lei 13.019/2014 às parcerias entre a administração pública e os serviços sociais autônomos.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q7','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q7','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O Art. 3º, X exclui expressamente as parcerias com serviços sociais autônomos (Sistema S). Não se aplicam as exigências da Lei. (padrão VUNESP/Pref Arujá-2019)</p></div></details>
+  </div>
+
+  <!-- Q8 -->
+  <div class="questao-block" id="q8" data-answer="A">
+    <div class="questao-header">
+      <span class="questao-number">Q8</span>
+      <span class="questao-tag">Múltipla Escolha · Parecer / Contas</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Para avaliar a eficácia e efetividade das ações, o parecer técnico de análise da prestação de contas deverá obrigatoriamente mencionar:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) resultados e benefícios, impactos econômicos ou sociais, grau de satisfação do público-alvo e possibilidade de sustentabilidade das ações após a conclusão.<br>
+      (B) resultados e benefícios, grau de satisfação e sustentabilidade, apenas.<br>
+      (C) impactos econômicos/sociais, satisfação e sustentabilidade, apenas.<br>
+      (D) resultados/benefícios e impactos econômicos/sociais, apenas.<br>
+      (E) impactos econômicos/sociais e grau de satisfação, apenas.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q8','A')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q8','A')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q8','A')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q8','A')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q8','A')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: A.</strong> Art. 67, §4º exige os QUATRO itens, sem "apenas". Qualquer alternativa que recorte a lista está errada. (padrão FGV/MinC-2024)</p></div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas no padrão das 150 questões analisadas — Lei nº 13.019/2014 e alterações da Lei nº 13.204/2015)</p>
 </div>
 
 <h2 id="resumo-final">Resumo da Aula</h2>
 <div class="summary-card">
   <div class="summary-card-header">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+    <span class="summary-card-title">O que garante seus pontos</span>
   </div>
   <div class="summary-concepts">
-    <h4>Conceitos Fundamentais</h4>
+    <h4>Prioridade máxima (estude isto primeiro)</h4>
     <ul>
-      <li><strong>Três instrumentos:</strong> colaboração (Estado propõe + $), fomento (OSC propõe + $), acordo de cooperação (sem $).</li>
-      <li>O MROSC troca o <strong>controle de processos</strong> (convênio) pelo <strong>controle de resultados</strong> com segurança jurídica.</li>
-      <li><strong>Chamamento público</strong> é a regra; dispensa (Art. 30) e inexigibilidade (Art. 31) são exceções justificadas e publicadas.</li>
-      <li>Edital divulgado com <strong>30 dias</strong> de antecedência; habilitação SÓ após a etapa competitiva (Art. 28).</li>
-      <li><strong>Não se exige contrapartida financeira</strong> — só em bens e serviços (Art. 35, §1º).</li>
-      <li>Despesas com pessoal da equipe são permitidas; é vedado pagar servidor público e usar recursos fora do objeto (Art. 45).</li>
-      <li>Responsabilidade pelos encargos é <strong>exclusiva da OSC</strong>, sem solidariedade nem subsidiariedade do poder público.</li>
-      <li>Monitoramento gera <strong>relatório técnico</strong> homologado pela Comissão de M&A (Art. 59).</li>
-      <li>Prestação de contas foca no <strong>objeto e metas</strong>; o relatório financeiro só é exigido se houver descumprimento.</li>
-      <li>No DF há <strong>procedimento simplificado</strong> de prestação de contas para parcerias até R$ 200 mil.</li>
+      <li><strong>Colaboração</strong> = Estado propõe + tem $. <strong>Fomento</strong> = OSC propõe + tem $. <strong>Acordo de cooperação</strong> = sem $.</li>
+      <li>A inversão fomento↔colaboração e "acordo de cooperação com recursos" são as pegadinhas mais repetidas.</li>
+      <li>Distratores que NÃO são da lei: termo de parceria (OSCIP), contrato de gestão (OS), convênio.</li>
+      <li><strong>PMIS</strong>: não obriga chamamento · não dispensa chamamento · não pode ser condição prévia · proponente pode participar depois.</li>
+    </ul>
+    <h4>Prioridade média</h4>
+    <ul>
+      <li>Regra é <strong>chamamento</strong> (não é licitação). Edital com <strong>30 dias</strong>. Comissão impedida: relação nos últimos <strong>5 anos</strong>. Homologação não gera direito.</li>
+      <li>Inexigibilidade = objeto singular (Art. 31). Dispensa = urgência <strong>180 dias</strong>, calamidade, proteção a pessoas, educação/saúde/assistência com credenciamento (Art. 30).</li>
+      <li>Impedimentos: contas rejeitadas <strong>5 anos</strong>; irregulares por Tribunal de Contas <strong>8 anos</strong>; dirigente membro de Poder/MP + parentes 2º grau.</li>
+      <li>Contrapartida financeira é <strong>vedada</strong>; só bens e serviços. Encargos são <strong>exclusivos da OSC</strong>.</li>
+    </ul>
+    <h4>Prioridade de desempate</h4>
+    <ul>
+      <li>Pode pagar pessoal próprio da OSC; vedado pagar servidor público. Custos indiretos em qualquer proporção.</li>
+      <li>Parecer técnico de contas: os <strong>4 itens</strong> (resultados, impactos, satisfação, sustentabilidade).</li>
+      <li>Não se aplica a: OS, OSCIP, Sistema S, filantrópicas do SUS.</li>
+      <li>Tempo mínimo: <strong>1-2-3</strong> (Município-DF-Estados/União).</li>
     </ul>
   </div>
   <div class="summary-glossary">
-    <h4>Prazos-chave desta aula</h4>
+    <h4>Tabela-relâmpago dos instrumentos</h4>
     <dl>
-      <dt>30 dias</dt><dd>Antecedência mínima para divulgar o edital de chamamento (Art. 26).</dd>
-      <dt>90 dias</dt><dd>Prazo da OSC para prestar contas após a vigência (+30 dias prorrogável) — Art. 69.</dd>
-      <dt>150 dias</dt><dd>Prazo da administração para apreciar a prestação final (prorrogável por igual período) — Art. 71.</dd>
-      <dt>45 dias</dt><dd>Prazo por notificação para a OSC sanar irregularidade (prorrogável por igual período) — Art. 70.</dd>
-      <dt>180 dias</dt><dd>Prazo máximo da dispensa por urgência de paralisação de atividade — Art. 30, I.</dd>
-      <dt>5 anos</dt><dd>Prescrição para aplicar penalidade, contada da prestação de contas — Art. 73, §2º.</dd>
+      <dt>Termo de Colaboração</dt><dd>Administração propõe + COM recursos. Art. 16.</dd>
+      <dt>Termo de Fomento</dt><dd>OSC propõe + COM recursos. Art. 17.</dd>
+      <dt>Acordo de Cooperação</dt><dd>Qualquer um propõe + SEM recursos. Art. 2º, VIII-A.</dd>
+      <dt>Chamamento Público</dt><dd>Procedimento de seleção da OSC. Regra para colaboração e fomento.</dd>
+      <dt>PMIS</dt><dd>OSC/movimentos/cidadãos sugerem; não obriga e não dispensa chamamento.</dd>
     </dl>
   </div>
 </div>
 
 <div class="bridge-box">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-  <p><strong>Dica de Estudos:</strong> Os pontos mais cobrados são: a distinção colaboração × fomento × acordo de cooperação (quem propõe + tem dinheiro?); a regra do chamamento e suas exceções (dispensa × inexigibilidade); a inversão de fases do Art. 28 (julga, depois habilita); a vedação de contrapartida financeira; a responsabilidade exclusiva da OSC pelos encargos; e os prazos da prestação de contas (90/150/45 dias). Para a realidade do DF, fixe o Decreto 37.843/2016 e o procedimento simplificado até R$ 200 mil.</p>
+  <p><strong>Estratégia de prova:</strong> em toda questão de caso, faça mentalmente as duas perguntas da árvore (tem dinheiro? quem propôs?) antes de olhar as alternativas — isso já elimina 3 ou 4 distratores. Nas questões de PMIS, procure qual das três pegadinhas a banca está testando. Se sobrar tempo de revisão, foque nos prazos (30 dias do edital, 180 dias da urgência, 5 e 8 anos das vedações) — é onde a banca troca os números.</p>
 </div>
 
 <footer class="doc-footer">
   <span class="footer-brand">MROSC</span>
-  <span class="footer-sub">Lei nº 13.019/2014 · Lei nº 13.204/2015 · Decreto DF nº 37.843/2016 · Em vigor</span>
+  <span class="footer-sub">Lei nº 13.019/2014 · Lei nº 13.204/2015 · Resumo orientado por 150 questões</span>
 </footer>
 
 </article>
@@ -720,7 +792,6 @@ function handlePrint(){
   a.download='MROSC-13019-Resumo.html';
   a.click();
 }
-
 function toggleTheme(){
   var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
   h.setAttribute('data-theme',n);
@@ -728,16 +799,13 @@ function toggleTheme(){
   document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
   document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
 }
-
 window.addEventListener('scroll',function(){
   var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
   document.getElementById('readingProgress').style.width=pct+'%';
   document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
 });
-
 function answerCE(btn,qId,userVal){
-  var block=document.getElementById(qId);
-  if(!block)return;
+  var block=document.getElementById(qId);if(!block)return;
   var correct=block.getAttribute('data-answer');
   var btns=block.querySelectorAll('.answer-btn');
   btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
@@ -745,10 +813,8 @@ function answerCE(btn,qId,userVal){
   else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
   var d=block.querySelector('details');if(d)d.open=true;
 }
-
 function answerMC(btn,qId,correctVal){
-  var block=document.getElementById(qId);
-  if(!block)return;
+  var block=document.getElementById(qId);if(!block)return;
   var userVal=btn.getAttribute('data-value');
   var btns=block.querySelectorAll('.answer-btn');
   btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
