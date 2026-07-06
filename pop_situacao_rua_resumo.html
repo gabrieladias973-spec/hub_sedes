@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política para População em Situação de Rua — Resumo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#fbf8f0;
+  --bg-topbar:#0A5C8A; --bg-topbar-glass:rgba(10,92,138,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#000000;
+  --accent:#C58A0E; --accent-dim:#9A6A08; --accent-glow:rgba(197,138,14,0.12); --accent-surface:#fbeecb;
+  --amber:#0A5C8A; --amber-light:#e3f1f9; --amber-mid:#5AB0DE;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#fbf8f0; --box-intro-border:#0A5C8A;
+  --box-alert-bg:#e3f1f9; --box-alert-border:#0A5C8A;
+  --box-example-bg:#ffffff; --box-example-border:#C58A0E;
+  --box-highlight-bg:#fbeecb; --box-highlight-border:#C58A0E;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#C58A0E;
+  --box-analogy-bg:#fbf8f0; --box-analogy-border:#0A5C8A;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#C58A0E;
+  --summary-bg:#fbf8f0; --summary-border:#C58A0E;
+  --table-header-bg:#0A5C8A; --table-header-text:#ffffff;
+  --table-row-alt:#fbf8f0; --table-border:#cccccc; --table-hover:#fbeecb;
+  --btn-correct:#C58A0E; --btn-correct-bg:#fbeecb; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#0A5C8A; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#000000; --bg-surface:#0a0a0a; --bg-surface-raised:#141008;
+  --bg-topbar:#0A5C8A; --bg-topbar-glass:rgba(10,92,138,0.98);
+  --text-primary:#ffffff; --text-secondary:#e0d8c8; --text-tertiary:#a89f8a;
+  --text-inverse:#000000; --text-on-accent:#000000;
+  --accent:#F2C24B; --accent-dim:#D9A62A; --accent-glow:rgba(242,194,75,0.15); --accent-surface:#3a2e05;
+  --amber:#5AB0DE; --amber-light:#062333; --amber-mid:#2E7CA6;
+  --border-hard:#ffffff; --border-medium:#333333; --border-soft:#1f1a10;
+  --box-intro-bg:#050505; --box-intro-border:#F2C24B;
+  --box-alert-bg:#062333; --box-alert-border:#5AB0DE;
+  --box-example-bg:#0a0a0a; --box-example-border:#F2C24B;
+  --box-highlight-bg:#3a2e05; --box-highlight-border:#F2C24B;
+  --box-glossary-bg:#0a0a0a; --box-glossary-border:#ffffff; --box-glossary-term:#F2C24B;
+  --box-analogy-bg:#050505; --box-analogy-border:#5AB0DE;
+  --checkpoint-bg:#0a0a0a; --checkpoint-border:#F2C24B;
+  --summary-bg:#050505; --summary-border:#F2C24B;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#0a0a0a; --table-border:#333333; --table-hover:#3a2e05;
+  --btn-correct:#F2C24B; --btn-correct-bg:#3a2e05; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#F2C24B; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:620px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-banca{font-size:.68em;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;border:1px solid var(--accent);padding:2px 8px;border-radius:4px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.eixo-tag{display:inline-block;background:var(--accent);color:var(--text-on-accent);font-family:'Outfit',sans-serif;font-weight:800;font-size:.62em;text-transform:uppercase;letter-spacing:2px;padding:4px 12px;border-radius:4px;margin-bottom:8px}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">Pop. Situação de Rua</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Políticas Públicas Sociais</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Políticas Públicas Sociais</div>
+<h1>POPULAÇÃO EM SITUAÇÃO DE RUA</h1>
+<p class="doc-subtitle">Política Nacional (Decreto Federal nº 7.053/2009) e o Plano de Ação Distrital do DF: conceito, princípios, diretrizes, objetivos e os 7 eixos de atuação, com metas, prazos e base legal.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Decreto 7.053/2009 · Lei Dist. 6.691/2020 · ADPF 976</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~50 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Conceito e Definições Fundamentais</a></li>
+    <li><a href="#s2">Base Normativa — Federal e Distrital</a></li>
+    <li><a href="#s3">Princípios da Política Nacional (Art. 5º)</a></li>
+    <li><a href="#s4">Diretrizes da Política Nacional (Art. 6º)</a></li>
+    <li><a href="#s5">Objetivos da Política Nacional (Art. 7º)</a></li>
+    <li><a href="#s6">Acolhimento, CIAMP-Rua e ADPF 976</a></li>
+    <li><a href="#s7">Plano de Ação do DF — Visão Geral</a></li>
+    <li><a href="#s8">Eixo 1 — Assistência Social e Segurança Alimentar</a></li>
+    <li><a href="#s9">Eixo 2 — Saúde</a></li>
+    <li><a href="#s10">Eixo 3 — Dignidade e Respeito</a></li>
+    <li><a href="#s11">Eixo 4 — Cidadania, Educação e Cultura</a></li>
+    <li><a href="#s12">Eixo 5 — Habitação</a></li>
+    <li><a href="#s13">Eixo 6 — Trabalho e Renda</a></li>
+    <li><a href="#s14">Eixo 7 — Produção e Gestão de Dados</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>Este resumo cruza dois documentos: a <strong>Política Nacional para a População em Situação de Rua</strong> (Decreto Federal nº 7.053/2009), que fixa o conceito, os princípios, as diretrizes e os objetivos que valem para todo o país; e o <strong>Plano de Ação Distrital do DF</strong>, que transforma essa política em metas concretas, organizadas em <strong>7 eixos</strong>, com órgãos responsáveis, prazos e base legal. A lógica é simples: o Decreto diz <em>o que garantir</em>; o Plano diz <em>como, quem e até quando</em> entregar.</p>
+</div>
+
+<!-- ===== S1 CONCEITO ===== -->
+<h2 id="s1">Conceito e Definições Fundamentais</h2>
+
+<div class="art-line"><span class="art-badge">Art. 1º, § único</span><span>Conceito legal de <strong>população em situação de rua</strong> — decorado, cai muito em prova.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Conceito-mestre (Decreto 7.053/2009)</div>
+  <p>Grupo populacional <strong>heterogêneo</strong> que tem em comum: <strong>(1) pobreza extrema</strong>; <strong>(2) vínculos familiares interrompidos ou fragilizados</strong>; e <strong>(3) inexistência de moradia convencional regular</strong>. Utiliza logradouros públicos e áreas degradadas como espaço de moradia e sustento, de forma <strong>temporária ou permanente</strong>, além das unidades de acolhimento para pernoite temporário ou moradia provisória.</p>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · O tripé do conceito</div>
+  <div class="analogy-text">
+    <p>Pense no conceito como um <strong>banquinho de três pernas</strong>: pobreza extrema, vínculo familiar rompido e falta de moradia regular. Se você só tem uma das pernas (ex.: está pobre, mas mora com a família), o banquinho não é "situação de rua". As três características juntas é que caracterizam. E note: o conceito <strong>inclui</strong> quem está em abrigo/acolhimento — não é só quem dorme na calçada.</p>
+    <span class="analogy-bridge">Pegadinha de banca: dizer que "situação de rua é só quem vive no logradouro público" está ERRADO — a lei inclui pernoite temporário e moradia provisória em acolhimento.</span>
+  </div>
+</div>
+
+<div class="glossary-box">
+  <div class="box-label">Termos Fundamentais</div>
+  <p class="glossary-term">CIAMP-Rua</p>
+  <p class="glossary-def">Comitê Intersetorial de Acompanhamento e Monitoramento da Política. É a instância que acompanha a execução, com composição <strong>paritária</strong> entre Governo e Sociedade Civil. Existe no plano nacional e no distrital (CIAMP-Rua DF).</p>
+  <p class="glossary-term">Consultório na Rua</p>
+  <p class="glossary-def">Equipe de saúde que leva o atendimento até a pessoa onde ela está, no território. Porta de entrada da saúde para quem não acessa a unidade fixa.</p>
+  <p class="glossary-term">Centro Pop</p>
+  <p class="glossary-def">Centro de Referência Especializado para População em Situação de Rua. Unidade da Proteção Social Especial de <strong>média complexidade</strong> voltada especificamente a esse público.</p>
+  <p class="glossary-term">Housing First / Moradia Primeiro</p>
+  <p class="glossary-def">Metodologia que oferta <strong>moradia primeiro</strong> (sem exigir sobriedade ou tratamento prévio como condição) e depois oferece o acompanhamento. Base do programa distrital "Moradia Primeiro".</p>
+  <p class="glossary-term">Aporofobia</p>
+  <p class="glossary-def">Aversão, rejeição ou preconceito contra pessoas pobres ou em situação de pobreza. Combatê-la é meta do Eixo 3 (Dignidade e Respeito).</p>
+  <p class="glossary-term">Arquitetura hostil</p>
+  <p class="glossary-def">Técnicas construtivas em espaços públicos para impedir a permanência de pessoas em situação de rua (pedras sob viadutos, bancos com divisórias). Vedada pela <strong>Lei Padre Júlio Lancellotti</strong> (Lei 14.489/2022).</p>
+</div>
+
+<!-- ===== S2 BASE NORMATIVA ===== -->
+<h2 id="s2">Base Normativa — Federal e Distrital</h2>
+
+<p>O Plano se apoia numa cadeia de normas. Vale memorizar a "linha do tempo" e quem faz o quê:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Norma</th><th>Âmbito</th><th>O que faz</th></tr></thead>
+  <tbody>
+    <tr><td>Decreto nº 7.053/2009</td><td>Federal</td><td>Institui a <strong>Política Nacional</strong> para a População em Situação de Rua e o CIAMP-Rua. É a base de tudo.</td></tr>
+    <tr><td>Decreto nº 33.779/2012</td><td>Distrital</td><td>Institui a Política para Inclusão da População em Situação de Rua do DF (CIAMP-Rua DF).</td></tr>
+    <tr><td>Lei Distrital nº 6.691/2020</td><td>Distrital</td><td>Institui a <strong>Política Distrital</strong> — marco legal que orienta o Plano de Ação.</td></tr>
+    <tr><td>Lei Distrital nº 6.616/2020</td><td>Distrital</td><td>Medidas urgentes para assegurar direitos em emergência/calamidade (base da operação inverno).</td></tr>
+    <tr><td>Lei nº 14.489/2022 (Padre Júlio Lancellotti)</td><td>Federal</td><td>Altera o Estatuto da Cidade para <strong>vedar arquitetura hostil</strong> em espaços públicos.</td></tr>
+    <tr><td>Lei nº 14.821/2024</td><td>Federal</td><td>Institui a Política Nacional de <strong>Trabalho Digno e Cidadania</strong> para a população em situação de rua.</td></tr>
+    <tr><td>ADPF nº 976 (STF)</td><td>Federal</td><td>Reconhece "estado de coisas inconstitucional" e torna <strong>obrigatória</strong> para Estados, DF e Municípios a observância do Decreto 7.053/2009.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Ponto que a banca adora — Adesão</div>
+  <p>O Art. 2º do Decreto 7.053 diz que a Política é implementada de forma <strong>descentralizada e articulada</strong>, e os entes aderem por <strong>instrumento próprio</strong>. O detalhe da ADPF 976: mesmo antes de aderir, a observância do Decreto virou <strong>obrigatória</strong> para todos os entes por decisão do STF. Ou seja, deixou de ser facultativa.</p>
+</div>
+
+<!-- ===== S3 PRINCÍPIOS ===== -->
+<h2 id="s3">Princípios da Política Nacional (Art. 5º)</h2>
+
+<p>Além da <strong>igualdade e equidade</strong> (que aparecem no caput), o Art. 5º lista cinco princípios:</p>
+
+<div class="box example-box">
+  <div class="box-label">Os Cinco Princípios (Art. 5º)</div>
+  <ul>
+    <li><strong>I —</strong> respeito à dignidade da pessoa humana</li>
+    <li><strong>II —</strong> direito à convivência familiar e comunitária</li>
+    <li><strong>III —</strong> valorização e respeito à vida e à cidadania</li>
+    <li><strong>IV —</strong> atendimento humanizado e universalizado</li>
+    <li><strong>V —</strong> respeito às condições sociais e diferenças de origem, raça, idade, nacionalidade, gênero, orientação sexual e religiosa, com atenção especial às pessoas com deficiência</li>
+  </ul>
+</div>
+
+<!-- ===== S4 DIRETRIZES ===== -->
+<h2 id="s4">Diretrizes da Política Nacional (Art. 6º)</h2>
+
+<p>São dez diretrizes. As mais cobradas destacam a responsabilidade do poder público e a participação social:</p>
+
+<ul>
+  <li>Promoção dos direitos civis, políticos, econômicos, sociais, culturais e ambientais</li>
+  <li><strong>Responsabilidade do poder público pela elaboração e financiamento</strong> da política</li>
+  <li>Articulação das políticas públicas federais, estaduais, municipais e do DF</li>
+  <li>Integração das políticas públicas em cada nível de governo</li>
+  <li>Integração dos esforços do poder público e da sociedade civil</li>
+  <li><strong>Participação da sociedade civil</strong> (entidades, fóruns e organizações da própria população) na elaboração, acompanhamento e monitoramento</li>
+  <li>Incentivo e apoio à organização e participação da população em situação de rua no controle social</li>
+  <li>Respeito às singularidades de cada território e aproveitamento das potencialidades locais</li>
+  <li>Ações educativas para superação do preconceito e capacitação dos servidores</li>
+  <li><strong>Democratização do acesso e fruição dos espaços e serviços públicos</strong></li>
+</ul>
+
+<!-- ===== S5 OBJETIVOS ===== -->
+<h2 id="s5">Objetivos da Política Nacional (Art. 7º)</h2>
+
+<p>São catorze objetivos (I a XIV). Não precisa decorar todos, mas fixe estes, que sustentam os eixos do Plano:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Objetivo</th><th>Conexão com o Plano</th></tr></thead>
+  <tbody>
+    <tr><td>Acesso amplo, simplificado e seguro a saúde, educação, previdência, assistência, moradia, segurança, cultura, esporte, lazer, trabalho e renda</td><td>Guia geral dos 7 eixos</td></tr>
+    <tr><td>Formação e capacitação permanente de profissionais e gestores</td><td>Eixo 3 — capacitação de segurança pública e justiça</td></tr>
+    <tr><td><strong>Instituir a contagem oficial</strong> da população em situação de rua</td><td>Eixo 7 — Censo bianual</td></tr>
+    <tr><td>Produzir e disseminar dados e indicadores</td><td>Eixo 7 — Painel de dados</td></tr>
+    <tr><td>Acesso a benefícios previdenciários, assistenciais e transferência de renda</td><td>Eixo 4 — mutirões de documentação e benefícios</td></tr>
+    <tr><td><strong>Articular SUAS e SUS</strong> para qualificar a oferta</td><td>Eixo 2 — documento orientador de integração saúde/assistência</td></tr>
+    <tr><td>Padrão básico de qualidade nos acolhimentos + Centros de referência especializados (PSE do SUAS)</td><td>Eixo 1 — Centros Pop e qualificação de acolhimentos</td></tr>
+    <tr><td>Segurança alimentar e nutricional permanente</td><td>Eixo 1 — Restaurantes Comunitários gratuitos</td></tr>
+    <tr><td>Qualificação profissional para acesso ao trabalho</td><td>Eixo 6 — Renova/DF, CatRua, incubadoras</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== S6 ACOLHIMENTO, CIAMP, ADPF ===== -->
+<h2 id="s6">Acolhimento, CIAMP-Rua e ADPF 976</h2>
+
+<h3>Padrão de Acolhimento (Art. 8º)</h3>
+<p>A rede de acolhimento temporário deve observar: limite de capacidade, regras de funcionamento e convivência, acessibilidade, salubridade e distribuição geográfica nas áreas urbanas. Deve respeitar o <strong>direito de permanência preferencialmente nas cidades ou centros urbanos</strong> — nada de "empurrar" a pessoa para a periferia. A regulamentação nacional cabe às instâncias de pactuação e deliberação do <strong>SUAS</strong>.</p>
+
+<h3>Monitoramento (CIAMP-Rua)</h3>
+<p>No DF, a instância de monitoramento é o <strong>CIAMP-Rua DF</strong>, vinculado à área de Direitos Humanos, com composição <strong>paritária</strong> Governo/Sociedade Civil. O Plano também é acompanhado pela <strong>Casa Civil do DF</strong>, responsável pela coordenação e articulação dos órgãos e pela sustentabilidade financeira.</p>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg> Ponto Crítico — ADPF 976 e o "estado de coisas inconstitucional"</div>
+  <p class="absurd-scenario">A ADPF 976 levou ao STF a tese de que as condições de vida da população em situação de rua configuram um "<strong>estado de coisas inconstitucional</strong>" — violação massiva e estrutural de direitos, atribuível a falhas de várias instituições. O STF deferiu parcialmente a cautelar e tornou <strong>obrigatória</strong>, para Estados, DF e Municípios, a observância imediata das diretrizes do Decreto 7.053/2009.</p>
+  <p class="absurd-anchor">Efeito prático: o que era política de adesão voluntária virou dever jurídico exigível. Também embasa medidas contra a arquitetura hostil e pela segurança de pessoas e bens dentro dos abrigos.</p>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<!-- ===== S7 PLANO DE AÇÃO VISÃO GERAL ===== -->
+<h2 id="s7">Plano de Ação do DF — Visão Geral</h2>
+
+<p>O Plano Distrital espelha o Plano Nacional "Ruas Visíveis" e se organiza em <strong>7 eixos</strong>. Cada meta traz órgão responsável, prazo e a norma que a fundamenta. Memorize o mapa dos eixos:</p>
+
+<div class="box highlight-box">
+  <div class="box-label">Mapa dos 7 Eixos</div>
+  <ul>
+    <li><strong>Eixo 1:</strong> Assistência Social e Segurança Alimentar</li>
+    <li><strong>Eixo 2:</strong> Saúde</li>
+    <li><strong>Eixo 3:</strong> Dignidade e Respeito</li>
+    <li><strong>Eixo 4:</strong> Cidadania, Educação e Cultura</li>
+    <li><strong>Eixo 5:</strong> Habitação</li>
+    <li><strong>Eixo 6:</strong> Trabalho e Renda</li>
+    <li><strong>Eixo 7:</strong> Produção e Gestão de Dados</li>
+  </ul>
+</div>
+
+<div class="box alert-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Sigla-decoreba dos órgãos do DF</div>
+  <p><strong>Sedes</strong> = Assistência Social · <strong>Ses</strong> = Saúde · <strong>SSP/Segov</strong> = Segurança/Governo · <strong>Sejus</strong> = Justiça e Cidadania · <strong>Seduh/CodHab</strong> = Habitação · <strong>Sedet</strong> = Trabalho e Desenvolvimento · <strong>SEEDF</strong> = Educação · <strong>Secec</strong> = Cultura · <strong>SLU</strong> = Limpeza Urbana · <strong>Ipe-DF</strong> = Pesquisa/Estatística.</p>
+</div>
+
+<!-- ===== EIXO 1 ===== -->
+<h2 id="s8">Eixo 1 — Assistência Social e Segurança Alimentar</h2>
+<span class="eixo-tag">Órgão-chave: Sedes</span>
+<p>Foco: qualificar o atendimento no SUAS, ampliar acolhimento e Centros Pop, cuidar do pós-rua e da emergência (frio), e garantir alimentação. É o eixo com mais metas.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td>Implantar <strong>Linha de Proteção</strong> para Pop. Rua no SUAS-DF (padronização e fluxo contínuo entre serviços)</td><td>2024</td><td>Lei 6.691/2020, art. 5º, I</td></tr>
+    <tr><td>Implantar Serviço de Acolhimento Institucional na modalidade <strong>pernoite</strong></td><td>2024</td><td>Decreto 33.779/2012</td></tr>
+    <tr><td>Ampliar acolhimento para <strong>50%</strong> das pessoas em situação de rua</td><td>2027</td><td>PPA 2024-2027 (M1410)</td></tr>
+    <tr><td>Ampliar Centros Pop de <strong>2 para 4</strong> unidades</td><td>2027</td><td>PPA 2024-2027 (M1536)</td></tr>
+    <tr><td>Acolhimento para <strong>LGBTQIA+</strong> expulsos do núcleo familiar</td><td>2024</td><td>Plano Nacional (Meta 4.2)</td></tr>
+    <tr><td>Acolhimento em <strong>República</strong> para egressos da rua</td><td>2024</td><td>PPA 2024-2027 (M1410)</td></tr>
+    <tr><td>Implementar <strong>6 CREAS</strong> (Serviço a Famílias e Indivíduos)</td><td>2027</td><td>PPA 2024-2027 (M1416)</td></tr>
+    <tr><td>Qualificar infraestrutura e <strong>segurança de pessoas e bens</strong> em acolhimentos e Centros Pop</td><td>2025</td><td>Decreto 33.779/2012 + ADPF 976</td></tr>
+    <tr><td><strong>Operação inverno</strong>: abrigos provisórios e itens térmicos (prevenir óbito no frio)</td><td>Anual (desde 2022)</td><td>Lei 6.616/2020 + Plano Nacional (4.2)</td></tr>
+    <tr><td>Projeto-piloto <strong>Housing First</strong>: moradia subsidiada a 50 pessoas</td><td>2025</td><td>Decreto 44.659/2023 (PLANDHIS)</td></tr>
+    <tr><td>Programa socioassistencial de acompanhamento <strong>pós-saída da rua</strong></td><td>2026</td><td>Decreto 44.659/2023</td></tr>
+    <tr><td><strong>Acesso gratuito a todas as refeições</strong> nos Restaurantes Comunitários</td><td>2024</td><td>Decreto 33.779/2012, art. 3º, III, "a"</td></tr>
+    <tr><td>Restaurante Comunitário <strong>móvel</strong> onde não há cobertura fixa</td><td>2025</td><td>Decreto 33.779/2012, art. 3º, III, "a"</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · Onde o Eixo 1 mora no SUAS</div>
+  <div class="analogy-text">
+    <p>O <strong>Centro Pop</strong> e os serviços de acolhimento não ficam na proteção básica (CRAS) — ficam na <strong>Proteção Social Especial</strong>. Faz sentido: quem está na rua já teve o direito à moradia violado, então entra pela "especial", não pela "preventiva". Centro Pop = média complexidade; acolhimento (abrigos, repúblicas) = alta complexidade.</p>
+    <span class="analogy-bridge">Amarra com o resumo da NOB SUAS: PSB previne, PSE atende a violação já ocorrida. Situação de rua = PSE.</span>
+  </div>
+</div>
+
+<!-- ===== EIXO 2 ===== -->
+<h2 id="s9">Eixo 2 — Saúde</h2>
+<span class="eixo-tag">Órgão-chave: Ses (+ Sedes na integração)</span>
+<p>Foco: ampliar o Consultório na Rua, criar política distrital de saúde própria e articular SUS com SUAS — objetivo que vem direto do Art. 7º, X, do Decreto 7.053.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td>Ampliar equipes de <strong>Consultório na Rua de 5 para 12</strong></td><td>2027</td><td>PPA 2024-2027 (IN10807)</td></tr>
+    <tr><td>Criar a <strong>Política Distrital de Atenção Integral à Saúde</strong> da Pop. Rua</td><td>2025</td><td>Decreto 33.779/2012 + Plano Nacional (2.8)</td></tr>
+    <tr><td>Implantar <strong>Residências Terapêuticas</strong> (desinstitucionalização)</td><td>2025</td><td>Decreto 33.779/2012 + Res. CNJ 487/2023</td></tr>
+    <tr><td><strong>Documento Orientador</strong> de integração saúde ↔ assistência social</td><td>2025</td><td>Decreto 33.779/2012 (SUS+SUAS)</td></tr>
+    <tr><td>Atenção integrada em acolhimentos para quem precisa de cuidados intensivos</td><td>2026</td><td>Decreto 33.779/2012</td></tr>
+    <tr><td>Documento orientador materno-infantil (ciclo gravídico-puerperal, vínculo mãe-bebê)</td><td>2025</td><td>Plano Nacional (2.10)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== EIXO 3 ===== -->
+<h2 id="s10">Eixo 3 — Dignidade e Respeito</h2>
+<span class="eixo-tag">Órgãos-chave: Segov, SSP, Sejus, Seduh</span>
+<p>Foco: combater violência, aporofobia e arquitetura hostil; capacitar segurança pública e justiça em direitos humanos.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td>Adesão ao Protocolo de proteção e alinhamento da <strong>zeladoria urbana</strong></td><td>2025</td><td>Plano Nacional (3.4)</td></tr>
+    <tr><td>Incluir tema Pop. Rua na disciplina de <strong>Direitos Humanos</strong> dos cursos de progressão de carreira (segurança)</td><td>2025</td><td>Decreto 33.779/2012 + Plano Nacional (3.5)</td></tr>
+    <tr><td>Publicar normativa distrital da <strong>Lei Padre Júlio Lancellotti</strong> (contra arquitetura hostil)</td><td>2024</td><td>Plano Nacional (3.12)</td></tr>
+    <tr><td>Atualizar o Decreto 33.779/2012</td><td>2024</td><td>Plano Nacional (3.14)</td></tr>
+    <tr><td>Campanha de sensibilização em direitos humanos, igualdade racial e <strong>enfrentamento à aporofobia</strong></td><td>2024</td><td>Plano Nacional (3.18)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== EIXO 4 ===== -->
+<h2 id="s11">Eixo 4 — Cidadania, Educação e Cultura</h2>
+<span class="eixo-tag">Órgãos-chave: Sedes/TJDFT, Adm. Regionais, SEEDF, Secec</span>
+<p>Foco: documentação civil e benefícios, Pontos de Apoio da Rua, acesso à educação (inclusive creche) e direitos culturais.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td><strong>12 mutirões</strong> de documentação civil, acesso à justiça e benefícios previdenciários</td><td>2027</td><td>Plano Nacional (4.4)</td></tr>
+    <tr><td>Implantar <strong>Pontos de Apoio da Rua (PAR)</strong>: lavanderia, bagageiro, banheiro, higiene</td><td>2025</td><td>Plano Nacional (4.1)</td></tr>
+    <tr><td>Publicar diretrizes da escolarização da Pop. Rua — <strong>PEPOP</strong></td><td>2024</td><td>Lei 14.821/2024 + Lei 6.691/2020</td></tr>
+    <tr><td>Garantir acesso de <strong>100%</strong> ao Ensino Fundamental/Médio e à creche</td><td>2024</td><td>Lei 6.691/2020 + LDB (Lei 9.394/96, art. 29)</td></tr>
+    <tr><td>Priorizar <strong>educação integral</strong> para crianças de famílias em situação de rua</td><td>2025</td><td>Lei 6.691/2020, art. 3º, V, "f"</td></tr>
+    <tr><td>Ações de diagnóstico, defesa e promoção de <strong>direitos culturais</strong></td><td>2026</td><td>Portaria SEC 287/2017</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== EIXO 5 ===== -->
+<h2 id="s12">Eixo 5 — Habitação</h2>
+<span class="eixo-tag">Órgãos-chave: Seduh, CodHab, Ses, Sedes</span>
+<p>Foco: moradia digna com autonomia — não é só "dar teto". Três linhas: Moradia Primeiro, Locação Social e priorização no Morar Bem.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Programa Moradia Primeiro</strong> (Housing First) — para quem tem histórico de uso de drogas/transtorno mental</td><td>2025</td><td>PPA (AN10937) + PLANDHIS + Decreto 33.779/2012</td></tr>
+    <tr><td><strong>Locação Social</strong>: ajuda no aluguel de imóveis abaixo do mercado</td><td>2025</td><td>PPA (AN10936) + PLANDHIS + Decreto 33.779/2012</td></tr>
+    <tr><td><strong>Priorização no Programa Morar Bem</strong> por regulamentação</td><td>2025</td><td>Plano Nacional (5.2) + Decreto 33.779/2012</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box example-box">
+  <div class="box-label">Housing First aparece em dois eixos</div>
+  <p>Cuidado com a pegadinha: a metodologia <strong>Housing First</strong> aparece como <em>projeto-piloto socioassistencial</em> no Eixo 1 (Sedes) e como <em>programa habitacional "Moradia Primeiro"</em> no Eixo 5 (Seduh/CodHab). São entradas diferentes da mesma lógica: moradia primeiro, condições depois.</p>
+</div>
+
+<!-- ===== EIXO 6 ===== -->
+<h2 id="s13">Eixo 6 — Trabalho e Renda</h2>
+<span class="eixo-tag">Órgãos-chave: Sedet, SEEDF, SLU</span>
+<p>Foco: recepcionar a Lei Federal 14.821/2024 (Trabalho Digno) no DF — cota em licitações, bolsas, CatRua, incubadoras e economia solidária.</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td>Regulamentar cota de <strong>2% de vagas</strong> em licitações de obras/serviços para Pop. Rua</td><td>2024</td><td>Lei Distrital 6.128/2018</td></tr>
+    <tr><td>Criar a <strong>Política Distrital de Trabalho Digno e Cidadania</strong></td><td>2025</td><td>Lei 14.821/2024 + Lei 6.691/2020</td></tr>
+    <tr><td><strong>Bolsas QualisRua</strong>: incentivo financeiro a quem faz qualificação/elevação de escolaridade</td><td>2025</td><td>Lei 14.821/2024, art. 12</td></tr>
+    <tr><td>Instituir <strong>CatRua</strong> — Centro de Apoio ao Trabalhador em Situação de Rua</td><td>2026</td><td>Lei 14.821/2024, art. 6º</td></tr>
+    <tr><td>Implementar <strong>incubadora social</strong> (economia solidária, autogestão)</td><td>2026</td><td>Lei 14.821/2024, art. 25</td></tr>
+    <tr><td>Acesso a microcrédito, fomento e mercados para economia solidária</td><td>2026</td><td>Lei 14.821/2024, art. 24, § 2º</td></tr>
+    <tr><td>Política de amparo ao <strong>catador autônomo</strong></td><td>2025</td><td>Lei 14.821/2024, art. 25</td></tr>
+    <tr><td>Formar <strong>800 pessoas</strong> no programa Renova/DF</td><td>2026</td><td>Lei 14.821/2024 + Lei 6.691/2020</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== EIXO 7 ===== -->
+<h2 id="s14">Eixo 7 — Produção e Gestão de Dados</h2>
+<span class="eixo-tag">Órgão-chave: Ipe-DF</span>
+<p>Foco: sem dado não há política. Este eixo materializa o Art. 7º, III e IV do Decreto 7.053 (contagem oficial e disseminação de dados).</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Meta</th><th>Prazo</th><th>Base legal</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Censo bianual</strong> da Pop. Rua do DF</td><td>2022 (feito) · 2024 · 2026</td><td>Plano Nacional (7.6)</td></tr>
+    <tr><td><strong>Painel de informações</strong> com dados da população</td><td>2022 · atualiz. 2024 e 2026</td><td>Plano Nacional (7.14)</td></tr>
+    <tr><td>Pesquisa de <strong>mapeamento do trabalho infantil</strong> (com foco no trabalho de rua)</td><td>2025</td><td>Plano Nacional (1.24) + Decreto 33.779/2012</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box highlight-box">
+  <div class="box-label">Retrato do DF (Pesquisa IPEDF 2022) — números que caem</div>
+  <p><strong>2.938 pessoas</strong> identificadas (65% na rua, 31% em acolhimento, 3,1% em comunidades terapêuticas). Maior concentração no <strong>Plano Piloto (728)</strong>. Perfil: <strong>80,7% homens</strong>; <strong>71,1% negros</strong> (pardos + pretos); e <strong>11,6% indígenas</strong> — em grande parte da comunidade <strong>Warao</strong>, refugiados venezuelanos que migraram ao DF a partir de 2022 (intersecção imigrante + indígena + situação de rua).</p>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · Pop. Situação de Rua
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="C">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-banca">Estilo FCC</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Nos termos do Decreto Federal nº 7.053/2009, considera-se população em situação de rua o grupo populacional heterogêneo que possui em comum:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) a pobreza extrema e a inexistência de qualquer vínculo familiar, sendo excluídas as pessoas que pernoitam em unidades de acolhimento.<br>
+      (B) exclusivamente a ausência de moradia convencional regular, independentemente da renda ou dos vínculos familiares.<br>
+      (C) a pobreza extrema, os vínculos familiares interrompidos ou fragilizados e a inexistência de moradia convencional regular, incluindo quem utiliza unidades de acolhimento para pernoite ou moradia provisória.<br>
+      (D) a situação de desemprego prolongado associada à residência em áreas de risco, ainda que com vínculos familiares preservados.<br>
+      (E) a utilização de logradouros públicos como moradia de forma exclusivamente permanente, afastada a hipótese de uso temporário.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q1','C')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q1','C')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q1','C')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q1','C')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q1','C')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: C</strong></p>
+      <p><strong>(A) Errada.</strong> A lei fala em vínculos <em>interrompidos ou fragilizados</em>, não "inexistência de qualquer vínculo". E o conceito <em>inclui</em> quem pernoita em acolhimento.</p>
+      <p><strong>(B) Errada.</strong> São <em>três</em> características cumulativas, não só a falta de moradia.</p>
+      <p><strong>(C) Correta.</strong> Reproduz o Art. 1º, parágrafo único, inclusive a inclusão do pernoite/moradia provisória em acolhimento.</p>
+      <p><strong>(D) Errada.</strong> "Vínculos familiares preservados" contraria o conceito, que exige vínculos rompidos/fragilizados.</p>
+      <p><strong>(E) Errada.</strong> A lei admite uso <em>temporário ou permanente</em> — restringir a "exclusivamente permanente" está incorreto.</p>
+    </div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="D">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-banca">Estilo FGV</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Sobre os princípios e diretrizes da Política Nacional para a População em Situação de Rua (Decreto 7.053/2009), assinale a alternativa correta:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) A responsabilidade pela elaboração e pelo financiamento da política é atribuída prioritariamente à sociedade civil organizada.<br>
+      (B) O atendimento deve ser humanizado, mas não universalizado, admitindo-se seleção prévia dos beneficiários por critério de renda.<br>
+      (C) A participação da população em situação de rua limita-se à execução das ações, sendo vedada sua atuação no monitoramento das políticas.<br>
+      (D) A democratização do acesso e fruição dos espaços e serviços públicos figura entre as diretrizes da política.<br>
+      (E) O respeito à convivência familiar e comunitária é diretriz, ao passo que a equidade não é sequer mencionada na norma.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q2','D')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q2','D')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q2','D')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q2','D')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q2','D')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: D</strong></p>
+      <p><strong>(A) Errada.</strong> A responsabilidade pela elaboração e financiamento é do <em>poder público</em> (Art. 6º, II).</p>
+      <p><strong>(B) Errada.</strong> O atendimento é humanizado <em>e universalizado</em> (Art. 5º, IV) — não há seleção por renda como filtro de acesso.</p>
+      <p><strong>(C) Errada.</strong> A sociedade civil e a própria população participam da elaboração, acompanhamento <em>e monitoramento</em> (Art. 6º, VI e VII).</p>
+      <p><strong>(D) Correta.</strong> É a diretriz do Art. 6º, X.</p>
+      <p><strong>(E) Errada.</strong> A convivência familiar e comunitária é <em>princípio</em> (Art. 5º, II), e a equidade é expressamente citada no caput do Art. 5º.</p>
+    </div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="B">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-banca">Estilo VUNESP</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A decisão do STF na ADPF nº 976, mencionada no Plano de Ação distrital, produziu como principal efeito jurídico:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) a revogação do Decreto nº 7.053/2009, substituído por lei ordinária de iniciativa do Congresso Nacional.<br>
+      (B) tornar obrigatória, para Estados, Distrito Federal e Municípios, a imediata observância das diretrizes do Decreto nº 7.053/2009, diante do reconhecimento de estado de coisas inconstitucional.<br>
+      (C) a criação de um novo tributo destinado exclusivamente ao financiamento de abrigos para a população em situação de rua.<br>
+      (D) a transferência da competência sobre a política para a iniciativa privada, mediante convênios obrigatórios.<br>
+      (E) a suspensão de todas as políticas distritais até a edição de nova lei federal sobre o tema.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q3','B')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q3','B')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q3','B')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q3','B')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q3','B')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: B</strong></p>
+      <p><strong>(B) Correta.</strong> O STF, ao reconhecer o "estado de coisas inconstitucional", concedeu parcialmente a cautelar e tornou <em>obrigatória</em> a observância do Decreto 7.053/2009 pelos entes — o que antes se dava por adesão voluntária.</p>
+      <p><strong>(A), (C), (D) e (E) Erradas.</strong> A ADPF não revogou o Decreto (ao contrário, o reforçou), não criou tributo, não privatizou a política nem suspendeu políticas distritais.</p>
+    </div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="A">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-banca">Estilo QUADRIX</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">No Plano de Ação distrital, uma das metas do Eixo 6 (Trabalho e Renda) recepciona, no âmbito do DF, a política instituída pela Lei Federal nº 14.821/2024. Sobre esse eixo, é correto afirmar que:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) prevê a instituição do CatRua — Centro de Apoio ao Trabalhador em Situação de Rua — e das Bolsas QualisRua, voltadas à qualificação profissional e à elevação da escolaridade.<br>
+      (B) destina-se exclusivamente à construção de unidades habitacionais, sem ações de qualificação profissional.<br>
+      (C) revoga a cota de 2% de vagas de trabalho em licitações públicas prevista na Lei Distrital nº 6.128/2018.<br>
+      (D) transfere ao Ipe-DF a execução direta dos programas de geração de emprego para essa população.<br>
+      (E) veda a atuação em economia solidária, por incompatibilidade com o modelo de autogestão.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q4','A')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q4','A')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q4','A')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q4','A')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q4','A')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: A</strong></p>
+      <p><strong>(A) Correta.</strong> O Eixo 6 prevê o CatRua (art. 6º da Lei 14.821/2024) e as Bolsas QualisRua (art. 12), ambos voltados a trabalho, qualificação e escolaridade.</p>
+      <p><strong>(B) Errada.</strong> Habitação é o Eixo 5; o Eixo 6 é justamente de qualificação e trabalho.</p>
+      <p><strong>(C) Errada.</strong> O Plano <em>regulamenta e implementa</em> a cota de 2% (Lei 6.128/2018), não a revoga.</p>
+      <p><strong>(D) Errada.</strong> O órgão-chave do Eixo 6 é a Sedet (e SEEDF/SLU); o Ipe-DF é do Eixo 7 (dados).</p>
+      <p><strong>(E) Errada.</strong> O eixo <em>incentiva</em> a economia solidária, com incubadoras e autogestão.</p>
+    </div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="E">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-banca">Estilo FGV</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Relacionando os eixos do Plano de Ação distrital com os objetivos da Política Nacional (Art. 7º do Decreto 7.053/2009), assinale a alternativa correta:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) O Centro Pop integra a Proteção Social Básica do SUAS, sendo ofertado nos CRAS.<br>
+      (B) A criação de meios de articulação entre SUS e SUAS é objetivo estranho à Política Nacional, tratado apenas no plano distrital.<br>
+      (C) A contagem oficial da população em situação de rua é meta do Eixo 5 (Habitação), a cargo da CodHab.<br>
+      (D) A operação integrada de prevenção de óbitos no frio intenso pertence ao Eixo 2 (Saúde) e é executada isoladamente pela Ses.<br>
+      (E) O Eixo 7 (Produção e Gestão de Dados) concretiza os objetivos de instituir a contagem oficial e de produzir e disseminar dados, previstos no Art. 7º da Política Nacional.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','E')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','E')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','E')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','E')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','E')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: E</strong></p>
+      <p><strong>(A) Errada.</strong> O Centro Pop é da Proteção Social <em>Especial</em> (média complexidade), não da básica/CRAS.</p>
+      <p><strong>(B) Errada.</strong> A articulação SUS–SUAS é objetivo <em>expresso</em> da Política Nacional (Art. 7º, X).</p>
+      <p><strong>(C) Errada.</strong> A contagem oficial (Censo) é do Eixo 7, a cargo do Ipe-DF, não do Eixo 5/CodHab.</p>
+      <p><strong>(D) Errada.</strong> A operação inverno está no Eixo 1 (Sedes) e é <em>integrada</em>, envolvendo também a Defesa Civil — não é isolada da Ses.</p>
+      <p><strong>(E) Correta.</strong> O Eixo 7 (Censo bianual e Painel de dados) materializa os incisos III e IV do Art. 7º.</p>
+    </div></details>
+  </div>
+
+  <!-- Q6 -->
+  <div class="questao-block" id="q6" data-answer="B">
+    <div class="questao-header">
+      <span class="questao-number">Q6</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <span class="questao-banca">Estilo VUNESP</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A Lei nº 14.489/2022 (Lei Padre Júlio Lancellotti), citada no Eixo 3 do Plano, tem como objeto:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) instituir a Política Nacional de Trabalho Digno para a população em situação de rua.<br>
+      (B) vedar o emprego de técnicas construtivas hostis em espaços livres de uso público, alterando o Estatuto da Cidade.<br>
+      (C) criar o Consultório na Rua no âmbito do SUS.<br>
+      (D) obrigar a realização de censo anual da população em situação de rua.<br>
+      (E) regulamentar a locação social como política habitacional distrital.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q6','B')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q6','B')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q6','B')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q6','B')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q6','B')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: B</strong></p>
+      <p><strong>(B) Correta.</strong> A Lei Padre Júlio Lancellotti altera a Lei 10.257/2001 (Estatuto da Cidade) para <em>vedar a arquitetura hostil</em> em espaços públicos.</p>
+      <p><strong>(A) Errada.</strong> Trabalho Digno é a Lei 14.821/2024.</p>
+      <p><strong>(C) Errada.</strong> O Consultório na Rua decorre de normas do SUS, não dessa lei.</p>
+      <p><strong>(D) Errada.</strong> O censo bianual está no Plano distrital (Eixo 7), não nessa lei.</p>
+      <p><strong>(E) Errada.</strong> Locação Social é meta do Eixo 5, não objeto da Lei 14.489/2022.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas no padrão de bancas — QUADRIX / FCC / VUNESP / FGV — para fixação dos conceitos centrais do Decreto 7.053/2009 e do Plano de Ação Distrital do DF)</p>
+</div>
+
+<h2 id="resumo-final">Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>Conceito (Art. 1º):</strong> tripé — pobreza extrema + vínculos rompidos/fragilizados + sem moradia regular. Inclui quem está em acolhimento.</li>
+      <li><strong>Decreto 7.053/2009</strong> fixa princípios (Art. 5º), diretrizes (Art. 6º) e objetivos (Art. 7º); o <strong>Plano do DF</strong> transforma tudo em metas por eixo.</li>
+      <li><strong>ADPF 976:</strong> "estado de coisas inconstitucional" — observância do Decreto virou obrigatória para Estados, DF e Municípios.</li>
+      <li><strong>7 eixos:</strong> 1) Assistência/Segurança Alimentar · 2) Saúde · 3) Dignidade e Respeito · 4) Cidadania/Educação/Cultura · 5) Habitação · 6) Trabalho e Renda · 7) Dados.</li>
+      <li><strong>Centro Pop</strong> = PSE média complexidade; <strong>acolhimentos</strong> = PSE alta complexidade. Nunca são proteção básica.</li>
+      <li><strong>Housing First</strong> aparece no Eixo 1 (piloto socioassistencial) e no Eixo 5 (Programa Moradia Primeiro).</li>
+      <li><strong>Lei 14.489/2022</strong> (Lancellotti) veda arquitetura hostil; <strong>Lei 14.821/2024</strong> institui trabalho digno (base do Eixo 6).</li>
+      <li><strong>CIAMP-Rua:</strong> instância de monitoramento, paritária Governo/Sociedade Civil. No DF, apoiada pela Casa Civil.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>Estado de coisas inconstitucional</dt><dd>Violação massiva e estrutural de direitos, reconhecida pelo STF na ADPF 976.</dd>
+      <dt>CIAMP-Rua</dt><dd>Comitê intersetorial de acompanhamento/monitoramento, composição paritária.</dd>
+      <dt>Centro Pop</dt><dd>Centro de referência especializado para pop. rua — PSE média complexidade do SUAS.</dd>
+      <dt>Housing First / Moradia Primeiro</dt><dd>Moradia primeiro, tratamento depois. Piloto no Eixo 1 e programa no Eixo 5.</dd>
+      <dt>Aporofobia</dt><dd>Preconceito contra pessoas pobres; enfrentada no Eixo 3.</dd>
+      <dt>Arquitetura hostil</dt><dd>Técnicas construtivas para afastar pessoas do espaço público; vedada pela Lei 14.489/2022.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Monte a resposta da prova em três camadas — <strong>(1)</strong> o conceito e o tripé do Art. 1º; <strong>(2)</strong> a tríade princípios/diretrizes/objetivos do Decreto 7.053 (Arts. 5º, 6º e 7º); e <strong>(3)</strong> o mapa dos 7 eixos com o órgão-chave de cada um. As bancas gostam de trocar o eixo do serviço (ex.: pôr Centro Pop na proteção básica, ou censo no eixo de habitação) e de cobrar o efeito da ADPF 976. Se dominar essas trocas, você acerta a maioria.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">População em Situação de Rua</span>
+  <span class="footer-sub">Decreto Federal nº 7.053/2009 · Lei Distrital nº 6.691/2020 · ADPF 976 · Plano de Ação Distrital (GDF) · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='PopSituacaoRua-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+</script>
+</body>
+</html>
