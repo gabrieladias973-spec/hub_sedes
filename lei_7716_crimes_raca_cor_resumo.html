@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lei 7.716/1989 — Crimes de Preconceito de Raça ou Cor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-page:#ffffff; --bg-surface:#ffffff; --bg-surface-raised:#f7f5fb;
+  --bg-topbar:#3B1C5A; --bg-topbar-glass:rgba(59,28,90,0.97);
+  --text-primary:#000000; --text-secondary:#2a2a2a; --text-tertiary:#666666;
+  --text-inverse:#ffffff; --text-on-accent:#ffffff;
+  --accent:#6D28D9; --accent-dim:#4C1D95; --accent-glow:rgba(109,40,217,0.12); --accent-surface:#ede6fa;
+  --amber:#B87A10; --amber-light:#FEF3DC; --amber-mid:#F5C95A;
+  --border-hard:#000000; --border-medium:#cccccc; --border-soft:#e5e5e5;
+  --box-intro-bg:#f7f5fb; --box-intro-border:#3B1C5A;
+  --box-alert-bg:#FEF3DC; --box-alert-border:#B87A10;
+  --box-example-bg:#ffffff; --box-example-border:#6D28D9;
+  --box-highlight-bg:#ede6fa; --box-highlight-border:#6D28D9;
+  --box-glossary-bg:#ffffff; --box-glossary-border:#000000; --box-glossary-term:#6D28D9;
+  --box-analogy-bg:#f7f5fb; --box-analogy-border:#3B1C5A;
+  --checkpoint-bg:#ffffff; --checkpoint-border:#6D28D9;
+  --summary-bg:#f7f5fb; --summary-border:#6D28D9;
+  --table-header-bg:#3B1C5A; --table-header-text:#ffffff;
+  --table-row-alt:#f7f5fb; --table-border:#cccccc; --table-hover:#ede6fa;
+  --btn-correct:#6D28D9; --btn-correct-bg:#ede6fa; --btn-wrong:#000000; --btn-wrong-bg:#f1f1f1;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(0,0,0,0.1); --shadow-md:0 4px 20px rgba(0,0,0,0.08);
+  --art-tag-bg:#3B1C5A; --art-tag-text:#ffffff;
+}
+[data-theme="dark"] {
+  --bg-page:#050008; --bg-surface:#0c0512; --bg-surface-raised:#140a1e;
+  --bg-topbar:#3B1C5A; --bg-topbar-glass:rgba(59,28,90,0.98);
+  --text-primary:#ffffff; --text-secondary:#ddd0ea; --text-tertiary:#9d8bb5;
+  --text-inverse:#000000; --text-on-accent:#ffffff;
+  --accent:#C4A5FF; --accent-dim:#A177F0; --accent-glow:rgba(196,165,255,0.15); --accent-surface:#2a1042;
+  --amber:#F5C95A; --amber-light:#412402; --amber-mid:#BA7517;
+  --border-hard:#ffffff; --border-medium:#3a2850; --border-soft:#1f1230;
+  --box-intro-bg:#0c0512; --box-intro-border:#C4A5FF;
+  --box-alert-bg:#1a1200; --box-alert-border:#F5C95A;
+  --box-example-bg:#0c0512; --box-example-border:#C4A5FF;
+  --box-highlight-bg:#2a1042; --box-highlight-border:#C4A5FF;
+  --box-glossary-bg:#0c0512; --box-glossary-border:#ffffff; --box-glossary-term:#C4A5FF;
+  --box-analogy-bg:#0c0512; --box-analogy-border:#C4A5FF;
+  --checkpoint-bg:#0c0512; --checkpoint-border:#C4A5FF;
+  --summary-bg:#0c0512; --summary-border:#C4A5FF;
+  --table-header-bg:#ffffff; --table-header-text:#000000;
+  --table-row-alt:#0c0512; --table-border:#3a2850; --table-hover:#2a1042;
+  --btn-correct:#C4A5FF; --btn-correct-bg:#2a1042; --btn-wrong:#ffffff; --btn-wrong-bg:#1a1a1a;
+  --btn-neutral-bg:var(--bg-surface-raised); --btn-neutral-border:var(--border-medium); --btn-neutral-text:var(--text-secondary);
+  --shadow-sm:0 1px 4px rgba(255,255,255,0.05); --shadow-md:0 4px 20px rgba(255,255,255,0.05);
+  --art-tag-bg:#C4A5FF; --art-tag-text:#000000;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Outfit',sans-serif;font-weight:400;font-size:17px;line-height:1.85;color:var(--text-primary);background:var(--bg-page);transition:background .35s,color .35s;-webkit-font-smoothing:antialiased}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--bg-topbar-glass);backdrop-filter:blur(12px);height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(20px,4vw,60px);border-bottom:3px solid var(--accent)}
+.topbar-left{display:flex;align-items:center;gap:18px}
+.topbar-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#ffffff;line-height:1}
+.topbar-sep{width:2px;height:22px;background:#ffffff;opacity:.4}
+.topbar-label{font-family:'Outfit',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#ffffff;opacity:.7}
+.topbar-discipline{font-weight:500;font-size:13px;color:#ffffff;letter-spacing:.5px;opacity:.9}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.reading-progress{position:fixed;top:64px;left:0;width:0%;height:4px;background:var(--accent);z-index:999;transition:width .08s linear}
+.theme-toggle{background:transparent;border:2px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 16px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .25s;color:#ffffff;font-family:'Outfit',sans-serif;font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
+.theme-toggle:hover{border-color:#ffffff;background:rgba(255,255,255,.1)}
+.theme-toggle svg{width:15px;height:15px;stroke-width:2.5}
+
+.art-badge{display:inline-flex;align-items:center;background:var(--art-tag-bg);color:var(--art-tag-text);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.72em;padding:3px 10px;border-radius:4px;letter-spacing:.5px;vertical-align:middle;margin-right:4px;flex-shrink:0;white-space:nowrap}
+.art-ref{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:.88em}
+
+.container{max-width:840px;margin:100px auto 60px;padding:0 clamp(16px,4vw,40px)}
+.document-surface{background:var(--bg-surface);border-radius:12px;box-shadow:var(--shadow-md);padding:clamp(28px,6vw,64px);border:1px solid var(--border-soft);animation:fadeUp .4s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.doc-eyebrow{font-family:'Outfit',sans-serif;font-weight:800;font-size:11px;text-transform:uppercase;letter-spacing:4px;color:var(--text-tertiary);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.doc-eyebrow::after{content:'';flex:1;height:2px;background:var(--border-medium);opacity:.5}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4em,7vw,4em);line-height:.95;letter-spacing:2px;color:var(--text-primary);margin-bottom:16px}
+.doc-subtitle{font-family:'Outfit',sans-serif;font-weight:300;font-size:1.15em;color:var(--text-tertiary);margin-bottom:28px;max-width:580px;line-height:1.6}
+.doc-meta{display:flex;flex-wrap:wrap;gap:24px;padding:18px 0;margin-bottom:40px;border-top:2px solid var(--text-primary);border-bottom:1px solid var(--border-medium);font-size:.82em;font-weight:500;color:var(--text-tertiary)}
+.doc-meta span{display:flex;align-items:center;gap:6px}
+.doc-meta svg{width:14px;height:14px;opacity:.5;stroke:currentColor}
+
+h2{font-family:'Outfit',sans-serif;font-weight:900;font-size:1.65em;color:var(--text-primary);margin-top:56px;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px;position:relative;padding-left:24px}
+h2::before{content:'';position:absolute;left:0;top:4px;bottom:4px;width:7px;background:var(--accent);border-radius:3px}
+h3{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.2em;color:var(--text-primary);margin-top:36px;margin-bottom:14px}
+h4{font-family:'Outfit',sans-serif;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:2px;color:var(--text-tertiary);margin-top:24px;margin-bottom:10px}
+p{margin-bottom:16px;text-align:justify;hyphens:auto}
+strong{font-weight:700;color:var(--text-primary)}
+
+.toc{background:var(--bg-surface-raised);border:1px solid var(--border-medium);border-left:5px solid var(--accent);border-radius:0 8px 8px 0;padding:28px 32px;margin:36px 0 44px}
+.toc-title{font-weight:800;font-size:.75em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);margin-bottom:18px}
+.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+.toc>ol>li{counter-increment:toc;margin-bottom:4px}
+.toc a{text-decoration:none;color:var(--text-secondary);font-weight:500;font-size:.95em;display:inline-flex;align-items:baseline;gap:10px;padding:5px 0;transition:all .2s}
+.toc a:hover{color:var(--accent);padding-left:6px}
+.toc a::before{content:counter(toc,decimal-leading-zero);font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.8em;color:var(--text-tertiary);min-width:24px}
+
+.box{border-radius:8px;padding:24px 28px;margin:28px 0}
+.box-label{font-weight:800;font-size:.7em;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.box-label svg{width:16px;height:16px}
+.intro-box{background:var(--box-intro-bg);border-left:5px solid var(--box-intro-border)}
+.intro-box .box-label{color:var(--box-intro-border)}
+.alert-box{background:var(--box-alert-bg);border-left:5px solid var(--box-alert-border)}
+.alert-box .box-label{color:var(--box-alert-border)}
+.example-box{background:var(--box-example-bg);border-left:5px solid var(--box-example-border)}
+.example-box .box-label{color:var(--box-example-border)}
+.highlight-box{background:var(--box-highlight-bg);border:1px solid var(--box-highlight-border);border-left:5px solid var(--box-highlight-border)}
+.highlight-box .box-label{color:var(--box-highlight-border)}
+
+.glossary-box{background:var(--box-glossary-bg);border:1.5px solid var(--box-glossary-border);border-left:5px solid var(--box-glossary-border);border-radius:8px;padding:18px 24px;margin:20px 0}
+.glossary-box .box-label{color:var(--box-glossary-border);font-size:.65em;margin-bottom:8px}
+.glossary-term{font-weight:800;font-size:1em;color:var(--box-glossary-term);margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.glossary-def{font-size:.93em;color:var(--text-secondary);margin:0 0 14px;line-height:1.7}
+.glossary-def:last-child{margin-bottom:0}
+
+.analogy-box{background:var(--box-analogy-bg);border:1.5px solid var(--box-analogy-border);border-radius:12px;padding:24px 28px;margin:32px 0;position:relative;overflow:hidden}
+.analogy-box::before{content:'';position:absolute;top:0;right:0;width:120px;height:120px;background:var(--box-analogy-border);opacity:.04;border-radius:0 0 0 100%}
+.analogy-box .box-label{color:var(--box-analogy-border);font-size:.68em}
+.analogy-text{font-size:.97em;color:var(--text-secondary);line-height:1.8}
+.analogy-text p{text-align:left}
+.analogy-bridge{display:block;margin-top:12px;padding-top:12px;border-top:1px dashed var(--box-analogy-border);font-weight:600;color:var(--box-analogy-border);font-size:.93em}
+
+.absurd-box{background:var(--bg-surface-raised);border:1.5px solid var(--border-hard);border-left:5px solid var(--accent);border-radius:8px;padding:22px 28px;margin:28px 0}
+.absurd-box .box-label{color:var(--accent);font-size:.68em}
+.absurd-scenario{font-size:.97em;color:var(--text-secondary);line-height:1.8;margin-bottom:12px}
+.absurd-anchor{font-size:.93em;color:var(--accent);font-weight:600;margin:0;padding-top:12px;border-top:1px dashed var(--border-medium)}
+
+.checkpoint-block{background:var(--checkpoint-bg);border:2px solid var(--checkpoint-border);border-radius:12px;padding:32px;margin:44px 0}
+.checkpoint-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border-medium)}
+.checkpoint-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary);display:flex;align-items:center;gap:10px}
+.checkpoint-title svg{width:20px;height:20px}
+.checkpoint-dots{display:flex;gap:6px}
+.checkpoint-dots span{width:10px;height:10px;border-radius:50%;background:var(--border-medium)}
+.checkpoint-disclaimer{font-size:.75em;color:var(--text-tertiary);text-align:center;margin-top:20px;font-style:italic}
+
+.questao-block{background:var(--bg-surface-raised);border:2px solid var(--border-medium);border-radius:8px;padding:24px 28px;margin:20px 0;transition:all .25s}
+.questao-block:hover{border-color:var(--accent);box-shadow:var(--shadow-sm)}
+.questao-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.questao-number{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.75em;background:var(--text-primary);color:var(--bg-surface);padding:4px 12px;border-radius:4px;letter-spacing:1px}
+.questao-tag{font-size:.72em;font-weight:600;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:1.5px}
+.questao-difficulty{margin-left:auto;display:flex;gap:4px;align-items:center}
+.questao-difficulty span{width:10px;height:10px;border-radius:2px;background:var(--border-medium)}
+.questao-difficulty[data-level="1"] span:nth-child(1){background:var(--text-primary)}
+.questao-difficulty[data-level="2"] span:nth-child(1),.questao-difficulty[data-level="2"] span:nth-child(2){background:var(--text-primary)}
+.questao-difficulty[data-level="3"] span:nth-child(1),.questao-difficulty[data-level="3"] span:nth-child(2),.questao-difficulty[data-level="3"] span:nth-child(3){background:var(--text-primary)}
+.questao-enunciado{font-size:.97em;line-height:1.85}
+
+.answer-buttons{display:flex;gap:12px;margin:16px 0 4px;flex-wrap:wrap}
+.answer-btn{font-family:'Outfit',sans-serif;font-weight:700;font-size:.82em;text-transform:uppercase;letter-spacing:1.5px;padding:10px 28px;border:2px solid var(--btn-neutral-border);border-radius:6px;background:var(--btn-neutral-bg);color:var(--btn-neutral-text);cursor:pointer;transition:all .2s}
+.answer-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-glow)}
+.answer-btn.selected-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn.selected-wrong{border-color:#c0392b;background:#fdf0f0;color:#c0392b}
+.answer-btn.revealed-correct{border-color:var(--btn-correct);background:var(--btn-correct-bg);color:var(--btn-correct)}
+.answer-btn:disabled{cursor:default;opacity:.7}
+
+details{margin:16px 0;border:2px solid var(--border-medium);border-radius:8px;overflow:hidden;transition:border-color .25s}
+details:hover{border-color:var(--accent)}
+summary{padding:14px 20px;background:var(--bg-surface-raised);cursor:pointer;font-weight:700;font-size:.85em;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-primary);display:flex;align-items:center;gap:10px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:'+';font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:600;display:inline-block;width:20px;text-align:center}
+details[open] summary::before{content:'−'}
+summary:hover{background:var(--accent-glow);color:var(--accent)}
+details>p,details>div{padding:20px;border-top:1px solid var(--border-medium);margin:0;font-size:.93em;line-height:1.75}
+
+.table-wrapper{overflow-x:auto;margin:28px 0;border-radius:8px;border:1px solid var(--border-medium)}
+table{width:100%;border-collapse:collapse;font-size:.92em}
+thead th{background:var(--table-header-bg);color:var(--table-header-text);padding:14px 20px;text-align:left;font-weight:700;font-size:.78em;text-transform:uppercase;letter-spacing:1.5px}
+td{padding:14px 20px;border-bottom:1px solid var(--table-border);vertical-align:top}
+tr:nth-child(even) td{background:var(--table-row-alt)}
+tr:hover td{background:var(--table-hover)}
+td:first-child{font-weight:700;color:var(--text-primary)}
+
+ul,ol{margin-left:24px;margin-bottom:16px}
+li{margin-bottom:8px;padding-left:4px}
+li::marker{color:var(--accent);font-weight:700}
+
+.section-divider{border:none;margin:56px 0;display:flex;align-items:center;gap:12px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border-medium)}
+.section-divider .divider-icon{width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0}
+
+.summary-card{background:var(--summary-bg);border:2px solid var(--summary-border);border-radius:12px;padding:28px 32px;margin:40px 0}
+.summary-card-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border-hard)}
+.summary-card-header svg{width:20px;height:20px;color:var(--text-primary)}
+.summary-card-title{font-weight:800;font-size:.78em;text-transform:uppercase;letter-spacing:3px;color:var(--text-primary)}
+.summary-concepts h4{margin-top:0;margin-bottom:10px}
+.summary-concepts ul{margin:0;padding:0;list-style:none}
+.summary-concepts li{padding:6px 0 6px 24px;position:relative;font-size:.93em;margin-bottom:2px}
+.summary-concepts li::before{content:'\2713';position:absolute;left:0;color:var(--accent);font-weight:700}
+.summary-glossary{background:var(--bg-surface-raised);border-radius:8px;padding:16px 20px;border:1px solid var(--border-soft);margin-top:16px}
+.summary-glossary h4{margin-top:0;margin-bottom:8px}
+.summary-glossary dt{font-weight:700;font-size:.88em;color:var(--text-primary);margin-top:8px}
+.summary-glossary dd{font-size:.85em;color:var(--text-secondary);margin-left:0;margin-bottom:4px}
+
+.bridge-box{background:var(--bg-surface-raised);border:1.5px dashed var(--accent);border-radius:8px;padding:20px 28px;margin:40px 0 0;display:flex;align-items:flex-start;gap:16px}
+.bridge-box svg{width:24px;height:24px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.bridge-box p{margin:0;font-size:.95em;color:var(--text-secondary)}
+
+.art-line{display:flex;align-items:baseline;gap:10px;padding:10px 14px;margin:6px 0;border-radius:6px;background:var(--accent-glow);border-left:3px solid var(--accent)}
+.art-line .art-badge{flex-shrink:0}
+.art-line span{font-size:.93em;color:var(--text-secondary);line-height:1.6}
+
+.doc-footer{text-align:center;padding:40px 0 16px;margin-top:64px;border-top:2px solid var(--border-hard)}
+.footer-brand{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;color:var(--text-primary);display:block;margin-bottom:6px}
+.footer-sub{font-size:.78em;color:var(--text-tertiary);font-weight:500;letter-spacing:.5px}
+
+.back-to-top{position:fixed;bottom:30px;right:30px;width:46px;height:46px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);opacity:0;transform:translateY(20px);transition:all .3s;z-index:100}
+.back-to-top.visible{opacity:1;transform:translateY(0)}
+.back-to-top:hover{opacity:.85;transform:translateY(-3px)}
+.back-to-top svg{width:20px;height:20px}
+
+@media(max-width:768px){
+  .topbar{height:56px;padding:0 16px}
+  .topbar-sep,.topbar-discipline,.topbar-label{display:none}
+  .reading-progress{top:56px}
+  html{scroll-padding-top:72px}
+  .container{margin-top:80px;padding:0 10px}
+  .document-surface{padding:24px;border-radius:8px}
+  h1{font-size:2em}
+  h2{font-size:1.3em}
+  .theme-toggle .toggle-label{display:none}
+  .answer-buttons{flex-direction:column}
+  .answer-btn{width:100%;text-align:center}
+}
+@media print{
+  .topbar,.reading-progress,.back-to-top{display:none!important}
+  body,.document-surface{background:#ffffff!important;color:#000000!important}
+  .container{margin:0!important;padding:0!important;max-width:100%!important}
+  .document-surface{box-shadow:none!important;border:none!important;padding:0!important}
+  .box,.questao-block,.checkpoint-block{page-break-inside:avoid!important}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="#" class="topbar-brand">
+      <span class="topbar-logo">Lei 7.716/89</span>
+      <span class="topbar-sep"></span>
+      <span class="topbar-label">Resumos</span>
+    </a>
+    <span class="topbar-discipline">Legislação Penal Especial</span>
+  </div>
+  <div class="topbar-right">
+    <button class="theme-toggle" onclick="handlePrint()" aria-label="Baixar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span class="toggle-label">Baixar</span>
+    </button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="toggle-label">Escuro</span>
+    </button>
+  </div>
+</header>
+<div class="reading-progress" id="readingProgress"></div>
+
+<main class="container">
+<article class="document-surface">
+
+<div class="doc-eyebrow">Resumo · Legislação Penal Especial</div>
+<h1>CRIMES DE RAÇA OU COR — LEI 7.716/1989</h1>
+<p class="doc-subtitle">A "Lei Caó": define os crimes resultantes de discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional — incluindo a injúria racial trazida pela Lei 14.532/2023.</p>
+<div class="doc-meta">
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Lei nº 7.716/1989 · Alterada pelas Leis 9.459/97, 12.288/10, 14.532/23</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> ~40 min</span>
+  <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> Em vigor</span>
+</div>
+
+<nav class="toc">
+  <div class="toc-title">Nesta aula</div>
+  <ol>
+    <li><a href="#s1">Âmbito de Proteção e Base Constitucional (Art. 1º)</a></li>
+    <li><a href="#s2">Injúria Racial — o "novo" Art. 2º-A</a></li>
+    <li><a href="#s3">Racismo × Injúria Racial (STF)</a></li>
+    <li><a href="#s4">Crimes de Segregação (Arts. 3º a 14)</a></li>
+    <li><a href="#s5">Praticar, Induzir ou Incitar — Art. 20</a></li>
+    <li><a href="#s6">Efeitos da Condenação (Arts. 16 e 18)</a></li>
+    <li><a href="#s7">Causas de Aumento e Regras de 2023 (Arts. 20-A a 20-D)</a></li>
+    <li><a href="#s8">Quadro de Penas</a></li>
+    <li><a href="#checkpoint">Checkpoint — Questões de Revisão</a></li>
+  </ol>
+</nav>
+
+<div class="box intro-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg> O que vamos aprender</div>
+  <p>A Lei 7.716/89 é o principal instrumento penal de combate ao racismo no Brasil. Ela lista condutas específicas de segregação (negar emprego, barrar em bar, hotel, escola, transporte) e, desde a <strong>Lei 14.532/2023</strong>, passou a abrigar também a <strong>injúria racial</strong> (Art. 2º-A), antes prevista no Código Penal. Para concurso, o foco é: a lei alcança o setor privado, a motivação discriminatória é o núcleo do tipo, os efeitos da condenação não são automáticos, e o racismo é imprescritível e inafiançável (CF, art. 5º, XLII).</p>
+</div>
+
+<!-- ===== S1 ===== -->
+<h2 id="s1">Âmbito de Proteção e Base Constitucional</h2>
+
+<div class="art-line"><span class="art-badge">Art. 1º</span><span>Serão punidos os crimes resultantes de discriminação ou preconceito de <strong>raça, cor, etnia, religião ou procedência nacional</strong>. Decore essa lista — a banca troca palavras (não inclui orientação política, condição econômica ou idade).</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Base Constitucional — CF, Art. 5º, XLII</div>
+  <p>A prática do racismo constitui crime <strong>inafiançável e imprescritível</strong>, sujeito à pena de reclusão. Como a Lei 14.532/2023 equiparou a injúria racial ao racismo, ela também passou a ser <strong>imprescritível e inafiançável</strong> — ponto novo e muito cobrado.</p>
+</div>
+
+<div class="alert-box box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Pegadinha clássica — Setor Privado</div>
+  <p>A lei <strong>não se limita ao setor público</strong>. Negar emprego em <em>empresa privada</em> (Art. 4º) e recusar cliente em <em>estabelecimento comercial</em> (Art. 5º) são crimes. Qualquer alternativa que diga "a lei só alcança órgãos estatais" está <strong>errada</strong>.</p>
+</div>
+
+<!-- ===== S2 ===== -->
+<h2 id="s2">Injúria Racial — o "novo" Art. 2º-A</h2>
+
+<div class="art-line"><span class="art-badge">Art. 2º-A</span><span>Injuriar alguém, ofendendo-lhe a dignidade ou o decoro, <strong>em razão de raça, cor, etnia ou procedência nacional</strong>. <strong>Pena: reclusão de 2 a 5 anos e multa.</strong> (Lei 14.532/2023)</span></div>
+
+<div class="art-line"><span class="art-badge">Par. único</span><span>A pena aumenta de <strong>metade</strong> se o crime for cometido mediante concurso de 2 ou mais pessoas.</span></div>
+
+<div class="analogy-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Analogia · A "mudança de endereço" da injúria racial</div>
+  <div class="analogy-text">
+    <p>Imagine a injúria racial como um inquilino que morava no <strong>Código Penal</strong> (art. 140, § 3º), num prédio comum. Em 2023 ela se mudou para o "prédio nobre" da Lei do Racismo (Art. 2º-A). Ao trocar de endereço, herdou os privilégios da vizinhança: virou <strong>imprescritível e inafiançável</strong>, e a pena subiu para reclusão de 2 a 5 anos e multa.</p>
+    <span class="analogy-bridge">Antes: art. 140, §3º do CP (injúria qualificada). Agora: Art. 2º-A da Lei 7.716/89, equiparada ao racismo.</span>
+  </div>
+</div>
+
+<!-- ===== S3 ===== -->
+<h2 id="s3">Racismo × Injúria Racial (entendimento do STF)</h2>
+
+<p>A banca adora contrastar os dois. A diferença está em <strong>quem é a vítima</strong>:</p>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Critério</th><th>Racismo (Art. 20 e crimes de segregação)</th><th>Injúria Racial (Art. 2º-A)</th></tr></thead>
+  <tbody>
+    <tr><td>Vítima</td><td>Coletividade / grupo indeterminado — a dignidade da raça como um todo</td><td>Pessoa determinada e individualizada</td></tr>
+    <tr><td>Conduta</td><td>Segregar, discriminar, incitar preconceito</td><td>Ofender a honra (dignidade/decoro) de alguém</td></tr>
+    <tr><td>Prescrição / Fiança</td><td>Imprescritível e inafiançável</td><td>Também imprescritível e inafiançável (após Lei 14.532/2023)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== S4 ===== -->
+<h2 id="s4">Crimes de Segregação (Arts. 3º a 14)</h2>
+
+<p>São condutas de <strong>recusar, impedir ou obstar</strong> o acesso de alguém a bens, serviços e espaços por motivo discriminatório. O núcleo do tipo é sempre a <strong>motivação por raça/cor/etnia/religião/procedência</strong> — sem ela, o fato pode ser outro crime, mas não este.</p>
+
+<div class="art-line"><span class="art-badge">Art. 3º</span><span>Impedir acesso a <strong>cargo público</strong> (Adm. Direta, Indireta ou concessionárias) ou obstar promoção funcional. Pena: reclusão de 2 a 5 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 4º</span><span>Negar ou obstar <strong>emprego em empresa privada</strong> (inclui negar equipamentos, barrar ascensão, dar tratamento salarial diferente). Pena: reclusão de 2 a 5 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 5º</span><span>Recusar acesso a <strong>estabelecimento comercial</strong>, negando-se a servir/atender cliente. Pena: reclusão de 1 a 3 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 6º</span><span>Recusar matrícula/ingresso de aluno em <strong>estabelecimento de ensino</strong> (público ou privado). Pena: reclusão de 3 a 5 anos — agravada em 1/3 se contra menor de 18.</span></div>
+<div class="art-line"><span class="art-badge">Art. 7º</span><span>Recusar hospedagem em <strong>hotel, pensão, estalagem</strong>. Pena: reclusão de 3 a 5 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 8º</span><span>Recusar atendimento em <strong>restaurantes, bares, confeitarias</strong>. Pena: reclusão de 1 a 3 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 9º</span><span>Recusar atendimento em <strong>estabelecimentos esportivos, casas de diversão, clubes sociais</strong>. Pena: reclusão de 1 a 3 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 10</span><span>Recusar atendimento em <strong>salões de cabeleireiro, barbearias, termas, casas de massagem</strong>. Pena: reclusão de 1 a 3 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 11</span><span>Impedir acesso a <strong>entradas sociais, elevadores e escadas</strong> de edifícios públicos ou residenciais. Pena: reclusão de 1 a 3 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 12</span><span>Impedir acesso ou uso de <strong>transportes públicos</strong> (avião, navio, ônibus, trem, metrô). Pena: reclusão de 1 a 3 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 13</span><span>Obstar acesso ao serviço nas <strong>Forças Armadas</strong>. Pena: reclusão de 2 a 4 anos.</span></div>
+<div class="art-line"><span class="art-badge">Art. 14</span><span>Impedir o <strong>casamento ou convivência familiar e social</strong>. Pena: reclusão de 2 a 4 anos.</span></div>
+
+<div class="box example-box">
+  <div class="box-label">O que NÃO está na lei (distratores comuns)</div>
+  <ul>
+    <li>Discriminação por <strong>condição econômica</strong> — não é crime desta lei</li>
+    <li>Impedir alguém por ser <strong>portador de HIV</strong> — não se enquadra na 7.716/89</li>
+    <li>Ofensa por <strong>orientação política</strong> — fora do rol do Art. 1º</li>
+    <li>Impedir/perturbar culto religioso — é crime do <strong>Código Penal</strong> (art. 208), não desta lei (cuidado: obstar prática religiosa com violência entrou no Art. 20, §2º-B)</li>
+  </ul>
+</div>
+
+<!-- ===== S5 ===== -->
+<h2 id="s5">Praticar, Induzir ou Incitar a Discriminação — Art. 20</h2>
+
+<div class="art-line"><span class="art-badge">Art. 20</span><span>Praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou procedência nacional. Pena: reclusão de 1 a 3 anos e multa.</span></div>
+<div class="art-line"><span class="art-badge">§ 1º</span><span>Fabricar/comercializar/veicular símbolos que usem a <strong>cruz suástica ou gamada</strong> para divulgar o nazismo. Pena: reclusão de 2 a 5 anos e multa.</span></div>
+<div class="art-line"><span class="art-badge">§ 2º</span><span>Se o crime for cometido por <strong>meios de comunicação social, redes sociais ou internet</strong>. Pena: reclusão de 2 a 5 anos e multa.</span></div>
+<div class="art-line"><span class="art-badge">§ 2º-B</span><span>Obstar, impedir ou empregar violência contra <strong>manifestações ou práticas religiosas</strong> (Lei 14.532/2023).</span></div>
+
+<div class="absurd-box">
+  <div class="box-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg> Regra Crítica — Medidas antes do inquérito (Art. 20, §3º)</div>
+  <p class="absurd-scenario">No caso do §2º (crime pela internet/mídia), o juiz pode, <strong>ouvido o MP e até antes do inquérito</strong>, determinar: recolhimento/apreensão do material; cessação das transmissões; e <strong>interdição das páginas na internet</strong>. Ou seja, dá para tirar o conteúdo do ar antes de o processo começar.</p>
+  <p class="absurd-anchor">Efeito da condenação no §2º: após o trânsito em julgado, o material apreendido é destruído (§4º).</p>
+</div>
+
+<!-- ===== S6 ===== -->
+<h2 id="s6">Efeitos da Condenação (Arts. 16 e 18)</h2>
+
+<div class="art-line"><span class="art-badge">Art. 16</span><span>São efeitos da condenação: <strong>perda do cargo/função pública</strong> (servidor) e <strong>suspensão do estabelecimento particular</strong> por prazo não superior a 3 meses.</span></div>
+
+<div class="box highlight-box">
+  <div class="box-label">Regra de Ouro — Art. 18</div>
+  <p>Esses efeitos <strong>NÃO são automáticos</strong>: devem ser <strong>motivadamente declarados na sentença</strong>. Essa é uma das pegadinhas mais recorrentes — qualquer questão que afirme que a perda do cargo é "efeito automático" está <strong>errada</strong>.</p>
+</div>
+
+<!-- ===== S7 ===== -->
+<h2 id="s7">Causas de Aumento e Novidades de 2023 (Arts. 20-A a 20-D)</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Artigo</th><th>Regra</th><th>Efeito</th></tr></thead>
+  <tbody>
+    <tr><td><span class="art-ref">Art. 20-A</span></td><td>Crime cometido em contexto de <strong>descontração, diversão ou recreação</strong> ("era só brincadeira")</td><td>Pena aumentada de 1/3 até a metade</td></tr>
+    <tr><td><span class="art-ref">Art. 20-B</span></td><td>Injúria racial (2º-A) ou racismo (20) praticado por <strong>funcionário público</strong> no exercício da função</td><td>Pena aumentada de 1/3 até a metade</td></tr>
+    <tr><td><span class="art-ref">Art. 20-C</span></td><td>Diretriz de <strong>interpretação</strong>: é discriminatório o tratamento que cause constrangimento, humilhação, medo ou exposição indevida, que não se dispensaria a outros grupos</td><td>Amplia o alcance do juiz na análise</td></tr>
+    <tr><td><span class="art-ref">Art. 20-D</span></td><td>Em todos os atos processuais (cíveis e criminais), a <strong>vítima deve estar acompanhada de advogado ou defensor</strong></td><td>Garantia processual da vítima</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ===== S8 ===== -->
+<h2 id="s8">Quadro de Penas (memorização rápida)</h2>
+
+<div class="table-wrapper">
+<table>
+  <thead><tr><th>Pena de reclusão</th><th>Condutas</th></tr></thead>
+  <tbody>
+    <tr><td>1 a 3 anos</td><td>Estabelecimento comercial (5), bares/restaurantes (8), esportivo/clube (9), cabeleireiro (10), entradas de edifício (11), transporte (12), praticar/incitar — caput do Art. 20</td></tr>
+    <tr><td>2 a 4 anos</td><td>Forças Armadas (13), casamento/convivência (14)</td></tr>
+    <tr><td>2 a 5 anos</td><td>Cargo público (3), emprego privado (4), <strong>injúria racial (2º-A)</strong>, nazismo/suástica (20, §1º), crime por mídia/internet (20, §2º)</td></tr>
+    <tr><td>3 a 5 anos</td><td>Ensino (6), hotel/hospedagem (7)</td></tr>
+  </tbody>
+</table>
+</div>
+
+<hr class="section-divider"><div class="section-divider"><div class="divider-icon"></div></div>
+
+<h2 id="checkpoint">Checkpoint — Questões de Revisão</h2>
+
+<div class="checkpoint-block">
+  <div class="checkpoint-header">
+    <span class="checkpoint-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Checkpoint · Lei 7.716/1989
+    </span>
+    <div class="checkpoint-dots"><span></span><span></span><span></span><span></span><span></span></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="questao-block" id="q1" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q1</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="1"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A Lei 7.716/89 aplica-se apenas a estabelecimentos e cargos públicos estatais, não incidindo sobre a recusa discriminatória de emprego em empresa privada ou o impedimento de acesso a estabelecimento comercial particular.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q1','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q1','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> A lei alcança expressamente o setor privado: o <strong>Art. 4º</strong> criminaliza negar emprego em empresa privada e o <strong>Art. 5º</strong> criminaliza recusar cliente em estabelecimento comercial. Restringir a lei ao setor público é o distrator mais repetido da banca.</p></div></details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="questao-block" id="q2" data-answer="CERTO">
+    <div class="questao-header">
+      <span class="questao-number">Q2</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A Lei 14.532/2023 inseriu a injúria racial na Lei do Racismo (Art. 2º-A), com pena de reclusão de 2 a 5 anos e multa, tornando-a, por equiparação, imprescritível e inafiançável.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q2','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q2','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: CERTO.</strong> A injúria racial saiu do art. 140, §3º do Código Penal e passou ao <strong>Art. 2º-A</strong> da Lei 7.716/89, com reclusão de 2 a 5 anos e multa. Por equiparação ao racismo (CF, art. 5º, XLII), tornou-se imprescritível e inafiançável.</p></div></details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="questao-block" id="q3" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q3</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">A perda do cargo ou função pública do servidor condenado e a suspensão do estabelecimento particular são efeitos automáticos da condenação, dispensando declaração na sentença.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q3','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q3','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 18</strong> é claro: esses efeitos <em>não são automáticos</em> e devem ser <strong>motivadamente declarados na sentença</strong>. A palavra "automático" quase sempre denuncia a alternativa errada nesse tema.</p></div></details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="questao-block" id="q4" data-answer="ERRADO">
+    <div class="questao-header">
+      <span class="questao-number">Q4</span>
+      <span class="questao-tag">Certo ou Errado</span>
+      <div class="questao-difficulty" data-level="2"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Praticar discriminação por motivo de condição econômica configura crime da Lei 7.716/89, uma vez que a lei protege qualquer grupo em situação de vulnerabilidade social.</p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="CERTO" onclick="answerCE(this,'q4','CERTO')">Certo</button>
+      <button class="answer-btn" data-value="ERRADO" onclick="answerCE(this,'q4','ERRADO')">Errado</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div><p><strong>Gabarito: ERRADO.</strong> O <strong>Art. 1º</strong> traz rol fechado de motivações: raça, cor, etnia, religião e procedência nacional. Condição econômica <em>não</em> está no rol. A banca costuma inserir "condição econômica", "idade" ou "orientação política" como distratores.</p></div></details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="questao-block" id="q5" data-answer="D">
+    <div class="questao-header">
+      <span class="questao-number">Q5</span>
+      <span class="questao-tag">Múltipla Escolha</span>
+      <div class="questao-difficulty" data-level="3"><span></span><span></span><span></span></div>
+    </div>
+    <p class="questao-enunciado">Sobre a Lei 7.716/89 e suas alterações, assinale a alternativa CORRETA:</p>
+    <p class="questao-enunciado" style="margin-top:8px;font-size:.88em;color:var(--text-tertiary)">
+      (A) O crime de racismo pune sempre uma vítima individualizada, sendo idêntico, nesse aspecto, à injúria racial do Art. 2º-A.<br>
+      (B) A configuração dos crimes de segregação independe de motivação discriminatória, bastando o mero impedimento de acesso a bens ou serviços.<br>
+      (C) A prática do crime em contexto de descontração, diversão ou recreação constitui excludente de ilicitude, afastando a punição.<br>
+      (D) Quando o crime de incitação ao preconceito é praticado por meios de comunicação social ou pela internet, o juiz pode determinar, ouvido o MP e ainda antes do inquérito, a interdição das páginas na rede mundial de computadores.<br>
+      (E) A injúria racial permanece no Código Penal, com pena de detenção passível de substituição por multa.
+    </p>
+    <div class="answer-buttons">
+      <button class="answer-btn" data-value="A" onclick="answerMC(this,'q5','D')">A</button>
+      <button class="answer-btn" data-value="B" onclick="answerMC(this,'q5','D')">B</button>
+      <button class="answer-btn" data-value="C" onclick="answerMC(this,'q5','D')">C</button>
+      <button class="answer-btn" data-value="D" onclick="answerMC(this,'q5','D')">D</button>
+      <button class="answer-btn" data-value="E" onclick="answerMC(this,'q5','D')">E</button>
+    </div>
+    <details><summary>+ Gabarito Comentado</summary><div>
+      <p><strong>Gabarito: D</strong></p>
+      <p><strong>(A) Errada.</strong> O racismo pune ofensa à coletividade/grupo, sem vítima individualizada; a injúria racial (2º-A) exige vítima determinada. São distintos nesse ponto — entendimento do STF.</p>
+      <p><strong>(B) Errada.</strong> A <em>motivação discriminatória</em> é elemento central do tipo. Sem ela, o fato pode ser outro ilícito, mas não crime da Lei 7.716/89.</p>
+      <p><strong>(C) Errada.</strong> O contexto de descontração/diversão (Art. 20-A) é <em>causa de aumento</em> de 1/3 até a metade — não excludente. "Era brincadeira" agrava, não isenta.</p>
+      <p><strong>(D) Correta.</strong> Art. 20, §3º: no crime do §2º (mídia/internet), o juiz pode, ouvido o MP e antes mesmo do inquérito, determinar recolhimento do material, cessação das transmissões e interdição das páginas na internet.</p>
+      <p><strong>(E) Errada.</strong> Desde a Lei 14.532/2023 a injúria racial migrou para o Art. 2º-A da Lei 7.716/89, com reclusão de 2 a 5 anos e multa — não é mais detenção no Código Penal.</p>
+    </div></details>
+  </div>
+
+  <p class="checkpoint-disclaimer">(questões elaboradas para fixação dos conceitos centrais da Lei nº 7.716/1989, com base nos temas mais recorrentes em concursos)</p>
+</div>
+
+<h2>Resumo da Aula</h2>
+<div class="summary-card">
+  <div class="summary-card-header">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+    <span class="summary-card-title">O que você aprendeu nesta aula</span>
+  </div>
+  <div class="summary-concepts">
+    <h4>Conceitos Fundamentais</h4>
+    <ul>
+      <li><strong>Art. 1º:</strong> rol fechado — raça, cor, etnia, religião, procedência nacional (não inclui condição econômica, idade ou política).</li>
+      <li>A lei <strong>alcança o setor privado</strong>: emprego privado (Art. 4º) e estabelecimento comercial (Art. 5º) são crimes.</li>
+      <li><strong>Motivação discriminatória</strong> é o núcleo do tipo — sem ela, não há crime desta lei.</li>
+      <li><strong>Injúria racial (Art. 2º-A):</strong> saiu do CP para a Lei do Racismo (Lei 14.532/23). Reclusão de 2 a 5 anos e multa. Imprescritível e inafiançável.</li>
+      <li><strong>Racismo × Injúria:</strong> racismo atinge a coletividade; injúria atinge vítima individualizada (STF).</li>
+      <li><strong>Efeitos da condenação (Arts. 16 e 18):</strong> perda do cargo e suspensão do estabelecimento — NÃO são automáticos, exigem declaração motivada na sentença.</li>
+      <li><strong>Art. 20:</strong> praticar/induzir/incitar (1-3 anos); nazismo/suástica e mídia/internet (2-5 anos). Juiz pode interditar páginas antes do inquérito.</li>
+      <li><strong>Aumentos de 2023:</strong> "brincadeira/diversão" (20-A) e funcionário público (20-B) aumentam a pena de 1/3 até metade.</li>
+    </ul>
+  </div>
+  <div class="summary-glossary">
+    <h4>Termos-chave desta aula</h4>
+    <dl>
+      <dt>Lei Caó</dt><dd>Apelido da Lei 7.716/89, em homenagem a Carlos Alberto Caó de Oliveira, seu autor.</dd>
+      <dt>Injúria racial (Art. 2º-A)</dt><dd>Ofender a dignidade/decoro de alguém por raça, cor, etnia ou procedência. Vítima individualizada. Reclusão 2-5 anos.</dd>
+      <dt>Racismo</dt><dd>Discriminação/segregação contra a coletividade. Imprescritível e inafiançável (CF, art. 5º, XLII).</dd>
+      <dt>Efeitos não automáticos</dt><dd>Perda do cargo e suspensão do estabelecimento só valem se declarados na sentença (Art. 18).</dd>
+      <dt>Art. 20-C</dt><dd>Diretriz de interpretação: define o que o juiz deve considerar tratamento discriminatório.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="bridge-box">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  <p><strong>Dica de Estudos:</strong> Os quatro blocos que respondem à maioria das questões: <strong>(1)</strong> âmbito do Art. 1º e a incidência sobre o setor privado; <strong>(2)</strong> injúria racial no Art. 2º-A e a diferença para o racismo (individual × coletividade); <strong>(3)</strong> efeitos não automáticos da condenação (Arts. 16 e 18); <strong>(4)</strong> Art. 20 e as causas de aumento de 2023 (20-A e 20-B). Guarde também que racismo e injúria racial são imprescritíveis e inafiançáveis.</p>
+</div>
+
+<footer class="doc-footer">
+  <span class="footer-brand">Lei 7.716/1989</span>
+  <span class="footer-sub">Lei nº 7.716, de 5 de janeiro de 1989 · Alterada pela Lei nº 14.532/2023 · Em vigor</span>
+</footer>
+
+</article>
+</main>
+
+<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+function handlePrint(){
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([document.documentElement.outerHTML],{type:'text/html'}));
+  a.download='Lei7716-CrimesRacaCor-Resumo.html';
+  a.click();
+}
+
+function toggleTheme(){
+  var h=document.documentElement,n=h.getAttribute('data-theme')==='light'?'dark':'light';
+  h.setAttribute('data-theme',n);
+  document.querySelector('.icon-sun').style.display=n==='dark'?'none':'block';
+  document.querySelector('.icon-moon').style.display=n==='dark'?'block':'none';
+  document.querySelector('.toggle-label').textContent=n==='dark'?'Claro':'Escuro';
+}
+
+window.addEventListener('scroll',function(){
+  var pct=(window.scrollY/(document.documentElement.scrollHeight-window.innerHeight))*100;
+  document.getElementById('readingProgress').style.width=pct+'%';
+  document.getElementById('backToTop').classList.toggle('visible',window.scrollY>400);
+});
+
+function answerCE(btn,qId,userVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var correct=block.getAttribute('data-answer');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correct){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correct)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+
+function answerMC(btn,qId,correctVal){
+  var block=document.getElementById(qId);
+  if(!block)return;
+  var userVal=btn.getAttribute('data-value');
+  var btns=block.querySelectorAll('.answer-btn');
+  btns.forEach(function(b){b.disabled=true;b.classList.remove('selected-correct','selected-wrong','revealed-correct')});
+  if(userVal===correctVal){btn.classList.add('selected-correct')}
+  else{btn.classList.add('selected-wrong');btns.forEach(function(b){if(b.getAttribute('data-value')===correctVal)b.classList.add('revealed-correct')})}
+  var d=block.querySelector('details');if(d)d.open=true;
+}
+</script>
+</body>
+</html>
